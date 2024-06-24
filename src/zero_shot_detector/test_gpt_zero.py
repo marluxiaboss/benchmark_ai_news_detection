@@ -56,12 +56,12 @@ def predict_gpt_zero(text, api_key):
     headers = {
         "Accept": "application/json",
         "content-type": "application/json",
-        "x-api-key": ""
+        "x-api-key": api_key
     }
     
     while True:
         try:
-            time.sleep(10)  # 1 request per 10 minutes for free access
+            time.sleep(1)  # 1 request per 10 minutes for free access
             response = requests.post(url, json=payload, headers=headers)
             print(response.json())
             #return response.json()['documents'][0]['completely_generated_prob']
@@ -89,7 +89,7 @@ def run(args):
         api_key = os.environ.get("GPT_ZERO_API_KEY")
 
     # create experiment folder
-    base_path = "saved_training_logs_experiment_2/fast_detect_gpt"
+    base_path = "saved_training_logs_experiment_2/gpt_zero"
     experiment_path = f"{base_path}"
     dataset_name = args.dataset_path.split("/")[-1]
 
@@ -229,26 +229,26 @@ def run(args):
         for key, value in results_at_threshold.items():
             results[f"{key}_at_given_threshold"] = value
 
-        # define where to save the results
-        if args.use_eval_set:
-            
-            if not os.path.isdir(f"{experiment_path}/eval"):
-                os.makedirs(f"{experiment_path}/eval")
-            
-            json_res_file_path = f"{experiment_path}/eval/eval_metrics_{dataset_name}.json"
+    # define where to save the results
+    if args.use_eval_set:
+        
+        if not os.path.isdir(f"{experiment_path}/eval"):
+            os.makedirs(f"{experiment_path}/eval")
+        
+        json_res_file_path = f"{experiment_path}/eval/eval_metrics_{dataset_name}.json"
+        
+    else:
+        if args.classifier_threshold is not None:
+            if not os.path.isdir(f"{experiment_path}/test_at_threshold"):
+                os.makedirs(f"{experiment_path}/test_at_threshold")
+                
+            json_res_file_path = f"{experiment_path}/test_at_threshold/test_metrics_{dataset_name}.json"
             
         else:
-            if args.classifier_threshold is not None:
-                if not os.path.isdir(f"{experiment_path}/test_at_threshold"):
-                    os.makedirs(f"{experiment_path}/test_at_threshold")
-                    
-                json_res_file_path = f"{experiment_path}/test_at_threshold/test_metrics_{dataset_name}.json"
-                
-            else:
-                if not os.path.isdir(f"{experiment_path}/test"):
-                    os.makedirs(f"{experiment_path}/test")
-            
-                json_res_file_path = f"{experiment_path}/test/test_metrics_{dataset_name}.json"
+            if not os.path.isdir(f"{experiment_path}/test"):
+                os.makedirs(f"{experiment_path}/test")
+        
+            json_res_file_path = f"{experiment_path}/test/test_metrics_{dataset_name}.json"
                 
         with open(json_res_file_path, "w") as f:
             f.write(json.dumps(results, indent=4))
