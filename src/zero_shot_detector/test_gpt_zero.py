@@ -35,17 +35,7 @@ from utils import *
 
 
 
-def load_test_dataset(dataset_path):
-
-    dataset = load_from_disk(dataset_path)
-    try:
-        dataset_test = dataset["test"]
-    except KeyError:
-        dataset_test = dataset
-
-    return dataset_test
-
-def predict_gpt_zero(text, api_key):
+def predict_gpt_zero(text, api_key, debug_mode=False):
     
     url = "https://api.gptzero.me/v2/predict/text"
     payload = {
@@ -61,9 +51,15 @@ def predict_gpt_zero(text, api_key):
     
     while True:
         try:
-            time.sleep(1)  # 1 request per 10 minutes for free access
+            # 1 request per 10 minutes for free access
+            
+            # 0.06 should correspond to 1000 requests per 1 minute
+            time.sleep(0.06)  
             response = requests.post(url, json=payload, headers=headers)
-            print(response.json())
+            
+            if debug_mode:
+                print(response.json())
+
             #return response.json()['documents'][0]['completely_generated_prob']
             
             # try to access document
@@ -78,7 +74,18 @@ def generate_cache_key(args):
     args_hash = hashlib.md5(args_str.encode()).hexdigest()
     return args_hash
 
+def load_test_dataset(dataset_path, use_eval_set=False):
 
+    dataset = load_from_disk(dataset_path)
+    try:
+        if use_eval_set:
+            dataset_test = dataset["valid"]
+        else:
+            dataset_test = dataset["test"]
+    except KeyError:
+        dataset_test = dataset
+
+    return dataset_test
 
 ### MAIN FILE ###
 def run(args):
@@ -94,8 +101,10 @@ def run(args):
     dataset_name = args.dataset_path.split("/")[-1]
 
     # load model
-    dataset = load_test_dataset(args.dataset_path)
-    dataset = dataset.select(range(args.sample_size))
+    dataset = load_test_dataset(args.dataset_path, args.use_eval_set)
+    
+    if args.sample_size is not None:
+        dataset = dataset.select(range(args.sample_size))
 
     # iterate over the dataset
     preds = []
@@ -138,7 +147,7 @@ def run(args):
         
         text = elem["text"]
         
-        pred_json = predict_gpt_zero(text, api_key=api_key)
+        pred_json = predict_gpt_zero(text, api_key=api_key, debug_mode=args.debug_mode)
         pred_json_doc = pred_json["documents"][0]
         pred_class = pred_json_doc["predicted_class"]
         
@@ -154,6 +163,11 @@ def run(args):
             pred_score_human = pred_json_doc["class_probabilities"]["human"]
             pred = 1 if pred_score_ai > pred_score_human else 0
             
+            # if mixed is higher prob than human and ai, set to 1
+            if (pred_json_doc["class_probabilities"]["mixed"] > pred_score_ai and
+                pred_json_doc["class_probabilities"]["mixed"] > pred_score_human):
+                pred = 1
+            
         else:
             raise ValueError("Unknown class")
         
@@ -161,7 +175,7 @@ def run(args):
         preds.append(pred)
         
         # record probability for positive class
-        prob = pred_json_doc["class_probabilities"]["ai"]
+        prob = pred_json_doc["class_probabilities"]["ai"] + pred_json_doc["class_probabilities"]["mixed"]
         #prob = 0.5
         probs.append(prob)
         
@@ -250,8 +264,8 @@ def run(args):
         
             json_res_file_path = f"{experiment_path}/test/test_metrics_{dataset_name}.json"
                 
-        with open(json_res_file_path, "w") as f:
-            f.write(json.dumps(results, indent=4))
+    with open(json_res_file_path, "w") as f:
+        f.write(json.dumps(results, indent=4))
             
     # results for random prediction
     random_preds = np.random.randint(0, 2, len(labels))
@@ -262,11 +276,12 @@ def run(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset_path', type=str, default=None, required=True)
-    parser.add_argument('--sample_size', type=int, default=100, required=True)
+    parser.add_argument('--sample_size', type=int, default=None)
     parser.add_argument('--classifier_threshold', type=float, default=None)
     parser.add_argument('--use_eval_set', action='store_true', default=False)
     parser.add_argument('--reset_cache', action='store_true', default=False)
     parser.add_argument('--use_api_key', action='store_true', default=False)
+    parser.add_argument("--debug_mode", action="store_true", default=False)
     args = parser.parse_args()
 
     run(args)
