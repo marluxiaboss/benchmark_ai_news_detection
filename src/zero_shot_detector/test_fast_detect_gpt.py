@@ -280,8 +280,8 @@ def run(args):
         fpr = np.zeros(1)
         tpr = np.zeros(1)
         thresholds = np.zeros(1)
-        roc_auc = roc_auc_score(labels, probs)
-        fpr, tpr, thresholds = roc_curve(labels, probs)
+        #roc_auc = roc_auc_score(labels, probs)
+        #fpr, tpr, thresholds = roc_curve(labels, probs)
         
     else:
         roc_auc = roc_auc_score(labels, probs)
