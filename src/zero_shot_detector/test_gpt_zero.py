@@ -54,7 +54,7 @@ def predict_gpt_zero(text, api_key, debug_mode=False):
             # 1 request per 10 minutes for free access
             
             # 0.06 should correspond to 1000 requests per 1 minute
-            time.sleep(0.06)  
+            #time.sleep(0.06)  
             response = requests.post(url, json=payload, headers=headers)
             
             if debug_mode:
@@ -68,11 +68,6 @@ def predict_gpt_zero(text, api_key, debug_mode=False):
         except Exception as ex:
             print(ex)
 
-def generate_cache_key(args):
-    args_str = [f"{key}={value}" for key, value in vars(args).items() if value is not None]
-    args_str = "_".join(args_str)
-    args_hash = hashlib.md5(args_str.encode()).hexdigest()
-    return args_hash
 
 def load_test_dataset(dataset_path, use_eval_set=False):
 
@@ -109,42 +104,9 @@ def run(args):
     # iterate over the dataset
     preds = []
     probs = []
-    
-    # setup caching
-    cache = Cache("cache_dir", size_limit=2e10)
-    cache.reset("cull_limit", 0)
-    
-    # if reset_cache is set, clear the cache
-    if args.reset_cache:
-        print("Resetting cache")
-        cache.clear()
-    
-    # if cache_key is not in cache, set it to empty string to avoid key error
-    if "cache_key" not in cache:
-        cache["cache_key"] = ""
-        
-    # Generate an hash of the arguments to use check if the cache is still valid
-    cache_key = generate_cache_key(args)
-    
-    if cache["cache_key"] != cache_key:
-        print("Cache key has changed, resetting cache")
-        
-        # reset the cache
-        cache.clear()
-        cache["cache_key"] = cache_key
-    
+
     set_used = "eval" if args.use_eval_set else "test"
-    for elem in tqdm(dataset, desc=f"Predicting labels for {set_used} set"):
-        
-        # check if the result is cached
-        if elem["text"] in cache:
-            result = cache[elem["text"]]
-            pred = result["pred"]
-            prob = result["prob"]
-            preds.append(pred)
-            probs.append(prob)
-            continue
-        
+    for elem in tqdm(dataset, desc=f"Predicting labels for {set_used} set"):  
         text = elem["text"]
         
         pred_json = predict_gpt_zero(text, api_key=api_key, debug_mode=args.debug_mode)
@@ -179,18 +141,8 @@ def run(args):
         #prob = 0.5
         probs.append(prob)
         
-        
-        # cache the result
-        cache[elem["text"]] = {
-            "pred": pred,
-            "prob": prob
-        }
-        
         #time.sleep(1)
         
-    # close the cache, maybe use a with statement, but it's not in the documentation
-    cache.close()
-
     # calculate accuracy
     preds = np.array(preds)
     labels = np.array(dataset["label"])
@@ -279,7 +231,6 @@ if __name__ == '__main__':
     parser.add_argument('--sample_size', type=int, default=None)
     parser.add_argument('--classifier_threshold', type=float, default=None)
     parser.add_argument('--use_eval_set', action='store_true', default=False)
-    parser.add_argument('--reset_cache', action='store_true', default=False)
     parser.add_argument('--use_api_key', action='store_true', default=False)
     parser.add_argument("--debug_mode", action="store_true", default=False)
     args = parser.parse_args()
