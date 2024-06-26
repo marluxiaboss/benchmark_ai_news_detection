@@ -66,7 +66,10 @@ def predict_gpt_zero(text, api_key, debug_mode=False):
             response_doc = response.json()['documents'][0]
             return response.json()
         except Exception as ex:
+            print("response: ", response)
             print(ex)
+            
+            return None
 
 
 def load_test_dataset(dataset_path, use_eval_set=False):
