@@ -66,9 +66,11 @@ def predict_gpt_zero(text, api_key, debug_mode=False):
             response_doc = response.json()['documents'][0]
             return response.json()
         except Exception as ex:
+            print("Issue with prediction, skipping (see error below):")
             print("response: ", response)
             print(ex)
             
+            # better to skip since no point in retrying
             return None
 
 
@@ -105,50 +107,82 @@ def run(args):
         dataset = dataset.select(range(args.sample_size))
 
     # iterate over the dataset
-    preds = []
-    probs = []
+    pred_res_list = []
 
     set_used = "eval" if args.use_eval_set else "test"
     for elem in tqdm(dataset, desc=f"Predicting labels for {set_used} set"):  
         text = elem["text"]
         
         pred_json = predict_gpt_zero(text, api_key=api_key, debug_mode=args.debug_mode)
-        pred_json_doc = pred_json["documents"][0]
-        pred_class = pred_json_doc["predicted_class"]
         
-        if pred_class == "human":
-            pred = 0
+        # if prediction failed
+        if pred_json is None:
+            pred_res = {}
+            pred_res["text"] = text
+            pred_res["pred"] = None
+            pred_res["prob"] = None
             
-        elif pred_class == "ai":
-            pred = 1
-            
-        elif pred_class == "mixed":
-            
-            pred_score_ai = pred_json_doc["class_probabilities"]["ai"]
-            pred_score_human = pred_json_doc["class_probabilities"]["human"]
-            pred = 1 if pred_score_ai > pred_score_human else 0
-            
-            # if mixed is higher prob than human and ai, set to 1
-            if (pred_json_doc["class_probabilities"]["mixed"] > pred_score_ai and
-                pred_json_doc["class_probabilities"]["mixed"] > pred_score_human):
-                pred = 1
-            
+            pred_res_list.append(pred_res)
+        
         else:
-            raise ValueError("Unknown class")
         
-        #pred = 0
-        preds.append(pred)
+            pred_json_doc = pred_json["documents"][0]
+            pred_class = pred_json_doc["predicted_class"]
+            
+            if pred_class == "human":
+                pred = 0
+                
+            elif pred_class == "ai":
+                pred = 1
+                
+            elif pred_class == "mixed":
+                
+                pred_score_ai = pred_json_doc["class_probabilities"]["ai"]
+                pred_score_human = pred_json_doc["class_probabilities"]["human"]
+                pred = 1 if pred_score_ai > pred_score_human else 0
+                
+                # if mixed is higher prob than human and ai, set to 1
+                if (pred_json_doc["class_probabilities"]["mixed"] > pred_score_ai and
+                    pred_json_doc["class_probabilities"]["mixed"] > pred_score_human):
+                    pred = 1
+                
+            else:
+                raise ValueError("Unknown class")
+            
+            # record probability for positive class (mixed considered as positive class)
+            prob = pred_json_doc["class_probabilities"]["ai"] + pred_json_doc["class_probabilities"]["mixed"]
+            
+            # create prediction res dict to tie results to text
+            pred_res = {}
+            
+            pred_res["text"] = text
+            pred_res["pred"] = pred
+            pred_res["prob"] = prob
+            
+            pred_res_list.append(pred_res)
         
-        # record probability for positive class
-        prob = pred_json_doc["class_probabilities"]["ai"] + pred_json_doc["class_probabilities"]["mixed"]
-        #prob = 0.5
-        probs.append(prob)
+    # create label_text dict to tie labels to text and join with results
+    labels_text = [{"text": elem["text"], "label": elem["label"]} for elem in dataset]
+    
+    # alligned preds, probs and labels such that they are in the same order even if some predictions failed
+    preds = []
+    probs = []
+    labels = []
+    
+    # skip none pred/prob results
+    for i in range(len(labels_text)):
         
-        #time.sleep(1)
+        labels_text_i = labels_text[i]
+        pred_res_i = pred_res_list[i]
         
+        if pred_res_i["pred"] is not None:
+            preds.append(pred_res_i["pred"])
+            probs.append(pred_res_i["prob"])
+            labels.append(labels_text_i["label"])
+    
     # calculate accuracy
     preds = np.array(preds)
-    labels = np.array(dataset["label"])
+    labels = np.array(labels)
     acc = np.mean(preds == labels)
     print(f'Accuracy: {acc * 100:.2f}%')
 

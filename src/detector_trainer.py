@@ -904,14 +904,14 @@ class DetectorTrainer:
             tpr = np.zeros(1)
             thresholds = np.zeros(1)
         else:
-            roc_auc = roc_auc_score(predictions.label_ids, predictions_pos_class)
-            fpr, tpr, thresholds = roc_curve(predictions.label_ids, predictions_pos_class)
-            
-        if flip_labels:
-            labels_flipped = 1 - predictions.label_ids
-            preds_flipped = predictions.predictions[:, 0]
-            roc_auc = roc_auc_score(labels_flipped, preds_flipped)
-            fpr, tpr, thresholds = roc_curve(labels_flipped, preds_flipped)
+            if flip_labels:
+                labels_flipped = 1 - predictions.label_ids
+                preds_flipped = predictions.predictions[:, 0]
+                roc_auc = roc_auc_score(labels_flipped, preds_flipped)
+                fpr, tpr, thresholds = roc_curve(labels_flipped, preds_flipped)
+            else:
+                roc_auc = roc_auc_score(predictions.label_ids, predictions_pos_class)
+                fpr, tpr, thresholds = roc_curve(predictions.label_ids, predictions_pos_class)
             
         #    fpr, tpr = 1 - fpr, 1 - tpr
         
