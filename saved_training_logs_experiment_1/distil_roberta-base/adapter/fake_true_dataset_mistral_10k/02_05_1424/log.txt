@@ -1,0 +1,303 @@
+log_loss_steps: 224
+eval_steps: 512
+check_degradation: 512
+Average Loss on fact answering task after 0 samples: 6.1816
+Average Loss on fact answering task after 0 samples: 6.2771
+Average Loss on fact answering task after 0 samples: 6.1164
+Average Loss on fact answering task after 0 samples: 6.1880
+Average Loss on fact answering task after 0 samples: 6.2850
+----------------Epoch 1/1----------------
+Epoch 1/1, Loss after 192 samples: 0.6985
+Epoch 1/1, Loss after 416 samples: 0.6907
+Average Loss on fact answering task after 480 samples: 6.3571
+Average Loss on fact answering task after 480 samples: 6.2088
+Average Loss on fact answering task after 480 samples: 6.1816
+Average Loss on fact answering task after 480 samples: 6.2049
+Average Loss on fact answering task after 480 samples: 6.2378
+Mean accuracy: 0.6452, std: 0.0105, lower bound: 0.6242, upper bound: 0.6648 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 480 samples: 0.6455
+Best model with eval accuracy 0.6455375253549696 with 480 samples seen is saved
+Epoch 1/1, Loss after 640 samples: 0.6823
+Epoch 1/1, Loss after 864 samples: 0.6773
+Average Loss on fact answering task after 992 samples: 6.3145
+Average Loss on fact answering task after 992 samples: 6.2823
+Average Loss on fact answering task after 992 samples: 6.2716
+Average Loss on fact answering task after 992 samples: 6.3429
+Average Loss on fact answering task after 992 samples: 6.3342
+Mean accuracy: 0.7484, std: 0.0095, lower bound: 0.7297, upper bound: 0.7683 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 992 samples: 0.7480
+Best model with eval accuracy 0.7479716024340771 with 992 samples seen is saved
+Epoch 1/1, Loss after 1088 samples: 0.6436
+Epoch 1/1, Loss after 1312 samples: 0.5379
+Average Loss on fact answering task after 1504 samples: 6.7516
+Average Loss on fact answering task after 1504 samples: 6.7290
+Average Loss on fact answering task after 1504 samples: 6.5658
+Average Loss on fact answering task after 1504 samples: 6.6007
+Average Loss on fact answering task after 1504 samples: 6.6693
+Mean accuracy: 0.8039, std: 0.0091, lower bound: 0.7870, upper bound: 0.8210 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 1504 samples: 0.8038
+Best model with eval accuracy 0.8037525354969574 with 1504 samples seen is saved
+Epoch 1/1, Loss after 1536 samples: 0.4255
+Epoch 1/1, Loss after 1760 samples: 0.4000
+Epoch 1/1, Loss after 1984 samples: 0.3635
+Average Loss on fact answering task after 2016 samples: 6.6951
+Average Loss on fact answering task after 2016 samples: 6.5191
+Average Loss on fact answering task after 2016 samples: 6.5147
+Average Loss on fact answering task after 2016 samples: 6.7137
+Average Loss on fact answering task after 2016 samples: 6.5927
+Mean accuracy: 0.7659, std: 0.0089, lower bound: 0.7475, upper bound: 0.7830 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 2016 samples: 0.7662
+Epoch 1/1, Loss after 2208 samples: 0.3497
+Epoch 1/1, Loss after 2432 samples: 0.3179
+Average Loss on fact answering task after 2528 samples: 6.2346
+Average Loss on fact answering task after 2528 samples: 6.2740
+Average Loss on fact answering task after 2528 samples: 6.6488
+Average Loss on fact answering task after 2528 samples: 6.4147
+Average Loss on fact answering task after 2528 samples: 6.5530
+Mean accuracy: 0.8431, std: 0.0081, lower bound: 0.8276, upper bound: 0.8600 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 2528 samples: 0.8433
+Best model with eval accuracy 0.8433062880324543 with 2528 samples seen is saved
+Epoch 1/1, Loss after 2656 samples: 0.2896
+Epoch 1/1, Loss after 2880 samples: 0.2748
+Average Loss on fact answering task after 3040 samples: 6.4707
+Average Loss on fact answering task after 3040 samples: 6.5831
+Average Loss on fact answering task after 3040 samples: 6.6020
+Average Loss on fact answering task after 3040 samples: 6.5561
+Average Loss on fact answering task after 3040 samples: 6.2290
+Mean accuracy: 0.8354, std: 0.0083, lower bound: 0.8190, upper bound: 0.8514 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 3040 samples: 0.8352
+Epoch 1/1, Loss after 3104 samples: 0.2793
+Epoch 1/1, Loss after 3328 samples: 0.2829
+Epoch 1/1, Loss after 3552 samples: 0.3408
+Average Loss on fact answering task after 3552 samples: 6.3136
+Average Loss on fact answering task after 3552 samples: 6.4011
+Average Loss on fact answering task after 3552 samples: 6.6447
+Average Loss on fact answering task after 3552 samples: 6.2777
+Average Loss on fact answering task after 3552 samples: 6.3517
+Mean accuracy: 0.8892, std: 0.0071, lower bound: 0.8757, upper bound: 0.9026 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 3552 samples: 0.8895
+Best model with eval accuracy 0.8894523326572008 with 3552 samples seen is saved
+Epoch 1/1, Loss after 3776 samples: 0.2843
+Epoch 1/1, Loss after 4000 samples: 0.2917
+Average Loss on fact answering task after 4064 samples: 6.1994
+Average Loss on fact answering task after 4064 samples: 6.4701
+Average Loss on fact answering task after 4064 samples: 6.5010
+Average Loss on fact answering task after 4064 samples: 6.2502
+Average Loss on fact answering task after 4064 samples: 6.3561
+Mean accuracy: 0.8930, std: 0.0069, lower bound: 0.8793, upper bound: 0.9057 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 4064 samples: 0.8935
+Best model with eval accuracy 0.8935091277890467 with 4064 samples seen is saved
+Epoch 1/1, Loss after 4224 samples: 0.2800
+Epoch 1/1, Loss after 4448 samples: 0.2252
+Average Loss on fact answering task after 4576 samples: 6.3542
+Average Loss on fact answering task after 4576 samples: 6.4350
+Average Loss on fact answering task after 4576 samples: 6.4308
+Average Loss on fact answering task after 4576 samples: 6.5755
+Average Loss on fact answering task after 4576 samples: 6.4864
+Mean accuracy: 0.8058, std: 0.0090, lower bound: 0.7870, upper bound: 0.8230 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 4576 samples: 0.8058
+Epoch 1/1, Loss after 4672 samples: 0.2462
+Epoch 1/1, Loss after 4896 samples: 0.2689
+Average Loss on fact answering task after 5088 samples: 6.7206
+Average Loss on fact answering task after 5088 samples: 6.6556
+Average Loss on fact answering task after 5088 samples: 6.3547
+Average Loss on fact answering task after 5088 samples: 6.3425
+Average Loss on fact answering task after 5088 samples: 6.4732
+Mean accuracy: 0.8973, std: 0.0070, lower bound: 0.8828, upper bound: 0.9102 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 5088 samples: 0.8976
+Best model with eval accuracy 0.8975659229208925 with 5088 samples seen is saved
+Epoch 1/1, Loss after 5120 samples: 0.2770
+Epoch 1/1, Loss after 5344 samples: 0.2351
+Epoch 1/1, Loss after 5568 samples: 0.2468
+Average Loss on fact answering task after 5600 samples: 6.4964
+Average Loss on fact answering task after 5600 samples: 6.5661
+Average Loss on fact answering task after 5600 samples: 6.7792
+Average Loss on fact answering task after 5600 samples: 6.3115
+Average Loss on fact answering task after 5600 samples: 6.3678
+Mean accuracy: 0.8969, std: 0.0070, lower bound: 0.8829, upper bound: 0.9108 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 5600 samples: 0.8971
+Epoch 1/1, Loss after 5792 samples: 0.2688
+Epoch 1/1, Loss after 6016 samples: 0.2793
+Average Loss on fact answering task after 6112 samples: 6.2784
+Average Loss on fact answering task after 6112 samples: 6.5039
+Average Loss on fact answering task after 6112 samples: 6.6593
+Average Loss on fact answering task after 6112 samples: 6.4521
+Average Loss on fact answering task after 6112 samples: 6.6230
+Mean accuracy: 0.8758, std: 0.0074, lower bound: 0.8611, upper bound: 0.8895 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 6112 samples: 0.8758
+Epoch 1/1, Loss after 6240 samples: 0.2825
+Epoch 1/1, Loss after 6464 samples: 0.2241
+Average Loss on fact answering task after 6624 samples: 6.4806
+Average Loss on fact answering task after 6624 samples: 6.4510
+Average Loss on fact answering task after 6624 samples: 6.5443
+Average Loss on fact answering task after 6624 samples: 6.5679
+Average Loss on fact answering task after 6624 samples: 6.3415
+Mean accuracy: 0.8977, std: 0.0068, lower bound: 0.8839, upper bound: 0.9103 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 6624 samples: 0.8976
+Epoch 1/1, Loss after 6688 samples: 0.2070
+Epoch 1/1, Loss after 6912 samples: 0.2373
+Epoch 1/1, Loss after 7136 samples: 0.1789
+Average Loss on fact answering task after 7136 samples: 6.5637
+Average Loss on fact answering task after 7136 samples: 6.5991
+Average Loss on fact answering task after 7136 samples: 6.7161
+Average Loss on fact answering task after 7136 samples: 6.4762
+Average Loss on fact answering task after 7136 samples: 6.6205
+Mean accuracy: 0.8888, std: 0.0072, lower bound: 0.8742, upper bound: 0.9021 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 7136 samples: 0.8889
+Epoch 1/1, Loss after 7360 samples: 0.2428
+Epoch 1/1, Loss after 7584 samples: 0.2025
+Average Loss on fact answering task after 7648 samples: 6.5879
+Average Loss on fact answering task after 7648 samples: 6.3708
+Average Loss on fact answering task after 7648 samples: 6.1533
+Average Loss on fact answering task after 7648 samples: 6.3546
+Average Loss on fact answering task after 7648 samples: 6.4274
+Mean accuracy: 0.9044, std: 0.0066, lower bound: 0.8910, upper bound: 0.9173 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 7648 samples: 0.9042
+Best model with eval accuracy 0.904158215010142 with 7648 samples seen is saved
+Epoch 1/1, Loss after 7808 samples: 0.2190
+Epoch 1/1, Loss after 8032 samples: 0.1851
+Average Loss on fact answering task after 8160 samples: 6.5060
+Average Loss on fact answering task after 8160 samples: 6.3594
+Average Loss on fact answering task after 8160 samples: 6.6426
+Average Loss on fact answering task after 8160 samples: 6.4871
+Average Loss on fact answering task after 8160 samples: 6.3813
+Mean accuracy: 0.8267, std: 0.0082, lower bound: 0.8103, upper bound: 0.8433 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 8160 samples: 0.8271
+Epoch 1/1, Loss after 8256 samples: 0.2456
+Epoch 1/1, Loss after 8480 samples: 0.1637
+Average Loss on fact answering task after 8672 samples: 6.7314
+Average Loss on fact answering task after 8672 samples: 6.3097
+Average Loss on fact answering task after 8672 samples: 6.7627
+Average Loss on fact answering task after 8672 samples: 6.6356
+Average Loss on fact answering task after 8672 samples: 6.5382
+Mean accuracy: 0.8086, std: 0.0091, lower bound: 0.7916, upper bound: 0.8266 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 8672 samples: 0.8088
+Epoch 1/1, Loss after 8704 samples: 0.2469
+Epoch 1/1, Loss after 8928 samples: 0.2216
+Epoch 1/1, Loss after 9152 samples: 0.1827
+Average Loss on fact answering task after 9184 samples: 6.4589
+Average Loss on fact answering task after 9184 samples: 6.3704
+Average Loss on fact answering task after 9184 samples: 6.3175
+Average Loss on fact answering task after 9184 samples: 6.2557
+Average Loss on fact answering task after 9184 samples: 6.5438
+Mean accuracy: 0.8966, std: 0.0066, lower bound: 0.8839, upper bound: 0.9108 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 9184 samples: 0.8966
+Epoch 1/1, Loss after 9376 samples: 0.2241
+Epoch 1/1, Loss after 9600 samples: 0.1671
+Average Loss on fact answering task after 9696 samples: 6.5426
+Average Loss on fact answering task after 9696 samples: 6.4903
+Average Loss on fact answering task after 9696 samples: 6.5158
+Average Loss on fact answering task after 9696 samples: 6.6127
+Average Loss on fact answering task after 9696 samples: 6.2794
+Mean accuracy: 0.9002, std: 0.0066, lower bound: 0.8874, upper bound: 0.9128 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 9696 samples: 0.9001
+Epoch 1/1, Loss after 9824 samples: 0.2563
+Epoch 1/1, Loss after 10048 samples: 0.2075
+Average Loss on fact answering task after 10208 samples: 6.5323
+Average Loss on fact answering task after 10208 samples: 6.6361
+Average Loss on fact answering task after 10208 samples: 6.3249
+Average Loss on fact answering task after 10208 samples: 6.1496
+Average Loss on fact answering task after 10208 samples: 6.5101
+Mean accuracy: 0.8890, std: 0.0072, lower bound: 0.8742, upper bound: 0.9026 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 10208 samples: 0.8895
+Epoch 1/1, Loss after 10272 samples: 0.2110
+Epoch 1/1, Loss after 10496 samples: 0.2017
+Epoch 1/1, Loss after 10720 samples: 0.2196
+Average Loss on fact answering task after 10720 samples: 6.3271
+Average Loss on fact answering task after 10720 samples: 6.6072
+Average Loss on fact answering task after 10720 samples: 6.3505
+Average Loss on fact answering task after 10720 samples: 6.2885
+Average Loss on fact answering task after 10720 samples: 6.3198
+Mean accuracy: 0.8911, std: 0.0073, lower bound: 0.8768, upper bound: 0.9047 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 10720 samples: 0.8910
+Epoch 1/1, Loss after 10944 samples: 0.1798
+Epoch 1/1, Loss after 11168 samples: 0.1728
+Average Loss on fact answering task after 11232 samples: 6.5521
+Average Loss on fact answering task after 11232 samples: 6.4161
+Average Loss on fact answering task after 11232 samples: 6.6255
+Average Loss on fact answering task after 11232 samples: 6.4486
+Average Loss on fact answering task after 11232 samples: 6.3724
+Mean accuracy: 0.9045, std: 0.0067, lower bound: 0.8910, upper bound: 0.9168 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 11232 samples: 0.9047
+Best model with eval accuracy 0.9046653144016227 with 11232 samples seen is saved
+Epoch 1/1, Loss after 11392 samples: 0.2006
+Epoch 1/1, Loss after 11616 samples: 0.1928
+Average Loss on fact answering task after 11744 samples: 6.4843
+Average Loss on fact answering task after 11744 samples: 6.4075
+Average Loss on fact answering task after 11744 samples: 6.4724
+Average Loss on fact answering task after 11744 samples: 6.5109
+Average Loss on fact answering task after 11744 samples: 6.5938
+Mean accuracy: 0.8823, std: 0.0072, lower bound: 0.8676, upper bound: 0.8960 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 11744 samples: 0.8824
+Epoch 1/1, Loss after 11840 samples: 0.1623
+Epoch 1/1, Loss after 12064 samples: 0.1681
+Average Loss on fact answering task after 12256 samples: 6.4947
+Average Loss on fact answering task after 12256 samples: 6.5087
+Average Loss on fact answering task after 12256 samples: 6.6911
+Average Loss on fact answering task after 12256 samples: 6.5193
+Average Loss on fact answering task after 12256 samples: 6.5048
+Mean accuracy: 0.8547, std: 0.0078, lower bound: 0.8403, upper bound: 0.8697 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 12256 samples: 0.8545
+Epoch 1/1, Loss after 12288 samples: 0.1793
+Epoch 1/1, Loss after 12512 samples: 0.1543
+Epoch 1/1, Loss after 12736 samples: 0.2054
+Average Loss on fact answering task after 12768 samples: 6.7067
+Average Loss on fact answering task after 12768 samples: 6.4378
+Average Loss on fact answering task after 12768 samples: 6.6567
+Average Loss on fact answering task after 12768 samples: 6.6037
+Average Loss on fact answering task after 12768 samples: 6.4950
+Mean accuracy: 0.8901, std: 0.0071, lower bound: 0.8763, upper bound: 0.9037 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 12768 samples: 0.8905
+Epoch 1/1, Loss after 12960 samples: 0.2227
+Epoch 1/1, Loss after 13184 samples: 0.1337
+Average Loss on fact answering task after 13280 samples: 6.5117
+Average Loss on fact answering task after 13280 samples: 6.4306
+Average Loss on fact answering task after 13280 samples: 6.4420
+Average Loss on fact answering task after 13280 samples: 6.5443
+Average Loss on fact answering task after 13280 samples: 6.5216
+Mean accuracy: 0.8717, std: 0.0075, lower bound: 0.8570, upper bound: 0.8864 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 13280 samples: 0.8717
+Epoch 1/1, Loss after 13408 samples: 0.1890
+Epoch 1/1, Loss after 13632 samples: 0.1452
+Average Loss on fact answering task after 13792 samples: 6.4336
+Average Loss on fact answering task after 13792 samples: 6.4190
+Average Loss on fact answering task after 13792 samples: 6.4738
+Average Loss on fact answering task after 13792 samples: 6.5243
+Average Loss on fact answering task after 13792 samples: 6.3929
+Mean accuracy: 0.8399, std: 0.0085, lower bound: 0.8240, upper bound: 0.8560 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 13792 samples: 0.8398
+Epoch 1/1, Loss after 13856 samples: 0.1721
+Epoch 1/1, Loss after 14080 samples: 0.2018
+Epoch 1/1, Loss after 14304 samples: 0.1688
+Average Loss on fact answering task after 14304 samples: 6.3369
+Average Loss on fact answering task after 14304 samples: 6.5291
+Average Loss on fact answering task after 14304 samples: 6.5073
+Average Loss on fact answering task after 14304 samples: 6.3654
+Average Loss on fact answering task after 14304 samples: 6.4821
+Mean accuracy: 0.8859, std: 0.0069, lower bound: 0.8722, upper bound: 0.8986 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 14304 samples: 0.8859
+Epoch 1/1, Loss after 14528 samples: 0.1345
+Epoch 1/1, Loss after 14752 samples: 0.2052
+Average Loss on fact answering task after 14816 samples: 6.5189
+Average Loss on fact answering task after 14816 samples: 6.6355
+Average Loss on fact answering task after 14816 samples: 6.5195
+Average Loss on fact answering task after 14816 samples: 6.4042
+Average Loss on fact answering task after 14816 samples: 6.3573
+Mean accuracy: 0.8795, std: 0.0073, lower bound: 0.8656, upper bound: 0.8930 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 14816 samples: 0.8798
+Epoch 1/1, Loss after 14976 samples: 0.1533
+Epoch 1/1, Loss after 15200 samples: 0.2413
+Average Loss on fact answering task after 15328 samples: 6.4519
+Average Loss on fact answering task after 15328 samples: 6.6760
+Average Loss on fact answering task after 15328 samples: 6.5606
+Average Loss on fact answering task after 15328 samples: 6.7341
+Average Loss on fact answering task after 15328 samples: 6.2694
+Mean accuracy: 0.8471, std: 0.0083, lower bound: 0.8296, upper bound: 0.8636 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 15328 samples: 0.8469
+Epoch 1/1, Loss after 15424 samples: 0.2028
+Epoch 1/1, Loss after 15648 samples: 0.1613
+Training signal is False, stopping training
+Training finished
+Best model: {'eval_acc': 0.9046653144016227, 'nb_samples': 11232}
+Training loss logs: [{'samples': 192, 'loss': 0.6985179356166294}, {'samples': 416, 'loss': 0.6907108851841518}, {'samples': 640, 'loss': 0.6823316301618304}, {'samples': 864, 'loss': 0.6772548130580357}, {'samples': 1088, 'loss': 0.6436407906668526}, {'samples': 1312, 'loss': 0.5378808294023786}, {'samples': 1536, 'loss': 0.42545043570654734}, {'samples': 1760, 'loss': 0.4000239372253418}, {'samples': 1984, 'loss': 0.36351380603654043}, {'samples': 2208, 'loss': 0.34968274406024386}, {'samples': 2432, 'loss': 0.3179038805621011}, {'samples': 2656, 'loss': 0.2895506066935403}, {'samples': 2880, 'loss': 0.27479320232357296}, {'samples': 3104, 'loss': 0.27933469840458464}, {'samples': 3328, 'loss': 0.2828832502876009}, {'samples': 3552, 'loss': 0.3408484288624355}, {'samples': 3776, 'loss': 0.28428400840078083}, {'samples': 4000, 'loss': 0.2917353915316718}, {'samples': 4224, 'loss': 0.28000703028270174}, {'samples': 4448, 'loss': 0.22521394065448216}, {'samples': 4672, 'loss': 0.24615099387509481}, {'samples': 4896, 'loss': 0.26892709732055664}, {'samples': 5120, 'loss': 0.2770013234445027}, {'samples': 5344, 'loss': 0.2350882121494838}, {'samples': 5568, 'loss': 0.24678338212626322}, {'samples': 5792, 'loss': 0.2688008759702955}, {'samples': 6016, 'loss': 0.279280566743442}, {'samples': 6240, 'loss': 0.28248865476676394}, {'samples': 6464, 'loss': 0.22406152955123357}, {'samples': 6688, 'loss': 0.20702426774161203}, {'samples': 6912, 'loss': 0.23730927918638503}, {'samples': 7136, 'loss': 0.17891437347446168}, {'samples': 7360, 'loss': 0.2428271078637668}, {'samples': 7584, 'loss': 0.20251416202102387}, {'samples': 7808, 'loss': 0.2190130991595132}, {'samples': 8032, 'loss': 0.18506652116775513}, {'samples': 8256, 'loss': 0.24558049546820776}, {'samples': 8480, 'loss': 0.1636595263012818}, {'samples': 8704, 'loss': 0.246926092675754}, {'samples': 8928, 'loss': 0.22157120491777146}, {'samples': 9152, 'loss': 0.18273572836603438}, {'samples': 9376, 'loss': 0.2241170502134732}, {'samples': 9600, 'loss': 0.1670935239110674}, {'samples': 9824, 'loss': 0.25628522464207243}, {'samples': 10048, 'loss': 0.2075357245547431}, {'samples': 10272, 'loss': 0.2109579358782087}, {'samples': 10496, 'loss': 0.20173632885728562}, {'samples': 10720, 'loss': 0.21955774937357223}, {'samples': 10944, 'loss': 0.17975566004003798}, {'samples': 11168, 'loss': 0.17276238011462347}, {'samples': 11392, 'loss': 0.20055988005229405}, {'samples': 11616, 'loss': 0.19281109741755895}, {'samples': 11840, 'loss': 0.16233909662280763}, {'samples': 12064, 'loss': 0.16812128041471755}, {'samples': 12288, 'loss': 0.17930698607649123}, {'samples': 12512, 'loss': 0.15430724301508494}, {'samples': 12736, 'loss': 0.20544422205005372}, {'samples': 12960, 'loss': 0.22267183022839682}, {'samples': 13184, 'loss': 0.1337252924484866}, {'samples': 13408, 'loss': 0.1889966811452593}, {'samples': 13632, 'loss': 0.14519312605261803}, {'samples': 13856, 'loss': 0.1720587717635291}, {'samples': 14080, 'loss': 0.2018132678100041}, {'samples': 14304, 'loss': 0.16878426128200122}, {'samples': 14528, 'loss': 0.13451094499656133}, {'samples': 14752, 'loss': 0.20517584149326598}, {'samples': 14976, 'loss': 0.15327378575290954}, {'samples': 15200, 'loss': 0.24132880994251796}, {'samples': 15424, 'loss': 0.20283798021929605}, {'samples': 15648, 'loss': 0.1613188087940216}]
+Evaluation accuracy logs: [{'samples': 480, 'accuracy': 0.6451779918864097, 'std': 0.010532251946615523, 'lower_bound': 0.6242266734279919, 'upper_bound': 0.6648199797160244}, {'samples': 992, 'accuracy': 0.7483767748478701, 'std': 0.009529213896203764, 'lower_bound': 0.7297033468559837, 'upper_bound': 0.7682555780933062}, {'samples': 1504, 'accuracy': 0.8038813387423935, 'std': 0.009056850270928738, 'lower_bound': 0.7870182555780934, 'upper_bound': 0.8209939148073022}, {'samples': 2016, 'accuracy': 0.7658610547667343, 'std': 0.008932447695994994, 'lower_bound': 0.7474645030425964, 'upper_bound': 0.7829741379310345}, {'samples': 2528, 'accuracy': 0.8431227180527384, 'std': 0.008145363686557982, 'lower_bound': 0.8275862068965517, 'upper_bound': 0.8600405679513184}, {'samples': 3040, 'accuracy': 0.8354487829614604, 'std': 0.00831850106243765, 'lower_bound': 0.8189528397565923, 'upper_bound': 0.8514198782961461}, {'samples': 3552, 'accuracy': 0.8892292089249493, 'std': 0.007110835459048181, 'lower_bound': 0.875747971602434, 'upper_bound': 0.9026369168356998}, {'samples': 4064, 'accuracy': 0.8929852941176469, 'std': 0.00687054948935999, 'lower_bound': 0.8792976673427991, 'upper_bound': 0.9056795131845842}, {'samples': 4576, 'accuracy': 0.8058184584178499, 'std': 0.009008182501164886, 'lower_bound': 0.7870182555780934, 'upper_bound': 0.8230223123732252}, {'samples': 5088, 'accuracy': 0.8972854969574037, 'std': 0.0069851204684592905, 'lower_bound': 0.8828473630831642, 'upper_bound': 0.9102434077079108}, {'samples': 5600, 'accuracy': 0.8969153144016228, 'std': 0.007026738339166213, 'lower_bound': 0.8828600405679513, 'upper_bound': 0.9107505070993914}, {'samples': 6112, 'accuracy': 0.8757647058823529, 'std': 0.007361573166430728, 'lower_bound': 0.8610547667342799, 'upper_bound': 0.8894523326572008}, {'samples': 6624, 'accuracy': 0.8977150101419877, 'std': 0.006805409184785918, 'lower_bound': 0.8838742393509128, 'upper_bound': 0.9102560851926977}, {'samples': 7136, 'accuracy': 0.8887525354969573, 'std': 0.0072403707231092, 'lower_bound': 0.8742393509127789, 'upper_bound': 0.902129817444219}, {'samples': 7648, 'accuracy': 0.9043661257606491, 'std': 0.006596189751179858, 'lower_bound': 0.890960953346856, 'upper_bound': 0.9173427991886409}, {'samples': 8160, 'accuracy': 0.8267200811359027, 'std': 0.0081607203671961, 'lower_bound': 0.8103321501014198, 'upper_bound': 0.8433062880324543}, {'samples': 8672, 'accuracy': 0.8085856997971602, 'std': 0.009092152642918051, 'lower_bound': 0.7915821501014199, 'upper_bound': 0.8265720081135902}, {'samples': 9184, 'accuracy': 0.8965983772819472, 'std': 0.006638927260882879, 'lower_bound': 0.8838742393509128, 'upper_bound': 0.9107505070993914}, {'samples': 9696, 'accuracy': 0.9001541582150102, 'std': 0.0065769673648394976, 'lower_bound': 0.8874239350912779, 'upper_bound': 0.9127789046653144}, {'samples': 10208, 'accuracy': 0.8890425963488845, 'std': 0.007166538728519241, 'lower_bound': 0.8742393509127789, 'upper_bound': 0.9026369168356998}, {'samples': 10720, 'accuracy': 0.8911419878296145, 'std': 0.007337428134341537, 'lower_bound': 0.8767748478701826, 'upper_bound': 0.9046653144016227}, {'samples': 11232, 'accuracy': 0.904450304259635, 'std': 0.006738551945399611, 'lower_bound': 0.890973630831643, 'upper_bound': 0.9168356997971603}, {'samples': 11744, 'accuracy': 0.8822555780933062, 'std': 0.007237520633732141, 'lower_bound': 0.8676343813387424, 'upper_bound': 0.8960446247464503}, {'samples': 12256, 'accuracy': 0.8547358012170385, 'std': 0.007807066118158815, 'lower_bound': 0.84026369168357, 'upper_bound': 0.8696881338742394}, {'samples': 12768, 'accuracy': 0.8900958417849898, 'std': 0.007063962579158993, 'lower_bound': 0.8762677484787018, 'upper_bound': 0.9036511156186613}, {'samples': 13280, 'accuracy': 0.8717276876267748, 'std': 0.00747641985679941, 'lower_bound': 0.856985294117647, 'upper_bound': 0.8864097363083164}, {'samples': 13792, 'accuracy': 0.8398909736308315, 'std': 0.008515356591250212, 'lower_bound': 0.8240365111561866, 'upper_bound': 0.8559837728194726}, {'samples': 14304, 'accuracy': 0.8859310344827586, 'std': 0.006889778322742834, 'lower_bound': 0.8722109533468559, 'upper_bound': 0.898592799188641}, {'samples': 14816, 'accuracy': 0.8794558823529413, 'std': 0.0072543333991942766, 'lower_bound': 0.8656059837728194, 'upper_bound': 0.8930020283975659}, {'samples': 15328, 'accuracy': 0.8471227180527383, 'std': 0.008313667168337632, 'lower_bound': 0.8296146044624746, 'upper_bound': 0.8635902636916836}]

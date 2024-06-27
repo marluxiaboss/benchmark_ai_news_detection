@@ -1,0 +1,17 @@
+Model: roberta_large
+dataset_path: ./fake_true_datasets/fake_true_dataset_phi_10k
+num_epochs: 1
+batch_size: 64
+learning_rate: 0.001
+warmup_ratio: 0.06
+weight_decay: 0.1
+device: cuda
+evaluation: False
+model_path: model
+log_mode: online
+freeze_base: True
+save_dir: ./saved_training_logs_experiment_2
+fp16: True
+check_degradation: 0
+add_more_layers: False
+use_adapter: False

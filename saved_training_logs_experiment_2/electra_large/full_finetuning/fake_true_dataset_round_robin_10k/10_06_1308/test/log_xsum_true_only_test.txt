@@ -1,0 +1,40 @@
+Evaluating the best model on the test set of dataset fake_true_datasets/xsum_true_only_test...
+Only one class in the dataset, cannot compute roc_auc
+Test metrics:
+accuracy: 0.5627864406779661
+precision: 0.0
+recall: 0.0
+f1_score: 0.0
+fp_rate: 0.43721355932203393
+tp_rate: 0.0
+std_accuracy: 0.005189155806345097
+std_precision: 0.0
+std_recall: 0.0
+std_f1_score: 0.0
+std_fp_rate: 0.005189155806345096
+std_tp_rate: 0.0
+TP: 0.0
+TN: 5146.682
+FP: 3998.318
+FN: 0.0
+roc_auc: 0
+fpr: [0.]
+tpr: [0.]
+thresholds: [0.]
+Test metrics at specific given threshold:
+accuracy: 0.6043983597594312
+precision: 0.0
+recall: 0.0
+f1_score: 0.0
+fp_rate: 0.3956016402405686
+tp_rate: 0.0
+std_accuracy: 0.004927357497617188
+std_precision: 0.0
+std_recall: 0.0
+std_f1_score: 0.0
+std_fp_rate: 0.004927357497617188
+std_tp_rate: 0.0
+TP: 0.0
+TN: 5527.223
+FP: 3617.777
+FN: 0.0

@@ -1,0 +1,45 @@
+{
+    "accuracy": 0.9138666666666667,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "fp_rate": 0.0,
+    "tp_rate": 0.0,
+    "std_accuracy": 0.009914313603232618,
+    "std_precision": 0.0,
+    "std_recall": 0.0,
+    "std_f1_score": 0.0,
+    "std_fp_rate": 0.0,
+    "std_tp_rate": 0.0,
+    "TP": 808.772,
+    "TN": 0.0,
+    "FP": 0.0,
+    "FN": 76.228,
+    "roc_auc": 0,
+    "fpr_at_thresholds": [
+        0.0
+    ],
+    "tpr_at_thresholds": [
+        0.0
+    ],
+    "thresholds": [
+        0.0
+    ],
+    "given_threshold": 3.7186570167541504,
+    "accuracy_at_given_threshold": 0.8417435028248588,
+    "precision_at_given_threshold": 0.0,
+    "recall_at_given_threshold": 0.0,
+    "f1_score_at_given_threshold": 0.0,
+    "fp_rate_at_given_threshold": 0.0,
+    "tp_rate_at_given_threshold": 0.0,
+    "std_accuracy_at_given_threshold": 0.012152738102104385,
+    "std_precision_at_given_threshold": 0.0,
+    "std_recall_at_given_threshold": 0.0,
+    "std_f1_score_at_given_threshold": 0.0,
+    "std_fp_rate_at_given_threshold": 0.0,
+    "std_tp_rate_at_given_threshold": 0.0,
+    "TP_at_given_threshold": 744.943,
+    "TN_at_given_threshold": 0.0,
+    "FP_at_given_threshold": 0.0,
+    "FN_at_given_threshold": 140.057
+}

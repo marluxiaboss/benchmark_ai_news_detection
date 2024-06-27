@@ -1,0 +1,525 @@
+log_loss_steps: 208
+eval_steps: 208
+check_degradation: 0
+----------------Epoch 1/1----------------
+Epoch 1/1, Loss after 192 samples: 0.6907
+Mean accuracy: 0.4993, std: 0.0116, lower bound: 0.4767, upper bound: 0.5233 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 192 samples: 0.4995 with eval loss: 0.6931
+Best model with eval loss 0.6930906234248992 and eval accuracy 0.49949290060851925 with 192 samples seen is saved
+Epoch 1/1, Loss after 400 samples: 0.6934
+Mean accuracy: 0.6561, std: 0.0107, lower bound: 0.6364, upper bound: 0.6785 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 400 samples: 0.6557 with eval loss: 0.6833
+Best model with eval loss 0.6833296745054184 and eval accuracy 0.6556795131845842 with 400 samples seen is saved
+Epoch 1/1, Loss after 608 samples: 0.6812
+Mean accuracy: 0.7176, std: 0.0103, lower bound: 0.6978, upper bound: 0.7383 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 608 samples: 0.7175 with eval loss: 0.6710
+Best model with eval loss 0.670958488218246 and eval accuracy 0.7175456389452333 with 608 samples seen is saved
+Epoch 1/1, Loss after 816 samples: 0.6649
+Mean accuracy: 0.8381, std: 0.0081, lower bound: 0.8215, upper bound: 0.8534 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 816 samples: 0.8382 with eval loss: 0.6419
+Best model with eval loss 0.6418678529800907 and eval accuracy 0.8382352941176471 with 816 samples seen is saved
+Epoch 1/1, Loss after 1024 samples: 0.6207
+Mean accuracy: 0.8244, std: 0.0087, lower bound: 0.8078, upper bound: 0.8413 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 1024 samples: 0.8251 with eval loss: 0.5359
+Best model with eval loss 0.5358563084756175 and eval accuracy 0.8250507099391481 with 1024 samples seen is saved
+Epoch 1/1, Loss after 1232 samples: 0.4787
+Mean accuracy: 0.8562, std: 0.0075, lower bound: 0.8418, upper bound: 0.8702 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 1232 samples: 0.8560 with eval loss: 0.4072
+Best model with eval loss 0.40717795587355093 and eval accuracy 0.8559837728194726 with 1232 samples seen is saved
+Epoch 1/1, Loss after 1440 samples: 0.3876
+Mean accuracy: 0.8101, std: 0.0087, lower bound: 0.7936, upper bound: 0.8276 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 1440 samples: 0.8098 with eval loss: 0.4319
+Epoch 1/1, Loss after 1648 samples: 0.3804
+Mean accuracy: 0.9042, std: 0.0066, lower bound: 0.8905, upper bound: 0.9168 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 1648 samples: 0.9042 with eval loss: 0.2619
+Best model with eval loss 0.26188522769558814 and eval accuracy 0.904158215010142 with 1648 samples seen is saved
+Epoch 1/1, Loss after 1856 samples: 0.2911
+Mean accuracy: 0.8593, std: 0.0078, lower bound: 0.8453, upper bound: 0.8742 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 1856 samples: 0.8595 with eval loss: 0.3279
+Epoch 1/1, Loss after 2064 samples: 0.2297
+Mean accuracy: 0.8789, std: 0.0071, lower bound: 0.8641, upper bound: 0.8925 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 2064 samples: 0.8788 with eval loss: 0.2900
+Epoch 1/1, Loss after 2272 samples: 0.2137
+Mean accuracy: 0.8929, std: 0.0070, lower bound: 0.8788, upper bound: 0.9062 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 2272 samples: 0.8930 with eval loss: 0.2633
+Epoch 1/1, Loss after 2480 samples: 0.2670
+Mean accuracy: 0.8693, std: 0.0077, lower bound: 0.8550, upper bound: 0.8839 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 2480 samples: 0.8692 with eval loss: 0.3044
+Epoch 1/1, Loss after 2688 samples: 0.3656
+Mean accuracy: 0.9142, std: 0.0064, lower bound: 0.9016, upper bound: 0.9270 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 2688 samples: 0.9143 with eval loss: 0.2192
+Best model with eval loss 0.21918646750911588 and eval accuracy 0.9143002028397565 with 2688 samples seen is saved
+Epoch 1/1, Loss after 2896 samples: 0.2464
+Mean accuracy: 0.9206, std: 0.0061, lower bound: 0.9082, upper bound: 0.9320 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 2896 samples: 0.9204 with eval loss: 0.2039
+Best model with eval loss 0.20385419168779928 and eval accuracy 0.9203853955375254 with 2896 samples seen is saved
+Epoch 1/1, Loss after 3104 samples: 0.2533
+Mean accuracy: 0.8946, std: 0.0066, lower bound: 0.8818, upper bound: 0.9077 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 3104 samples: 0.8945 with eval loss: 0.2480
+Epoch 1/1, Loss after 3312 samples: 0.1617
+Mean accuracy: 0.9326, std: 0.0056, lower bound: 0.9219, upper bound: 0.9442 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 3312 samples: 0.9326 with eval loss: 0.1745
+Best model with eval loss 0.17448955197488109 and eval accuracy 0.9325557809330629 with 3312 samples seen is saved
+Epoch 1/1, Loss after 3520 samples: 0.2082
+Mean accuracy: 0.9033, std: 0.0066, lower bound: 0.8910, upper bound: 0.9163 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 3520 samples: 0.9037 with eval loss: 0.2339
+Epoch 1/1, Loss after 3728 samples: 0.1864
+Mean accuracy: 0.8716, std: 0.0080, lower bound: 0.8560, upper bound: 0.8874 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 3728 samples: 0.8717 with eval loss: 0.3393
+Epoch 1/1, Loss after 3936 samples: 0.1957
+Mean accuracy: 0.9202, std: 0.0059, lower bound: 0.9082, upper bound: 0.9315 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 3936 samples: 0.9204 with eval loss: 0.1959
+Epoch 1/1, Loss after 4144 samples: 0.2351
+Mean accuracy: 0.8831, std: 0.0077, lower bound: 0.8676, upper bound: 0.8976 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 4144 samples: 0.8829 with eval loss: 0.2948
+Epoch 1/1, Loss after 4352 samples: 0.2540
+Mean accuracy: 0.9307, std: 0.0059, lower bound: 0.9189, upper bound: 0.9417 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 4352 samples: 0.9305 with eval loss: 0.1729
+Best model with eval loss 0.17285531182442943 and eval accuracy 0.9305273833671399 with 4352 samples seen is saved
+Epoch 1/1, Loss after 4560 samples: 0.1783
+Mean accuracy: 0.9164, std: 0.0062, lower bound: 0.9042, upper bound: 0.9285 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 4560 samples: 0.9163 with eval loss: 0.2003
+Epoch 1/1, Loss after 4768 samples: 0.1411
+Mean accuracy: 0.8981, std: 0.0065, lower bound: 0.8854, upper bound: 0.9113 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 4768 samples: 0.8981 with eval loss: 0.2517
+Epoch 1/1, Loss after 4976 samples: 0.1707
+Mean accuracy: 0.9380, std: 0.0052, lower bound: 0.9285, upper bound: 0.9483 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 4976 samples: 0.9381 with eval loss: 0.1544
+Best model with eval loss 0.15441420385914464 and eval accuracy 0.9381338742393509 with 4976 samples seen is saved
+Epoch 1/1, Loss after 5184 samples: 0.1185
+Mean accuracy: 0.9471, std: 0.0052, lower bound: 0.9366, upper bound: 0.9569 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 5184 samples: 0.9473 with eval loss: 0.1340
+Best model with eval loss 0.13403041901126986 and eval accuracy 0.947261663286004 with 5184 samples seen is saved
+Epoch 1/1, Loss after 5392 samples: 0.1536
+Mean accuracy: 0.9316, std: 0.0057, lower bound: 0.9204, upper bound: 0.9427 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 5392 samples: 0.9315 with eval loss: 0.1714
+Epoch 1/1, Loss after 5600 samples: 0.1876
+Mean accuracy: 0.9474, std: 0.0049, lower bound: 0.9376, upper bound: 0.9569 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 5600 samples: 0.9473 with eval loss: 0.1440
+Epoch 1/1, Loss after 5808 samples: 0.2203
+Mean accuracy: 0.9507, std: 0.0048, lower bound: 0.9412, upper bound: 0.9599 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 5808 samples: 0.9508 with eval loss: 0.1312
+Best model with eval loss 0.13121505514267953 and eval accuracy 0.9508113590263692 with 5808 samples seen is saved
+Epoch 1/1, Loss after 6016 samples: 0.1959
+Mean accuracy: 0.9060, std: 0.0066, lower bound: 0.8925, upper bound: 0.9189 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 6016 samples: 0.9057 with eval loss: 0.2103
+Epoch 1/1, Loss after 6224 samples: 0.1679
+Mean accuracy: 0.8881, std: 0.0073, lower bound: 0.8737, upper bound: 0.9026 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 6224 samples: 0.8879 with eval loss: 0.2562
+Epoch 1/1, Loss after 6432 samples: 0.1917
+Mean accuracy: 0.9189, std: 0.0061, lower bound: 0.9072, upper bound: 0.9310 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 6432 samples: 0.9189 with eval loss: 0.1866
+Epoch 1/1, Loss after 6640 samples: 0.1346
+Mean accuracy: 0.9178, std: 0.0062, lower bound: 0.9057, upper bound: 0.9300 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 6640 samples: 0.9178 with eval loss: 0.1981
+Epoch 1/1, Loss after 6848 samples: 0.1461
+Mean accuracy: 0.9418, std: 0.0050, lower bound: 0.9320, upper bound: 0.9513 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 6848 samples: 0.9417 with eval loss: 0.1473
+Epoch 1/1, Loss after 7056 samples: 0.0964
+Mean accuracy: 0.9198, std: 0.0061, lower bound: 0.9082, upper bound: 0.9315 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 7056 samples: 0.9194 with eval loss: 0.2069
+Epoch 1/1, Loss after 7264 samples: 0.1512
+Mean accuracy: 0.9447, std: 0.0048, lower bound: 0.9346, upper bound: 0.9539 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 7264 samples: 0.9447 with eval loss: 0.1419
+Epoch 1/1, Loss after 7472 samples: 0.1302
+Mean accuracy: 0.9447, std: 0.0050, lower bound: 0.9351, upper bound: 0.9544 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 7472 samples: 0.9447 with eval loss: 0.1299
+Best model with eval loss 0.12990511617352885 and eval accuracy 0.9447261663286004 with 7472 samples seen is saved
+Epoch 1/1, Loss after 7680 samples: 0.1279
+Mean accuracy: 0.9338, std: 0.0055, lower bound: 0.9239, upper bound: 0.9447 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 7680 samples: 0.9336 with eval loss: 0.1547
+Epoch 1/1, Loss after 7888 samples: 0.1744
+Mean accuracy: 0.9521, std: 0.0049, lower bound: 0.9427, upper bound: 0.9615 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 7888 samples: 0.9523 with eval loss: 0.1308
+Epoch 1/1, Loss after 8096 samples: 0.1578
+Mean accuracy: 0.9137, std: 0.0065, lower bound: 0.9006, upper bound: 0.9255 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 8096 samples: 0.9138 with eval loss: 0.2020
+Epoch 1/1, Loss after 8304 samples: 0.1803
+Mean accuracy: 0.8872, std: 0.0069, lower bound: 0.8742, upper bound: 0.9011 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 8304 samples: 0.8874 with eval loss: 0.2790
+Epoch 1/1, Loss after 8512 samples: 0.1163
+Mean accuracy: 0.9518, std: 0.0047, lower bound: 0.9427, upper bound: 0.9610 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 8512 samples: 0.9518 with eval loss: 0.1192
+Best model with eval loss 0.11915169608208441 and eval accuracy 0.9518255578093306 with 8512 samples seen is saved
+Epoch 1/1, Loss after 8720 samples: 0.1471
+Mean accuracy: 0.9158, std: 0.0063, lower bound: 0.9031, upper bound: 0.9275 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 8720 samples: 0.9158 with eval loss: 0.2201
+Epoch 1/1, Loss after 8928 samples: 0.1419
+Mean accuracy: 0.9096, std: 0.0065, lower bound: 0.8966, upper bound: 0.9219 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 8928 samples: 0.9097 with eval loss: 0.2343
+Epoch 1/1, Loss after 9136 samples: 0.1112
+Mean accuracy: 0.9358, std: 0.0054, lower bound: 0.9249, upper bound: 0.9468 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 9136 samples: 0.9356 with eval loss: 0.1608
+Epoch 1/1, Loss after 9344 samples: 0.0770
+Mean accuracy: 0.9234, std: 0.0060, lower bound: 0.9113, upper bound: 0.9356 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 9344 samples: 0.9234 with eval loss: 0.2016
+Epoch 1/1, Loss after 9552 samples: 0.0899
+Mean accuracy: 0.9184, std: 0.0060, lower bound: 0.9072, upper bound: 0.9295 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 9552 samples: 0.9184 with eval loss: 0.2273
+Epoch 1/1, Loss after 9760 samples: 0.2096
+Mean accuracy: 0.9595, std: 0.0044, lower bound: 0.9498, upper bound: 0.9675 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 9760 samples: 0.9594 with eval loss: 0.1046
+Best model with eval loss 0.10458587542656929 and eval accuracy 0.9594320486815415 with 9760 samples seen is saved
+Epoch 1/1, Loss after 9968 samples: 0.1811
+Mean accuracy: 0.8897, std: 0.0073, lower bound: 0.8747, upper bound: 0.9037 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 9968 samples: 0.8895 with eval loss: 0.2784
+Epoch 1/1, Loss after 10176 samples: 0.1332
+Mean accuracy: 0.9080, std: 0.0066, lower bound: 0.8950, upper bound: 0.9204 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 10176 samples: 0.9082 with eval loss: 0.2356
+Epoch 1/1, Loss after 10384 samples: 0.1163
+Mean accuracy: 0.9272, std: 0.0059, lower bound: 0.9153, upper bound: 0.9387 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 10384 samples: 0.9270 with eval loss: 0.1810
+Epoch 1/1, Loss after 10592 samples: 0.1140
+Mean accuracy: 0.9182, std: 0.0062, lower bound: 0.9067, upper bound: 0.9295 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 10592 samples: 0.9178 with eval loss: 0.2140
+Epoch 1/1, Loss after 10800 samples: 0.0898
+Mean accuracy: 0.9442, std: 0.0051, lower bound: 0.9341, upper bound: 0.9533 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 10800 samples: 0.9442 with eval loss: 0.1488
+Epoch 1/1, Loss after 11008 samples: 0.1201
+Mean accuracy: 0.9019, std: 0.0066, lower bound: 0.8889, upper bound: 0.9148 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 11008 samples: 0.9016 with eval loss: 0.2734
+Epoch 1/1, Loss after 11216 samples: 0.1036
+Mean accuracy: 0.9538, std: 0.0047, lower bound: 0.9447, upper bound: 0.9630 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 11216 samples: 0.9539 with eval loss: 0.1146
+Epoch 1/1, Loss after 11424 samples: 0.1344
+Mean accuracy: 0.9130, std: 0.0063, lower bound: 0.9006, upper bound: 0.9250 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 11424 samples: 0.9133 with eval loss: 0.2432
+Epoch 1/1, Loss after 11632 samples: 0.1159
+Mean accuracy: 0.9423, std: 0.0053, lower bound: 0.9320, upper bound: 0.9528 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 11632 samples: 0.9422 with eval loss: 0.1509
+Epoch 1/1, Loss after 11840 samples: 0.0702
+Mean accuracy: 0.9522, std: 0.0050, lower bound: 0.9422, upper bound: 0.9620 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 11840 samples: 0.9523 with eval loss: 0.1238
+Epoch 1/1, Loss after 12048 samples: 0.1147
+Mean accuracy: 0.9415, std: 0.0053, lower bound: 0.9310, upper bound: 0.9518 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 12048 samples: 0.9417 with eval loss: 0.1570
+Epoch 1/1, Loss after 12256 samples: 0.1063
+Mean accuracy: 0.8915, std: 0.0071, lower bound: 0.8778, upper bound: 0.9057 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 12256 samples: 0.8915 with eval loss: 0.3192
+Epoch 1/1, Loss after 12464 samples: 0.1163
+Mean accuracy: 0.9394, std: 0.0054, lower bound: 0.9290, upper bound: 0.9498 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 12464 samples: 0.9391 with eval loss: 0.1571
+Epoch 1/1, Loss after 12672 samples: 0.1352
+Mean accuracy: 0.9449, std: 0.0050, lower bound: 0.9351, upper bound: 0.9549 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 12672 samples: 0.9447 with eval loss: 0.1447
+Epoch 1/1, Loss after 12880 samples: 0.0757
+Mean accuracy: 0.9378, std: 0.0053, lower bound: 0.9275, upper bound: 0.9488 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 12880 samples: 0.9376 with eval loss: 0.1567
+Epoch 1/1, Loss after 13088 samples: 0.0895
+Mean accuracy: 0.9080, std: 0.0067, lower bound: 0.8945, upper bound: 0.9204 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 13088 samples: 0.9077 with eval loss: 0.2561
+Epoch 1/1, Loss after 13296 samples: 0.1467
+Mean accuracy: 0.9462, std: 0.0051, lower bound: 0.9361, upper bound: 0.9569 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 13296 samples: 0.9462 with eval loss: 0.1385
+Epoch 1/1, Loss after 13504 samples: 0.0721
+Mean accuracy: 0.9156, std: 0.0062, lower bound: 0.9031, upper bound: 0.9275 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 13504 samples: 0.9158 with eval loss: 0.2292
+Epoch 1/1, Loss after 13712 samples: 0.1125
+Mean accuracy: 0.9377, std: 0.0053, lower bound: 0.9270, upper bound: 0.9483 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 13712 samples: 0.9376 with eval loss: 0.1685
+Epoch 1/1, Loss after 13920 samples: 0.0545
+Mean accuracy: 0.9221, std: 0.0063, lower bound: 0.9097, upper bound: 0.9346 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 13920 samples: 0.9219 with eval loss: 0.2178
+Epoch 1/1, Loss after 14128 samples: 0.1188
+Mean accuracy: 0.9451, std: 0.0051, lower bound: 0.9351, upper bound: 0.9549 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 14128 samples: 0.9452 with eval loss: 0.1421
+Epoch 1/1, Loss after 14336 samples: 0.1223
+Mean accuracy: 0.9376, std: 0.0054, lower bound: 0.9270, upper bound: 0.9478 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 14336 samples: 0.9376 with eval loss: 0.1672
+Epoch 1/1, Loss after 14544 samples: 0.1113
+Mean accuracy: 0.9435, std: 0.0053, lower bound: 0.9326, upper bound: 0.9534 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 14544 samples: 0.9437 with eval loss: 0.1513
+Epoch 1/1, Loss after 14752 samples: 0.1408
+Mean accuracy: 0.9392, std: 0.0054, lower bound: 0.9285, upper bound: 0.9498 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 14752 samples: 0.9391 with eval loss: 0.1597
+Epoch 1/1, Loss after 14960 samples: 0.0909
+Mean accuracy: 0.9361, std: 0.0053, lower bound: 0.9260, upper bound: 0.9462 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 14960 samples: 0.9361 with eval loss: 0.1742
+Epoch 1/1, Loss after 15168 samples: 0.0975
+Mean accuracy: 0.9308, std: 0.0057, lower bound: 0.9199, upper bound: 0.9417 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 15168 samples: 0.9305 with eval loss: 0.1911
+Epoch 1/1, Loss after 15376 samples: 0.1164
+Mean accuracy: 0.9231, std: 0.0061, lower bound: 0.9108, upper bound: 0.9351 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 15376 samples: 0.9234 with eval loss: 0.2044
+Epoch 1/1, Loss after 15584 samples: 0.1032
+Mean accuracy: 0.9287, std: 0.0057, lower bound: 0.9168, upper bound: 0.9397 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 15584 samples: 0.9285 with eval loss: 0.1944
+Training signal is False, stopping training
+Training finished
+Best model: {'eval_acc': 0.9594320486815415, 'nb_samples': 9760, 'eval_loss': 0.10458587542656929}
+Training loss logs: [{'samples': 192, 'loss': 0.6906714806189904}, {'samples': 400, 'loss': 0.6933969350961539}, {'samples': 608, 'loss': 0.6811922513521634}, {'samples': 816, 'loss': 0.6649052546574519}, {'samples': 1024, 'loss': 0.6207075852614182}, {'samples': 1232, 'loss': 0.47872044489933896}, {'samples': 1440, 'loss': 0.3875623849722055}, {'samples': 1648, 'loss': 0.38038429847130406}, {'samples': 1856, 'loss': 0.2911146604097806}, {'samples': 2064, 'loss': 0.2296573932354267}, {'samples': 2272, 'loss': 0.21370066129244292}, {'samples': 2480, 'loss': 0.2669981442964994}, {'samples': 2688, 'loss': 0.3656440881582407}, {'samples': 2896, 'loss': 0.24642687577467698}, {'samples': 3104, 'loss': 0.2532936242910532}, {'samples': 3312, 'loss': 0.16174793243408203}, {'samples': 3520, 'loss': 0.20821054165179914}, {'samples': 3728, 'loss': 0.18636424724872297}, {'samples': 3936, 'loss': 0.19565497911893404}, {'samples': 4144, 'loss': 0.23512807259192833}, {'samples': 4352, 'loss': 0.2539631770207332}, {'samples': 4560, 'loss': 0.17830738654503456}, {'samples': 4768, 'loss': 0.14110257075383112}, {'samples': 4976, 'loss': 0.17073675302358773}, {'samples': 5184, 'loss': 0.11852568846482497}, {'samples': 5392, 'loss': 0.1536408204298753}, {'samples': 5600, 'loss': 0.18755135169396034}, {'samples': 5808, 'loss': 0.22026549852811372}, {'samples': 6016, 'loss': 0.19586577782264122}, {'samples': 6224, 'loss': 0.16790052560659555}, {'samples': 6432, 'loss': 0.1917426219353309}, {'samples': 6640, 'loss': 0.1345983651968149}, {'samples': 6848, 'loss': 0.14607059038602388}, {'samples': 7056, 'loss': 0.09641518959632286}, {'samples': 7264, 'loss': 0.15119268343998835}, {'samples': 7472, 'loss': 0.13023858803969163}, {'samples': 7680, 'loss': 0.12794030629671538}, {'samples': 7888, 'loss': 0.1744059966160701}, {'samples': 8096, 'loss': 0.15781499789311335}, {'samples': 8304, 'loss': 0.1802660318521353}, {'samples': 8512, 'loss': 0.11631477796114408}, {'samples': 8720, 'loss': 0.14707539631770208}, {'samples': 8928, 'loss': 0.14190389559819147}, {'samples': 9136, 'loss': 0.11124823643611027}, {'samples': 9344, 'loss': 0.07699999442467323}, {'samples': 9552, 'loss': 0.08986784861637996}, {'samples': 9760, 'loss': 0.2095656578357403}, {'samples': 9968, 'loss': 0.18105994738065279}, {'samples': 10176, 'loss': 0.1331810584435096}, {'samples': 10384, 'loss': 0.11627587905296913}, {'samples': 10592, 'loss': 0.11403091137225811}, {'samples': 10800, 'loss': 0.08979327862079327}, {'samples': 11008, 'loss': 0.12010191954099216}, {'samples': 11216, 'loss': 0.10359201981471135}, {'samples': 11424, 'loss': 0.13441670857943022}, {'samples': 11632, 'loss': 0.11594188213348389}, {'samples': 11840, 'loss': 0.07024791607489952}, {'samples': 12048, 'loss': 0.11473372349372277}, {'samples': 12256, 'loss': 0.10625945604764499}, {'samples': 12464, 'loss': 0.11626758942237267}, {'samples': 12672, 'loss': 0.13518644296205962}, {'samples': 12880, 'loss': 0.07570363008058988}, {'samples': 13088, 'loss': 0.08949691515702468}, {'samples': 13296, 'loss': 0.14667133184579703}, {'samples': 13504, 'loss': 0.07208660015693077}, {'samples': 13712, 'loss': 0.11248251108022836}, {'samples': 13920, 'loss': 0.054535737404456504}, {'samples': 14128, 'loss': 0.1187514800291795}, {'samples': 14336, 'loss': 0.12234211885012113}, {'samples': 14544, 'loss': 0.11130119287050687}, {'samples': 14752, 'loss': 0.1408113699692946}, {'samples': 14960, 'loss': 0.09090489607590896}, {'samples': 15168, 'loss': 0.09748636759244479}, {'samples': 15376, 'loss': 0.1164236068725586}, {'samples': 15584, 'loss': 0.10318618554335374}]
+Evaluation accuracy logs: [{'samples': 192, 'accuracy': 0.49932555780933063, 'std': 0.011584875107050693, 'lower_bound': 0.4766734279918864, 'upper_bound': 0.5233392494929007}, {'samples': 400, 'accuracy': 0.656142494929006, 'std': 0.010686708285412802, 'lower_bound': 0.6364097363083164, 'upper_bound': 0.678498985801217}, {'samples': 608, 'accuracy': 0.7176338742393509, 'std': 0.010329176752075234, 'lower_bound': 0.6977687626774848, 'upper_bound': 0.7383493914807302}, {'samples': 816, 'accuracy': 0.8380613590263692, 'std': 0.00807482102478606, 'lower_bound': 0.821501014198783, 'upper_bound': 0.853448275862069}, {'samples': 1024, 'accuracy': 0.824447261663286, 'std': 0.008661903332523663, 'lower_bound': 0.8078093306288032, 'upper_bound': 0.8412905679513185}, {'samples': 1232, 'accuracy': 0.8562190669371196, 'std': 0.007472461913637252, 'lower_bound': 0.8417849898580122, 'upper_bound': 0.8701952332657201}, {'samples': 1440, 'accuracy': 0.8101440162271805, 'std': 0.00874950271694686, 'lower_bound': 0.7936105476673428, 'upper_bound': 0.8275862068965517}, {'samples': 1648, 'accuracy': 0.9042003042596349, 'std': 0.006569435156540135, 'lower_bound': 0.8904665314401623, 'upper_bound': 0.9168356997971603}, {'samples': 1856, 'accuracy': 0.8593088235294117, 'std': 0.00784741430085492, 'lower_bound': 0.8453346855983773, 'upper_bound': 0.8742393509127789}, {'samples': 2064, 'accuracy': 0.8789406693711969, 'std': 0.007109409748976328, 'lower_bound': 0.8640973630831643, 'upper_bound': 0.8924949290060852}, {'samples': 2272, 'accuracy': 0.8928904665314402, 'std': 0.007012390706865167, 'lower_bound': 0.8788032454361054, 'upper_bound': 0.9061866125760649}, {'samples': 2480, 'accuracy': 0.8693493914807302, 'std': 0.007661826293256994, 'lower_bound': 0.8549695740365112, 'upper_bound': 0.8838742393509128}, {'samples': 2688, 'accuracy': 0.9141536511156186, 'std': 0.0064058813341178675, 'lower_bound': 0.9016100405679512, 'upper_bound': 0.9269776876267748}, {'samples': 2896, 'accuracy': 0.9205948275862069, 'std': 0.006104904496145017, 'lower_bound': 0.9082150101419878, 'upper_bound': 0.9320486815415822}, {'samples': 3104, 'accuracy': 0.8946359026369168, 'std': 0.006647311285215726, 'lower_bound': 0.8818458417849898, 'upper_bound': 0.9077205882352941}, {'samples': 3312, 'accuracy': 0.9326110547667342, 'std': 0.005634536464933054, 'lower_bound': 0.9219066937119675, 'upper_bound': 0.9442190669371197}, {'samples': 3520, 'accuracy': 0.9032596348884382, 'std': 0.006556503258862969, 'lower_bound': 0.890960953346856, 'upper_bound': 0.9163286004056795}, {'samples': 3728, 'accuracy': 0.8716120689655172, 'std': 0.008001479487031022, 'lower_bound': 0.8559837728194726, 'upper_bound': 0.8874239350912779}, {'samples': 3936, 'accuracy': 0.920206896551724, 'std': 0.005896065712053349, 'lower_bound': 0.9082150101419878, 'upper_bound': 0.9315415821501014}, {'samples': 4144, 'accuracy': 0.883130831643002, 'std': 0.007710059684962992, 'lower_bound': 0.8676470588235294, 'upper_bound': 0.8975786004056795}, {'samples': 4352, 'accuracy': 0.9306977687626775, 'std': 0.005937895779589498, 'lower_bound': 0.9188640973630832, 'upper_bound': 0.9416962474645031}, {'samples': 4560, 'accuracy': 0.9163813387423935, 'std': 0.006229467505595689, 'lower_bound': 0.904158215010142, 'upper_bound': 0.9285116632860041}, {'samples': 4768, 'accuracy': 0.8981135902636916, 'std': 0.00651597263928542, 'lower_bound': 0.8853955375253549, 'upper_bound': 0.9112576064908722}, {'samples': 4976, 'accuracy': 0.9380344827586207, 'std': 0.005169767847276308, 'lower_bound': 0.92848630831643, 'upper_bound': 0.9482758620689655}, {'samples': 5184, 'accuracy': 0.9470547667342798, 'std': 0.005159160924006149, 'lower_bound': 0.9366125760649088, 'upper_bound': 0.9568965517241379}, {'samples': 5392, 'accuracy': 0.9315973630831643, 'std': 0.00567697485656649, 'lower_bound': 0.9203853955375254, 'upper_bound': 0.9426977687626775}, {'samples': 5600, 'accuracy': 0.9473985801217039, 'std': 0.004945638741411836, 'lower_bound': 0.9376140973630831, 'upper_bound': 0.9568965517241379}, {'samples': 5808, 'accuracy': 0.9507185598377282, 'std': 0.00480963151582982, 'lower_bound': 0.9411764705882353, 'upper_bound': 0.9599391480730223}, {'samples': 6016, 'accuracy': 0.9059710953346857, 'std': 0.0066152738550044245, 'lower_bound': 0.8924949290060852, 'upper_bound': 0.9188640973630832}, {'samples': 6224, 'accuracy': 0.8881034482758621, 'std': 0.007308046478702986, 'lower_bound': 0.8737322515212982, 'upper_bound': 0.9026495943204869}, {'samples': 6432, 'accuracy': 0.9189437119675457, 'std': 0.006098328262704634, 'lower_bound': 0.9072008113590264, 'upper_bound': 0.9310344827586207}, {'samples': 6640, 'accuracy': 0.9178367139959432, 'std': 0.006160565241275705, 'lower_bound': 0.9056795131845842, 'upper_bound': 0.9300202839756593}, {'samples': 6848, 'accuracy': 0.9418341784989858, 'std': 0.004986486285388677, 'lower_bound': 0.9320486815415822, 'upper_bound': 0.9513184584178499}, {'samples': 7056, 'accuracy': 0.9198311359026368, 'std': 0.006082368153631856, 'lower_bound': 0.9082023326572007, 'upper_bound': 0.9315415821501014}, {'samples': 7264, 'accuracy': 0.9447068965517242, 'std': 0.004830519141624214, 'lower_bound': 0.9345841784989858, 'upper_bound': 0.9538539553752535}, {'samples': 7472, 'accuracy': 0.9446724137931035, 'std': 0.005034931711573368, 'lower_bound': 0.9350786004056795, 'upper_bound': 0.9543610547667343}, {'samples': 7680, 'accuracy': 0.9338280933062881, 'std': 0.005487132203195571, 'lower_bound': 0.9239224137931034, 'upper_bound': 0.9447261663286004}, {'samples': 7888, 'accuracy': 0.9521298174442191, 'std': 0.0048762820923671825, 'lower_bound': 0.9426977687626775, 'upper_bound': 0.9614604462474645}, {'samples': 8096, 'accuracy': 0.913697261663286, 'std': 0.006543808271787054, 'lower_bound': 0.9006085192697769, 'upper_bound': 0.9254563894523327}, {'samples': 8304, 'accuracy': 0.8872287018255578, 'std': 0.006914440597468883, 'lower_bound': 0.8742266734279919, 'upper_bound': 0.9011156186612576}, {'samples': 8512, 'accuracy': 0.951762677484787, 'std': 0.004708892948293599, 'lower_bound': 0.9426850912778905, 'upper_bound': 0.9609533468559838}, {'samples': 8720, 'accuracy': 0.9157570993914806, 'std': 0.006257344942936499, 'lower_bound': 0.9031440162271805, 'upper_bound': 0.9274847870182555}, {'samples': 8928, 'accuracy': 0.909643509127789, 'std': 0.006496050304485165, 'lower_bound': 0.896551724137931, 'upper_bound': 0.9219066937119675}, {'samples': 9136, 'accuracy': 0.9358377281947262, 'std': 0.005400673180006975, 'lower_bound': 0.9249492900608519, 'upper_bound': 0.9467545638945233}, {'samples': 9344, 'accuracy': 0.9234168356997972, 'std': 0.005971717408800341, 'lower_bound': 0.9112576064908722, 'upper_bound': 0.9355983772819473}, {'samples': 9552, 'accuracy': 0.9184381338742393, 'std': 0.005980041467333, 'lower_bound': 0.9071881338742394, 'upper_bound': 0.9295131845841785}, {'samples': 9760, 'accuracy': 0.9594543610547667, 'std': 0.004400268998513263, 'lower_bound': 0.9497971602434077, 'upper_bound': 0.9675456389452333}, {'samples': 9968, 'accuracy': 0.8896683569979716, 'std': 0.0072985771649623195, 'lower_bound': 0.8747464503042597, 'upper_bound': 0.9036511156186613}, {'samples': 10176, 'accuracy': 0.9079614604462476, 'std': 0.006589326841299476, 'lower_bound': 0.8950304259634888, 'upper_bound': 0.9203853955375254}, {'samples': 10384, 'accuracy': 0.9271876267748479, 'std': 0.005939313899828651, 'lower_bound': 0.915314401622718, 'upper_bound': 0.9386536511156187}, {'samples': 10592, 'accuracy': 0.9181516227180527, 'std': 0.006152705585726396, 'lower_bound': 0.9066810344827586, 'upper_bound': 0.9295131845841785}, {'samples': 10800, 'accuracy': 0.944155172413793, 'std': 0.005079256048187855, 'lower_bound': 0.934077079107505, 'upper_bound': 0.9533468559837728}, {'samples': 11008, 'accuracy': 0.9018620689655172, 'std': 0.006592081756669549, 'lower_bound': 0.888932555780933, 'upper_bound': 0.9148073022312373}, {'samples': 11216, 'accuracy': 0.9538184584178498, 'std': 0.004686956482402283, 'lower_bound': 0.9447261663286004, 'upper_bound': 0.9629817444219066}, {'samples': 11424, 'accuracy': 0.9130420892494928, 'std': 0.006310925556809342, 'lower_bound': 0.9006085192697769, 'upper_bound': 0.924961967545639}, {'samples': 11632, 'accuracy': 0.9422712981744421, 'std': 0.005298635873806886, 'lower_bound': 0.9320486815415822, 'upper_bound': 0.9528397565922921}, {'samples': 11840, 'accuracy': 0.9521830628803245, 'std': 0.005005560986185841, 'lower_bound': 0.9421906693711968, 'upper_bound': 0.9619675456389453}, {'samples': 12048, 'accuracy': 0.9414705882352942, 'std': 0.005262401792966953, 'lower_bound': 0.9310344827586207, 'upper_bound': 0.9518255578093306}, {'samples': 12256, 'accuracy': 0.8915050709939148, 'std': 0.007086370557053071, 'lower_bound': 0.8777890466531441, 'upper_bound': 0.9056795131845842}, {'samples': 12464, 'accuracy': 0.9393605476673429, 'std': 0.005378061931405959, 'lower_bound': 0.9290060851926978, 'upper_bound': 0.9497971602434077}, {'samples': 12672, 'accuracy': 0.9448569979716024, 'std': 0.004999687193207182, 'lower_bound': 0.9350912778904665, 'upper_bound': 0.954868154158215}, {'samples': 12880, 'accuracy': 0.9378483772819473, 'std': 0.005293448053798284, 'lower_bound': 0.9274721095334685, 'upper_bound': 0.9487829614604463}, {'samples': 13088, 'accuracy': 0.9079893509127789, 'std': 0.006730089221720787, 'lower_bound': 0.8945233265720081, 'upper_bound': 0.9203980730223124}, {'samples': 13296, 'accuracy': 0.9461921906693712, 'std': 0.005137522991455007, 'lower_bound': 0.936105476673428, 'upper_bound': 0.9568965517241379}, {'samples': 13504, 'accuracy': 0.9156090263691684, 'std': 0.0062257151970012935, 'lower_bound': 0.9031440162271805, 'upper_bound': 0.9274847870182555}, {'samples': 13712, 'accuracy': 0.9376921906693712, 'std': 0.005334250762208443, 'lower_bound': 0.9269776876267748, 'upper_bound': 0.9482758620689655}, {'samples': 13920, 'accuracy': 0.922081135902637, 'std': 0.006253702662547456, 'lower_bound': 0.90973630831643, 'upper_bound': 0.9345841784989858}, {'samples': 14128, 'accuracy': 0.9451440162271805, 'std': 0.0051152989494302435, 'lower_bound': 0.9350786004056795, 'upper_bound': 0.9548808316430021}, {'samples': 14336, 'accuracy': 0.937604462474645, 'std': 0.0053576212010157135, 'lower_bound': 0.9269650101419877, 'upper_bound': 0.9477814401622718}, {'samples': 14544, 'accuracy': 0.9434964503042597, 'std': 0.005278375496895679, 'lower_bound': 0.9325557809330629, 'upper_bound': 0.9533595334685598}, {'samples': 14752, 'accuracy': 0.9391749492900608, 'std': 0.005356520204491541, 'lower_bound': 0.92848630831643, 'upper_bound': 0.9497971602434077}, {'samples': 14960, 'accuracy': 0.936131845841785, 'std': 0.005345301371166833, 'lower_bound': 0.9259634888438134, 'upper_bound': 0.9462474645030426}, {'samples': 15168, 'accuracy': 0.9308265720081136, 'std': 0.005705891276297114, 'lower_bound': 0.9198782961460447, 'upper_bound': 0.941683569979716}, {'samples': 15376, 'accuracy': 0.9230740365111562, 'std': 0.006094203858746708, 'lower_bound': 0.9107505070993914, 'upper_bound': 0.9350912778904665}, {'samples': 15584, 'accuracy': 0.9286577079107505, 'std': 0.005737421903860744, 'lower_bound': 0.9168356997971603, 'upper_bound': 0.9396551724137931}]
+Evaluating the best model on the test set of dataset ./fake_true_datasets/fake_true_dataset_mistral_10k...
+Test metrics:
+accuracy: 0.9364898580121704
+precision: 0.8906905086733876
+recall: 0.9948836066294858
+f1_score: 0.9398833260941767
+fp_rate: 0.12173690707968735
+tp_rate: 0.9948836066294858
+std_accuracy: 0.005277816700789327
+std_precision: 0.009046604786589522
+std_recall: 0.0022942957286830375
+std_f1_score: 0.005184295495859772
+std_fp_rate: 0.009936945531148359
+std_tp_rate: 0.0022942957286830375
+TP: 979.522
+TN: 867.236
+FP: 120.205
+FN: 5.037
+roc_auc: 0.9952134137560738
+fpr: [0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0010142  0.0010142  0.0010142
+ 0.0010142  0.0010142  0.0010142  0.0020284  0.0020284  0.0020284
+ 0.0020284  0.0020284  0.0020284  0.0020284  0.0020284  0.0020284
+ 0.0020284  0.0020284  0.0020284  0.0020284  0.0030426  0.0030426
+ 0.0030426  0.0030426  0.0030426  0.0030426  0.0030426  0.0030426
+ 0.0030426  0.0030426  0.0030426  0.0030426  0.0030426  0.0030426
+ 0.0040568  0.0040568  0.0040568  0.0040568  0.0040568  0.0040568
+ 0.0040568  0.0040568  0.00507099 0.00507099 0.00507099 0.00507099
+ 0.00507099 0.00608519 0.00608519 0.00608519 0.00608519 0.00608519
+ 0.00608519 0.00608519 0.00709939 0.00709939 0.00912779 0.00912779
+ 0.00912779 0.00912779 0.00912779 0.00912779 0.00912779 0.01014199
+ 0.01014199 0.01014199 0.01115619 0.01115619 0.01217039 0.01217039
+ 0.01318458 0.01318458 0.01419878 0.01419878 0.01521298 0.01521298
+ 0.01622718 0.01622718 0.01724138 0.01724138 0.01825558 0.01825558
+ 0.01825558 0.01825558 0.01926978 0.01926978 0.02028398 0.02028398
+ 0.02129817 0.02129817 0.02332657 0.02332657 0.02332657 0.02434077
+ 0.02434077 0.02434077 0.02434077 0.02434077 0.02636917 0.02636917
+ 0.02738337 0.02738337 0.02839757 0.02839757 0.02839757 0.02941176
+ 0.02941176 0.03144016 0.03144016 0.03346856 0.03346856 0.03651116
+ 0.03651116 0.03752535 0.03752535 0.03955375 0.03955375 0.04056795
+ 0.04056795 0.04259635 0.04259635 0.04361055 0.04563895 0.04563895
+ 0.04665314 0.04665314 0.04868154 0.05273834 0.05273834 0.05780933
+ 0.05780933 0.05983773 0.05983773 0.06693712 0.06693712 0.07200811
+ 0.07200811 0.07302231 0.07302231 0.07403651 0.07707911 0.07707911
+ 0.08924949 0.08924949 0.11156187 0.11156187 0.11561866 0.11561866
+ 0.15111562 0.15111562 0.15517241 0.15517241 0.1653144  0.1653144
+ 0.18559838 0.18559838 0.20689655 0.20892495 0.26977688 0.26977688
+ 0.27383367 0.27586207 0.30324544 0.30730223 0.31338742 0.31541582
+ 0.33975659 0.34178499 0.34381339 0.34685598 0.35091278 0.35294118
+ 0.35598377 0.35801217 0.35902637 0.36105477 0.37931034 0.38133874
+ 0.4158215  0.4178499  0.42494929 0.42900609 0.43306288 0.43509128
+ 0.43813387 0.44219067 0.44320487 0.44624746 0.44929006 0.45131846
+ 0.45436105 0.45841785 0.45943205 0.46146045 0.46653144 0.46855984
+ 0.46957404 0.47363083 0.47565923 0.47870183 0.48073022 0.48377282
+ 0.48681542 0.48884381 0.49087221 0.50608519 0.51014199 0.51318458
+ 0.51521298 0.51622718 0.51926978 0.52028398 0.52231237 0.52535497
+ 0.52941176 0.53245436 0.53448276 0.53651116 0.53853955 0.54361055
+ 0.54563895 0.54766734 0.55375254 0.55578093 0.55780933 0.56389452
+ 0.56896552 0.57505071 0.57707911 0.5811359  0.5821501  0.5851927
+ 0.5872211  0.58924949 0.59127789 0.59533469 0.59939148 0.60040568
+ 0.60344828 0.60547667 0.60750507 0.60953347 0.61257606 0.61663286
+ 0.62271805 0.62373225 0.62576065 0.62677485 0.62880325 0.63083164
+ 0.63387424 0.63488844 0.63793103 0.63995943 0.64807302 0.65010142
+ 0.65212982 0.65415822 0.65618661 0.65720081 0.66024341 0.663286
+ 0.6663286  0.6673428  0.6703854  0.67241379 0.67647059 0.67951318
+ 0.68154158 0.68255578 0.68458418 0.68559838 0.68864097 0.69066937
+ 0.69472617 0.70081136 0.70283976 0.70892495 0.70993915 0.71196755
+ 0.71602434 0.72008114 0.72109533 0.72312373 0.72413793 0.72616633
+ 0.73225152 0.73427992 0.73833671 0.74137931 0.74340771 0.7494929
+ 0.7535497  0.75456389 0.75659229 0.75760649 0.76064909 0.76267748
+ 0.76369168 0.76977688 0.77383367 0.77789047 0.77890467 0.78296146
+ 0.78397566 0.79006085 0.79107505 0.79817444 0.79918864 0.80223124
+ 0.80628803 0.80730223 0.81034483 0.81237323 0.81338742 0.81541582
+ 0.81643002 0.81845842 0.82048682 0.82454361 0.82555781 0.8296146
+ 0.8356998  0.836714   0.83975659 0.84178499 0.84482759 0.84888438
+ 0.85091278 0.85598377 0.85699797 0.86206897 0.86409736 0.86815416
+ 0.87423935 0.88032454 0.88640974 0.88742394 0.89148073 0.89553753
+ 0.89858012 0.89959432 0.90162272 0.90263692 0.90770791 0.90872211
+ 0.9127789  0.9168357  0.92393509 0.92494929 0.92799189 0.93002028
+ 0.93407708 0.93610548 0.94523327 0.94726166 0.94929006 0.95537525
+ 0.95638945 0.95841785 0.95943205 0.96348884 0.96551724 0.96754564
+ 0.97261663 0.97363083 0.97667343 0.97768763 0.98073022 0.98275862
+ 0.98478702 0.98782961 0.98884381 0.99087221 0.99391481 1.        ]
+tpr: [0.         0.0010142  0.00507099 0.00811359 0.01014199 0.01318458
+ 0.01419878 0.01825558 0.01926978 0.02535497 0.03042596 0.03245436
+ 0.03651116 0.04158215 0.04766734 0.05375254 0.05983773 0.06186613
+ 0.06693712 0.07505071 0.08924949 0.09837728 0.10344828 0.10953347
+ 0.11359026 0.11967546 0.12474645 0.14300203 0.15111562 0.16024341
+ 0.163286   0.168357   0.17545639 0.18458418 0.19269777 0.20182556
+ 0.20993915 0.21602434 0.21805274 0.22109533 0.23022312 0.23630832
+ 0.2464503  0.2494929  0.25862069 0.26267748 0.27484787 0.28397566
+ 0.28803245 0.29107505 0.31135903 0.3356998  0.34279919 0.35091278
+ 0.35801217 0.36409736 0.37626775 0.38539554 0.39249493 0.39858012
+ 0.40567951 0.4148073  0.42292089 0.42697769 0.43610548 0.44117647
+ 0.45030426 0.45740365 0.46957404 0.47565923 0.48377282 0.49087221
+ 0.4989858  0.5        0.50507099 0.51217039 0.51622718 0.51926978
+ 0.52535497 0.53955375 0.54158215 0.54766734 0.56186613 0.56592292
+ 0.56693712 0.5821501  0.5851927  0.59229209 0.59330629 0.59736308
+ 0.60243408 0.60446247 0.60547667 0.60953347 0.61561866 0.61663286
+ 0.62271805 0.62474645 0.62576065 0.63590264 0.64300203 0.64503043
+ 0.64807302 0.65517241 0.65618661 0.65922921 0.66125761 0.6643002
+ 0.6663286  0.6673428  0.6693712  0.67342799 0.67849899 0.68458418
+ 0.69066937 0.69168357 0.69574037 0.70182556 0.70385396 0.70486815
+ 0.70689655 0.70993915 0.71196755 0.71602434 0.72008114 0.72109533
+ 0.72312373 0.72616633 0.72718053 0.73326572 0.73427992 0.73732252
+ 0.73833671 0.74137931 0.7464503  0.7505071  0.75557809 0.75659229
+ 0.75862069 0.76064909 0.76267748 0.76369168 0.76572008 0.76673428
+ 0.76977688 0.77789047 0.78194726 0.78498986 0.79107505 0.79208925
+ 0.79411765 0.79513185 0.79716024 0.80121704 0.80324544 0.80527383
+ 0.80730223 0.81034483 0.81237323 0.81440162 0.81643002 0.81845842
+ 0.82048682 0.82555781 0.82758621 0.82860041 0.8306288  0.8336714
+ 0.8346856  0.836714   0.83874239 0.83975659 0.84178499 0.84381339
+ 0.84989858 0.85091278 0.85192698 0.85395538 0.85496957 0.85699797
+ 0.86105477 0.86206897 0.86815416 0.87018256 0.87221095 0.87626775
+ 0.88235294 0.88438134 0.88438134 0.88640974 0.88640974 0.88843813
+ 0.88945233 0.89148073 0.89249493 0.89452333 0.89553753 0.89553753
+ 0.89959432 0.90162272 0.90162272 0.90365112 0.90365112 0.90466531
+ 0.90466531 0.90669371 0.90770791 0.9127789  0.9127789  0.9137931
+ 0.9137931  0.92190669 0.92292089 0.92697769 0.92697769 0.92900609
+ 0.93103448 0.93204868 0.93204868 0.93306288 0.93306288 0.93914807
+ 0.93914807 0.94117647 0.94117647 0.94219067 0.94421907 0.94421907
+ 0.94624746 0.94726166 0.95131846 0.95537525 0.95537525 0.96146045
+ 0.96146045 0.96348884 0.96348884 0.96551724 0.96754564 0.96754564
+ 0.96957404 0.96957404 0.97058824 0.97058824 0.97160243 0.97160243
+ 0.97261663 0.97261663 0.97464503 0.97464503 0.97565923 0.97565923
+ 0.97667343 0.97667343 0.97870183 0.97870183 0.97870183 0.98073022
+ 0.98073022 0.98275862 0.98275862 0.98275862 0.98377282 0.98377282
+ 0.98478702 0.98478702 0.98782961 0.98782961 0.98884381 0.98884381
+ 0.98985801 0.98985801 0.99087221 0.99087221 0.99087221 0.99188641
+ 0.99188641 0.99290061 0.99290061 0.99391481 0.99391481 0.99492901
+ 0.99492901 0.9959432  0.9959432  0.9969574  0.9969574  0.9979716
+ 0.9979716  0.9989858  0.9989858  0.9989858  0.9989858  1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.        ]
+thresholds: [        inf  3.0878906   3.0742188   3.0722656   3.0644531   3.0625
+  3.0605469   3.0566406   3.0546875   3.0507812   3.0488281   3.046875
+  3.0449219   3.0429688   3.0390625   3.0371094   3.03125     3.0292969
+  3.0273438   3.0253906   3.0214844   3.015625    3.0136719   3.0117188
+  3.0097656   3.0078125   3.0058594   3.0019531   3.          2.9980469
+  2.9960938   2.9941406   2.9921875   2.9902344   2.9882812   2.9863281
+  2.984375    2.9824219   2.9804688   2.9785156   2.9765625   2.9746094
+  2.9726562   2.9707031   2.96875     2.9667969   2.9648438   2.9628906
+  2.9609375   2.9589844   2.9550781   2.9511719   2.9492188   2.9472656
+  2.9453125   2.9433594   2.9414062   2.9394531   2.9375      2.9355469
+  2.9335938   2.9316406   2.9296875   2.9277344   2.9257812   2.9238281
+  2.921875    2.9199219   2.9179688   2.9160156   2.9140625   2.9121094
+  2.9101562   2.9082031   2.90625     2.9042969   2.9023438   2.9003906
+  2.8984375   2.8945312   2.8925781   2.890625    2.8867188   2.8847656
+  2.8828125   2.8769531   2.875       2.8730469   2.8710938   2.8691406
+  2.8671875   2.8652344   2.8632812   2.8613281   2.859375    2.8574219
+  2.8554688   2.8535156   2.8515625   2.8476562   2.8457031   2.84375
+  2.8417969   2.8398438   2.8378906   2.8359375   2.8320312   2.8300781
+  2.828125    2.8261719   2.8242188   2.8222656   2.8203125   2.8164062
+  2.8105469   2.8085938   2.8066406   2.8046875   2.8027344   2.8007812
+  2.7988281   2.796875    2.7929688   2.7890625   2.7871094   2.7832031
+  2.78125     2.7753906   2.7734375   2.7695312   2.7675781   2.765625
+  2.7636719   2.7617188   2.7597656   2.7578125   2.7558594   2.7539062
+  2.7519531   2.7480469   2.7460938   2.7441406   2.7421875   2.7402344
+  2.7382812   2.7285156   2.7207031   2.71875     2.7128906   2.7109375
+  2.7089844   2.7070312   2.7050781   2.6894531   2.6875      2.6855469
+  2.6757812   2.671875    2.6699219   2.6660156   2.6601562   2.6542969
+  2.6523438   2.6425781   2.640625    2.6386719   2.6367188   2.6269531
+  2.625       2.6074219   2.6035156   2.5957031   2.5917969   2.5878906
+  2.578125    2.5742188   2.5664062   2.5644531   2.5625      2.5605469
+  2.546875    2.5449219   2.5136719   2.5117188   2.5019531   2.4882812
+  2.4609375   2.4550781   2.4492188   2.4414062   2.4316406   2.4296875
+  2.4257812   2.421875    2.4199219   2.4140625   2.4121094   2.3964844
+  2.3886719   2.3789062   2.375       2.3671875   2.3476562   2.3457031
+  2.34375     2.3320312   2.3300781   2.3144531   2.3085938   2.3027344
+  2.2988281   2.2265625   2.2246094   2.2089844   2.1933594   2.1855469
+  2.171875    2.1582031   2.1542969   2.1484375   2.1464844   2.0683594
+  2.0546875   2.0371094   2.0195312   2.0078125   2.0058594   1.9980469
+  1.9921875   1.9863281   1.9609375   1.9316406   1.9267578   1.8867188
+  1.8828125   1.8525391   1.8486328   1.8212891   1.8017578   1.7832031
+  1.7792969   1.7470703   1.7324219   1.7041016   1.6855469   1.6513672
+  1.6435547   1.6269531   1.609375    1.5791016   1.5449219   1.5410156
+  1.5380859   1.5078125   1.4970703   1.4960938   1.4824219   1.4326172
+  1.4082031   1.3876953   1.3847656   1.3417969   1.2753906   1.2050781
+  1.1962891   1.1835938   1.1435547   1.0195312   1.0136719   0.953125
+  0.9008789   0.86572266  0.85791016  0.8569336   0.8408203   0.82958984
+  0.7036133   0.69921875  0.38183594  0.36132812  0.30981445  0.3059082
+ -0.05551147 -0.07385254 -0.12524414 -0.12902832 -0.19689941 -0.20935059
+ -0.48706055 -0.49145508 -0.64697266 -0.64746094 -1.1162109  -1.1259766
+ -1.1533203  -1.1699219  -1.4042969  -1.4189453  -1.4570312  -1.4658203
+ -1.6318359  -1.6337891  -1.6455078  -1.6474609  -1.6748047  -1.6767578
+ -1.6982422  -1.6992188  -1.7060547  -1.7128906  -1.8027344  -1.8095703
+ -1.9726562  -1.9863281  -2.015625   -2.0214844  -2.0429688  -2.046875
+ -2.0605469  -2.0722656  -2.0761719  -2.0800781  -2.09375    -2.0957031
+ -2.1035156  -2.109375   -2.1152344  -2.1171875  -2.1367188  -2.1464844
+ -2.1523438  -2.1601562  -2.1699219  -2.171875   -2.1777344  -2.1875
+ -2.1894531  -2.1972656  -2.1992188  -2.25       -2.2519531  -2.2617188
+ -2.265625   -2.2695312  -2.2714844  -2.2734375  -2.2753906  -2.2851562
+ -2.2949219  -2.3007812  -2.3027344  -2.3085938  -2.3105469  -2.3242188
+ -2.3261719  -2.3359375  -2.3476562  -2.3515625  -2.3535156  -2.3574219
+ -2.3710938  -2.3769531  -2.3808594  -2.3925781  -2.4003906  -2.4082031
+ -2.4140625  -2.4199219  -2.4238281  -2.4277344  -2.4414062  -2.4453125
+ -2.4511719  -2.4550781  -2.4648438  -2.4667969  -2.46875    -2.4824219
+ -2.4882812  -2.4902344  -2.4921875  -2.4941406  -2.4960938  -2.5
+ -2.5019531  -2.5039062  -2.5058594  -2.5136719  -2.5234375  -2.5273438
+ -2.5292969  -2.5371094  -2.5390625  -2.5410156  -2.5449219  -2.5507812
+ -2.5527344  -2.5546875  -2.5566406  -2.5585938  -2.5605469  -2.5625
+ -2.5644531  -2.5664062  -2.5683594  -2.5703125  -2.5722656  -2.5761719
+ -2.578125   -2.5820312  -2.5839844  -2.5878906  -2.5898438  -2.5917969
+ -2.5957031  -2.5996094  -2.6015625  -2.6035156  -2.6054688  -2.6074219
+ -2.6113281  -2.6152344  -2.6171875  -2.625      -2.6269531  -2.6308594
+ -2.6386719  -2.640625   -2.6425781  -2.6484375  -2.6503906  -2.6523438
+ -2.6542969  -2.6601562  -2.6640625  -2.6679688  -2.6699219  -2.671875
+ -2.6738281  -2.6777344  -2.6796875  -2.6816406  -2.6835938  -2.6855469
+ -2.6894531  -2.6914062  -2.6953125  -2.6972656  -2.6992188  -2.7011719
+ -2.7050781  -2.7089844  -2.7128906  -2.7167969  -2.71875    -2.7226562
+ -2.7265625  -2.7285156  -2.7304688  -2.7324219  -2.734375   -2.7363281
+ -2.7382812  -2.7402344  -2.7421875  -2.7441406  -2.7480469  -2.7519531
+ -2.7558594  -2.7617188  -2.765625   -2.7675781  -2.7714844  -2.7734375
+ -2.7753906  -2.7773438  -2.7792969  -2.78125    -2.7832031  -2.7851562
+ -2.7890625  -2.7910156  -2.7929688  -2.7949219  -2.796875   -2.8007812
+ -2.8027344  -2.8046875  -2.8105469  -2.8125     -2.8164062  -2.8222656
+ -2.8242188  -2.8261719  -2.8300781  -2.8339844  -2.84375    -2.8457031
+ -2.8476562  -2.8515625  -2.8554688  -2.8574219  -2.859375   -2.8632812
+ -2.8671875  -2.8691406  -2.8710938  -2.8730469  -2.875      -2.9042969 ]

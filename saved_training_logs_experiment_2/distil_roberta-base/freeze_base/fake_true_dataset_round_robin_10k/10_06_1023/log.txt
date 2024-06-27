@@ -1,0 +1,113 @@
+log_loss_steps: 256
+eval_steps: 512
+check_degradation: 0
+----------------Epoch 1/1----------------
+Epoch 1/1, Loss after 192 samples: 0.6994
+Epoch 1/1, Loss after 448 samples: 0.6955
+Mean accuracy: 0.7097, std: 0.0166, lower bound: 0.6760, upper bound: 0.7413 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 448 samples: 0.7093 with eval loss: 0.6794
+Best model with eval loss 0.679375966389974 and eval accuracy 0.7093333333333334 with 448 samples seen is saved
+Epoch 1/1, Loss after 704 samples: 0.6741
+Epoch 1/1, Loss after 960 samples: 0.6700
+Mean accuracy: 0.7287, std: 0.0160, lower bound: 0.6947, upper bound: 0.7587 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 960 samples: 0.7293 with eval loss: 0.6499
+Best model with eval loss 0.6499442507823309 and eval accuracy 0.7293333333333333 with 960 samples seen is saved
+Epoch 1/1, Loss after 1216 samples: 0.6319
+Epoch 1/1, Loss after 1472 samples: 0.6208
+Mean accuracy: 0.7651, std: 0.0153, lower bound: 0.7347, upper bound: 0.7947 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 1472 samples: 0.7653 with eval loss: 0.6193
+Best model with eval loss 0.6193472246328989 and eval accuracy 0.7653333333333333 with 1472 samples seen is saved
+Epoch 1/1, Loss after 1728 samples: 0.6027
+Epoch 1/1, Loss after 1984 samples: 0.6273
+Mean accuracy: 0.7542, std: 0.0165, lower bound: 0.7226, upper bound: 0.7854 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 1984 samples: 0.7533 with eval loss: 0.5902
+Best model with eval loss 0.5901751518249512 and eval accuracy 0.7533333333333333 with 1984 samples seen is saved
+Epoch 1/1, Loss after 2240 samples: 0.5999
+Epoch 1/1, Loss after 2496 samples: 0.5571
+Mean accuracy: 0.6751, std: 0.0172, lower bound: 0.6413, upper bound: 0.7080 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 2496 samples: 0.6747 with eval loss: 0.5819
+Best model with eval loss 0.5818924258152643 and eval accuracy 0.6746666666666666 with 2496 samples seen is saved
+Epoch 1/1, Loss after 2752 samples: 0.5455
+Epoch 1/1, Loss after 3008 samples: 0.5540
+Mean accuracy: 0.7626, std: 0.0154, lower bound: 0.7333, upper bound: 0.7933 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 3008 samples: 0.7627 with eval loss: 0.5413
+Best model with eval loss 0.5412899404764175 and eval accuracy 0.7626666666666667 with 3008 samples seen is saved
+Epoch 1/1, Loss after 3264 samples: 0.5098
+Epoch 1/1, Loss after 3520 samples: 0.5633
+Mean accuracy: 0.7695, std: 0.0160, lower bound: 0.7373, upper bound: 0.8000 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 3520 samples: 0.7693 with eval loss: 0.5203
+Best model with eval loss 0.5202936778465906 and eval accuracy 0.7693333333333333 with 3520 samples seen is saved
+Epoch 1/1, Loss after 3776 samples: 0.4982
+Epoch 1/1, Loss after 4032 samples: 0.5142
+Mean accuracy: 0.7539, std: 0.0163, lower bound: 0.7213, upper bound: 0.7853 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 4032 samples: 0.7547 with eval loss: 0.5099
+Best model with eval loss 0.5099300766984621 and eval accuracy 0.7546666666666667 with 4032 samples seen is saved
+Epoch 1/1, Loss after 4288 samples: 0.4928
+Epoch 1/1, Loss after 4544 samples: 0.4994
+Mean accuracy: 0.7688, std: 0.0155, lower bound: 0.7386, upper bound: 0.7973 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 4544 samples: 0.7680 with eval loss: 0.4973
+Best model with eval loss 0.4973231628537178 and eval accuracy 0.768 with 4544 samples seen is saved
+Epoch 1/1, Loss after 4800 samples: 0.4811
+Epoch 1/1, Loss after 5056 samples: 0.5087
+Mean accuracy: 0.7537, std: 0.0159, lower bound: 0.7227, upper bound: 0.7853 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 5056 samples: 0.7533 with eval loss: 0.4955
+Best model with eval loss 0.4955023527145386 and eval accuracy 0.7533333333333333 with 5056 samples seen is saved
+Epoch 1/1, Loss after 5312 samples: 0.5263
+Epoch 1/1, Loss after 5568 samples: 0.4686
+Mean accuracy: 0.7699, std: 0.0151, lower bound: 0.7413, upper bound: 0.7987 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 5568 samples: 0.7693 with eval loss: 0.4834
+Best model with eval loss 0.4833946228027344 and eval accuracy 0.7693333333333333 with 5568 samples seen is saved
+Epoch 1/1, Loss after 5824 samples: 0.4407
+Epoch 1/1, Loss after 6080 samples: 0.4608
+Mean accuracy: 0.7319, std: 0.0164, lower bound: 0.7000, upper bound: 0.7627 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 6080 samples: 0.7320 with eval loss: 0.5087
+Epoch 1/1, Loss after 6336 samples: 0.4837
+Epoch 1/1, Loss after 6592 samples: 0.4947
+Mean accuracy: 0.7664, std: 0.0153, lower bound: 0.7360, upper bound: 0.7960 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 6592 samples: 0.7667 with eval loss: 0.4806
+Best model with eval loss 0.48056664566198987 and eval accuracy 0.7666666666666667 with 6592 samples seen is saved
+Epoch 1/1, Loss after 6848 samples: 0.4669
+Epoch 1/1, Loss after 7104 samples: 0.5162
+Mean accuracy: 0.7678, std: 0.0154, lower bound: 0.7387, upper bound: 0.7960 for 1000 bootstraps
+Epoch 1/1, Validation accuracy after 7104 samples: 0.7680 with eval loss: 0.4797
+Best model with eval loss 0.47971006979544956 and eval accuracy 0.768 with 7104 samples seen is saved
+Epoch 1/1, Loss after 7360 samples: 0.5054
+Training signal is False, stopping training
+Training finished
+Best model: {'eval_acc': 0.768, 'nb_samples': 7104, 'eval_loss': 0.47971006979544956}
+Training loss logs: [{'samples': 192, 'loss': 0.6993904113769531}, {'samples': 448, 'loss': 0.6954631805419922}, {'samples': 704, 'loss': 0.6740884780883789}, {'samples': 960, 'loss': 0.6699743270874023}, {'samples': 1216, 'loss': 0.6319441795349121}, {'samples': 1472, 'loss': 0.6208267211914062}, {'samples': 1728, 'loss': 0.6026906967163086}, {'samples': 1984, 'loss': 0.6272644996643066}, {'samples': 2240, 'loss': 0.5999226570129395}, {'samples': 2496, 'loss': 0.5570859909057617}, {'samples': 2752, 'loss': 0.545451283454895}, {'samples': 3008, 'loss': 0.5539543628692627}, {'samples': 3264, 'loss': 0.509839653968811}, {'samples': 3520, 'loss': 0.5632555484771729}, {'samples': 3776, 'loss': 0.4982084035873413}, {'samples': 4032, 'loss': 0.5141504406929016}, {'samples': 4288, 'loss': 0.49276718497276306}, {'samples': 4544, 'loss': 0.49937787652015686}, {'samples': 4800, 'loss': 0.48114484548568726}, {'samples': 5056, 'loss': 0.5087033808231354}, {'samples': 5312, 'loss': 0.526273250579834}, {'samples': 5568, 'loss': 0.4686281234025955}, {'samples': 5824, 'loss': 0.44070295989513397}, {'samples': 6080, 'loss': 0.46075067669153214}, {'samples': 6336, 'loss': 0.48374802619218826}, {'samples': 6592, 'loss': 0.49467410147190094}, {'samples': 6848, 'loss': 0.4669356346130371}, {'samples': 7104, 'loss': 0.5162145495414734}, {'samples': 7360, 'loss': 0.505445659160614}]
+Evaluation accuracy logs: [{'samples': 448, 'accuracy': 0.7096773333333333, 'std': 0.01663492636326086, 'lower_bound': 0.676, 'upper_bound': 0.7413333333333333}, {'samples': 960, 'accuracy': 0.7287453333333332, 'std': 0.01601080296411006, 'lower_bound': 0.6946666666666667, 'upper_bound': 0.7587}, {'samples': 1472, 'accuracy': 0.7650693333333334, 'std': 0.01526447122496478, 'lower_bound': 0.7346666666666667, 'upper_bound': 0.7946666666666666}, {'samples': 1984, 'accuracy': 0.7542186666666667, 'std': 0.016495499938535427, 'lower_bound': 0.7226333333333333, 'upper_bound': 0.7853666666666667}, {'samples': 2496, 'accuracy': 0.6750546666666667, 'std': 0.017172293912643768, 'lower_bound': 0.6413333333333333, 'upper_bound': 0.7080333333333333}, {'samples': 3008, 'accuracy': 0.7626093333333334, 'std': 0.01544027351513639, 'lower_bound': 0.7333, 'upper_bound': 0.7933333333333333}, {'samples': 3520, 'accuracy': 0.7694933333333334, 'std': 0.016017634726207926, 'lower_bound': 0.7373333333333333, 'upper_bound': 0.8}, {'samples': 4032, 'accuracy': 0.7538879999999999, 'std': 0.016294999587467184, 'lower_bound': 0.7213333333333334, 'upper_bound': 0.7853333333333333}, {'samples': 4544, 'accuracy': 0.7687506666666666, 'std': 0.015484933523338814, 'lower_bound': 0.7386333333333334, 'upper_bound': 0.7973333333333333}, {'samples': 5056, 'accuracy': 0.7537306666666665, 'std': 0.01594017682879752, 'lower_bound': 0.7226666666666667, 'upper_bound': 0.7853333333333333}, {'samples': 5568, 'accuracy': 0.769944, 'std': 0.015069040285005246, 'lower_bound': 0.7413333333333333, 'upper_bound': 0.7986666666666666}, {'samples': 6080, 'accuracy': 0.7319413333333333, 'std': 0.01641278980957635, 'lower_bound': 0.7, 'upper_bound': 0.7627}, {'samples': 6592, 'accuracy': 0.766372, 'std': 0.015299682436791511, 'lower_bound': 0.736, 'upper_bound': 0.796}, {'samples': 7104, 'accuracy': 0.7678066666666666, 'std': 0.015403547931852871, 'lower_bound': 0.7386666666666667, 'upper_bound': 0.796}]
+Evaluating the best model on the test set of dataset ./fake_true_datasets/fake_true_dataset_round_robin_10k...
+Test metrics:
+accuracy: 0.8115866666666667
+precision: 0.7869635988768189
+recall: 0.8334984381891046
+f1_score: 0.8074670518543169
+fp_rate: 0.2090445688940348
+tp_rate: 0.8334984381891046
+std_accuracy: 0.04402794869928268
+std_precision: 0.06620752260303334
+std_recall: 0.06229309652969688
+std_f1_score: 0.04990543987042757
+std_fp_rate: 0.06656928317194563
+std_tp_rate: 0.06229309652969688
+TP: 30.064
+TN: 30.805
+FP: 8.141
+FN: 5.99
+roc_auc: 0.9052706552706553
+fpr: [0.         0.         0.         0.02564103 0.02564103 0.05128205
+ 0.05128205 0.20512821 0.20512821 0.23076923 0.28205128 0.28205128
+ 0.33333333 0.56410256 0.61538462 0.61538462 0.69230769 0.69230769
+ 0.79487179 0.82051282 0.82051282 0.87179487 0.8974359  0.97435897
+ 1.        ]
+tpr: [0.         0.02777778 0.66666667 0.66666667 0.80555556 0.80555556
+ 0.83333333 0.83333333 0.86111111 0.86111111 0.86111111 0.88888889
+ 0.88888889 0.88888889 0.88888889 0.94444444 0.94444444 0.97222222
+ 0.97222222 0.97222222 1.         1.         1.         1.
+ 1.        ]
+thresholds: [        inf  1.6835938   0.39086914  0.390625    0.24890137  0.20117188
+  0.1940918   0.05545044  0.01036072 -0.02926636 -0.02937317 -0.03994751
+ -0.04727173 -0.08551025 -0.11499023 -0.16357422 -0.17565918 -0.203125
+ -0.38720703 -0.38745117 -0.5913086  -0.6381836  -0.74365234 -0.75341797
+ -1.1552734 ]
