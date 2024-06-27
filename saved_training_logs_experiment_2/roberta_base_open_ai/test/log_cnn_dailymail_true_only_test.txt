@@ -1,3 +1,0 @@
-Flipping labels for the dataset
-Evaluating the best model on the test set of dataset fake_true_datasets/cnn_dailymail_true_only_test...
-Only one class in the dataset, cannot compute roc_auc
