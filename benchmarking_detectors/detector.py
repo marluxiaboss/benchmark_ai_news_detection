@@ -56,4 +56,8 @@ class BertDetector(Detector):
             logits_pos_class.extend(pos_class_logits.tolist())
             
             return preds, logits_pos_class
+        
+        
+        
+        
     
