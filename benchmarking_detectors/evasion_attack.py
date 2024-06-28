@@ -17,6 +17,8 @@ from datasets import load_from_disk, concatenate_datasets, Dataset
 
 from abc import ABC, abstractmethod
 
+from utils import transform_chat_template_with_prompt
+
 class Attack(ABC):
     
     def __init__(self, gen_model, gen_config, gen_prompt_config):
@@ -113,36 +115,6 @@ class PromptParaphrasingAttack(Attack):
                 fake_articles.extend(outputs)
                     
         return fake_articles
-    
-    """
-    def generate_text(self, prefixes, batch_size=1):
-
-        gen_model = self.gen_model
-
-        # apply the chat template with the prompt
-        system_prompt = self.gen_system_prompt
-        user_prompt = self.gen_user_prompt
-        gen_tokenizer = self.gen_model_config.tokenizer
-        use_chat_template = self.gen_model_config.use_chat_template
-        template_type = self.gen_model_config.chat_template_type
-        
-        # apply the chat template with the prompt
-        prefixes_with_prompt = [transform_chat_template_with_prompt(
-            prefix, user_prompt, gen_tokenizer,
-            use_chat_template, template_type, system_prompt, forced_prefix=prefix) for prefix in prefixes]
-
-        # generate articles
-        fake_articles = []
-        fake_articles = gen_model(prefixes_with_prompt, batch_size=batch_size)
-            
-        # add the prefix back to the generated text since generation cuts the first "input_size" tokens from the input
-        # if we force the prefix in the generation, it is counted in the "input_size" tokens
-        fake_articles = [f"{prefixes[i]} {fake_articles[i]}" for i in range(len(fake_articles))]
-        
-
-        
-        return paraphrased_fake_articles
-    """
     
     def generate_adversarial_text(self, prefixes, batch_size=1):
 
