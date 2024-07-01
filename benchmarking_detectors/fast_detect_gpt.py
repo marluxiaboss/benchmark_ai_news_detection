@@ -6,6 +6,7 @@ import torch
 import tqdm
 from datasets import Dataset
 from detector import Detector
+import os
 
 class FastDetectGPT(Detector):
     def __init__(self, ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device):
