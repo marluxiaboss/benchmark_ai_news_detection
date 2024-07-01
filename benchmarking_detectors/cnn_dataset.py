@@ -70,12 +70,16 @@ class FakeTruePairsDataLoader:
     
 class CNNDataLoader(FakeTruePairsDataLoader):
     
-    def __init__(self, dataset_size, hf_dataset_path="abisee/cnn_dailymail", text_field="article", prefix_size=10, seed=42) -> None:
+    def __init__(self, dataset_size, hf_dataset_path="abisee/cnn_dailymail", text_field="article", prefix_size=10,
+                 max_sample_len=500, seed=42) -> None:
         self.dataset_size = dataset_size
         self.text_field = text_field
         self.prefix_size = prefix_size
         self.hf_dataset_path = hf_dataset_path
+        self.max_sample_len = max_sample_len
         self.seed = seed
+        
+        self.dataset_name = "cnn_dailymail"
     
     def regroup_pairs(self, dataset_true, dataset_fake) -> Dataset:
         # merge the two datasets by regrouping the pairs of human and AI samples with the same prefix
@@ -123,13 +127,17 @@ class CNNDataLoader(FakeTruePairsDataLoader):
     def process_data(self, dataset: DatasetDict) -> DatasetDict:
         
         dataset = self.clean_dataset(dataset)    
+        
+        # only take max_sample_len characters of the text field
+        dataset = dataset.map(lambda x: {self.text_field: x[self.text_field][:self.max_sample_len]})
+        
         dataset = filter_duplicates(dataset, self.text_field) 
         
         # create label 0 (human) and create empty texts with label 1 (AI)
         dataset = dataset.map(lambda x: {"label": 0, self.text_field: x[self.text_field]})
         
         # create prefix column, which contains the first self.prefix_size words of the human text
-        dataset = dataset.map(lambda x: {"prefix": x[self.text_field]})
+        dataset = dataset.map(lambda x: {"prefix": " ".join(x[self.text_field].split()[:self.prefix_size])})
         
         # copy all human samples into AI samples with label 1 and empty text
         dataset_fake = dataset.map(lambda x: {"label": 1, self.text_field: "", "prefix": x["prefix"]})
