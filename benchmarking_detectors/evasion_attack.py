@@ -83,6 +83,8 @@ class PromptParaphrasingAttack(Attack):
         self.paraphraser_model = paraphraser_model
         self.paraphraser_prompt_config = paraphraser_prompt_config
         self.model_config = paraphraser_config
+        
+        self.attack_name = "paraphrasing_attack"
     
     def paraphrase(self, texts, nb_paraphrasing=1, batch_size=1) -> list:
         
@@ -137,6 +139,8 @@ class PromptAttack(Attack):
         
         # Set adversarial prompts
         self.adversarial_prompt_config = adversarial_prompt_config
+        
+        self.attack_name = "prompt_attack"
     
     def generate_adversarial_text(self, prefixes, batch_size=1):
         
@@ -158,6 +162,8 @@ class GenParamsAttack(Attack):
         self.gen_model_config = gen_config
 
         self.adversarial_gen_params = adversarial_gen_params
+        
+        self.attack_name = "gen_parameters_attack"
     
     def generate_adversarial_text(self, prefixes, batch_size=1):
     
