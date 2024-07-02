@@ -17,21 +17,24 @@ from datasets import load_from_disk, concatenate_datasets, Dataset
 
 from abc import ABC, abstractmethod
 
+from watermark.auto_watermark import AutoWatermark
 from utils import transform_chat_template_with_prompt
 
-class Attack(ABC):
+class ArticleGenerator(ABC):
     
-    def __init__(self, gen_model, gen_config, gen_prompt_config):
+    def __init__(self, gen_model, gen_config, gen_prompt_config, watermarking_scheme=None):
         
         # Generator LLM
         self.gen_model = gen_model
         self.gen_prompt_config = gen_prompt_config
         self.gen_model_config = gen_config
+        self.watermarking_scheme = watermarking_scheme
         
         self.attack_name = ""
+        self.watermarking_scheme_name = ""
         
         
-    def generate_text(self, prefixes, batch_size=1):
+    def generate_text(self, prefixes, batch_size=1, watermarking_scheme=None):
         
         # assumption: all attacks will generate text
 
@@ -51,7 +54,7 @@ class Attack(ABC):
 
         # generate articles
         fake_articles = []
-        fake_articles = gen_model(prefixes_with_prompt, batch_size=batch_size)
+        fake_articles = gen_model(prefixes_with_prompt, batch_size=batch_size, watermarking_scheme=watermarking_scheme)
             
         # add the prefix back to the generated text since generation cuts the first "input_size" tokens from the input
         # if we force the prefix in the generation, it is counted in the "input_size" tokens
@@ -62,6 +65,9 @@ class Attack(ABC):
     
     def set_attack_name(self, attack_name):
         self.attack_name = attack_name
+        
+    def set_watermarking_scheme_name(self, watermarking_scheme_name):
+        self.watermarking_scheme_name = watermarking_scheme_name
     
     @abstractmethod 
     def generate_adversarial_text(self, prefixes, batch_size=1):
@@ -71,19 +77,17 @@ class Attack(ABC):
         """
         pass
     
-class ParaphrasingAttack(Attack):
+class ParaphrasingAttack(ArticleGenerator):
     
-    def paraphrase(self, texts, nb_paraphrasing=1, batch_size=1) -> list:
+    def paraphrase(self, texts, nb_paraphrasing=1, batch_size=1, watermarking_scheme=None) -> list:
         pass
     
-class PromptParaphrasingAttack(Attack):
+class PromptParaphrasingAttack(ArticleGenerator):
     
-    def __init__(self, gen_model, gen_config, gen_prompt_config, paraphraser_model, paraphraser_config, paraphraser_prompt_config):
+    def __init__(self, gen_model, gen_config, gen_prompt_config, paraphraser_model,
+                 paraphraser_config, paraphraser_prompt_config, watermarking_scheme=None):
         
-        # Generator LLM
-        self.gen_model = gen_model
-        self.gen_prompt_config = gen_prompt_config
-        self.gen_model_config = gen_config
+        super().__init__(gen_model, gen_config, gen_prompt_config, watermarking_scheme)
                 
         # Paraphraser LLM
         self.paraphraser_model = paraphraser_model
@@ -134,15 +138,13 @@ class PromptParaphrasingAttack(Attack):
         
         return paraphrased_fake_articles
     
-class PromptAttack(Attack):
+class PromptAttack(ArticleGenerator):
     
-    def __init__(self, gen_model, gen_config, gen_prompt_config, adversarial_prompt_config):
+    def __init__(self, gen_model, gen_config, gen_prompt_config, adversarial_prompt_config,
+                watermarking_scheme=None):
         
-        # Generator LLM
-        self.gen_model = gen_model
-        self.gen_prompt_config = gen_prompt_config
-        self.gen_model_config = gen_config
-        
+        super().__init__(gen_model, gen_config, gen_prompt_config, watermarking_scheme)
+
         # Set adversarial prompts
         self.adversarial_prompt_config = adversarial_prompt_config
         
@@ -158,14 +160,12 @@ class PromptAttack(Attack):
         
         return fake_articles
     
-class GenParamsAttack(Attack):
+class GenParamsAttack(ArticleGenerator):
     
-    def __init__(self, gen_model, gen_config, gen_prompt_config, adversarial_gen_params):
+    def __init__(self, gen_model, gen_config, gen_prompt_config, adversarial_gen_params,
+                  watermarking_scheme=None):
         
-        # Generator LLM
-        self.gen_model = gen_model
-        self.gen_prompt_config = gen_prompt_config
-        self.gen_model_config = gen_config
+        super().__init__(gen_model, gen_config, gen_prompt_config, watermarking_scheme)
 
         self.adversarial_gen_params = adversarial_gen_params
         

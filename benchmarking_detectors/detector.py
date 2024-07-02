@@ -5,6 +5,9 @@ from datasets import Dataset
 
 from tqdm import tqdm
 
+from watermark.auto_watermark import AutoWatermark
+
+
 class Detector(ABC):
     @abstractmethod
     def detect(self, text: str) -> bool:
@@ -62,6 +65,34 @@ class BertDetector(Detector):
             logits_pos_class.extend(prob_pos_class_logits.tolist())
             
         return preds, logits_pos_class, preds_at_threshold
+    
+    
+
+class WatermarkDetector(Detector):
+    
+    def __init__(self, watermarking_scheme: AutoWatermark, detection_threshold: float):
+        self.watermarking_scheme = watermarking_scheme
+        self.detection_threshold = detection_threshold
+        
+    def detect(self, texts: list, batch_size: int) -> list:
+        
+        preds = []
+        preds_at_threshold = []
+        logits_pos_class = []
+
+        for text in texts:
+            res_dict = self.watermarking_scheme.detect_watermark(text)
+            z_score = res_dict["z_score"]
+            pred = int(res_dict["is_watermarked"])
+            pred_at_threshold = int(z_score > self.detection_threshold)
+            
+            preds.append(pred)
+            preds_at_threshold.append(pred_at_threshold)
+            logits_pos_class.append(z_score)
+        
+        return preds, logits_pos_class, preds_at_threshold
+        
+        
         
         
         

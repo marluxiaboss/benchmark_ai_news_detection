@@ -73,6 +73,7 @@ class CNNDataLoader(FakeTruePairsDataLoader):
     def __init__(self, dataset_size, hf_dataset_path="abisee/cnn_dailymail", text_field="article", prefix_size=10,
                  max_sample_len=500, seed=42) -> None:
         self.dataset_size = dataset_size
+        #self.test_size = self.dataset_size * 0.1
         self.text_field = text_field
         self.prefix_size = prefix_size
         self.hf_dataset_path = hf_dataset_path

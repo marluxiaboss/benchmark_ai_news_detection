@@ -137,14 +137,13 @@ class ExperimentPipeline(ABC):
         pass
     
 class ExperimentTestPipeline(ExperimentPipeline):
-    def __init__(self, dataset_loader, attack, detector, device, experiment_path, watermarking_scheme=None, batch_size=1, skip_cache=False):
+    def __init__(self, dataset_loader, attack, detector, device, experiment_path, batch_size=1, skip_cache=False):
         self.dataset_loader = dataset_loader
         self.attack = attack
-        self.detector = detector
         self.device = device
         self.experiment_path = experiment_path
         self.batch_size = batch_size
-        self.watermarking_scheme = watermarking_scheme
+        #self.watermarking_scheme = watermarking_scheme
         
         # if set to true, overwrite the cached datasets
         self.skip_cache = skip_cache
@@ -153,6 +152,9 @@ class ExperimentTestPipeline(ExperimentPipeline):
         log_path = f"{experiment_path}/log"
         self.log = create_logger(__name__, silent=False, to_disk=True,
                                  log_file=log_path)
+        
+        # set the detector
+        self.detector = detector
         
     def create_logger(self):
         if log_path is None:
@@ -202,12 +204,16 @@ class ExperimentTestPipeline(ExperimentPipeline):
         # check if the dataset has already been generated for the attack and base dataset
         base_dataset_name = self.dataset_loader.dataset_name
         attack_name  = self.attack.attack_name
-        use_watermarking = self.watermarking_scheme is not None
-        dataset_name = f"{base_dataset_name}_{attack_name}"
+        #use_watermarking = self.watermarking_scheme is not None
+        watermarking_scheme = self.attack.watermarking_scheme
         
-        if use_watermarking:
-            dataset_name += "_watermarked"
-    
+        dataset_size = self.dataset_loader.dataset_size
+        dataset_name = f"{base_dataset_name}_{attack_name}_{dataset_size}"
+        
+        if watermarking_scheme is not None:
+            log.info(f"Using watermarking scheme {self.attack.watermarking_scheme_name}")
+            dataset_name += f"_{self.attack.watermarking_scheme_name}"
+
         if not self.skip_cache and os.path.isdir(f"data/generated_datasets/{dataset_name}"):
             log.info(f"Dataset {dataset_name} already exists, loading it")
             dataset = load_from_disk(f"data/generated_datasets/{dataset_name}")

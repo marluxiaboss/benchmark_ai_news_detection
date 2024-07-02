@@ -3,7 +3,8 @@ from tqdm import tqdm
 
 import torch
 from torch import nn
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForMaskedLM, AutoModelForCausalLM
+from transformers import (AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForMaskedLM, AutoModelForCausalLM,
+        LogitsProcessor, LogitsProcessorList)
 
 class LLMGenerator(nn.Module):
     def __init__(self, model, model_config):
@@ -15,7 +16,7 @@ class LLMGenerator(nn.Module):
         self.device = model_config.device
         self.gen_params = model_config.gen_params
 
-    def forward(self, samples: list, batch_size: int = 1):
+    def forward(self, samples: list, batch_size: int = 1, watermarking_scheme=None):
         
         # TODO: optimize it with dataset/dataloader
         outputs_list = []
@@ -27,8 +28,13 @@ class LLMGenerator(nn.Module):
             input_ids = encoding['input_ids'].to(self.device)
 
             with torch.no_grad():
-                output_ids = self.generator.generate(
-                    input_ids, pad_token_id=self.tokenizer.pad_token_id, **self.gen_params)
+                if watermarking_scheme is not None:
+                    self.generator.generate(
+                        input_ids, pad_token_id=self.tokenizer.pad_token_id, 
+                        logits_processor=LogitsProcessorList([watermarking_scheme]) **self.gen_params)
+                else:     
+                    output_ids = self.generator.generate(
+                        input_ids, pad_token_id=self.tokenizer.pad_token_id, **self.gen_params)
 
             # decode the generated text
             decoded_outputs = self.tokenizer.batch_decode(

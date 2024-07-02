@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 import json
-
+import os
 
 import pandas as pd
 import nltk.data
@@ -108,3 +108,20 @@ def load_config_file(path: str) -> dict:
         print(f"An unexpected error occurred: {e}")
         # Handle other unexpected errors here
         return None
+    
+def load_json_as_list(input_file: str) -> list:
+    """Load a JSON file as a list of dictionaries."""
+    res = []
+    with open(input_file, 'r') as f:
+        lines = f.readlines()
+    for line in lines:
+        d = json.loads(line)
+        res.append(d)
+    return res
+
+
+def create_directory_for_file(file_path) -> None:
+    """Create the directory for the specified file path if it does not already exist."""
+    directory = os.path.dirname(file_path)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
