@@ -10,11 +10,12 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForMaske
 
 @dataclass
 class ModelConfig:
-    def __init__(self, tokenizer, use_chat_template, chat_template_type, gen_params, device):
+    def __init__(self, tokenizer, use_chat_template, chat_template_type, gen_params, model_name, device):
         self.tokenizer = tokenizer
         self.use_chat_template = use_chat_template
         self.chat_template_type = chat_template_type
         self.gen_params = gen_params
+        self.model_name = model_name
         self.device = device
 
 @dataclass

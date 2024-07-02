@@ -82,7 +82,7 @@ class WatermarkDetector(Detector):
 
         for text in texts:
             res_dict = self.watermarking_scheme.detect_watermark(text)
-            z_score = res_dict["z_score"]
+            z_score = res_dict["score"]
             pred = int(res_dict["is_watermarked"])
             pred_at_threshold = int(z_score > self.detection_threshold)
             

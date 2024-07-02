@@ -29,9 +29,9 @@ class LLMGenerator(nn.Module):
 
             with torch.no_grad():
                 if watermarking_scheme is not None:
-                    self.generator.generate(
+                    output_ids = self.generator.generate(
                         input_ids, pad_token_id=self.tokenizer.pad_token_id, 
-                        logits_processor=LogitsProcessorList([watermarking_scheme]) **self.gen_params)
+                        logits_processor=LogitsProcessorList([watermarking_scheme]), **self.gen_params)
                 else:     
                     output_ids = self.generator.generate(
                         input_ids, pad_token_id=self.tokenizer.pad_token_id, **self.gen_params)

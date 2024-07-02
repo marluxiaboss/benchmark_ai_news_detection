@@ -32,9 +32,10 @@ class ArticleGenerator(ABC):
         
         self.attack_name = ""
         self.watermarking_scheme_name = ""
+        self.gen_name = gen_config.model_name
         
         
-    def generate_text(self, prefixes, batch_size=1, watermarking_scheme=None):
+    def generate_text(self, prefixes, batch_size=1):
         
         # assumption: all attacks will generate text
 
@@ -54,7 +55,7 @@ class ArticleGenerator(ABC):
 
         # generate articles
         fake_articles = []
-        fake_articles = gen_model(prefixes_with_prompt, batch_size=batch_size, watermarking_scheme=watermarking_scheme)
+        fake_articles = gen_model(prefixes_with_prompt, batch_size=batch_size, watermarking_scheme=self.watermarking_scheme)
             
         # add the prefix back to the generated text since generation cuts the first "input_size" tokens from the input
         # if we force the prefix in the generation, it is counted in the "input_size" tokens
@@ -79,7 +80,7 @@ class ArticleGenerator(ABC):
     
 class ParaphrasingAttack(ArticleGenerator):
     
-    def paraphrase(self, texts, nb_paraphrasing=1, batch_size=1, watermarking_scheme=None) -> list:
+    def paraphrase(self, texts, nb_paraphrasing=1, batch_size=1) -> list:
         pass
     
 class PromptParaphrasingAttack(ArticleGenerator):
