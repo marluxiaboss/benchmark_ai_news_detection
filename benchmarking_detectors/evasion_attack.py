@@ -22,12 +22,13 @@ from utils import transform_chat_template_with_prompt
 
 class ArticleGenerator(ABC):
     
-    def __init__(self, gen_model, gen_config, gen_prompt_config, watermarking_scheme=None):
+    def __init__(self, gen_model, gen_config, gen_prompt_config, max_sample_len, watermarking_scheme=None):
         
         # Generator LLM
         self.gen_model = gen_model
         self.gen_prompt_config = gen_prompt_config
         self.gen_model_config = gen_config
+        self.max_sample_len = max_sample_len
         self.watermarking_scheme = watermarking_scheme
         
         self.attack_name = ""
@@ -59,7 +60,10 @@ class ArticleGenerator(ABC):
             
         # add the prefix back to the generated text since generation cuts the first "input_size" tokens from the input
         # if we force the prefix in the generation, it is counted in the "input_size" tokens
-        fake_articles = [f"{prefixes[i]} {fake_articles[i]}" for i in range(len(fake_articles))]
+        fake_articles = [f"{prefixes[i]}{fake_articles[i]}" for i in range(len(fake_articles))]
+        
+        # cut to max_sample_len
+        fake_articles = [text[:self.max_sample_len] for text in fake_articles]
         
         return fake_articles
     
@@ -86,9 +90,9 @@ class ParaphrasingAttack(ArticleGenerator):
 class PromptParaphrasingAttack(ArticleGenerator):
     
     def __init__(self, gen_model, gen_config, gen_prompt_config, paraphraser_model,
-                 paraphraser_config, paraphraser_prompt_config, watermarking_scheme=None):
+                 paraphraser_config, paraphraser_prompt_config, max_sample_len, watermarking_scheme=None):
         
-        super().__init__(gen_model, gen_config, gen_prompt_config, watermarking_scheme)
+        super().__init__(gen_model, gen_config, gen_prompt_config, max_sample_len, watermarking_scheme)
                 
         # Paraphraser LLM
         self.paraphraser_model = paraphraser_model
@@ -137,14 +141,17 @@ class PromptParaphrasingAttack(ArticleGenerator):
         # paraphrase the texts
         paraphrased_fake_articles = self.paraphrase(fake_articles, batch_size=batch_size, nb_paraphrasing=1)
         
+        # cut to max_sample_len
+        paraphrased_fake_articles = [text[:self.max_sample_len] for text in paraphrased_fake_articles]
+        
         return paraphrased_fake_articles
     
 class PromptAttack(ArticleGenerator):
     
     def __init__(self, gen_model, gen_config, gen_prompt_config, adversarial_prompt_config,
-                watermarking_scheme=None):
+                max_sample_len, watermarking_scheme=None):
         
-        super().__init__(gen_model, gen_config, gen_prompt_config, watermarking_scheme)
+        super().__init__(gen_model, gen_config, gen_prompt_config, max_sample_len, watermarking_scheme)
 
         # Set adversarial prompts
         self.adversarial_prompt_config = adversarial_prompt_config
@@ -159,14 +166,17 @@ class PromptAttack(ArticleGenerator):
         # generate text
         fake_articles = self.generate_text(prefixes, batch_size=batch_size)
         
+        # cut to max_sample_len
+        fake_articles = [text[:self.max_sample_len] for text in fake_articles]
+        
         return fake_articles
     
 class GenParamsAttack(ArticleGenerator):
     
     def __init__(self, gen_model, gen_config, gen_prompt_config, adversarial_gen_params,
-                  watermarking_scheme=None):
+                  max_sample_len, watermarking_scheme=None):
         
-        super().__init__(gen_model, gen_config, gen_prompt_config, watermarking_scheme)
+        super().__init__(gen_model, gen_config, gen_prompt_config, max_sample_len, watermarking_scheme)
 
         self.adversarial_gen_params = adversarial_gen_params
         
@@ -180,6 +190,9 @@ class GenParamsAttack(ArticleGenerator):
 
         # generate text
         fake_articles = self.generate_text(prefixes, batch_size=batch_size)
+        
+        # cut to max_sample_len
+        fake_articles = [text[:self.max_sample_len] for text in fake_articles]
         
         return fake_articles
 

@@ -7,6 +7,7 @@ import sys
 import os
 from datasets import load_from_disk
 from abc import ABC, abstractmethod
+import pandas as pd
 
 
 
@@ -359,6 +360,14 @@ class CreateDatasetPipeline(ExperimentPipeline):
         # Save the dataset using a specific naming convention
         dataset.save_to_disk(f"data/generated_datasets/{dataset_name}")
         
+        # save also to json for each split
+        for split in data_splits:
+            split_data = dataset[split]
+            
+            # transfor to pandas dataframe
+            df = pd.DataFrame(split_data)
+            df.to_json(f"data/generated_datasets/{dataset_name}_{split}.json", force_ascii=False, indent=4)
+        
         return dataset
         
     def run_pipeline(self):
@@ -389,7 +398,7 @@ class CreateDatasetPipeline(ExperimentPipeline):
         return
                 
                 
-class ExperimentTestPipelineFull(ExperimentPipeline):
+class ExperimentTestPipeline(ExperimentPipeline):
     def __init__(self, dataset_loader, attack, detector, device, experiment_path, batch_size=1, skip_cache=False):
         self.dataset_loader = dataset_loader
         self.attack = attack
