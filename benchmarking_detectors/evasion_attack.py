@@ -28,6 +28,8 @@ class Attack(ABC):
         self.gen_prompt_config = gen_prompt_config
         self.gen_model_config = gen_config
         
+        self.attack_name = ""
+        
         
     def generate_text(self, prefixes, batch_size=1):
         
@@ -56,6 +58,10 @@ class Attack(ABC):
         fake_articles = [f"{prefixes[i]} {fake_articles[i]}" for i in range(len(fake_articles))]
         
         return fake_articles
+    
+    
+    def set_attack_name(self, attack_name):
+        self.attack_name = attack_name
     
     @abstractmethod 
     def generate_adversarial_text(self, prefixes, batch_size=1):

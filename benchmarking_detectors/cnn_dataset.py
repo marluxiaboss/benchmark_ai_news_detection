@@ -142,6 +142,10 @@ class CNNDataLoader(FakeTruePairsDataLoader):
         # copy all human samples into AI samples with label 1 and empty text
         dataset_fake = dataset.map(lambda x: {"label": 1, self.text_field: "", "prefix": x["prefix"]})
         dataset = self.regroup_pairs(dataset, dataset_fake)
+        
+        # rename text field to more generic column name text, if text_field is not "text" yet
+        if self.text_field != "text":
+            dataset = dataset.rename_column(self.text_field, "text")
     
         dataset = create_train_from_dataset(dataset)
         return dataset

@@ -19,7 +19,7 @@ class LLMGenerator(nn.Module):
         
         # TODO: optimize it with dataset/dataloader
         outputs_list = []
-        for i in range(0, len(samples), batch_size):
+        for i in tqdm(range(0, len(samples), batch_size), desc="Generating text"):
             
             batch_samples = samples[i:i+batch_size]
             encoding = self.tokenizer.batch_encode_plus(
