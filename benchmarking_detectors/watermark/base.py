@@ -5,7 +5,7 @@
 # ===============================================================
 
 from typing import Union
-from utils import ModelConfig
+from utils.configs import ModelConfig
 
 
 class BaseWatermark:

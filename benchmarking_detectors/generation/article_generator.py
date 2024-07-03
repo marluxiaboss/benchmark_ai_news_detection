@@ -10,15 +10,13 @@ from tqdm import tqdm
 
 import torch
 from torch import nn
-import nltk.data
-nltk.download('punkt')
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForMaskedLM, AutoModelForCausalLM
 from datasets import load_from_disk, concatenate_datasets, Dataset
 
 from abc import ABC, abstractmethod
 
 from watermark.auto_watermark import AutoWatermark
-from utils import transform_chat_template_with_prompt
+from utils.gen_utils import transform_chat_template_with_prompt
 
 class ArticleGenerator(ABC):
     
