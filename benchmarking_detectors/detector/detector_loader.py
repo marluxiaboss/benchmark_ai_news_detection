@@ -22,38 +22,40 @@ class DetectorLoader:
         detector_name = self.detector_name
         device = self.device
         
-        if detector_name == "electra_large":
+        match detector_name:
             
-            assert (self.local_weights and self.weights_checkpoint is not None), "This detector requires a weights checkpoint"
+            case "electra_large":
+                assert (self.local_weights and self.weights_checkpoint is not None), "This detector requires a weights checkpoint"
+                
+                detector_path = "google/electra-large-discriminator"
+                config = AutoConfig.from_pretrained(detector_path)
+                detector_model = ElectraForSequenceClassification(config)
+                detector_tokenizer = ElectraTokenizer.from_pretrained(detector_path)
+                
+                model_path = self.weights_checkpoint
+                detector_model.load_state_dict(torch.load(model_path))
+                detector_model.to(device)
+                
+                detector = BertDetector(detector_model, detector_tokenizer, device, detection_threshold=self.detection_threshold)
+
+            case "fast_detect_gpt":
+                
+                # TODO: add more config options for fast_detect_gpt
+                
+                ref_model_path = "openai-community/gpt2"
+                ref_model = AutoModelForCausalLM.from_pretrained(ref_model_path, torch_dtype="auto").to(device)
+                ref_tokenizer = AutoTokenizer.from_pretrained(ref_model_path, trust_remote_code=True, padding_side="left")
+
+                # special for gpt2
+                ref_tokenizer.pad_token = ref_tokenizer.eos_token
+                ref_tokenizer.padding_side = 'left'
+
+                scoring_model = ref_model
+                scoring_tokenizer = ref_tokenizer
+
+                detector = FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device)
             
-            detector_path = "google/electra-large-discriminator"
-            config = AutoConfig.from_pretrained(detector_path)
-            detector_model = ElectraForSequenceClassification(config)
-            detector_tokenizer = ElectraTokenizer.from_pretrained(detector_path)
-            
-            model_path = self.weights_checkpoint
-            detector_model.load_state_dict(torch.load(model_path))
-            detector_model.to(device)
-            
-            detector = BertDetector(detector_model, detector_tokenizer, device, detection_threshold=self.detection_threshold)
-
-
-        if detector_name == "fast_detect_gpt":
-            
-            # TODO: add more config options for fast_detect_gpt
-            
-            ref_model_path = "openai-community/gpt2"
-            ref_model = AutoModelForCausalLM.from_pretrained(ref_model_path, torch_dtype="auto").to(device)
-            ref_tokenizer = AutoTokenizer.from_pretrained(ref_model_path, trust_remote_code=True, padding_side="left")
-
-            # special for gpt2
-            ref_tokenizer.pad_token = ref_tokenizer.eos_token
-            ref_tokenizer.padding_side = 'left'
-
-            scoring_model = ref_model
-            scoring_tokenizer = ref_tokenizer
-
-            detector = FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device)
-
+            case _:
+                raise ValueError(f"Detector {detector_name} not supported yet")
         
         return detector
