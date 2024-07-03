@@ -3,7 +3,7 @@ from torch.utils.data import DataLoader
 import glob
 import json
 import torch
-import tqdm
+from tqdm import tqdm
 from datasets import Dataset
 import os
 
@@ -99,20 +99,9 @@ class FastDetectGPT(Detector):
         reference_model_name = "gpt-neo-2.7B"
         scoring_model_name = "gpt-neo-2.7B"
         
-        ref_path = "local_infer_ref"
-        
-        # create experiment folder
+        ref_path = "detector/local_infer_ref"
+        device = self.device
 
-        # load model
-        """
-        scoring_tokenizer = load_tokenizer(scoring_model_name, dataset, cache_dir)
-        scoring_model = load_model(scoring_model_name,device,cache_dir)
-        scoring_model.eval()
-        if reference_model_name != scoring_model_name:
-            reference_tokenizer = load_tokenizer(reference_model_name, dataset, cache_dir)
-            reference_model = load_model(reference_model_name, device, cache_dir)
-            reference_model.eval()
-        """
         ref_model = self.ref_model
         ref_tokenizer = self.ref_tokenizer
         
