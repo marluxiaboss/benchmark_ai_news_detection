@@ -1,1 +1,0 @@
-from .fast_detect_gpt import FastDetectGPT

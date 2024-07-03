@@ -1,1 +1,0 @@
-from .bert_detector import BertDetector
