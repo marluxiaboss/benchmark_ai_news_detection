@@ -16,7 +16,7 @@ class LLMGenerator(nn.Module):
         self.device = model_config.device
         self.gen_params = model_config.gen_params
 
-    def forward(self, samples: list, batch_size: int = 1, watermarking_scheme=None):
+    def forward(self, samples: list, batch_size: int=1, watermarking_scheme=None):
         
         # TODO: optimize it with dataset/dataloader
         outputs_list = []

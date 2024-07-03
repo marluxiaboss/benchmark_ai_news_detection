@@ -27,7 +27,7 @@ def choose_generator(model_name: str, gen_params, device: str):
     return gen, gen_model, gen_config
 
 def choose_attack(attack_name: str, gen_model, model_config, max_sample_len,
-                  watermarking_scheme=None, paraphraser_model=None,
+                  watermarking_scheme_logits_processor=None, paraphraser_model=None,
                   paraphraser_config=None, paraphraser_prompt_config=None):
     
     match attack_name:
@@ -38,7 +38,7 @@ def choose_attack(attack_name: str, gen_model, model_config, max_sample_len,
             prompt_config = PromptConfig(system_prompt=system_prompt, user_prompt=user_prompt)
             
             attack = PromptAttack(gen_model, model_config,
-                prompt_config, prompt_config, max_sample_len, watermarking_scheme.logits_processor)
+                prompt_config, prompt_config, max_sample_len, watermarking_scheme_logits_processor)
             
         case "prompt_attack":
             
@@ -48,7 +48,7 @@ def choose_attack(attack_name: str, gen_model, model_config, max_sample_len,
             prompt_config = PromptConfig(system_prompt=adversarial_system_prompt, user_prompt=adversarial_user_prompt)
             
             attack = PromptAttack(gen_model, model_config,
-                prompt_config, prompt_config, max_sample_len, watermarking_scheme.logits_processor)
+                prompt_config, prompt_config, max_sample_len, watermarking_scheme_logits_processor)
             
         case "gen_params_attack":
             
@@ -60,7 +60,7 @@ def choose_attack(attack_name: str, gen_model, model_config, max_sample_len,
             adversarial_gen_params["temperature"] = 1.2
             
             attack = GenParamsAttack(gen_model, model_config, prompt_config, 
-                adversarial_gen_params, max_sample_len, watermarking_scheme.logits_processor)
+                adversarial_gen_params, max_sample_len, watermarking_scheme_logits_processor)
             
             
         case "prompt_paraphrasing_attack":
@@ -83,7 +83,7 @@ def choose_attack(attack_name: str, gen_model, model_config, max_sample_len,
             
             attack = PromptParaphrasingAttack(gen_model, model_config, gen_prompt_config, 
                 paraphraser_model, paraphraser_config, paraphraser_prompt_config, max_sample_len,
-                watermarking_scheme.logits_processor)
+                watermarking_scheme_logits_processor)
             
         case _:
             raise ValueError(f"Attack {attack_name} not supported yet")
@@ -96,12 +96,12 @@ def choose_watermarking_scheme(watermarking_scheme_name: str, gen, model_config)
     match watermarking_scheme_name:
         case "kgw":
             watermarking_scheme = AutoWatermark.load('KGW', 
-                                 algorithm_config='watermark/watermark_config/SIR.json',
+                                 algorithm_config='watermark/watermarking_config/KGW.json',
                                  gen_model=gen,
                                  model_config=model_config)
         case "sir":
             watermarking_scheme = AutoWatermark.load('SIR',
-                                    algorithm_config='watermark/watermark_config/SIR.json',
+                                    algorithm_config='watermark/watermarking_config/SIR.json',
                                     gen_model=gen,
                                     model_config=model_config)
         case _:
@@ -112,7 +112,16 @@ def choose_watermarking_scheme(watermarking_scheme_name: str, gen, model_config)
 
 def create_dataset(dataset_size: int, max_sample_len: int, prefix_size: int,
                         dataset_name: str, generator_name: str, attack_name: str,
-                        watermarking_scheme_name: str):
+                        watermarking_scheme_name: str, batch_size: int, device: str):
+    
+    print(f"Creating dataset with the following parameters:")
+    print(f"Dataset size: {dataset_size}")
+    print(f"Max sample length: {max_sample_len}")
+    print(f"Prefix size: {prefix_size}")
+    print(f"Dataset name: {dataset_name}")
+    print(f"Generator name: {generator_name}")
+    print(f"Attack name: {attack_name}")
+    print(f"Watermarking scheme name: {watermarking_scheme_name}")
     
     ### Data loader ###
     cnn_data_loader = choose_dataset(dataset_name, dataset_size, max_sample_len, prefix_size)
@@ -127,21 +136,28 @@ def create_dataset(dataset_size: int, max_sample_len: int, prefix_size: int,
         "do_sample": True,
         "top_k": 50
     }
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = device
     gen, gen_model, gen_config = choose_generator(generator_name, default_gen_params, device)
 
     ### Watermarking ###
-    watermarking_scheme = choose_watermarking_scheme(watermarking_scheme_name, gen, gen_config)
+    if watermarking_scheme_name == "":
+        watermarking_scheme = None
+        watermarking_scheme_logits_processor = None
+    else:
+        watermarking_scheme = choose_watermarking_scheme(watermarking_scheme_name, gen, gen_config)
+        watermarking_scheme_logits_processor = watermarking_scheme.logits_processor
     
     ### Prompt & Attack ###
-    attack = choose_attack(attack_name, gen_model, gen_config, max_sample_len, watermarking_scheme)
-    attack.set_attack_name("no_attack")
-    attack.set_watermarking_scheme_name("sir")
+    
+    attack = choose_attack(attack_name, gen_model, gen_config, max_sample_len, watermarking_scheme_logits_processor)
+    attack.set_attack_name(attack_name)
+    attack.set_watermarking_scheme_name(watermarking_scheme_name)
     
     ### Pipeline ###
     skip_cache = False
     experiment_path = "benchmark_saved_results"
-    simple_test_watermark_pipeline = CreateDatasetPipeline(cnn_data_loader, attack, device, experiment_path, skip_cache=skip_cache)
+    simple_test_watermark_pipeline = CreateDatasetPipeline(cnn_data_loader, attack,
+        device, experiment_path, batch_size=batch_size, skip_cache=skip_cache)
     simple_test_watermark_pipeline.run_pipeline()
     
 
@@ -157,7 +173,9 @@ if __name__ == "__main__":
     parser.add_argument("--dataset_name", type=str, help="Name of the dataset to create", default="cnn_dailymail")
     parser.add_argument("--generator_name", type=str, help="Name of the generator to use", default="qwen2_chat_0_5B")
     parser.add_argument("--attack_name", type=str, help="Name of the attack to use", default="no_attack")
-    parser.add_argument("--watermarking_scheme_name", type=str, help="Name of the watermarking scheme to use", default="sir")
+    parser.add_argument("--watermarking_scheme_name", type=str, help="Name of the watermarking scheme to use. Use "" for no watermarking.", default="")
+    parser.add_argument("--batch_size", type=int, help="Batch size to use for the generation for all models", default=1)
+    parser.add_argument("--device", type=str, help="Device to use for the generation", default="cuda")
     
     args = parser.parse_args()
     dataset_size = args.dataset_size
@@ -167,6 +185,8 @@ if __name__ == "__main__":
     generator_name = args.generator_name
     attack_name = args.attack_name
     watermarking_scheme_name = args.watermarking_scheme_name
+    batch_size = args.batch_size
+    device = args.device
     
     #datasets = ["cnn_dailymail"]
     #generators = ["qwen2_chat_0_5B", "zephyr", "llama3_instruct"]
@@ -174,4 +194,4 @@ if __name__ == "__main__":
     #watermarking_schemes = ["kgw", "sir"]
     
     create_dataset(dataset_size, max_sample_len, prefix_size, dataset_name, generator_name,
-        attack_name, watermarking_scheme_name)
+        attack_name, watermarking_scheme_name, batch_size, device)
