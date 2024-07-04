@@ -3,6 +3,10 @@ from transformers import (AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForMask
 import torch
 import argparse
 
+# hydra imports
+import hydra
+from omegaconf import DictConfig, OmegaConf
+
 from generation import GenParamsAttack, PromptAttack, PromptParaphrasingAttack, LLMGenerator, GenLoader
 from utils.configs import ModelConfig, PromptConfig
 from detector import BertDetector, WatermarkDetector, FastDetectGPT, DetectorLoader
@@ -110,6 +114,10 @@ def choose_watermarking_scheme(watermarking_scheme_name: str, gen, model_config)
     return watermarking_scheme
             
 
+@hydra.main(version_base=None, config_path="conf", config_name="main")
+def my_app(cfg : DictConfig) -> None:
+    print(OmegaConf.to_yaml(cfg))
+
 def create_dataset(dataset_size: int, max_sample_len: int, prefix_size: int,
                         dataset_name: str, generator_name: str, attack_name: str,
                         watermarking_scheme_name: str, batch_size: int, device: str):
@@ -163,17 +171,16 @@ def create_dataset(dataset_size: int, max_sample_len: int, prefix_size: int,
 
 if __name__ == "__main__":
     
+    """
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("--dataset_size", type=int,
-        help="Size of the dataset to create. Note that the total size will be 2 * dataset_size for fake and true samples and that the test/eval split will be 0.1 of the total size.",
-        default=100)
+    parser.add_argument("--dataset_size", type=int, help="Size of the dataset to create. Note that the total size will be 2 * dataset_size for fake and true samples and that the test/eval split will be 0.1 of the total size.", default=100)
     parser.add_argument("--max_sample_len", type=int, help="Maximum length of the samples in the dataset (in chars)", default=500)
     parser.add_argument("--prefix_size", type=int, help="Size of the prefix to use for the generation (in words)", default=10)
     parser.add_argument("--dataset_name", type=str, help="Name of the dataset to create", default="cnn_dailymail")
     parser.add_argument("--generator_name", type=str, help="Name of the generator to use", default="qwen2_chat_0_5B")
     parser.add_argument("--attack_name", type=str, help="Name of the attack to use", default="no_attack")
-    parser.add_argument("--watermarking_scheme_name", type=str, help="""Name of the watermarking scheme to use. Use "no_watermarking" for no watermarking.""", default="no_watermarking")
+    parser.add_argument("--watermarking_scheme_name", type=str, help="Name of the watermarking scheme to use. Use "no_watermarking" for no watermarking.", default="no_watermarking")
     parser.add_argument("--batch_size", type=int, help="Batch size to use for the generation for all models", default=1)
     parser.add_argument("--device", type=str, help="Device to use for the generation", default="cuda")
     
@@ -187,11 +194,17 @@ if __name__ == "__main__":
     watermarking_scheme_name = args.watermarking_scheme_name
     batch_size = args.batch_size
     device = args.device
+    """
     
     #datasets = ["cnn_dailymail"]
     #generators = ["qwen2_chat_0_5B", "zephyr", "llama3_instruct"]
     #attacks = ["no_attack", "prompt_attack", "prompt_paraphrasing_attack", "gen_param_attack"]
     #watermarking_schemes = ["kgw", "sir"]
     
+    
+    my_app()
+    
+    
+    ergerger
     create_dataset(dataset_size, max_sample_len, prefix_size, dataset_name, generator_name,
         attack_name, watermarking_scheme_name, batch_size, device)

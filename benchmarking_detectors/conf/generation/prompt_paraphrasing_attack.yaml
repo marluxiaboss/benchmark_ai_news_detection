@@ -1,0 +1,9 @@
+defaults:
+  - attack_base
+
+attack_name: prompt_paraphrasing_attack
+system_paraphrasing_prompt: You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’.
+  ‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’.
+  ‘OUTPUT’ should preserve the meaning and content of ’INPUT’ while maintaining text quality and grammar.
+  ‘OUTPUT’ should not be much longer than ‘INPUT’. You should print ‘OUTPUT’ and nothing else so that its easy for me to parse.
+user_paraphrasing_prompt: "INPUT:"

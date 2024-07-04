@@ -1,0 +1,3 @@
+defaults:
+  - generation: generation_base
+  - watermark: watermark_base
