@@ -140,7 +140,7 @@ def create_dataset(dataset_size: int, max_sample_len: int, prefix_size: int,
     gen, gen_model, gen_config = choose_generator(generator_name, default_gen_params, device)
 
     ### Watermarking ###
-    if watermarking_scheme_name == "":
+    if watermarking_scheme_name == "no_watermarking":
         watermarking_scheme = None
         watermarking_scheme_logits_processor = None
     else:
@@ -173,7 +173,7 @@ if __name__ == "__main__":
     parser.add_argument("--dataset_name", type=str, help="Name of the dataset to create", default="cnn_dailymail")
     parser.add_argument("--generator_name", type=str, help="Name of the generator to use", default="qwen2_chat_0_5B")
     parser.add_argument("--attack_name", type=str, help="Name of the attack to use", default="no_attack")
-    parser.add_argument("--watermarking_scheme_name", type=str, help="Name of the watermarking scheme to use. Use "" for no watermarking.", default="")
+    parser.add_argument("--watermarking_scheme_name", type=str, help="""Name of the watermarking scheme to use. Use "no_watermarking" for no watermarking.""", default="no_watermarking")
     parser.add_argument("--batch_size", type=int, help="Batch size to use for the generation for all models", default=1)
     parser.add_argument("--device", type=str, help="Device to use for the generation", default="cuda")
     

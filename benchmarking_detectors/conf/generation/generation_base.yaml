@@ -1,0 +1,11 @@
+type: no_attack
+dataset_size: 100
+max_sample_len: 500
+prefix_size: 10
+max_new_tokens: 100
+min_new_tokens: 100
+dataset_name: cnn_dailymail
+generator_name: qwen2
+watermarking_scheme_name: kgw
+user_prompt: "You are a helpful assistant."
+system_prompt: "Continue writing the following news article starting with:"
