@@ -1,3 +1,7 @@
 defaults:
   - generation: generation_base
   - watermark: watermark_base
+
+
+device: cuda
+batch_size: 2

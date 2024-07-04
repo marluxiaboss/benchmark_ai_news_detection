@@ -1,9 +1,10 @@
 type: no_attack
+attack_name: no_attack
 dataset_size: 100
 max_sample_len: 500
 prefix_size: 10
-max_new_tokens: 100
-min_new_tokens: 100
+max_new_tokens: 220
+min_new_tokens: 200
 dataset_name: cnn_dailymail
 generator_name: qwen2
 user_prompt: "You are a helpful assistant."

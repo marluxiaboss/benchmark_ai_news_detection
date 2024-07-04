@@ -30,15 +30,18 @@ def choose_generator(model_name: str, gen_params, device: str):
     
     return gen, gen_model, gen_config
 
-def choose_attack(attack_name: str, gen_model, model_config, max_sample_len,
+def choose_attack(cfg: DictConfig, attack_name: str, gen_model, model_config, max_sample_len, 
                   watermarking_scheme_logits_processor=None, paraphraser_model=None,
-                  paraphraser_config=None, paraphraser_prompt_config=None):
+                  paraphraser_config=None, ):
     
     match attack_name:
         case "no_attack":
             
-            system_prompt = "You are a helpful assistant."
-            user_prompt = "Continue writing the following news article starting with:"
+            system_prompt = cfg.generation.system_prompt
+            user_prompt = cfg.generation.user_prompt
+            
+            print("System prompt:", system_prompt)
+            print("User prompt:", user_prompt)
             prompt_config = PromptConfig(system_prompt=system_prompt, user_prompt=user_prompt)
             
             attack = PromptAttack(gen_model, model_config,
@@ -46,22 +49,22 @@ def choose_attack(attack_name: str, gen_model, model_config, max_sample_len,
             
         case "prompt_attack":
             
-            # TODO: how to configure the attacks? Maybe have a config file for each attack?
-            adversarial_system_prompt = "You are a tweeter user tweeting news information from news articles to your followers."
-            adversarial_user_prompt = "Write a 500 characters news tweet starting with:"
+            adversarial_system_prompt = cfg.generation.user_prompt
+            adversarial_user_prompt = cfg.generation.system_prompt
             prompt_config = PromptConfig(system_prompt=adversarial_system_prompt, user_prompt=adversarial_user_prompt)
             
             attack = PromptAttack(gen_model, model_config,
                 prompt_config, prompt_config, max_sample_len, watermarking_scheme_logits_processor)
             
-        case "gen_params_attack":
+        case "gen_params_attack": 
             
             system_prompt = "You are a helpful assistant."
             user_prompt = "Continue writing the following news article starting with:"
             prompt_config = PromptConfig(system_prompt=system_prompt, user_prompt=user_prompt)
             
             adversarial_gen_params = model_config.gen_params
-            adversarial_gen_params["temperature"] = 1.2
+            adversarial_gen_params["temperature"] = cfg.generation.temperature
+            adversarial_gen_params["repetition_penalty"] = cfg.generation.repetition_penalty
             
             attack = GenParamsAttack(gen_model, model_config, prompt_config, 
                 adversarial_gen_params, max_sample_len, watermarking_scheme_logits_processor)
@@ -70,15 +73,12 @@ def choose_attack(attack_name: str, gen_model, model_config, max_sample_len,
         case "prompt_paraphrasing_attack":
             assert (paraphraser_model is not None) and (paraphraser_config is not None), "Paraphraser model and config must be provided"
             
-            system_paraphrasing_prompt = """You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’."
-                "‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’."
-                "‘OUTPUT’ should preserve the meaning and content of ’INPUT’ while maintaining text quality and grammar."
-                "‘OUTPUT’ should not be much longer than ‘INPUT’. You should print ‘OUTPUT’ and nothing else so that its easy for me to parse."""
-            user_paraphrasing_prompt = "INPUT:"
+            system_paraphrasing_prompt = cfg.generation.system_paraphrasing_prompt
+            user_paraphrasing_prompt = cfg.generation.user_paraphrasing_prompt
             paraphraser_prompt_config = PromptConfig(system_prompt=system_paraphrasing_prompt, user_prompt=user_paraphrasing_prompt)
 
-            system_prompt = "You are a helpful assistant."
-            user_prompt = "Continue writing the following news article starting with:"
+            system_prompt = cfg.generation.system_prompt
+            user_prompt = cfg.generation.user_prompt
             gen_prompt_config = PromptConfig(system_prompt=system_prompt, user_prompt=system_prompt)
             
             # TODO: for now we use the same model for gen and paraphrasing, but this should be configurable
@@ -95,41 +95,54 @@ def choose_attack(attack_name: str, gen_model, model_config, max_sample_len,
     return attack
             
 
-def choose_watermarking_scheme(watermarking_scheme_name: str, gen, model_config):
+def choose_watermarking_scheme(cfg: DictConfig, watermarking_scheme_name: str, gen, model_config):
     
-    match watermarking_scheme_name:
-        case "kgw":
-            watermarking_scheme = AutoWatermark.load('KGW', 
-                                 algorithm_config='watermark/watermarking_config/KGW.json',
-                                 gen_model=gen,
-                                 model_config=model_config)
-        case "sir":
-            watermarking_scheme = AutoWatermark.load('SIR',
-                                    algorithm_config='watermark/watermarking_config/SIR.json',
-                                    gen_model=gen,
-                                    model_config=model_config)
-        case _:
-            raise ValueError(f"Watermarking scheme {watermarking_scheme_name} not supported yet")
+    algorithm_config = cfg.watermark
+
+    watermarking_scheme = AutoWatermark.load(watermarking_scheme_name,
+                    algorithm_config=algorithm_config,
+                    gen_model=gen,
+                    model_config=model_config)
         
     return watermarking_scheme
-            
 
 @hydra.main(version_base=None, config_path="conf", config_name="main")
-def my_app(cfg : DictConfig) -> None:
-    print(OmegaConf.to_yaml(cfg))
-
-def create_dataset(dataset_size: int, max_sample_len: int, prefix_size: int,
-                        dataset_name: str, generator_name: str, attack_name: str,
-                        watermarking_scheme_name: str, batch_size: int, device: str):
+def create_dataset(cfg: DictConfig):
+    
+    #print(OmegaConf.to_yaml(cfg))
+    
+    # generator parameters
+    device = cfg.device
+    batch_size = cfg.batch_size
+    
+    # generation parameters
+    dataset_size = cfg.generation.dataset_size
+    max_sample_len = cfg.generation.max_sample_len
+    prefix_size = cfg.generation.prefix_size
+    dataset_name = cfg.generation.dataset_name
+    max_new_tokens = cfg.generation.max_new_tokens
+    min_new_tokens = cfg.generation.min_new_tokens
+    generator_name = cfg.generation.generator_name
+    attack_name = cfg.generation.attack_name
+    
+    # watermarking parameters
+    watermarking_scheme_name = cfg.watermark.algorithm_name
     
     print(f"Creating dataset with the following parameters:")
-    print(f"Dataset size: {dataset_size}")
-    print(f"Max sample length: {max_sample_len}")
-    print(f"Prefix size: {prefix_size}")
-    print(f"Dataset name: {dataset_name}")
-    print(f"Generator name: {generator_name}")
-    print(f"Attack name: {attack_name}")
-    print(f"Watermarking scheme name: {watermarking_scheme_name}")
+    
+    print("General parameters:")
+    for k, v in cfg.items():
+        print(f"{k}: {v}")
+    print()
+        
+    print("Generation parameters:")
+    for k, v in cfg.generation.items():
+        print(f"{k}: {v}")
+    print()
+    
+    print("Watermarking parameters:")
+    for k, v in cfg.watermark.items():
+        print(f"{k}: {v}")
     
     ### Data loader ###
     cnn_data_loader = choose_dataset(dataset_name, dataset_size, max_sample_len, prefix_size)
@@ -144,6 +157,10 @@ def create_dataset(dataset_size: int, max_sample_len: int, prefix_size: int,
         "do_sample": True,
         "top_k": 50
     }
+    
+    default_gen_params["max_new_tokens"] = max_new_tokens
+    default_gen_params["min_new_tokens"] = min_new_tokens
+    
     device = device
     gen, gen_model, gen_config = choose_generator(generator_name, default_gen_params, device)
 
@@ -152,12 +169,11 @@ def create_dataset(dataset_size: int, max_sample_len: int, prefix_size: int,
         watermarking_scheme = None
         watermarking_scheme_logits_processor = None
     else:
-        watermarking_scheme = choose_watermarking_scheme(watermarking_scheme_name, gen, gen_config)
+        watermarking_scheme = choose_watermarking_scheme(cfg, watermarking_scheme_name, gen, gen_config)
         watermarking_scheme_logits_processor = watermarking_scheme.logits_processor
     
     ### Prompt & Attack ###
-    
-    attack = choose_attack(attack_name, gen_model, gen_config, max_sample_len, watermarking_scheme_logits_processor)
+    attack = choose_attack(cfg, attack_name, gen_model, gen_config, max_sample_len, watermarking_scheme_logits_processor)
     attack.set_attack_name(attack_name)
     attack.set_watermarking_scheme_name(watermarking_scheme_name)
     
@@ -171,40 +187,5 @@ def create_dataset(dataset_size: int, max_sample_len: int, prefix_size: int,
 
 if __name__ == "__main__":
     
-    """
-    parser = argparse.ArgumentParser()
     
-    parser.add_argument("--dataset_size", type=int, help="Size of the dataset to create. Note that the total size will be 2 * dataset_size for fake and true samples and that the test/eval split will be 0.1 of the total size.", default=100)
-    parser.add_argument("--max_sample_len", type=int, help="Maximum length of the samples in the dataset (in chars)", default=500)
-    parser.add_argument("--prefix_size", type=int, help="Size of the prefix to use for the generation (in words)", default=10)
-    parser.add_argument("--dataset_name", type=str, help="Name of the dataset to create", default="cnn_dailymail")
-    parser.add_argument("--generator_name", type=str, help="Name of the generator to use", default="qwen2_chat_0_5B")
-    parser.add_argument("--attack_name", type=str, help="Name of the attack to use", default="no_attack")
-    parser.add_argument("--watermarking_scheme_name", type=str, help="Name of the watermarking scheme to use. Use "no_watermarking" for no watermarking.", default="no_watermarking")
-    parser.add_argument("--batch_size", type=int, help="Batch size to use for the generation for all models", default=1)
-    parser.add_argument("--device", type=str, help="Device to use for the generation", default="cuda")
-    
-    args = parser.parse_args()
-    dataset_size = args.dataset_size
-    max_sample_len = args.max_sample_len
-    prefix_size = args.prefix_size
-    dataset_name = args.dataset_name
-    generator_name = args.generator_name
-    attack_name = args.attack_name
-    watermarking_scheme_name = args.watermarking_scheme_name
-    batch_size = args.batch_size
-    device = args.device
-    """
-    
-    #datasets = ["cnn_dailymail"]
-    #generators = ["qwen2_chat_0_5B", "zephyr", "llama3_instruct"]
-    #attacks = ["no_attack", "prompt_attack", "prompt_paraphrasing_attack", "gen_param_attack"]
-    #watermarking_schemes = ["kgw", "sir"]
-    
-    
-    my_app()
-    
-    
-    ergerger
-    create_dataset(dataset_size, max_sample_len, prefix_size, dataset_name, generator_name,
-        attack_name, watermarking_scheme_name, batch_size, device)
+    create_dataset()
