@@ -30,6 +30,17 @@ def choose_generator(model_name: str, gen_params, device: str):
     
     return gen, gen_model, gen_config
 
+def choose_watermarking_scheme(cfg: DictConfig, watermarking_scheme_name: str, gen, model_config):
+    
+    algorithm_config = cfg.watermark
+
+    watermarking_scheme = AutoWatermark.load(watermarking_scheme_name,
+                    algorithm_config=algorithm_config,
+                    gen_model=gen,
+                    model_config=model_config)
+        
+    return watermarking_scheme
+
 def choose_attack(cfg: DictConfig, attack_name: str, gen_model, model_config, max_sample_len, 
                   watermarking_scheme_logits_processor=None, paraphraser_model=None,
                   paraphraser_config=None, ):
@@ -39,9 +50,6 @@ def choose_attack(cfg: DictConfig, attack_name: str, gen_model, model_config, ma
             
             system_prompt = cfg.generation.system_prompt
             user_prompt = cfg.generation.user_prompt
-            
-            print("System prompt:", system_prompt)
-            print("User prompt:", user_prompt)
             prompt_config = PromptConfig(system_prompt=system_prompt, user_prompt=user_prompt)
             
             attack = PromptAttack(gen_model, model_config,
@@ -93,18 +101,7 @@ def choose_attack(cfg: DictConfig, attack_name: str, gen_model, model_config, ma
             raise ValueError(f"Attack {attack_name} not supported yet")
         
     return attack
-            
-
-def choose_watermarking_scheme(cfg: DictConfig, watermarking_scheme_name: str, gen, model_config):
-    
-    algorithm_config = cfg.watermark
-
-    watermarking_scheme = AutoWatermark.load(watermarking_scheme_name,
-                    algorithm_config=algorithm_config,
-                    gen_model=gen,
-                    model_config=model_config)
         
-    return watermarking_scheme
 
 @hydra.main(version_base=None, config_path="conf", config_name="main")
 def create_dataset(cfg: DictConfig):
@@ -161,11 +158,12 @@ def create_dataset(cfg: DictConfig):
     default_gen_params["max_new_tokens"] = max_new_tokens
     default_gen_params["min_new_tokens"] = min_new_tokens
     
-    device = device
+    
+    # load generator
     gen, gen_model, gen_config = choose_generator(generator_name, default_gen_params, device)
 
     ### Watermarking ###
-    if watermarking_scheme_name == "no_watermarking":
+    if watermarking_scheme_name == "no_watermark":
         watermarking_scheme = None
         watermarking_scheme_logits_processor = None
     else:
@@ -179,8 +177,9 @@ def create_dataset(cfg: DictConfig):
     
     ### Pipeline ###
     skip_cache = False
-    experiment_path = "benchmark_saved_results"
-    simple_test_watermark_pipeline = CreateDatasetPipeline(cnn_data_loader, attack,
+    experiment_path = f"data/generated_datasets/{dataset_name}/{attack_name}/{watermarking_scheme_name}"
+    #experiment_path = "benchmark_saved_results"
+    simple_test_watermark_pipeline = CreateDatasetPipeline(cfg, cnn_data_loader, attack,
         device, experiment_path, batch_size=batch_size, skip_cache=skip_cache)
     simple_test_watermark_pipeline.run_pipeline()
     

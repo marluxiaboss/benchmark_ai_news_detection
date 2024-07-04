@@ -16,18 +16,15 @@ from transformers import LogitsProcessor, LogitsProcessorList
 class KGWConfig:
     """Config class for KGW algorithm, load config file and initialize parameters."""
 
-    def __init__(self, algorithm_config: str, gen_model, model_config: ModelConfig, *args, **kwargs) -> None:
+    def __init__(self, algorithm_config: dict, gen_model, model_config: ModelConfig, *args, **kwargs) -> None:
         """
             Initialize the KGW configuration.
 
             Parameters:
-                algorithm_config (str): Path to the algorithm configuration file.
+                algorithm_config (dict): Configuration for the KGW algorithm.	
                 transformers_config (TransformersConfig): Configuration for the transformers model.
         """
-        if algorithm_config is None:
-            config_dict = load_config_file('config/KGW.json')
-        else:
-            config_dict = load_config_file(algorithm_config)
+        config_dict = algorithm_config
 
         self.gamma = config_dict['gamma']
         self.delta = config_dict['delta']
@@ -154,12 +151,12 @@ class KGWLogitsProcessor(LogitsProcessor):
 class KGW(BaseWatermark):
     """Top-level class for KGW algorithm."""
 
-    def __init__(self, algorithm_config: str, gen_model, transformers_config: ModelConfig, *args, **kwargs) -> None:
+    def __init__(self, algorithm_config: dict, gen_model, transformers_config: ModelConfig, *args, **kwargs) -> None:
         """
             Initialize the KGW algorithm.
 
             Parameters:
-                algorithm_config (str): Path to the algorithm configuration file.
+                algorithm_config (dict): Configuration for the KGW algorithm.
                 transformers_config (TransformersConfig): Configuration for the transformers model.
         """
         self.config = KGWConfig(algorithm_config, gen_model, transformers_config)

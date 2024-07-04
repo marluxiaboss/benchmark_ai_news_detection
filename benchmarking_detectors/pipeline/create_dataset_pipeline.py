@@ -13,21 +13,30 @@ from .experiment_pipeline import ExperimentPipeline
 from .pipeline_utils import *
 
 class CreateDatasetPipeline(ExperimentPipeline):
-    def __init__(self, dataset_loader, attack, device, experiment_path, batch_size=1, skip_cache=False):
+    def __init__(self, cfg, dataset_loader, attack, device, experiment_path, batch_size=1, skip_cache=False):
+        self.cfg = cfg
         self.dataset_loader = dataset_loader
         self.attack = attack
         self.device = device
         self.experiment_path = experiment_path
         self.batch_size = batch_size
+        self.generator_name = cfg.generation.generator_name
+        
+        self.experiment_name = f"{self.generator_name}_{cfg.experiment_name}"
         
         # if set to true, overwrite the cached datasets
         self.skip_cache = skip_cache
         
+        # check that folder at experiment path exists, if not create it
+        if not os.path.exists(experiment_path):
+            os.makedirs(experiment_path)
+        if not os.path.exists(f"{experiment_path}/log"):
+            os.makedirs(f"{experiment_path}/log")
+
         # setup log
-        log_path = f"{experiment_path}/log"
+        log_path = f"{experiment_path}/log/log_{self.experiment_name}.txt"
         self.log = create_logger(__name__, silent=False, to_disk=True,
                                  log_file=log_path)
-        
         
     def create_logger(self):
         if log_path is None:
@@ -43,7 +52,7 @@ class CreateDatasetPipeline(ExperimentPipeline):
                                     log_file=f"{log_path}/log.txt")
         self.log = log
         
-    def create_experiment_dataset(self, dataset_name):
+    def create_experiment_dataset(self):
         ### CREATE THE (ADVERSRIAL) DATASET AND SAVE IT ###
         
         # Load the base dataset
@@ -71,8 +80,12 @@ class CreateDatasetPipeline(ExperimentPipeline):
             split_data = split_data.map(fuse_fake_true_articles)
             dataset[split] = split_data
             
+        # add generation and watermark config as fields in the dataset to identify how it was generated
+        dataset = dataset.map(lambda x: {"generation_config": self.cfg.generation, "watermark_config": self.cfg.watermark})    
+        
         # Save the dataset using a specific naming convention
-        dataset.save_to_disk(f"data/generated_datasets/{dataset_name}")
+        #dataset.save_to_disk(f"data/generated_datasets/{dataset_name}")
+        dataset.save_to_disk(f"{self.experiment_path}/{self.experiment_name}")
         
         # save also to json for each split
         for split in data_splits:
@@ -80,7 +93,7 @@ class CreateDatasetPipeline(ExperimentPipeline):
             
             # transfor to pandas dataframe
             df = pd.DataFrame(split_data)
-            df.to_json(f"data/generated_datasets/{dataset_name}_{split}.json", force_ascii=False, indent=4)
+            df.to_json(f"{self.experiment_path}/{self.experiment_name}_{split}.json", force_ascii=False, indent=4)
         
         return dataset
         
@@ -102,11 +115,16 @@ class CreateDatasetPipeline(ExperimentPipeline):
             log.info(f"Using watermarking scheme {self.attack.watermarking_scheme_name}")
             dataset_name += f"_{self.attack.watermarking_scheme_name}"
             
-        if not self.skip_cache and os.path.isdir(f"data/generated_datasets/{dataset_name}"):
-            log.info(f"Dataset {dataset_name} already exists!")
+        dataset_path = f"{self.experiment_path}/{self.experiment_name}"
+        if not self.skip_cache and os.path.isdir(dataset_path):
+            log.info(f"Dataset at {dataset_path} already exists!")
         else:
-            log.info(f"Dataset {dataset_name} does not exist, creating it")
+            log.info(f"Dataset at {dataset_path} does not exist, creating it")
             log.info("Generating the dataset...")
-            dataset = self.create_experiment_dataset(dataset_name)
+            dataset = self.create_experiment_dataset()
+            
+        # save the parameter of the generation at the very end so that we only have them if the rest succeded
+        log.info("Parameters for the generation:")
+        log.info(self.cfg)    
             
         return
