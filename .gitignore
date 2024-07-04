@@ -1,3 +1,0 @@
-*.pt
-saved_training_logs_experiment_1/**/wandb/
-saved_training_logs_experiment_2/**/wandb/
