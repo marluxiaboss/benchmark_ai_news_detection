@@ -18,7 +18,6 @@ class LLMGenerator(nn.Module):
 
     def forward(self, samples: list, batch_size: int=1, watermarking_scheme=None):
         
-        # TODO: optimize it with dataset/dataloader
         outputs_list = []
         for i in tqdm(range(0, len(samples), batch_size), desc="Generating text"):
             

@@ -58,7 +58,10 @@ class ArticleGenerator(ABC):
             
         # add the prefix back to the generated text since generation cuts the first "input_size" tokens from the input
         # if we force the prefix in the generation, it is counted in the "input_size" tokens
-        fake_articles = [f"{prefixes[i]}{fake_articles[i]}" for i in range(len(fake_articles))]
+        # We have to be careful though because sometimes fake articles starts with a space, sometimes not
+        prefixes = [prefix.strip() for prefix in prefixes]
+        fake_articles = [fake_article.strip() for fake_article in fake_articles]
+        fake_articles = [f"{prefixes[i]} {fake_articles[i]}" for i in range(len(fake_articles))]
         
         # cut to max_sample_len
         fake_articles = [text[:self.max_sample_len] for text in fake_articles]

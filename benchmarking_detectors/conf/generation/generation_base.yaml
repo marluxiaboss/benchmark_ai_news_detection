@@ -1,5 +1,6 @@
 type: no_attack
 attack_name: no_attack
+experiment_name: base
 dataset_size: 100
 max_sample_len: 500
 prefix_size: 10
@@ -9,3 +10,4 @@ dataset_name: cnn_dailymail
 generator_name: qwen2_chat_0_5B
 user_prompt: "You are a helpful assistant."
 system_prompt: "Continue writing the following news article starting with:"
+batch_size: 2

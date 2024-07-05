@@ -4,5 +4,3 @@ defaults:
 
 
 device: cuda
-batch_size: 2
-experiment_name: base

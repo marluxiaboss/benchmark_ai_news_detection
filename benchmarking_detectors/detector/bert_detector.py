@@ -2,6 +2,7 @@ import torch
 from torch.utils.data import DataLoader
 from abc import ABC, abstractmethod
 from datasets import Dataset
+from tqdm import tqdm
 from .detector import Detector
 
 

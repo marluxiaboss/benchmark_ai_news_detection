@@ -112,7 +112,7 @@ def create_dataset(cfg: DictConfig):
     
     # generator parameters
     device = cfg.device
-    batch_size = cfg.batch_size
+    batch_size = cfg.generation.batch_size
     
     # generation parameters
     dataset_size = cfg.generation.dataset_size
