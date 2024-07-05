@@ -78,8 +78,8 @@ class PromptParaphrasingAttack(ArticleGenerator):
         
         # paraphrase the texts
         paraphrased_fake_articles = self.paraphrase(fake_articles, batch_size=batch_size, nb_paraphrasing=1)
-        
+
         # cut to max_sample_len
         paraphrased_fake_articles = [text[:self.max_sample_len] for text in paraphrased_fake_articles]
-        
+
         return paraphrased_fake_articles

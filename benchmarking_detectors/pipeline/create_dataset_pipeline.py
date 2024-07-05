@@ -57,35 +57,27 @@ class CreateDatasetPipeline(ExperimentPipeline):
         
         # Load the base dataset
         dataset = self.dataset_loader.load_data()
-        
-        # We only use the test data split here
-        #dataset = dataset["test"]
-                
-        # Generate adversarial examples
-        true_articles = dataset.filter(lambda x: x["label"] == 0)
 
+        def fuse_fake_true_articles(sample, fake_articles):
+            if sample["label"] == 1:
+                sample["text"] = fake_articles.pop(0)
+                
+            return sample  
+               
+        # generate fake articles for each split
         data_splits = ["train", "eval", "test"]
         for split in data_splits:
             split_data = dataset[split]
-            true_articles = split_data.filter(lambda x: x["label"] == 0)
-            true_articles_prefixes = true_articles["prefix"][:]
-            fake_articles = self.attack.generate_adversarial_text(true_articles_prefixes, batch_size=self.batch_size)
+            fake_articles = split_data.filter(lambda x: x["label"] == 1)
+            fake_articles_prefixes = fake_articles["prefix"][:]
+            fake_articles = self.attack.generate_adversarial_text(fake_articles_prefixes, batch_size=self.batch_size)
             
-            # Fuse true and fake articles by filling samples in dataset with label = 1
-            def fuse_fake_true_articles(sample, fake_articles):
-                if sample["label"] == 1:
-                    #sample["text"] = fake_articles.pop(0)
-                    
-                    # find the element in the fake articles that has the same prefix
-                    prefix = sample["prefix"]
-                    for i, fake_article in enumerate(fake_articles):
-                        if fake_article.startswith(prefix):
-                            sample["text"] = fake_article
-                            break
-                        
-                return sample
-            
+            # replace the empty text field for label 1 samples (AI) with the generated fake articles
             split_data = split_data.map(lambda x: fuse_fake_true_articles(x, fake_articles))
+            
+            # remove samples with empty text
+            split_data = split_data.filter(lambda x: len(x["text"]) > 0)
+            
             dataset[split] = split_data
             
         # add generation and watermark config as fields in the dataset to identify how it was generated

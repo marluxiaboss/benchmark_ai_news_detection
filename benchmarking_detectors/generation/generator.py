@@ -50,6 +50,7 @@ class LLMGenerator(nn.Module):
             output = outputs_list[i]
             for special_token in special_tokens:
                 output = output.replace(special_token, "")
+                output = output.strip()
             outputs_list[i] = output
         
         return outputs_list
