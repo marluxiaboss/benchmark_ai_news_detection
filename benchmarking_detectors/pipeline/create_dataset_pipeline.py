@@ -72,12 +72,20 @@ class CreateDatasetPipeline(ExperimentPipeline):
             fake_articles = self.attack.generate_adversarial_text(true_articles_prefixes, batch_size=self.batch_size)
             
             # Fuse true and fake articles by filling samples in dataset with label = 1
-            def fuse_fake_true_articles(sample):
+            def fuse_fake_true_articles(sample, fake_articles):
                 if sample["label"] == 1:
-                    sample["text"] = fake_articles.pop(0)
+                    #sample["text"] = fake_articles.pop(0)
+                    
+                    # find the element in the fake articles that has the same prefix
+                    prefix = sample["prefix"]
+                    for i, fake_article in enumerate(fake_articles):
+                        if fake_article.startswith(prefix):
+                            sample["text"] = fake_article
+                            break
+                        
                 return sample
             
-            split_data = split_data.map(fuse_fake_true_articles)
+            split_data = split_data.map(lambda x: fuse_fake_true_articles(x, fake_articles))
             dataset[split] = split_data
             
         # add generation and watermark config as fields in the dataset to identify how it was generated

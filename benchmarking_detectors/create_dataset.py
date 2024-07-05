@@ -43,7 +43,7 @@ def choose_watermarking_scheme(cfg: DictConfig, watermarking_scheme_name: str, g
 
 def choose_attack(cfg: DictConfig, attack_name: str, gen_model, model_config, max_sample_len, 
                   watermarking_scheme_logits_processor=None, paraphraser_model=None,
-                  paraphraser_config=None, ):
+                  paraphraser_config=None):
     
     match attack_name:
         case "no_attack":
@@ -79,7 +79,9 @@ def choose_attack(cfg: DictConfig, attack_name: str, gen_model, model_config, ma
             
             
         case "prompt_paraphrasing_attack":
-            assert (paraphraser_model is not None) and (paraphraser_config is not None), "Paraphraser model and config must be provided"
+           
+           # see TODO below
+           # assert (paraphraser_model is not None) and (paraphraser_config is not None), "Paraphraser model and config must be provided"
             
             system_paraphrasing_prompt = cfg.generation.system_paraphrasing_prompt
             user_paraphrasing_prompt = cfg.generation.user_paraphrasing_prompt
