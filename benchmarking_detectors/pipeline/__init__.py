@@ -1,3 +1,4 @@
 from .create_dataset_pipeline import CreateDatasetPipeline
 from .experiment_test_pipeline import ExperimentTestPipeline
 from .experiment_test_pipeline_full import ExperimentTestPipelineFull
+from .experiment_test_detector_pipeline import ExperimentTestDetectorPipeline

@@ -33,17 +33,12 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
 
         # setup log
         log_path = f"{experiment_path}/log"
-        self.log = create_logger(__name__, silent=False, to_disk=True,
-                                 log_file=log_path)
+        self.log = self.create_logger_file(log_path)
         
         # set the detector
         self.detector = detector
         
-    def create_logger(self):
-        if log_path is None:
-            if self.experiment_path is None:
-                raise ValueError("Experiment path not set")
-            log_path = self.experiment_path
+    def create_logger_file(self, log_path):
         
         # create log file
         with open(f"{log_path}/log.txt", "w") as f:
@@ -51,7 +46,7 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
 
         log = create_logger(__name__, silent=False, to_disk=True,
                                     log_file=f"{log_path}/log.txt")
-        self.log = log
+        return log
         
     def evaluate_detector(self, preds, logits, preds_at_threshold, labels, dataset):               
         
@@ -132,7 +127,9 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
             raise ValueError(f"Dataset at {dataset_path} does not exist, please create it first with create_dataset.py")
                 
         ### TEST THE DETECTOR ###
-        fake_true_articles = dataset["text"][:]
+        
+        # here we only test on the test set!
+        fake_true_articles = dataset["test"]["text"][:]
         
         log.info("Classifying the articles...")
         preds, logits, preds_at_threshold = self.detector.detect(fake_true_articles, batch_size=self.batch_size)

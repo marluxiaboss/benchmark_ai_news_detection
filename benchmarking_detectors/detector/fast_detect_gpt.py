@@ -95,7 +95,7 @@ class FastDetectGPT(Detector):
             return cnt_fake / (cnt_real + cnt_fake)
 
             
-    def detect(self, texts: list) -> list:
+    def detect(self, texts: list, batch_size: int) -> list:
         reference_model_name = "gpt-neo-2.7B"
         scoring_model_name = "gpt-neo-2.7B"
         

@@ -35,10 +35,9 @@ class CreateDatasetPipeline(ExperimentPipeline):
 
         # setup log
         log_path = f"{experiment_path}/log/log_{self.experiment_name}.txt"
-        self.log = create_logger(__name__, silent=False, to_disk=True,
-                                 log_file=log_path)
+        self.log = self.create_logger_file(log_path)
         
-    def create_logger(self):
+    def create_logger_file(self, log_path):
         if log_path is None:
             if self.experiment_path is None:
                 raise ValueError("Experiment path not set")
@@ -50,7 +49,8 @@ class CreateDatasetPipeline(ExperimentPipeline):
 
         log = create_logger(__name__, silent=False, to_disk=True,
                                     log_file=f"{log_path}/log.txt")
-        self.log = log
+        
+        return log
         
     def create_experiment_dataset(self):
         ### CREATE THE (ADVERSRIAL) DATASET AND SAVE IT ###
