@@ -129,7 +129,6 @@ class FastDetectGPT(Detector):
         with torch.no_grad():
             for batch in tqdm(test_loader, desc="Performing detection on dataset..."):
                 text = batch["text"]
-                print("text: ", text)
                 tokenized = scoring_tokenizer(text, return_tensors="pt", padding=True, return_token_type_ids=False).to(device)
                 labels = tokenized.input_ids[:, 1:]
                 logits_score = scoring_model(**tokenized).logits[:, :-1]

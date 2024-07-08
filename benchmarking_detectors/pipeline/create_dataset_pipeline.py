@@ -43,11 +43,11 @@ class CreateDatasetPipeline(ExperimentPipeline):
             log_path = self.experiment_path
         
         # create log file
-        with open(f"{log_path}/log.txt", "w") as f:
+        with open(f"{log_path}", "w") as f:
             f.write("")
 
         log = create_logger(__name__, silent=False, to_disk=True,
-                                    log_file=f"{log_path}/log.txt")
+                                    log_file=f"{log_path}")
         
         return log
         

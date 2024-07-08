@@ -35,7 +35,7 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
             os.makedirs(f"{experiment_path}/log")
 
         # setup log
-        log_path = f"{experiment_path}/log"
+        log_path = f"{experiment_path}/log/log_{self.experiment_name}.txt"
         self.log = self.create_logger_file(log_path)
         
         # set the detector
@@ -44,11 +44,11 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
     def create_logger_file(self, log_path):
         
         # create log file
-        with open(f"{log_path}/log.txt", "w") as f:
+        with open(log_path, "w") as f:
             f.write("")
 
         log = create_logger(__name__, silent=False, to_disk=True,
-                                    log_file=f"{log_path}/log.txt")
+                                    log_file=log_path)
         return log
     
         
@@ -99,11 +99,11 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         
         # TODO: better to handle this in a helper
         # compute metrics
-        nb_pos_labels = np.sum(dataset["label"] == 1)
-        nb_neg_labels = np.sum(dataset["label"] == 0)
+        nb_pos_labels = np.sum(labels == 1)
+        nb_neg_labels = np.sum(labels == 0)
         
         if nb_pos_labels == 0 or nb_neg_labels == 0:
-            #log.info("Only one class in the dataset, cannot compute roc_auc")
+            log.info("Only one class in the dataset, cannot compute roc_auc")
             roc_auc = 0
             fpr = np.zeros(1)
             tpr = np.zeros(1)
@@ -184,5 +184,4 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         preds, logits, preds_at_threshold = self.detector.detect(fake_true_articles, batch_size, detection_threshold)
         labels = dataset["label"]
         data_split = "test"
-        print("Detector detection threshold:", type(detection_threshold))
         self.evaluate_detector(preds, logits, preds_at_threshold, labels, dataset, detection_threshold, data_split)

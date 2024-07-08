@@ -10,7 +10,7 @@ from generation import GenParamsAttack, PromptAttack, PromptParaphrasingAttack, 
 from utils.configs import ModelConfig, PromptConfig
 from detector import BertDetector, WatermarkDetector, FastDetectGPT, DetectorLoader
 from dataset_loader import CNNDataLoader, FakeTruePairsDataLoader
-from pipeline import ExperimentTestDetectorPipeline2
+from pipeline import ExperimentTestDetectorPipeline
 from watermark.auto_watermark import AutoWatermark
 
 

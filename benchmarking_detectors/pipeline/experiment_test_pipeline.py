@@ -122,7 +122,7 @@ class ExperimentTestPipeline(ExperimentPipeline):
         nb_neg_labels = np.sum(dataset["label"] == 0)
         
         if nb_pos_labels == 0 or nb_neg_labels == 0:
-            #log.info("Only one class in the dataset, cannot compute roc_auc")
+            log.info("Only one class in the dataset, cannot compute roc_auc")
             roc_auc = 0
             fpr = np.zeros(1)
             tpr = np.zeros(1)
