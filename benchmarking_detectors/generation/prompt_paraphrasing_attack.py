@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+import gc
 
 from datasets import concatenate_datasets, load_from_disk, DatasetDict
 import argparse
@@ -104,6 +105,8 @@ class PromptParaphrasingAttack(ArticleGenerator):
             
             fake_articles = []
             
+            
+            
             # generate text with paraphrasing propmt withou watermarking
             fake_articles = self.paraphraser_model(prefixes_with_prompt, batch_size=batch_size, watermarking_scheme=None)
                     
@@ -130,6 +133,7 @@ class PromptParaphrasingAttack(ArticleGenerator):
         # saving memory
         del self.gen_model
         torch.cuda.empty_cache()
+        gc.collect()
         
         # paraphrase the texts
         paraphrased_fake_articles = self.paraphrase(fake_articles, batch_size=batch_size, nb_paraphrasing=1)
