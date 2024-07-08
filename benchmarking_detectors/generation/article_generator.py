@@ -17,10 +17,29 @@ from abc import ABC, abstractmethod
 
 from watermark.auto_watermark import AutoWatermark
 from utils.gen_utils import transform_chat_template_with_prompt
+from utils.configs import ModelConfig, PromptConfig 
+from .generator import LLMGenerator
 
 class ArticleGenerator(ABC):
     
-    def __init__(self, gen_model, gen_config, gen_prompt_config, max_sample_len, watermarking_scheme=None):
+    def __init__(self, gen_model: LLMGenerator, gen_config: ModelConfig, gen_prompt_config: PromptConfig,
+                 max_sample_len: int , watermarking_scheme: AutoWatermark=None) -> None:
+        """
+        Base class for generating text using a model from Huggingface.
+        This class is an abstract class and should be inherited by all text generation classes.
+        
+        Parameters:
+            gen_model: LLMGenerator
+                The pretrained language model (Transformers) to be used for text generation.
+            gen_config: ModelConfig
+                The configuration of the model.
+            gen_prompt_config: PromptConfig
+                The configuration of the prompt.
+            max_sample_len: int
+                The maximum length of the generated text.
+            watermarking_scheme: AutoWatermark
+                The optional watermarking scheme to use for generation. Default is None.
+        """
         
         # Generator LLM
         self.gen_model = gen_model
@@ -34,10 +53,22 @@ class ArticleGenerator(ABC):
         self.gen_name = gen_config.model_name
         
         
-    def generate_text(self, prefixes, batch_size=1):
+    def generate_text(self, prefixes, batch_size=1) -> list[str]:
+        """
+        Takes a list of input contexts and generates text using the model.
+        
+        Parameters:
+            prefixes: list
+                A list of input contexts for text generation.
+            batch_size: int
+                The batch size to use for generation.
+                
+        Returns:
+            fake_articles: list
+                A list of generated text.
+        """
         
         # assumption: all attacks will generate text
-
         gen_model = self.gen_model
 
         # apply the chat template with the prompt
@@ -69,17 +100,37 @@ class ArticleGenerator(ABC):
         return fake_articles
     
     
-    def set_attack_name(self, attack_name):
+    def set_attack_name(self, attack_name: str) -> None:
+        """
+        Public setter for the attack name.
+        
+        Parameters:
+            attack_name: str
+                The name of the attack.
+        """
         self.attack_name = attack_name
         
-    def set_watermarking_scheme_name(self, watermarking_scheme_name):
+    def set_watermarking_scheme_name(self, watermarking_scheme_name: str) -> None:
+        """
+        Public setter for the watermarking scheme name.
+        
+        Parameters:
+            watermarking_scheme_name: str
+                The name of the watermarking scheme.
+        """
         self.watermarking_scheme_name = watermarking_scheme_name
     
     @abstractmethod 
-    def generate_adversarial_text(self, prefixes, batch_size=1):
+    def generate_adversarial_text(self, prefixes: list, batch_size: int=1) -> list[str]:
         """
         This is the adversarial version of text generation. 
         All attack should generate text at some point. Either generate text in a specific way or modify the generated text.
+        
+        Parameters:
+            prefixes: list
+                A list of input contexts for text generation.
+            batch_size: int
+                The batch size to use for generation.
         """
         pass
     

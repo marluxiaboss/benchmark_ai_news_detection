@@ -15,11 +15,15 @@ from datasets import load_from_disk, concatenate_datasets, Dataset
 
 from abc import ABC, abstractmethod
 
-from watermark.auto_watermark import AutoWatermark
 from utils.gen_utils import transform_chat_template_with_prompt
 from .article_generator import ArticleGenerator
+from watermark.auto_watermark import AutoWatermark
+from utils.gen_utils import transform_chat_template_with_prompt
+from utils.configs import ModelConfig, PromptConfig 
+from .generator import LLMGenerator
 
 
+# TODO: Should we keep this in case we use a different model for paraphrasing?
 class ParaphrasingAttack(ArticleGenerator):
     
     def paraphrase(self, texts, nb_paraphrasing=1, batch_size=1) -> list:
@@ -27,8 +31,30 @@ class ParaphrasingAttack(ArticleGenerator):
     
 class PromptParaphrasingAttack(ArticleGenerator):
     
-    def __init__(self, gen_model, gen_config, gen_prompt_config, paraphraser_model,
-                 paraphraser_config, paraphraser_prompt_config, max_sample_len, watermarking_scheme=None):
+    def __init__(self, gen_model: LLMGenerator, gen_config: ModelConfig, gen_prompt_config: PromptConfig,
+                 paraphraser_model: LLMGenerator, paraphraser_config: ModelConfig,
+                 paraphraser_prompt_config: PromptConfig, max_sample_len: int, watermarking_scheme: AutoWatermark=None) -> None:
+        """
+        Class for generating text using a model from Huggingface with paraphrasing based on prompting a model to paraphrase the generated text.
+        
+        Parameters:
+            gen_model: LLMGenerator
+                The pretrained language model (Transformers) to be used for the initial text generation.
+            gen_config: ModelConfig
+                The configuration of the model.
+            gen_prompt_config: PromptConfig
+                The configuration of the prompt.
+            paraphraser_model: LLMGenerator
+                The pretrained language model (Transformers) to be used for paraphrasing.
+            paraphraser_config: ModelConfig
+                The configuration of the paraphraser model.
+            paraphraser_prompt_config: PromptConfig
+                The configuration of the prompt for the paraphraser model.
+            max_sample_len: int
+                The maximum length of the generated text.
+            watermarking_scheme: AutoWatermark
+                The optional watermarking scheme to use for the initial generation (not the paraphrasing!). Default is None.$
+        """
         
         super().__init__(gen_model, gen_config, gen_prompt_config, max_sample_len, watermarking_scheme)
                 
@@ -39,7 +65,22 @@ class PromptParaphrasingAttack(ArticleGenerator):
         
         self.attack_name = "paraphrasing_attack"
     
-    def paraphrase(self, texts, nb_paraphrasing=1, batch_size=1) -> list:
+    def paraphrase(self, texts: list[str], nb_paraphrasing: int=1, batch_size: int=1) -> list[str]:
+        """
+        Paraphrasing function used after the initial text generation.
+        
+        Parameters:
+            texts: list
+                Initial generated texts to be paraphrased.
+            nb_paraphrasing: int
+                Number of recursive paraphrasing to be done.
+            batch_size: int
+                The batch size to use for generation.
+        
+        Returns:
+            fake_articles: list
+                A list of paraphrased generated texts.
+        """
         
         # Get all the parameters
         model_config = self.model_config
@@ -63,15 +104,25 @@ class PromptParaphrasingAttack(ArticleGenerator):
             
             fake_articles = []
             
-            # generate the articles
-            for i in range(0, len(prefixes_with_prompt), batch_size):
-                samples = prefixes_with_prompt[i:i+batch_size]
-                outputs = self.paraphraser_model(samples)
-                fake_articles.extend(outputs)
+            # generate text with paraphrasing propmt withou watermarking
+            fake_articles = self.paraphraser_model(prefixes_with_prompt, batch_size=batch_size, watermarking_scheme=None)
                     
         return fake_articles
     
-    def generate_adversarial_text(self, prefixes, batch_size=1):
+    def generate_adversarial_text(self, prefixes: list[str], batch_size:int =1) -> list[str]:
+        """
+        Generate text with paraphrasing.
+        
+        Parameters:
+            prefixes: list
+                A list of input contexts for text generation.
+            batch_size: int
+                The batch size to use for generation.
+        
+        Returns:
+            paraphrased_fake_articles: list
+                A list of generated text.
+        """
 
         # generate news articles in a "normal" way
         fake_articles = self.generate_text(prefixes, batch_size=batch_size)

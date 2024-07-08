@@ -7,17 +7,26 @@ from utils.configs import ModelConfig
 
 class GenLoader:
     
-    def __init__(self, model_name, gen_params, device) -> None:
+    def __init__(self, model_name: str, gen_params: dict, device: str) -> None:
+        """
+        Class for loading a generator model (LLMGenerator class) and tokenizer from Huggingface.
+        
+        Parameters:
+            model_name: str
+                The name of the model to load.
+            gen_params: dict
+                The generation parameters to use for generation.
+            device: str
+                The device to use for generation.
+        """
         
         self.model_name = model_name
         self.gen_params = gen_params
         self.device = device
 
-    def load(self):
+    def load(self) -> tuple(torch.nn.Module, LLMGenerator, ModelConfig):
         """
-        Load the specifed generator model and tokenizer
-        
-        Parameters
+        Load the specifed generator model (from init) and tokenizer
 
             
         Returns

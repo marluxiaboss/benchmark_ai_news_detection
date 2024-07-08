@@ -5,9 +5,20 @@ import torch
 from torch import nn
 from transformers import (AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForMaskedLM, AutoModelForCausalLM,
         LogitsProcessor, LogitsProcessorList)
+from utils.configs import ModelConfig
 
 class LLMGenerator(nn.Module):
-    def __init__(self, model, model_config):
+    def __init__(self, model: AutoModelForCausalLM, model_config: ModelConfig) -> None:
+        """
+        Class for generating text using a model from Huggingface.
+        
+        Parameters:
+            model: AutoModelForCausalLM
+                The pretrained language model (Transformers) to be used for text generation.
+            model_config: ModelConfig
+                The configuration of the model.
+        """
+        
         super().__init__()
 
         # gpt should already be trained
@@ -16,7 +27,18 @@ class LLMGenerator(nn.Module):
         self.device = model_config.device
         self.gen_params = model_config.gen_params
 
-    def forward(self, samples: list, batch_size: int=1, watermarking_scheme=None):
+    def forward(self, samples: list, batch_size: int=1, watermarking_scheme=None) -> list[str]:
+        """
+        Takes a list of input contexts and generates text using the model.
+        
+        Parameters:
+            samples: list
+                A list of input contexts for text generation.
+            batch_size: int
+                The batch size to use for generation.
+            watermarking_scheme: LogitsProcessor
+                The watermarking scheme to use for generation.
+        """
         
         outputs_list = []
         for i in tqdm(range(0, len(samples), batch_size), desc="Generating text"):
