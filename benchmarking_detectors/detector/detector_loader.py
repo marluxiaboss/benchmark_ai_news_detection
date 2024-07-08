@@ -53,7 +53,7 @@ class DetectorLoader:
                 scoring_model = ref_model
                 scoring_tokenizer = ref_tokenizer
 
-                detector = FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device)
+                detector = FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device, detection_threshold=self.detection_threshold)
             
             case _:
                 raise ValueError(f"Detector {detector_name} not supported yet")

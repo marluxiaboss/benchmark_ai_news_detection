@@ -42,7 +42,7 @@ def test_detector(cfg: DictConfig):
     # general parameters
     device = cfg.device
     
-    print(f"Testing detector {detector_name} on dataset {dataset_name}")
+    print(f"Testing detector {detector_name} on dataset {dataset_experiment_path}")
     
     # Load detector
     detector_loader = DetectorLoader(detector_name, detection_threshold, device,
@@ -50,7 +50,8 @@ def test_detector(cfg: DictConfig):
     detector = detector_loader.load()
 
     #experiment_path = f"{test_res_dir}/{detector_name}/{dataset_name}/{attack_name}/{watermarking_scheme_name}"
-    experiment_path = f"{test_res_dir}/{dataset_name}/{attack_name}/{watermarking_scheme_name}"
+    #experiment_path = f"{test_res_dir}/{dataset_name}/{attack_name}/{watermarking_scheme_name}/{detector_name}"
+    experiment_path = f"{test_res_dir}/{detector_name}/{dataset_name}/{attack_name}_{watermarking_scheme_name}"
     simple_test_watermark_pipeline = ExperimentTestDetectorPipeline(cfg, detector, device, experiment_path,
         dataset_experiment_path, batch_size)
     simple_test_watermark_pipeline.run_pipeline()

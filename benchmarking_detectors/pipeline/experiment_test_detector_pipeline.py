@@ -22,8 +22,8 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         self.detector_name = cfg.detection.detector_name
         
         self.dataset_experiment_path = dataset_experiment_path
-        self.dataset_experiment_name = f"{self.generator_name}_{cfg.generation.experiment_name}"
-        self.experiment_name = f"{self.detector_name}_{self.dataset_experiment_name}"
+        self.dataset_experiment_name = cfg.generation.experiment_name
+        self.experiment_name = f"{self.detector_name}_{cfg.detection.experiment_name}"
         
         # check that folder at experiment path exists, if not create it
         if not os.path.exists(experiment_path):
@@ -119,7 +119,7 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         log = self.log
         
         # See if the dataset exists. This pipeline assumes that the dataset already exists
-        dataset_path = f"{self.dataset_experiment_path}/{self.dataset_experiment_name}"
+        dataset_path = f"{self.dataset_experiment_path}/{self.cfg.generation.generator_name}_{self.dataset_experiment_name}"
         if os.path.isdir(dataset_path):
             log.info(f"Dataset at {dataset_path} exists, loading it")
             dataset = load_from_disk(dataset_path)
@@ -129,7 +129,8 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         ### TEST THE DETECTOR ###
         
         # here we only test on the test set!
-        fake_true_articles = dataset["test"]["text"][:]
+        dataset = dataset["test"]
+        fake_true_articles = dataset["text"][:]
         
         log.info("Classifying the articles...")
         preds, logits, preds_at_threshold = self.detector.detect(fake_true_articles, batch_size=self.batch_size)

@@ -11,12 +11,13 @@ from .detector import Detector
 
 
 class FastDetectGPT(Detector):
-    def __init__(self, ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device):
+    def __init__(self, ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device, detection_threshold = 0.5):
         self.ref_model = ref_model
         self.scoring_model = scoring_model
         self.ref_tokenizer = ref_tokenizer
         self.scoring_tokenizer = scoring_tokenizer
         self.device = device
+        self.detection_threshold = detection_threshold
         
     def get_samples(logits, labels):
         assert logits.shape[0] == 1
@@ -125,10 +126,11 @@ class FastDetectGPT(Detector):
         test_loader = DataLoader(dataset, batch_size=batch_size, shuffle=False, pin_memory=True)
         preds = []
         probs = []
+        preds_at_threshold = []
         with torch.no_grad():
             for batch in tqdm(test_loader, desc="Performing detection on dataset..."):
                 text = batch["text"]
-
+                print("text: ", text)
                 tokenized = scoring_tokenizer(text, return_tensors="pt", padding=True, return_token_type_ids=False).to(device)
                 labels = tokenized.input_ids[:, 1:]
                 logits_score = scoring_model(**tokenized).logits[:, :-1]
@@ -144,12 +146,17 @@ class FastDetectGPT(Detector):
                     crit = criterion_fn(logits_ref[i:i+1], logits_score[i:i+1], labels[i:i+1])
                     prob = prob_estimator.crit_to_prob(crit)
                     pred = 1 if prob > 0.5 else 0
+                    pred_at_threshold = 1 if prob > self.detection_threshold else 0
                     
                     probs.append(prob)
                     preds.append(pred)
+                    preds_at_threshold.append(pred_at_threshold)
+                    
 
         preds = np.array(preds)
         probs = np.array(probs)
         
-        return preds, probs
+        logits_pos_class = probs
+        
+        return preds, logits_pos_class, preds_at_threshold
             
