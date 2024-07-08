@@ -73,10 +73,18 @@ class DetectorLoader:
                     "top_k": 50
                 }
                 gen_params = default_gen_params
-                gen_params["temperature"] = cfg.generation.temperature
-                gen_params["repetition_penalty"] = cfg.generation.repetition_penalty
-                gen_params["max_new_tokens"] = cfg.generation.max_new_tokens
-                gen_params["min_new_tokens"] = cfg.generation.min_new_tokens
+                
+                if cfg.generation.get("temperature", None) is not None:
+                    gen_params["temperature"] = cfg.generation.temperature
+                
+                if cfg.generation.get("repetition_penalty", None) is not None:
+                    gen_params["repetition_penalty"] = cfg.generation.repetition_penalty
+                
+                if cfg.generation.get("max_new_tokens", None) is not None:
+                    gen_params["max_new_tokens"] = cfg.generation.max_new_tokens
+                    
+                if cfg.generation.get("min_new_tokens", None) is not None:
+                    gen_params["min_new_tokens"] = cfg.generation.min_new_tokens
                 
                 gen_loader = GenLoader(model_name, gen_params, device)
                 gen, _, gen_config = gen_loader.load()
