@@ -19,7 +19,6 @@ class WatermarkDetector(Detector):
                 The threshold to use for detection
         """
         
-        
         self.watermarking_scheme = watermarking_scheme
         self.detection_threshold = detection_threshold
         

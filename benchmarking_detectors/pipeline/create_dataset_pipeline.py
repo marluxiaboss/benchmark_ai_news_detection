@@ -5,15 +5,36 @@ from time import gmtime, strftime
 import logging
 import sys
 import os
-from datasets import load_from_disk
+from datasets import load_from_disk, Dataset
 from abc import ABC, abstractmethod
 import pandas as pd
 
+from dataset_loader import FakeTruePairsDataLoader
+from generation import ArticleGenerator
 from .experiment_pipeline import ExperimentPipeline
 from .pipeline_utils import *
 
 class CreateDatasetPipeline(ExperimentPipeline):
-    def __init__(self, cfg, dataset_loader, attack, experiment_path, batch_size=1, skip_cache=False):
+    def __init__(self, cfg: dict, dataset_loader: FakeTruePairsDataLoader, attack: ArticleGenerator, experiment_path: str,
+        batch_size: int=1, skip_cache: bool=False):
+        """
+        Pipeline for creating a dataset of fake and true articles.
+        
+        Parameters:
+            cfg: dict
+                The configuration of the experiment.
+            dataset_loader: FakeTruePairsDataLoader
+                The dataset loader to use for loading the dataset.
+            attack: ArticleGenerator
+                The generator to use for generating the fake articles, potentially adversarial.
+            experiment_path: str
+                The path to the experiment used for saving the dataset.
+            batch_size: int
+                The batch size to use for generation. Default is 1.
+            skip_cache: bool
+                If set to True, overwrite the saved dataset. Default is False.
+        """
+        
         self.cfg = cfg
         self.dataset_loader = dataset_loader
         self.attack = attack
@@ -34,25 +55,19 @@ class CreateDatasetPipeline(ExperimentPipeline):
 
         # setup log
         log_path = f"{experiment_path}/log/log_{self.experiment_name}.txt"
-        self.log = self.create_logger_file(log_path)
+        self.log = create_logger_file(log_path)
         
-    def create_logger_file(self, log_path):
-        if log_path is None:
-            if self.experiment_path is None:
-                raise ValueError("Experiment path not set")
-            log_path = self.experiment_path
-        
-        # create log file
-        with open(f"{log_path}", "w") as f:
-            f.write("")
 
-        log = create_logger(__name__, silent=False, to_disk=True,
-                                    log_file=f"{log_path}")
         
-        return log
+    def create_experiment_dataset(self) -> Dataset:
+        """
+        Create the fake true dataset for the experiment by generating fake articles using the generator.
         
-    def create_experiment_dataset(self):
-        ### CREATE THE (ADVERSRIAL) DATASET AND SAVE IT ###
+        Returns:
+            dataset: Dataset
+                The generated fake true dataset.
+        """
+        ### CREATE THE (ADVERSARIAL) DATASET AND SAVE IT ###
         
         # Load the base dataset
         dataset = self.dataset_loader.load_data()
@@ -97,6 +112,10 @@ class CreateDatasetPipeline(ExperimentPipeline):
         return dataset
         
     def run_pipeline(self):
+        """
+        Main function of the class, runs the pipeline.
+        Creates the dataset for the experiment and saves it.
+        """
         log = self.log
             
         dataset_path = f"{self.experiment_path}/{self.experiment_name}"

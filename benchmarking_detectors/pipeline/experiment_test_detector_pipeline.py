@@ -5,16 +5,33 @@ from time import gmtime, strftime
 import logging
 import sys
 import os
-from datasets import load_from_disk
+from datasets import load_from_disk, Dataset
 from abc import ABC, abstractmethod
 import pandas as pd
 
 from .experiment_pipeline import ExperimentPipeline
 from .pipeline_utils import *
+from detectors import Detector
 
 
 class ExperimentTestDetectorPipeline(ExperimentPipeline):
-    def __init__(self, cfg, detector, experiment_path, dataset_experiment_path, batch_size=1):
+    def __init__(self, cfg: dict, detector: Detector, experiment_path: str, dataset_experiment_path: str, batch_size: int=1) -> None:
+        """
+        Pipeline class used for testing a detector on an already existing dataset of fake and true articles.
+        
+        Parameters:
+            cfg: dict
+                The hydra configuration of the experiment (generation, watermarking and detection config)
+            detector: Detector
+                The detector to test.
+            experiment_path: str
+                The path to the experiment used for saving the results.
+            dataset_experiment_path: str
+                The path to the experiment used for loading the dataset.
+            batch_size: int
+                The batch size to use for detection. Default is 1.
+        """
+    
         self.cfg = cfg
 
         self.experiment_path = experiment_path
@@ -36,23 +53,27 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
 
         # setup log
         log_path = f"{experiment_path}/log/log_{self.experiment_name}.txt"
-        self.log = self.create_logger_file(log_path)
+        self.log = create_logger_file(log_path)
         
         # set the detector
         self.detector = detector
-        
-    def create_logger_file(self, log_path):
-        
-        # create log file
-        with open(log_path, "w") as f:
-            f.write("")
-
-        log = create_logger(__name__, silent=False, to_disk=True,
-                                    log_file=log_path)
-        return log
     
         
-    def find_threshold(self, eval_set, target_fpr):
+    def find_threshold(self, eval_set: Dataset, target_fpr: float) -> float:
+        """
+        Find the detection threshold for the target false positive rate (FPR) on the evaluation set.
+        Uses the fpr and thresholds obtained with the roc_curve function from sklearn.
+        
+        Parameters:
+            eval_set: Dataset
+                The evaluation set to use for finding the threshold.
+            target_fpr: float
+                The target false positive rate to find the threshold for.
+        
+        Returns:
+            threshold: float
+                The detection threshold for the target FPR.
+        """
         
         log = self.log
         dataset_name = self.dataset_experiment_name
@@ -87,7 +108,28 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         return threshold
         
         
-    def evaluate_detector(self, preds, logits, preds_at_threshold, labels, dataset, detection_threshold, data_split="test"):               
+    def evaluate_detector(self, preds: list[int], logits: list[float], preds_at_threshold: list[int],
+                        labels: list[int], dataset: Dataset, detection_threshold: float, data_split: str="test"): 
+        """
+        Use the predictions and labels to compute the metrics of the detector and save them.
+        
+        Parameters:
+            preds: list[int]
+                The predictions of the detector.
+            logits: list[float]
+                The logits of the detector.
+            preds_at_threshold: list[int]
+                The predictions of the detector at the given threshold.
+            labels: list[int]
+                The true labels of the dataset.
+            dataset: Dataset
+                The dataset used for testing the detector.
+            detection_threshold: float
+                The detection threshold used for the predictions at the given threshold.
+            data_split: str
+                The data split used for testing the detector. Default is "test".
+        """
+              
         
         log = self.log
         dataset_name = self.dataset_experiment_name
@@ -158,6 +200,12 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
             
             
     def run_pipeline(self):
+        """
+        Main function of the pipeline, runs the pipeline.
+        First, find the detection threshold for the target FPR on the evaluation set.
+        Then, test the detector on the test set using the detection threshold and save the results.
+        """
+        
         log = self.log
         
         # See if the dataset exists. This pipeline assumes that the dataset already exists
