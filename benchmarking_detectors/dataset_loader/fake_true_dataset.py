@@ -7,6 +7,7 @@ import numpy as np
 from .dataset_loader_utils import *
     
     
+# TODO: need to heavily modify it to make it general. Need to see how we integrate different datasets other than cnn_dailymail
 class FakeTruePairsDataLoader:
     
     def __init__(self, dataset_size, dataset_path,

@@ -24,6 +24,20 @@ def create_train_from_dataset(dataset: Dataset) -> DatasetDict:
     return dataset_dict
 
 def filter_duplicates(dataset: Dataset, text_field: str) -> Dataset:
+    """
+    Filter duplicates in the dataset based on the text_field.
+    
+    Parameters:
+    dataset: Dataset
+        The dataset to filter duplicates from
+    text_field: str
+        The field to use for filtering duplicates
+    
+    Returns:
+        Dataset
+            The dataset without duplicates
+        
+    """
     
     # check duplicates in the text_field
     dataset_df = pd.DataFrame(dataset)
@@ -36,6 +50,24 @@ def filter_duplicates(dataset: Dataset, text_field: str) -> Dataset:
     return Dataset.from_pandas(dataset_df)
 
 def create_splits(dataset: Dataset, train_size: float, eval_size: float, test_size: float) -> DatasetDict:
+    """
+    Create train, eval and test splits from a dataset.
+    
+    Parameters:
+    dataset: Dataset
+        The dataset to create the splits from
+    train_size: float
+        The size of the train split
+    eval_size: float
+        The size of the eval split
+    test_size: float
+        The size of the test split
+        
+    Returns:
+        DatasetDict
+            The dataset with the train, eval and test splits
+        
+    """
     
     train_size = len(dataset["train"])
     eval_size = int(train_size * eval_size)

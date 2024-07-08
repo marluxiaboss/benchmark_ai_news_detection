@@ -8,10 +8,25 @@ from watermark.auto_watermark import AutoWatermark
 class WatermarkDetector(Detector):
     
     def __init__(self, watermarking_scheme: AutoWatermark, detection_threshold: float):
+        """
+        Detector class based on a watermarking scheme.
+        
+        Parameters:
+            watermarking_scheme: AutoWatermark
+                The watermarking scheme to use for detection (see https://github.com/THU-BPM/MarkLLM for the source of AutoWatermark).
+                Caveat: it should be the exact same watermarking scheme that was used for generating the watermarked texts.
+            detection_threshold: float
+                The threshold to use for detection
+        """
+        
+        
         self.watermarking_scheme = watermarking_scheme
         self.detection_threshold = detection_threshold
         
-    def detect(self, texts: list, batch_size: int, detection_threshold: int) -> list:
+    def detect(self, texts: list[str], batch_size: int, detection_threshold: int) -> list[str]:
+        """
+        Detect the if the texts given as input are watermarked (label 1) or not (label 0).
+        """
         
         preds = []
         preds_at_threshold = []

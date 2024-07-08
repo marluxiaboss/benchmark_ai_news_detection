@@ -5,13 +5,29 @@ import torch
 from .bert_detector import BertDetector
 from .fast_detect_gpt import FastDetectGPT
 from .watermark_detector import WatermarkDetector
+from .detector import Detector
 from watermark.auto_watermark import AutoWatermark
 from generation import GenLoader
 
 class DetectorLoader:
     
-    def __init__(self, cfg, detector_name, device,
-                 weights_checkpoint=None, local_weights=False) -> None:
+    def __init__(self, cfg: dict, detector_name: str, device: str,
+                 weights_checkpoint: str=None, local_weights:bool =False) -> None:
+        """
+        Class used to load a detector based on the given configuration.
+        
+        Parameters:
+            cfg: dict
+                The configuration dictionary (hydra config)
+            detector_name: str
+                The name of the detector to load
+            device: str
+                The device to use for the detector
+            weights_checkpoint: str
+                The path to the weights checkpoint. Default is None.
+            local_weights: bool
+                Whether to load the weights locally. Default is False.
+        """
         
         self.cfg = cfg
         self.detector_name = detector_name
@@ -19,7 +35,15 @@ class DetectorLoader:
         self.weights_checkpoint = weights_checkpoint
         self.local_weights = local_weights
         
-    def load(self):
+    def load(self) -> Detector:
+        """
+        Load the detector based on the given configuration (init).
+        
+        Returns:
+            Detector
+                The loaded detector
+        """
+        
         
         detector_name = self.detector_name
         device = self.device

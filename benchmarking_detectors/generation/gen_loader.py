@@ -24,7 +24,7 @@ class GenLoader:
         self.gen_params = gen_params
         self.device = device
 
-    def load(self) -> tuple(torch.nn.Module, LLMGenerator, ModelConfig):
+    def load(self) -> tuple[torch.nn.Module, LLMGenerator, ModelConfig]:
         """
         Load the specifed generator model (from init) and tokenizer
 
@@ -71,7 +71,6 @@ class GenLoader:
             
             case "zephyr":
                 gen_path = "HuggingFaceH4/zephyr-7b-beta"
-                
                 gen_tokenizer = AutoTokenizer.from_pretrained(gen_path, trust_remote_code=True)
                 gen_tokenizer.pad_token = gen_tokenizer.eos_token
                 
@@ -90,7 +89,6 @@ class GenLoader:
 
             case "llama3_instruct":
                 gen_path = "meta-llama/Meta-Llama-3-8B-Instruct"
-                
                 gen_tokenizer = AutoTokenizer.from_pretrained(gen_path, trust_remote_code=True)
                 gen_tokenizer.pad_token = '<|eot_id|>'
                 gen_tokenizer.padding_side = "left"

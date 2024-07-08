@@ -107,9 +107,7 @@ class FastDetectGPT(Detector):
         
         scoring_model = self.scoring_model
         scoring_tokenizer = self.scoring_tokenizer
-        
-
-                
+  
         # evaluate criterion
         #name = "sampling_discrepancy_analytic"
         criterion_fn = self.get_sampling_discrepancy_analytic
@@ -150,7 +148,6 @@ class FastDetectGPT(Detector):
                     preds.append(pred)
                     preds_at_threshold.append(pred_at_threshold)
                     
-
         preds = np.array(preds)
         probs = np.array(probs)
         

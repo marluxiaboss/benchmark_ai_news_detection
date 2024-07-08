@@ -8,10 +8,28 @@ from .fake_true_dataset import FakeTruePairsDataLoader
     
 class CNNDataLoader(FakeTruePairsDataLoader):
     
-    def __init__(self, dataset_size, hf_dataset_path="abisee/cnn_dailymail", text_field="article", prefix_size=10,
-                 max_sample_len=500, seed=42) -> None:
+    def __init__(self, dataset_size: int, hf_dataset_path:str ="abisee/cnn_dailymail", text_field: str="article",
+                 prefix_size: int=10, max_sample_len: int=500, seed: int=42) -> None:
+        
+        """
+        Class used to load the cnn_dailymail from Huggingface and create the fake-true pairs dataset format used for the benchmarking.
+        
+        Parameters:
+            dataset_size: int
+                The number of samples to load from the dataset. Note: we will have at the end 2*dataset_size samples in the dataset
+                since we create a fake sample for each true sample (maybe less due to filtering duplicates).
+            hf_dataset_path: str
+                The path to the Huggingface dataset. Default is "abisee/cnn_dailymail".
+            text_field: str
+                The name of the field containing the text of interest. Default is "article".
+            prefix_size: int
+                The number of words to use as prefix. Default is 10.
+            max_sample_len: int
+                The maximum length of the text in characters. Default is 500.
+            seed: int
+                The seed to use for reproducibility. Default is 42.
+        """
         self.dataset_size = dataset_size
-        #self.test_size = self.dataset_size * 0.1
         self.text_field = text_field
         self.prefix_size = prefix_size
         self.hf_dataset_path = hf_dataset_path
@@ -20,9 +38,22 @@ class CNNDataLoader(FakeTruePairsDataLoader):
         
         self.dataset_name = "cnn_dailymail"
     
-    def regroup_pairs(self, dataset_true, dataset_fake) -> Dataset:
-        # merge the two datasets by regrouping the pairs of human and AI samples with the same prefix
-        # the first element of the pair is chosen randomly
+    def regroup_pairs(self, dataset_true: Dataset, dataset_fake: Dataset) -> Dataset:
+        """
+        Merge the two datasets by regrouping the pairs of human and AI samples with the same prefix.
+        The first element of the pair is chosen randomly among the true and fake samples.
+        
+        Parameters:
+            dataset_true: Dataset
+                The dataset containing the true samples.
+            dataset_fake: Dataset
+                The dataset containing the fake samples.
+        
+        Returns:
+            Dataset
+                The merged dataset.
+        """
+
         merged_dataset = []
         for i in range(len(dataset_true)):
             
@@ -42,6 +73,17 @@ class CNNDataLoader(FakeTruePairsDataLoader):
         return dataset
     
     def clean_dataset(self, dataset: Dataset) -> Dataset:
+        """
+        Clean the dataset by removing bloat from the text field.
+        
+        Parameters:
+            dataset: Dataset
+                The dataset to clean.
+        
+        Returns:
+            Dataset
+                The cleaned dataset.
+        """
         
         def remove_bloat(sample):
             filtered_text = sample["article"]
@@ -64,6 +106,18 @@ class CNNDataLoader(FakeTruePairsDataLoader):
         return dataset
     
     def process_data(self, dataset: DatasetDict) -> DatasetDict:
+        """
+        Main method to process the dataset called by load_data.
+        
+        Parameters:
+            dataset: DatasetDict
+                The dataset to process.
+        
+        Returns:
+            DatasetDict
+                The processed dataset.
+        """
+        
         
         dataset = self.clean_dataset(dataset)    
         
@@ -91,6 +145,14 @@ class CNNDataLoader(FakeTruePairsDataLoader):
 
     
     def load_data(self) -> DatasetDict:
+        """
+        Function that we call to load the dataset.
+        
+        Returns:
+            DatasetDict
+                The processed dataset.
+        """
+        
         
         # we take the train split but we'll split later into train, val, test
         dataset_base = load_dataset(self.hf_dataset_path, "3.0.0")["train"]
@@ -110,6 +172,5 @@ class CNNDataLoader(FakeTruePairsDataLoader):
         eval_split_size_percent = 0.1
         test_split_size_percent = 0.1
         processed_dataset = create_splits(processed_dataset, train_split_size_percent, eval_split_size_percent, test_split_size_percent)
-        
         
         return processed_dataset
