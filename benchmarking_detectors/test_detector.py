@@ -44,7 +44,7 @@ def test_detector(cfg: DictConfig):
     print(f"Testing detector {detector_name} on dataset {dataset_experiment_path}")
     
     # Load detector
-    detector_loader = DetectorLoader(detector_name, device,
+    detector_loader = DetectorLoader(cfg, detector_name, device,
                  weights_checkpoint, local_weights)
     detector = detector_loader.load()
 

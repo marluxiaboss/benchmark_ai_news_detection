@@ -4,13 +4,16 @@ from transformers import (ElectraForSequenceClassification, ElectraTokenizer,
 import torch
 from .bert_detector import BertDetector
 from .fast_detect_gpt import FastDetectGPT
-
+from .watermark_detector import WatermarkDetector
+from watermark.auto_watermark import AutoWatermark
+from generation import GenLoader
 
 class DetectorLoader:
     
-    def __init__(self, detector_name, device,
+    def __init__(self, cfg, detector_name, device,
                  weights_checkpoint=None, local_weights=False) -> None:
         
+        self.cfg = cfg
         self.detector_name = detector_name
         self.device = device
         self.weights_checkpoint = weights_checkpoint
@@ -53,7 +56,37 @@ class DetectorLoader:
                 scoring_tokenizer = ref_tokenizer
 
                 detector = FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device)
-            
+                
+            case "watermark_detector":
+                cfg = self.cfg
+                model_name = cfg.generation.generator_name
+                
+                # Note: we should adapt these parameters to the attack since we can assume that
+                # if the attacker has changed the parameter, we will know it
+                default_gen_params = {
+                    "max_new_tokens": 220,
+                    "min_new_tokens": 200,
+                    "temperature": 0.8,
+                    "top_p": 0.95,
+                    "repetition_penalty": 1,
+                    "do_sample": True,
+                    "top_k": 50
+                }
+                gen_params = default_gen_params
+                gen_params["temperature"] = cfg.generation.temperature
+                gen_params["repetition_penalty"] = cfg.generation.repetition_penalty
+                gen_params["max_new_tokens"] = cfg.generation.max_new_tokens
+                gen_params["min_new_tokens"] = cfg.generation.min_new_tokens
+                
+                gen_loader = GenLoader(model_name, gen_params, device)
+                gen, _, gen_config = gen_loader.load()
+                
+                watemark_scheme = AutoWatermark.load(self.cfg.watermark.algorithm_name,
+                    algorithm_config=self.cfg.watermark,
+                    gen_model=gen,
+                    model_config=gen_config)
+                detector = WatermarkDetector(watemark_scheme, self.cfg.watermark.z_threshold)
+                
             case _:
                 raise ValueError(f"Detector {detector_name} not supported yet")
         

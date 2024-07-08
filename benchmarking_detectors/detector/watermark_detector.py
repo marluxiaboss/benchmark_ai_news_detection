@@ -11,7 +11,7 @@ class WatermarkDetector(Detector):
         self.watermarking_scheme = watermarking_scheme
         self.detection_threshold = detection_threshold
         
-    def detect(self, texts: list, batch_size: int) -> list:
+    def detect(self, texts: list, batch_size: int, detection_threshold: int) -> list:
         
         preds = []
         preds_at_threshold = []
