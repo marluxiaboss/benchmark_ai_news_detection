@@ -132,15 +132,13 @@ def create_logger(name, silent=False, to_disk=False, log_file=None):
 def get_threshold_for_results(eval_json_path: str, target_fpr: float):
     
     # load the test results
-    df_eval = pd.read_json(eval_json_path)
+    with open(eval_json_path) as f:
+        data = json.load(f)
+    df_eval = pd.json_normalize(data)
             
     # get the fpr, tpr and thresholds
     fpr_at_thresholds = df_eval["fpr_at_thresholds"].values[0]
     thresholds = df_eval["thresholds"].values[0]
-    
-    print(f"Thresholds: {thresholds}")
-    print(f"FPR at thresholds: {fpr_at_thresholds}")
-    wefewfew
 
     # Find the threshold that gives the target FPR
     threshold = None
@@ -154,4 +152,4 @@ def get_threshold_for_results(eval_json_path: str, target_fpr: float):
         print(f"Could not find a threshold that gives a FPR > {target_fpr}")
         threshold = thresholds[-1]
     
-    return threshold
+    return float(threshold)

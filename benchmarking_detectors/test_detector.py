@@ -51,7 +51,7 @@ def test_detector(cfg: DictConfig):
     #experiment_path = f"{test_res_dir}/{detector_name}/{dataset_name}/{attack_name}/{watermarking_scheme_name}"
     #experiment_path = f"{test_res_dir}/{dataset_name}/{attack_name}/{watermarking_scheme_name}/{detector_name}"
     experiment_path = f"{test_res_dir}/{detector_name}/{dataset_name}/{attack_name}_{watermarking_scheme_name}"
-    simple_test_watermark_pipeline = ExperimentTestDetectorPipeline2(cfg, detector, experiment_path,
+    simple_test_watermark_pipeline = ExperimentTestDetectorPipeline(cfg, detector, experiment_path,
         dataset_experiment_path, batch_size)
     simple_test_watermark_pipeline.run_pipeline()
     
