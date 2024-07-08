@@ -182,7 +182,7 @@ def create_dataset(cfg: DictConfig):
     experiment_path = f"data/generated_datasets/{dataset_name}/{attack_name}/{watermarking_scheme_name}"
     #experiment_path = "benchmark_saved_results"
     simple_test_watermark_pipeline = CreateDatasetPipeline(cfg, cnn_data_loader, attack,
-        device, experiment_path, batch_size=batch_size, skip_cache=skip_cache)
+        experiment_path, batch_size=batch_size, skip_cache=skip_cache)
     simple_test_watermark_pipeline.run_pipeline()
     
 

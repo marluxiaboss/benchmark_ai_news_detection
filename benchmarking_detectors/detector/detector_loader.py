@@ -8,11 +8,10 @@ from .fast_detect_gpt import FastDetectGPT
 
 class DetectorLoader:
     
-    def __init__(self, detector_name, detection_threshold, device,
+    def __init__(self, detector_name, device,
                  weights_checkpoint=None, local_weights=False) -> None:
         
         self.detector_name = detector_name
-        self.detection_threshold = detection_threshold
         self.device = device
         self.weights_checkpoint = weights_checkpoint
         self.local_weights = local_weights
@@ -36,7 +35,7 @@ class DetectorLoader:
                 detector_model.load_state_dict(torch.load(model_path))
                 detector_model.to(device)
                 
-                detector = BertDetector(detector_model, detector_tokenizer, device, detection_threshold=self.detection_threshold)
+                detector = BertDetector(detector_model, detector_tokenizer, device)
 
             case "fast_detect_gpt":
                 
@@ -53,7 +52,7 @@ class DetectorLoader:
                 scoring_model = ref_model
                 scoring_tokenizer = ref_tokenizer
 
-                detector = FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device, detection_threshold=self.detection_threshold)
+                detector = FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device)
             
             case _:
                 raise ValueError(f"Detector {detector_name} not supported yet")

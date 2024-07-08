@@ -10,7 +10,7 @@ from generation import GenParamsAttack, PromptAttack, PromptParaphrasingAttack, 
 from utils.configs import ModelConfig, PromptConfig
 from detector import BertDetector, WatermarkDetector, FastDetectGPT, DetectorLoader
 from dataset_loader import CNNDataLoader, FakeTruePairsDataLoader
-from pipeline import ExperimentTestDetectorPipeline
+from pipeline import ExperimentTestDetectorPipeline2
 from watermark.auto_watermark import AutoWatermark
 
 
@@ -28,7 +28,6 @@ def test_detector(cfg: DictConfig):
     test_res_dir = cfg.detection.test_res_dir
     detector_name = cfg.detection.detector_name
     batch_size = cfg.detection.batch_size
-    detection_threshold = cfg.detection.detection_threshold
     weights_checkpoint = cfg.detection.weights_checkpoint
     
     print("Detector parameters:")
@@ -45,14 +44,14 @@ def test_detector(cfg: DictConfig):
     print(f"Testing detector {detector_name} on dataset {dataset_experiment_path}")
     
     # Load detector
-    detector_loader = DetectorLoader(detector_name, detection_threshold, device,
+    detector_loader = DetectorLoader(detector_name, device,
                  weights_checkpoint, local_weights)
     detector = detector_loader.load()
 
     #experiment_path = f"{test_res_dir}/{detector_name}/{dataset_name}/{attack_name}/{watermarking_scheme_name}"
     #experiment_path = f"{test_res_dir}/{dataset_name}/{attack_name}/{watermarking_scheme_name}/{detector_name}"
     experiment_path = f"{test_res_dir}/{detector_name}/{dataset_name}/{attack_name}_{watermarking_scheme_name}"
-    simple_test_watermark_pipeline = ExperimentTestDetectorPipeline(cfg, detector, device, experiment_path,
+    simple_test_watermark_pipeline = ExperimentTestDetectorPipeline2(cfg, detector, experiment_path,
         dataset_experiment_path, batch_size)
     simple_test_watermark_pipeline.run_pipeline()
     

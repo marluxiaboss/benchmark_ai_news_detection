@@ -11,13 +11,12 @@ from .detector import Detector
 
 
 class FastDetectGPT(Detector):
-    def __init__(self, ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device, detection_threshold = 0.5):
+    def __init__(self, ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device):
         self.ref_model = ref_model
         self.scoring_model = scoring_model
         self.ref_tokenizer = ref_tokenizer
         self.scoring_tokenizer = scoring_tokenizer
         self.device = device
-        self.detection_threshold = detection_threshold
         
     def get_samples(logits, labels):
         assert logits.shape[0] == 1
@@ -96,7 +95,7 @@ class FastDetectGPT(Detector):
             return cnt_fake / (cnt_real + cnt_fake)
 
             
-    def detect(self, texts: list, batch_size: int) -> list:
+    def detect(self, texts: list, batch_size: int, detection_threshold=0.5) -> list:
         reference_model_name = "gpt-neo-2.7B"
         scoring_model_name = "gpt-neo-2.7B"
         
@@ -146,7 +145,7 @@ class FastDetectGPT(Detector):
                     crit = criterion_fn(logits_ref[i:i+1], logits_score[i:i+1], labels[i:i+1])
                     prob = prob_estimator.crit_to_prob(crit)
                     pred = 1 if prob > 0.5 else 0
-                    pred_at_threshold = 1 if prob > self.detection_threshold else 0
+                    pred_at_threshold = 1 if prob > detection_threshold else 0
                     
                     probs.append(prob)
                     preds.append(pred)

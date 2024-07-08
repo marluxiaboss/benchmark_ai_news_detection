@@ -7,18 +7,17 @@ from .detector import Detector
 
 
 class BertDetector(Detector):
-    def __init__(self, model, tokenizer, device, detection_threshold = 0.5):
+    def __init__(self, model, tokenizer, device):
         
         # we assume here that the model is already trained
         # maybe only provide the path and let this class handle the loading
         self.model = model
         self.tokenizer = tokenizer
-        self.detection_threshold = detection_threshold
         self.device = device
         
         self.model.eval()
         
-    def detect(self, texts: list, batch_size) -> list:
+    def detect(self, texts: list, batch_size, detection_threshold=0.5) -> list:
                 
         # tokenized texts and create dataset
         dataset = Dataset.from_dict({"text": texts})
@@ -51,7 +50,7 @@ class BertDetector(Detector):
             preds_batch = torch.argmax(logits, dim=-1)
             
             # apply detection threshold, i.e. predict 1 if the probability of the positive class is higher than the threshold
-            preds_batch_thresholds = (prob_pos_class_logits > self.detection_threshold).int()
+            preds_batch_thresholds = (prob_pos_class_logits > detection_threshold).int()
                 
             preds.extend(preds_batch.tolist())
             preds_at_threshold.extend(preds_batch_thresholds.tolist())

@@ -13,11 +13,10 @@ from .experiment_pipeline import ExperimentPipeline
 from .pipeline_utils import *
 
 class CreateDatasetPipeline(ExperimentPipeline):
-    def __init__(self, cfg, dataset_loader, attack, device, experiment_path, batch_size=1, skip_cache=False):
+    def __init__(self, cfg, dataset_loader, attack, experiment_path, batch_size=1, skip_cache=False):
         self.cfg = cfg
         self.dataset_loader = dataset_loader
         self.attack = attack
-        self.device = device
         self.experiment_path = experiment_path
         self.batch_size = batch_size
         self.generator_name = cfg.generation.generator_name
