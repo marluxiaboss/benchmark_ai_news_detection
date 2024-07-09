@@ -130,11 +130,6 @@ class PromptParaphrasingAttack(ArticleGenerator):
         # generate news articles in a "normal" way
         fake_articles = self.generate_text(prefixes, batch_size=batch_size)
         
-        # saving memory
-        del self.gen_model
-        torch.cuda.empty_cache()
-        gc.collect()
-        
         # paraphrase the texts
         paraphrased_fake_articles = self.paraphrase(fake_articles, batch_size=batch_size, nb_paraphrasing=1)
 

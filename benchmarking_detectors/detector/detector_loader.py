@@ -67,8 +67,14 @@ class DetectorLoader:
             case "fast_detect_gpt":
                 
                 # TODO: add more config options for fast_detect_gpt
+                match self.cfg.detection.ref_model:
+                    case "gpt2":
+                        ref_model_path = "openai-community/gpt2"
+                    case "gpt-neo":
+                        ref_model_path = "EleutherAI/gpt-neo-2.7B"
+                    case _:
+                        raise ValueError("Reference model not supported yet")
                 
-                ref_model_path = "openai-community/gpt2"
                 ref_model = AutoModelForCausalLM.from_pretrained(ref_model_path, torch_dtype="auto").to(device)
                 ref_tokenizer = AutoTokenizer.from_pretrained(ref_model_path, trust_remote_code=True, padding_side="left")
 
