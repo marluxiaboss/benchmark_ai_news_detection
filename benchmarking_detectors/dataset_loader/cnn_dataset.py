@@ -98,6 +98,11 @@ class CNNDataLoader(FakeTruePairsDataLoader):
                 count_est = len(split_est)
                 filtered_text = split_est[count_est-1].split()[4:]
                 filtered_text = " ".join(filtered_text)
+                
+            # Heuristic for cases like "By . Charlie Scott . ..."
+            if filtered_text.startswith("By ."):
+                filtered_text_list = filtered_text.split(".")[2:]
+                filtered_text = ".".join(filtered_text_list).strip()
     
             return {"article": filtered_text}
         

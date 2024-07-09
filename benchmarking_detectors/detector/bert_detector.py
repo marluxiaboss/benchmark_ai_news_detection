@@ -29,7 +29,7 @@ class BertDetector(Detector):
         
         self.model.eval()
         
-    def detect(self, texts: list[str], batch_size: int, detection_threshold: int=0.0) -> tuple[list[int], list[float], list[int]]:
+    def detect(self, texts: list[str], batch_size: int, detection_threshold: float=0.0) -> tuple[list[int], list[float], list[int]]:
         """
         Detect the if the texts given as input are AI-generated (label 1) or human-written (label 0).
         Returns the predicted lables with argmax, the logits of the positive class and the predicted labels with the given detection threshold

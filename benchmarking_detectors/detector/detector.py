@@ -10,7 +10,7 @@ from watermark.auto_watermark import AutoWatermark
 
 class Detector(ABC):
     @abstractmethod
-    def detect(self, text: str) -> tuple[list[int], list[float], list[int]]:
+    def detect(self, texts: list[str], batch_size: int, detection_threshold: float=0.0) -> tuple[list[int], list[float], list[int]]:
         pass
     
 
