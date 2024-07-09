@@ -11,7 +11,7 @@ import pandas as pd
 
 from .experiment_pipeline import ExperimentPipeline
 from .pipeline_utils import *
-from detectors import Detector
+from detector import Detector
 
 
 class ExperimentTestDetectorPipeline(ExperimentPipeline):
@@ -132,7 +132,8 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
               
         
         log = self.log
-        dataset_name = self.dataset_experiment_name
+        dataset_experiment_name = self.dataset_experiment_name
+        detection_experiment_name = self.cfg.detection.experiment_name
         
         preds = np.array(preds)
         logits = np.array(logits)
@@ -193,7 +194,7 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         if not os.path.isdir(f"{experiment_path}/{data_split}"):
             os.makedirs(f"{experiment_path}/{data_split}")
         
-        json_res_file_path_base = f"{experiment_path}/{data_split}/test_metrics_{dataset_name}.json"
+        json_res_file_path_base = f"{experiment_path}/{data_split}/test_metrics_{detection_experiment_name}.json"
                 
         with open(json_res_file_path_base, "w") as f:
             f.write(json.dumps(results, indent=4))

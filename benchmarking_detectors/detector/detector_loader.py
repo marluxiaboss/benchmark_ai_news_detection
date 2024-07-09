@@ -72,6 +72,8 @@ class DetectorLoader:
                         ref_model_path = "openai-community/gpt2"
                     case "gpt-neo":
                         ref_model_path = "EleutherAI/gpt-neo-2.7B"
+                    case "gpt-j":
+                        ref_model_path = "EleutherAI/gpt-j-6B"
                     case _:
                         raise ValueError("Reference model not supported yet")
                 
