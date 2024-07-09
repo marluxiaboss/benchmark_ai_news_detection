@@ -7,7 +7,7 @@ from watermark.auto_watermark import AutoWatermark
 
 class WatermarkDetector(Detector):
     
-    def __init__(self, watermarking_scheme: AutoWatermark, detection_threshold: float):
+    def __init__(self, watermarking_scheme: AutoWatermark, detection_threshold: float) -> None:
         """
         Detector class based on a watermarking scheme.
         
@@ -22,7 +22,7 @@ class WatermarkDetector(Detector):
         self.watermarking_scheme = watermarking_scheme
         self.detection_threshold = detection_threshold
         
-    def detect(self, texts: list[str], batch_size: int, detection_threshold: int) -> list[str]:
+    def detect(self, texts: list[str], batch_size: int, detection_threshold: int) -> tuple[list[int], list[float], list[int]]:
         """
         Detect the if the texts given as input are watermarked (label 1) or not (label 0).
         """
