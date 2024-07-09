@@ -77,9 +77,11 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         
         log = self.log
         dataset_name = self.dataset_experiment_name
+        detection_experiment_name = self.cfg.detection.experiment_name
+
         
         # check if eval folder already exists
-        eval_json_path = f"{self.experiment_path}/eval/test_metrics_{dataset_name}.json"
+        eval_json_path = f"{self.experiment_path}/eval/test_metrics_{detection_experiment_name}.json"
         if not os.path.exists(eval_json_path):
             #os.makedirs(eval_path)
             log.info(f"Results for finding the threshold do not exist yet. Computing them now...")
