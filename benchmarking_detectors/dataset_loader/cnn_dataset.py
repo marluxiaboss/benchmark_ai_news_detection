@@ -136,7 +136,8 @@ class CNNDataLoader(FakeTruePairsDataLoader):
         nb_samples_before_filter = len(dataset)
         dataset = dataset.filter(lambda x: len(x[self.text_field]) >= self.max_sample_len)
         nb_samples_after_filter = len(dataset)
-        print(f"Filtered out {nb_samples_before_filter - nb_samples_after_filter} samples with text < {self.max_sample_len} characters.")
+        percent_filtered = (nb_samples_before_filter - nb_samples_after_filter) / nb_samples_before_filter * 100
+        print(f"Filtered out {percent_filtered:.2f}% of samples with text length < {self.max_sample_len}")
         
         # only take max_sample_len characters of the text field
         dataset = dataset.map(lambda x: {self.text_field: x[self.text_field][:self.max_sample_len]})
