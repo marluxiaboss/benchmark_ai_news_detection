@@ -9,7 +9,9 @@ from .fake_true_dataset import FakeTruePairsDataLoader
 class CNNDataLoader(FakeTruePairsDataLoader):
     
     def __init__(self, dataset_size: int, hf_dataset_path:str ="abisee/cnn_dailymail", text_field: str="article",
-                 prefix_size: int=10, max_sample_len: int=500, seed: int=42) -> None:
+                prefix_size: int=10, max_sample_len: int=500,
+                train_fraction: float=0.8, eval_fraction: float=0.1, test_fraction: float=0.1,
+                seed: int=42) -> None:
         
         """
         Class used to load the cnn_dailymail from Huggingface and create the fake-true pairs dataset format used for the benchmarking.
@@ -35,6 +37,11 @@ class CNNDataLoader(FakeTruePairsDataLoader):
         self.hf_dataset_path = hf_dataset_path
         self.max_sample_len = max_sample_len
         self.seed = seed
+        
+        # size of the splits
+        self.train_fraction = train_fraction
+        self.eval_fraction = eval_fraction
+        self.test_fraction = test_fraction
         
         self.dataset_name = "cnn_dailymail"
     
@@ -173,9 +180,9 @@ class CNNDataLoader(FakeTruePairsDataLoader):
         processed_dataset = self.process_data(dataset_base)
         
         # split into train, val, test
-        train_split_size_percent = 0.8
-        eval_split_size_percent = 0.1
-        test_split_size_percent = 0.1
+        train_split_size_percent = self.train_fraction
+        eval_split_size_percent = self.eval_fraction
+        test_split_size_percent = self.test_fraction
         processed_dataset = create_splits(processed_dataset, train_split_size_percent, eval_split_size_percent, test_split_size_percent)
         
         return processed_dataset

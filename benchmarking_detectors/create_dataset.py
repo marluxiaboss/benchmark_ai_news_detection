@@ -16,9 +16,15 @@ from watermark.auto_watermark import AutoWatermark
 
 
 def choose_dataset(dataset_name: str, dataset_size: int, max_sample_len: int, prefix_size: int):
+    
+    train_fraction = 0.8
+    eval_fraction = 0.1
+    test_fraction = 0.1
+    
     match dataset_name:
         case "cnn_dailymail":
-            cnn_data_loader = CNNDataLoader(dataset_size, max_sample_len=max_sample_len, prefix_size=prefix_size)
+            cnn_data_loader = CNNDataLoader(dataset_size, max_sample_len=max_sample_len, prefix_size=prefix_size,
+                train_fraction=train_fraction, eval_fraction=eval_fraction, test_fraction=test_fraction)
         case _:
             raise ValueError(f"Dataset {dataset_name} not supported yet")
     return cnn_data_loader
@@ -71,6 +77,8 @@ def create_dataset(cfg: DictConfig):
     generator_name = cfg.generation.generator_name
     attack_name = cfg.generation.attack_name
     attack_type = cfg.generation.attack_type
+    skip_cache = cfg.generation.skip_cache
+    skip_train_split = cfg.generation.skip_train_split
     
     # watermarking parameters
     watermarking_scheme_name = cfg.watermark.algorithm_name
@@ -126,11 +134,10 @@ def create_dataset(cfg: DictConfig):
     attack.set_watermarking_scheme_name(watermarking_scheme_name)
     
     ### Pipeline ###
-    skip_cache = False
     experiment_path = f"data/generated_datasets/{dataset_name}/{attack_name}/{watermarking_scheme_name}"
     #experiment_path = "benchmark_saved_results"
     simple_test_watermark_pipeline = CreateDatasetPipeline(cfg, cnn_data_loader, attack,
-        experiment_path, batch_size=batch_size, skip_cache=skip_cache)
+        experiment_path, batch_size=batch_size, skip_cache=skip_cache, skip_train_split=skip_train_split)
     simple_test_watermark_pipeline.run_pipeline()
     
 

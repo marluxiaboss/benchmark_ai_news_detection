@@ -69,14 +69,17 @@ def create_splits(dataset: Dataset, train_size: float, eval_size: float, test_si
         
     """
     
-    train_size = len(dataset["train"])
-    eval_size = int(train_size * eval_size)
-    test_size = int(train_size * test_size)
-
+    full_size = len(dataset["train"])
+    train_size = int(full_size * train_size)
+    eval_size = int(full_size * eval_size)
+    test_size = int(full_size * test_size)
+    
     dataset = DatasetDict({
-    'train': dataset["train"].select(range(train_size - eval_size - test_size)),
-    'eval': dataset["train"].select(range(train_size - eval_size - test_size, train_size - test_size)),
-    'test': dataset["train"].select(range(train_size - test_size, train_size))})
+        'train': dataset["train"].select(range(train_size)),
+        'eval': dataset["train"].select(range(train_size, full_size - test_size)),
+        'test': dataset["train"].select(range(full_size - test_size, full_size))
+    })
+        
 
     print("Train size:", len(dataset['train']))
     print("Eval size:", len(dataset['eval']))

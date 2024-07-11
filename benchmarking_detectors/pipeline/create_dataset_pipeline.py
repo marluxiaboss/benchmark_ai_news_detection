@@ -16,7 +16,7 @@ from .pipeline_utils import *
 
 class CreateDatasetPipeline(ExperimentPipeline):
     def __init__(self, cfg: dict, dataset_loader: FakeTruePairsDataLoader, attack: ArticleGenerator, experiment_path: str,
-        batch_size: int=1, skip_cache: bool=False):
+        batch_size: int=1, skip_cache: bool=False, skip_train_split: bool=False):
         """
         Pipeline for creating a dataset of fake and true articles.
         
@@ -46,6 +46,9 @@ class CreateDatasetPipeline(ExperimentPipeline):
         
         # if set to true, overwrite the cached datasets
         self.skip_cache = skip_cache
+        
+        # if set to true, not generate fake articles for the train split
+        self.skip_train_split = skip_train_split
         
         # check that folder at experiment path exists, if not create it
         if not os.path.exists(experiment_path):
@@ -79,16 +82,22 @@ class CreateDatasetPipeline(ExperimentPipeline):
             return sample  
                
         # generate fake articles for each split
-        data_splits = ["train", "eval", "test"]
+        if self.skip_train_split:
+            data_splits = ["eval", "test"]
+        else:
+            data_splits = ["train", "eval", "test"]
+        
         for split in data_splits:
             split_data = dataset[split]
+            
+            #if self.skip_train_split and split == "train":
             fake_articles = split_data.filter(lambda x: x["label"] == 1)
             fake_articles_prefixes = fake_articles["prefix"][:]
             fake_articles = self.attack.generate_adversarial_text(fake_articles_prefixes, batch_size=self.batch_size)
             
             # replace the empty text field for label 1 samples (AI) with the generated fake articles
             split_data = split_data.map(lambda x: fuse_fake_true_articles(x, fake_articles))
-            
+        
             # remove samples with empty text
             split_data = split_data.filter(lambda x: len(x["text"]) > 0)
             
@@ -101,7 +110,9 @@ class CreateDatasetPipeline(ExperimentPipeline):
         #dataset.save_to_disk(f"data/generated_datasets/{dataset_name}")
         dataset.save_to_disk(f"{self.experiment_path}/{self.experiment_name}")
         
-        # save also to json for each split
+        # save also to json for each split, including train even if we skipped it
+        data_splits = ["train", "eval", "test"]
+        
         for split in data_splits:
             split_data = dataset[split]
             
