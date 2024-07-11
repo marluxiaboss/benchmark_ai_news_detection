@@ -1,7 +1,8 @@
 defaults:
   - attack_base
 
-attack_name: gen_params_attack
+attack_name: ???
+attack_type: gen_params_attack
 temperature: ???
 repetition_penalty: ???
 

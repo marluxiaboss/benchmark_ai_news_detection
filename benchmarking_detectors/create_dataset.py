@@ -41,11 +41,11 @@ def choose_watermarking_scheme(cfg: DictConfig, watermarking_scheme_name: str, g
     
     return watermarking_scheme
 
-def choose_attack(cfg: DictConfig, attack_name: str, gen_model, model_config, max_sample_len, 
+def choose_attack(cfg: DictConfig, attack_type: str, gen_model, model_config, max_sample_len, 
                   watermarking_scheme_logits_processor=None, paraphraser_model=None,
                   paraphraser_config=None):
     
-    attack_loader = AttackLoader(cfg, attack_name, gen_model, model_config, max_sample_len, watermarking_scheme_logits_processor,
+    attack_loader = AttackLoader(cfg, attack_type, gen_model, model_config, max_sample_len, watermarking_scheme_logits_processor,
                                     paraphraser_model, paraphraser_config)
     attack = attack_loader.load()
         
@@ -70,6 +70,7 @@ def create_dataset(cfg: DictConfig):
     min_new_tokens = cfg.generation.min_new_tokens
     generator_name = cfg.generation.generator_name
     attack_name = cfg.generation.attack_name
+    attack_type = cfg.generation.attack_type
     
     # watermarking parameters
     watermarking_scheme_name = cfg.watermark.algorithm_name
@@ -120,7 +121,7 @@ def create_dataset(cfg: DictConfig):
         watermarking_scheme_logits_processor = watermarking_scheme.logits_processor
     
     ### Prompt & Attack ###
-    attack = choose_attack(cfg, attack_name, gen_model, gen_config, max_sample_len, watermarking_scheme_logits_processor)
+    attack = choose_attack(cfg, attack_type, gen_model, gen_config, max_sample_len, watermarking_scheme_logits_processor)
     attack.set_attack_name(attack_name)
     attack.set_watermarking_scheme_name(watermarking_scheme_name)
     

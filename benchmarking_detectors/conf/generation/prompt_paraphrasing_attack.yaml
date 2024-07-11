@@ -1,6 +1,7 @@
 defaults:
   - attack_base
 
+attack_type: prompt_paraphrasing_attack
 attack_name: prompt_paraphrasing_attack
 system_paraphrasing_prompt: You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’.
   ‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’.

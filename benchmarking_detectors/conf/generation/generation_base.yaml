@@ -1,5 +1,6 @@
 type: no_attack
 attack_name: no_attack
+attack_type: no_attack
 experiment_name: base
 dataset_size: 100
 max_sample_len: 500

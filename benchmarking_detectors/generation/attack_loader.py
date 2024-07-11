@@ -9,12 +9,12 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, LogitsProcessor
     
 class AttackLoader:
         
-    def __init__(self, cfg: DictConfig, attack_name: str, gen_model: LLMGenerator, model_config: ModelConfig, max_sample_len: int, 
+    def __init__(self, cfg: DictConfig, attack_type: str, gen_model: LLMGenerator, model_config: ModelConfig, max_sample_len: int, 
                     watermarking_scheme_logits_processor: LogitsProcessor=None, paraphraser_model: LLMGenerator=None,
                     paraphraser_config: ModelConfig=None):
         
         self.cfg = cfg
-        self.attack_name = attack_name
+        self.attack_type = attack_type
         self.gen_model = gen_model
         self.model_config = model_config
         self.max_sample_len = max_sample_len
@@ -25,7 +25,7 @@ class AttackLoader:
     def load(self):
         
         cfg = self.cfg
-        attack_name = self.attack_name
+        attack_type = self.attack_type
         gen_model = self.gen_model
         model_config = self.model_config
         max_sample_len = self.max_sample_len
@@ -34,7 +34,7 @@ class AttackLoader:
         paraphraser_config = self.paraphraser_config
         
         
-        match attack_name:
+        match attack_type:
             case "no_attack":
                 
                 system_prompt = cfg.generation.system_prompt
@@ -89,7 +89,7 @@ class AttackLoader:
                     watermarking_scheme_logits_processor)
                 
             case _:
-                raise ValueError(f"Attack {attack_name} not supported yet")
+                raise ValueError(f"Attack {attack_type} not supported yet")
             
         return attack
             
