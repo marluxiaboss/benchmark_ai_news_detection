@@ -79,6 +79,7 @@ def create_dataset(cfg: DictConfig):
     attack_type = cfg.generation.attack_type
     skip_cache = cfg.generation.skip_cache
     skip_train_split = cfg.generation.skip_train_split
+    data_folder = cfg.generation.data_folder
     
     # watermarking parameters
     watermarking_scheme_name = cfg.watermark.algorithm_name
@@ -134,7 +135,7 @@ def create_dataset(cfg: DictConfig):
     attack.set_watermarking_scheme_name(watermarking_scheme_name)
     
     ### Pipeline ###
-    experiment_path = f"data/generated_datasets/{dataset_name}/{attack_name}/{watermarking_scheme_name}"
+    experiment_path = f"{data_folder}/{dataset_name}/{attack_name}/{watermarking_scheme_name}"
     #experiment_path = "benchmark_saved_results"
     simple_test_watermark_pipeline = CreateDatasetPipeline(cfg, cnn_data_loader, attack,
         experiment_path, batch_size=batch_size, skip_cache=skip_cache, skip_train_split=skip_train_split)

@@ -13,5 +13,6 @@ user_prompt: "You are a helpful assistant."
 system_prompt: "Continue writing the following news article starting with:"
 batch_size: 2
 
+data_folder: data/generated_datasets
 skip_cache: False
 skip_train_split: False
