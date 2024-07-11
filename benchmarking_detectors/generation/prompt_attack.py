@@ -26,7 +26,7 @@ from .generator import LLMGenerator
 
 class PromptAttack(ArticleGenerator):
     
-    def __init__(self, gen_model: ModelConfig, gen_config: LLMGenerator, gen_prompt_config: PromptConfig,
+    def __init__(self, gen_model: LLMGenerator, gen_config: ModelConfig, gen_prompt_config: PromptConfig,
                 adversarial_prompt_config: PromptConfig, max_sample_len: int, watermarking_scheme: AutoWatermark=None) -> None:
         """
         Class for generating text using a model from Huggingface with adversarial prompt.

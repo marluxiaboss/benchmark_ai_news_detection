@@ -13,7 +13,7 @@ from utils.utils import create_directory_for_file, load_config_file
 from transformers import LogitsProcessor, LogitsProcessorList
 
 
-class KGWConfig:
+class KGW_PConfig:
     """Config class for KGW algorithm, load config file and initialize parameters."""
 
     def __init__(self, algorithm_config: dict, gen_model, model_config: ModelConfig, *args, **kwargs) -> None:
@@ -39,10 +39,10 @@ class KGWConfig:
         self.gen_kwargs = model_config.gen_params
 
 
-class KGWUtils:
+class KGW_PUtils:
     """Utility class for KGW algorithm, contains helper functions."""
 
-    def __init__(self, config: KGWConfig, *args, **kwargs) -> None:
+    def __init__(self, config: KGW_PConfig, *args, **kwargs) -> None:
         """
             Initialize the KGW utility class.
 
@@ -104,10 +104,10 @@ class KGWUtils:
         return z_score, green_token_flags
 
 
-class KGWLogitsProcessor(LogitsProcessor):
+class KGW_PLogitsProcessor(LogitsProcessor):
     """LogitsProcessor for KGW algorithm, process logits to add watermark."""
 
-    def __init__(self, config: KGWConfig, utils: KGWUtils, *args, **kwargs) -> None:
+    def __init__(self, config: KGW_PConfig, utils: KGW_PUtils, *args, **kwargs) -> None:
         """
             Initialize the KGW logits processor.
 
@@ -128,7 +128,8 @@ class KGWLogitsProcessor(LogitsProcessor):
 
     def _bias_greenlist_logits(self, scores: torch.Tensor, greenlist_mask: torch.Tensor, greenlist_bias: float) -> torch.Tensor:
         """Bias the scores for the greenlist tokens."""
-        scores[greenlist_mask] = scores[greenlist_mask] + greenlist_bias
+        #scores[greenlist_mask] = scores[greenlist_mask] + greenlist_bias
+        scores[greenlist_mask] = scores[greenlist_mask] * greenlist_bias
         return scores
 
     def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:
@@ -148,7 +149,7 @@ class KGWLogitsProcessor(LogitsProcessor):
         return scores
     
 
-class KGW(BaseWatermark):
+class KGW_P(BaseWatermark):
     """Top-level class for KGW algorithm."""
 
     def __init__(self, algorithm_config: dict, gen_model, transformers_config: ModelConfig, *args, **kwargs) -> None:
@@ -159,9 +160,9 @@ class KGW(BaseWatermark):
                 algorithm_config (dict): Configuration for the KGW algorithm.
                 transformers_config (TransformersConfig): Configuration for the transformers model.
         """
-        self.config = KGWConfig(algorithm_config, gen_model, transformers_config)
-        self.utils = KGWUtils(self.config)
-        self.logits_processor = KGWLogitsProcessor(self.config, self.utils)
+        self.config = KGW_PConfig(algorithm_config, gen_model, transformers_config)
+        self.utils = KGW_PUtils(self.config)
+        self.logits_processor = KGW_PLogitsProcessor(self.config, self.utils)
     
     def generate_watermarked_text(self, prompt: str, *args, **kwargs) -> str:
         """Generate watermarked text."""

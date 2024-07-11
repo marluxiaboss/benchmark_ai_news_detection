@@ -3,4 +3,4 @@
 # Description: Initialization file for the kgw package
 # ====================================================
 
-from .kgw import KGW
+from .kgw_p import KGW_P
