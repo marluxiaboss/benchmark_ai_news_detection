@@ -130,13 +130,18 @@ class CNNDataLoader(FakeTruePairsDataLoader):
                 The processed dataset.
         """
         
-        
         dataset = self.clean_dataset(dataset)    
         
         # only take max_sample_len characters of the text field
         dataset = dataset.map(lambda x: {self.text_field: x[self.text_field][:self.max_sample_len]})
         
         dataset = filter_duplicates(dataset, self.text_field) 
+        
+        # filter out samples with text > max_sample_len
+        nb_samples_before_filter = len(dataset)
+        dataset = dataset.filter(lambda x: len(x[self.text_field]) <= self.max_sample_len)
+        nb_samples_after_filter = len(dataset)
+        print(f"Filtered out {nb_samples_before_filter - nb_samples_after_filter} samples with text > {self.max_sample_len} characters.")
         
         # create label 0 (human) and create empty texts with label 1 (AI)
         dataset = dataset.map(lambda x: {"label": 0, self.text_field: x[self.text_field]})
