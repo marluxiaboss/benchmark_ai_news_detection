@@ -7,7 +7,7 @@ from utils.configs import ModelConfig
 
 class GenLoader:
     
-    def __init__(self, model_name: str, gen_params: dict, device: str) -> None:
+    def __init__(self, model_name: str, gen_params: dict, device: str, gen_tokenizer_only: bool=False) -> None:
         """
         Class for loading a generator model (LLMGenerator class) and tokenizer from Huggingface.
         
@@ -23,6 +23,7 @@ class GenLoader:
         self.model_name = model_name
         self.gen_params = gen_params
         self.device = device
+        self.gen_tokenizer_only = gen_tokenizer_only
 
     def load(self) -> tuple[torch.nn.Module, LLMGenerator, ModelConfig]:
         """
@@ -52,13 +53,15 @@ class GenLoader:
                     padding_side='left',
                     trust_remote_code=True
                 )
-
-                gen = AutoModelForCausalLM.from_pretrained(
-                    gen_path,
-                    torch_dtype="auto",
-                    device_map="auto",
-                    pad_token_id=gen_tokenizer.pad_token_id,
-                ).to(device)
+                if self.gen_tokenizer_only:
+                    gen = None
+                else:
+                    gen = AutoModelForCausalLM.from_pretrained(
+                        gen_path,
+                        torch_dtype="auto",
+                        device_map="auto",
+                        pad_token_id=gen_tokenizer.pad_token_id,
+                    ).to(device)
 
                 # config for chat template and gen parameters
                 use_chat_template = True
@@ -74,9 +77,12 @@ class GenLoader:
                 gen_tokenizer = AutoTokenizer.from_pretrained(gen_path, trust_remote_code=True)
                 gen_tokenizer.pad_token = gen_tokenizer.eos_token
                 
-                gen = AutoModelForCausalLM.from_pretrained(gen_path,
-                    torch_dtype=torch.bfloat16,
-                    device_map="auto").to(device)
+                if self.gen_tokenizer_only:
+                    gen = None
+                else:
+                    gen = AutoModelForCausalLM.from_pretrained(gen_path,
+                        torch_dtype=torch.bfloat16,
+                        device_map="auto").to(device)
 
                 # config for chat template and gen parameters
                 use_chat_template = True
@@ -93,7 +99,10 @@ class GenLoader:
                 gen_tokenizer.pad_token = '<|eot_id|>'
                 gen_tokenizer.padding_side = "left"
 
-                gen = AutoModelForCausalLM.from_pretrained(gen_path, torch_dtype=torch.bfloat16).to(device)
+                if self.gen_tokenizer_only:
+                    gen = None
+                else:
+                    gen = AutoModelForCausalLM.from_pretrained(gen_path, torch_dtype=torch.bfloat16).to(device)
 
                 # config for chat template and gen parameters
                 use_chat_template = True
