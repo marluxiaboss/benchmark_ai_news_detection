@@ -118,10 +118,10 @@ class DetectorLoader:
                 if cfg.generation.get("min_new_tokens", None) is not None:
                     gen_params["min_new_tokens"] = cfg.generation.min_new_tokens
                 
-                #gen_loader = GenLoader(model_name, gen_params, device)
-                #gen, _, gen_config = gen_loader.load()
+                gen_loader = GenLoader(model_name, gen_params, device)
+                gen, _, gen_config = gen_loader.load()
+                del gen
                 gen = None
-                gen_config = None
                 
                 watemark_scheme = AutoWatermark.load(self.cfg.watermark.algorithm_name,
                     algorithm_config=self.cfg.watermark,
