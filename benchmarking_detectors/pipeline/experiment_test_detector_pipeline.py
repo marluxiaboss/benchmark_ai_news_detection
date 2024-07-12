@@ -15,7 +15,8 @@ from detector import Detector
 
 
 class ExperimentTestDetectorPipeline(ExperimentPipeline):
-    def __init__(self, cfg: dict, detector: Detector, experiment_path: str, dataset_experiment_path: str, batch_size: int=1) -> None:
+    def __init__(self, cfg: dict, detector: Detector, experiment_path: str,
+                 non_attack_experiment_path: str, dataset_experiment_path: str, batch_size: int=1) -> None:
         """
         Pipeline class used for testing a detector on an already existing dataset of fake and true articles.
         
@@ -33,8 +34,8 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         """
     
         self.cfg = cfg
-
         self.experiment_path = experiment_path
+        self.non_attack_experiment_path = non_attack_experiment_path
         self.batch_size = batch_size
         self.detector_name = cfg.detection.detector_name
         
@@ -81,25 +82,29 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
 
         
         # check if eval folder already exists
-        eval_json_path = f"{self.experiment_path}/eval/test_metrics_{detection_experiment_name}.json"
+        eval_json_path = f"{self.non_attack_experiment_path}/eval/test_metrics_{detection_experiment_name}.json"
         if not os.path.exists(eval_json_path):
             #os.makedirs(eval_path)
-            log.info(f"Results for finding the threshold do not exist yet. Computing them now...")
             
-            fake_true_articles = eval_set["text"][:]
-        
-            log.info("Classifying the articles...")
+            if self.cfg.generation.attack_type != "no_attack":
+                raise ValueError(f"Results for finding the threshold do not exist yet. Please run the detection pipeline with the non-attack dataset first.")
+            else:
+                log.info(f"Results for finding the threshold do not exist yet. Computing them now...")
+                
+                fake_true_articles = eval_set["text"][:]
             
-            # base threshold
-            threshold = self.cfg.detection.detection_threshold
-            preds, logits, preds_at_threshold = self.detector.detect(fake_true_articles, self.batch_size, threshold)
-            labels = eval_set["label"]
-            
-            data_split = "eval"
-            self.evaluate_detector(preds, logits, preds_at_threshold, labels, eval_set, threshold, data_split)
-            
-            # get the threshold
-            threshold = get_threshold_for_results(eval_json_path, target_fpr)
+                log.info("Classifying the articles...")
+                
+                # base threshold
+                threshold = self.cfg.detection.detection_threshold
+                preds, logits, preds_at_threshold = self.detector.detect(fake_true_articles, self.batch_size, threshold)
+                labels = eval_set["label"]
+                
+                data_split = "eval"
+                self.evaluate_detector(preds, logits, preds_at_threshold, labels, eval_set, threshold, data_split)
+                
+                # get the threshold
+                threshold = get_threshold_for_results(eval_json_path, target_fpr)
         
         else:
             log.info(f"Results for finding the threshold already exist. Loading them...")

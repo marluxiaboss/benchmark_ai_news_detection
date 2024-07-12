@@ -48,11 +48,10 @@ def test_detector(cfg: DictConfig):
                  weights_checkpoint, local_weights)
     detector = detector_loader.load()
 
-    #experiment_path = f"{test_res_dir}/{detector_name}/{dataset_name}/{attack_name}/{watermarking_scheme_name}"
-    #experiment_path = f"{test_res_dir}/{dataset_name}/{attack_name}/{watermarking_scheme_name}/{detector_name}"
-    experiment_path = f"{test_res_dir}/{detector_name}/{dataset_name}/{attack_name}_{watermarking_scheme_name}"
-    simple_test_watermark_pipeline = ExperimentTestDetectorPipeline(cfg, detector, experiment_path,
-        dataset_experiment_path, batch_size)
+    experiment_path = f"{test_res_dir}/{detector_name}_{watermarking_scheme_name}/{dataset_name}/{attack_name}"
+    non_attack_experiment_path = f"{test_res_dir}/{detector_name}_{watermarking_scheme_name}/{dataset_name}/no_attack"
+    simple_test_watermark_pipeline = ExperimentTestDetectorPipeline(cfg, detector,
+        experiment_path, non_attack_experiment_path, dataset_experiment_path, batch_size)
     simple_test_watermark_pipeline.run_pipeline()
     
 if __name__ == "__main__":
