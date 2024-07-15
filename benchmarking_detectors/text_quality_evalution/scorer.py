@@ -32,8 +32,7 @@ class BertScoreScorer(RefScorer):
     def __init__(self, name):
         super().__init__(name)
         
-        #self.model = "microsoft/deberta-xlarge-mnli"
-        self.model = ""
+        self.model = "microsoft/deberta-xlarge-mnli"
         self.num_layers = 40
         
     def score(self, eval_text: str, ref_text: str) -> float:

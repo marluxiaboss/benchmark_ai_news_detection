@@ -1,3 +1,5 @@
+from tqdm import tqdm
+
 from .experiment_pipeline import ExperimentPipeline
 from .pipeline_utils import *
 from text_quality_evalution import Scorer, RefScorer, BertScoreScorer, SemScoreScorer, IDFScorer
@@ -30,7 +32,7 @@ class TextQualityPipeline(ExperimentPipeline):
                 human_ai_pairs.append((human_text, ai_text))
 
             scores = []
-            for human_text, ai_text in human_ai_pairs:
+            for human_text, ai_text in tqdm(human_ai_pairs, desc="Scoring with ref..."):
                 score = scorer.score(ai_text, human_text)
                 scores.append(score)
             
@@ -45,7 +47,7 @@ class TextQualityPipeline(ExperimentPipeline):
             
             scores = []
             
-            for ai_text in ai_texts:
+            for ai_text in tqdm(ai_texts, desc="Scoring..."):
                 score = scorer.score(ai_text)
                 scores.append(score)
                 
