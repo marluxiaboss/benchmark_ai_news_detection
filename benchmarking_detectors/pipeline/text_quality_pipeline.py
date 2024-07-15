@@ -51,11 +51,13 @@ class TextQualityPipeline(ExperimentPipeline):
             ai_texts = ai_dataset_test["text"][:]
             #human_texts = human_dataset_test["text"][:]
             
-            scores = []
+            scores = scorer.score_batch(ai_texts)
             
-            for ai_text in tqdm(ai_texts, desc="Scoring..."):
-                score = scorer.score(ai_text)
-                scores.append(score)
+            
+            
+            #for ai_text in tqdm(ai_texts, desc="Scoring..."):
+            #    score = scorer.score(ai_text)
+            #    scores.append(score)
                 
             return scores
         

@@ -2,6 +2,7 @@ import argparse
 from text_quality_evalution import Scorer, RefScorer, BertScoreScorer, SemScoreScorer, IDFScorer
 from pipeline import TextQualityPipeline
 import numpy as np
+from datasets import load_dataset
 
 
 
@@ -15,7 +16,9 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, help="Batch size", default=64)
     args = parser.parse_args()
     
-    scorer = BertScoreScorer("bert_score")
+    #scorer = BertScoreScorer("bert_score")
+    cnn_dailymail = load_dataset("cnn_dailymail", "3.0.0")["train"]
+    scorer = IDFScorer("idf_score", cnn_dailymail["article"][:1000])
     
     dataset_name = args.dataset_name
     data_experiment_name = args.data_experiment_name
@@ -23,7 +26,11 @@ if __name__ == "__main__":
     
     non_watermarked_dataset_path = f"data/generated_datasets/{dataset_name}/no_attack/no_watermark/{generator_name}_{data_experiment_name}"
     pipeline = TextQualityPipeline(scorer, non_watermarked_dataset_path, batch_size=args.batch_size)
+    scores = pipeline.run_pipeline()
+    print("Mean score: ", np.mean(scores))
     
+    watermarked_kgw_dataset_path = f"data/generated_datasets/{dataset_name}/no_attack/KGW/{generator_name}_{data_experiment_name}"
+    pipeline = TextQualityPipeline(scorer, watermarked_kgw_dataset_path, batch_size=args.batch_size)
     scores = pipeline.run_pipeline()
     print("Mean score: ", np.mean(scores))
     

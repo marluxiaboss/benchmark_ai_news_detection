@@ -4,6 +4,7 @@ import torch
 import torch.nn.functional as F
 import numpy as np
 import nltk
+from tqdm import tqdm
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -116,6 +117,16 @@ class IDFScorer(Scorer):
         median_idf = np.median(idfs)
         
         return median_idf
+    
+    def score_batch(self, eval_texts: list[str], batch_size=1) -> float:
+        
+        scores = []
+        for text in tqdm(eval_texts, desc="Scoring..."):
+            score = self.score(text)
+            scores.append(score)
+            
+        return scores
+        
         
         
         
