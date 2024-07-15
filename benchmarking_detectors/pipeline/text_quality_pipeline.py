@@ -31,11 +31,17 @@ class TextQualityPipeline(ExperimentPipeline):
                 human_text = group[group["label"] == 0]["text"].values[0]
                 human_ai_pairs.append((human_text, ai_text))
 
-            scores = []
-            for human_text, ai_text in tqdm(human_ai_pairs, desc="Scoring with ref..."):
-                score = scorer.score(ai_text, human_text)
-                scores.append(score)
+            #scores = []
+            #for human_text, ai_text in tqdm(human_ai_pairs, desc="Scoring with ref..."):
+            #    score = scorer.score(ai_text, human_text)
+            #    scores.append(score)
             
+            human_texts = [pair[0] for pair in human_ai_pairs]
+            ai_texts = [pair[1] for pair in human_ai_pairs]
+            
+            batch_size = 128
+            scores = scorer.score_batch(ai_texts, human_texts, batch_size)
+            print("Scores: ", scores)
             return scores
         
         else:      

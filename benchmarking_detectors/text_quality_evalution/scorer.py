@@ -41,11 +41,11 @@ class BertScoreScorer(RefScorer):
         precision, recall, f1_score = bert_score.score(cands, refs, lang='en', model_type=self.model, num_layers=self.num_layers, rescale_with_baseline=True)
         return f1_score.item()
     
-    def score_batch(self, eval_texts: list[str], ref_texts: list[str]) -> float:
+    def score_batch(self, eval_texts: list[str], ref_texts: list[str], batch_size) -> float:
         cands = eval_texts
         refs = ref_texts
-        precision, recall, f1_score = bert_score.score(cands, refs, lang='en', model_type=self.model, num_layers=self.num_layers, rescale_with_baseline=True)
-        return f1_score.item()
+        precision, recall, f1_scores = bert_score.score(cands, refs, lang='en', model_type=self.model, num_layers=self.num_layers, rescale_with_baseline=True, batch_size=batch_size, verbose=True)
+        return f1_scores.tolist()
     
 class SemScoreScorer(RefScorer):
     def __init__(self, name):
