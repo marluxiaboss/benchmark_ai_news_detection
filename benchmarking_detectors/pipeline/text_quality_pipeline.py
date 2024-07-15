@@ -6,9 +6,10 @@ from text_quality_evalution import Scorer, RefScorer, BertScoreScorer, SemScoreS
 
 class TextQualityPipeline(ExperimentPipeline):
     
-    def __init__(self, scorer: Scorer, dataset_path: str):
+    def __init__(self, scorer: Scorer, dataset_path: str, batch_size: int = 64):
         self.scorer = scorer
         self.dataset = load_from_disk(dataset_path)
+        self.batch_size = batch_size
     
     def run_pipeline(self):
         
@@ -39,9 +40,8 @@ class TextQualityPipeline(ExperimentPipeline):
             human_texts = [pair[0] for pair in human_ai_pairs]
             ai_texts = [pair[1] for pair in human_ai_pairs]
             
-            batch_size = 128
+            batch_size = self.batch_size
             scores = scorer.score_batch(ai_texts, human_texts, batch_size)
-            print("Scores: ", scores)
             return scores
         
         else:      
