@@ -1,0 +1,9 @@
+dataset_name: cnn_dailymail
+data_experiment_name: base
+generator_name: zephyr
+batch_size: 64
+
+# which scorer to use in the pipeline
+use_bert_scorer: True
+use_idf_scorer: True
+use_prometheus_scorer: True
