@@ -168,7 +168,7 @@ class PrometheusScorer(CompareScorer):
     
     def score_batch(self, eval_texts1: list[str], eval_texts2: list[str], ref_texts: list[str], instructions: list[str], rubric: str,  batch_size=1) -> float:
         
-        _, scores = self.judge.relative_grade(
+        feedbacks, scores = self.judge.relative_grade(
             instructions=instructions,
             responses_A=eval_texts1,
             responses_B=eval_texts2,
@@ -176,18 +176,25 @@ class PrometheusScorer(CompareScorer):
             reference_answers=ref_texts
         )
         
+        for feedback, score in zip(feedbacks, scores):
+            print(f"Feedback: {feedback}")
+            print(f"Score: {score}")
+            print()
+        
         # score in scores B are either "Score: A" or "Score: B"
         count_A = 0
         count_B = 0
         
         for score in scores:
-            if score == "Score: A":
+            if score == "A":
                 count_A += 1
-            elif score == "Score: B":
+            elif score == "B":
                 count_B += 1
                 
         # compute the ratio of A to B
         
         score = count_A / (count_A + count_B)
+        
+
         
         return score

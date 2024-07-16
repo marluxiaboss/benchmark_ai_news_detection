@@ -67,8 +67,17 @@ class TextQualityPipeline(ExperimentPipeline):
             return scores
         
         elif isinstance(scorer, PrometheusScorer):
+            
+            # both datasets must exist for this scorer to work
+            dataset_test = self.dataset["test"]
+            
+            if self.dataset2 is None:
+                raise ValueError("Two datasets are required for PrometheusScorer")
+            
+            dataset_test2 = self.dataset2["test"]
+            
             dataset_test_1_df = dataset_test.to_pandas()
-            dataset_test_2_df = self.dataset2.to_pandas()
+            dataset_test_2_df = dataset_test2.to_pandas()
             
             # add column to identify the dataset
             dataset_test_1_df["dataset"] = "A"
@@ -84,7 +93,8 @@ class TextQualityPipeline(ExperimentPipeline):
 
             for prefix, group in dataset_test_grouped:
 
-                if group.shape[0] != 3:
+                # 4 because 2 pairs of human and AI responses, one for each dataset
+                if group.shape[0] != 4:
                     continue
                 
                 responses_A.append(group[(group["label"] == 1) & (group["dataset"] == "A")]["text"].values[0])
