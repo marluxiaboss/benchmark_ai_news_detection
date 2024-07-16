@@ -169,6 +169,29 @@ class PrometheusScorer(CompareScorer):
     def score_batch(self, eval_texts1: list[str], eval_texts2: list[str], ref_texts: list[str],
         instructions: list[str], rubric: str,  batch_size=1, compare_human_to_ai: bool=False) -> float:
         
+        
+        eval_texts1_with_index = [(text, "A") for text in eval_texts1]
+        eval_texts2_with_index = [(text, "B") for text in eval_texts2]
+        
+        # create a new list with shuffled elements so that we avoid the bias for the first element
+        eval_text1_shuffled = []
+        eval_texts2_shuffled = []
+        
+        if len(eval_texts1) != len(eval_texts2):
+            raise ValueError("The number of eval_texts1 and eval_texts2 must be equal!")
+        
+        for i in range(len(eval_texts1)):
+            
+            # draw a random number between 0 and 1
+            random_number = np.random.randint(0, 2)
+            
+            if random_number == 0:
+                eval_text1_shuffled.append(eval_texts1_with_index[i])
+                eval_texts2_shuffled.append(eval_texts2_with_index[i])
+            else:
+                eval_text1_shuffled.append(eval_texts2_with_index[i])
+                eval_texts2_shuffled.append(eval_texts1_with_index[i])
+            
         if compare_human_to_ai:
             feedbacks, scores = self.judge.relative_grade(
                 instructions=instructions,
@@ -179,11 +202,28 @@ class PrometheusScorer(CompareScorer):
         else:
             feedbacks, scores = self.judge.relative_grade(
                 instructions=instructions,
-                responses_A=eval_texts1,
-                responses_B=eval_texts2,
+                responses_A=eval_text1_shuffled,
+                responses_B=eval_texts2_shuffled,
                 rubric=rubric,
                 reference_answers=ref_texts
             )
+            
+        # retrieve the true feedback and scores
+        true_scores = []
+        for i in range(len(feedbacks)):
+            score = scores[i]
+            
+            if eval_text1_shuffled[i][1] == "A":
+                true_scores.append(score)
+            else:
+                print("Flipping the score")
+                # if A was in B, flip the score
+                if score == "A":
+                    true_scores.append("B")
+                else:
+                    true_scores.append("A")
+                    
+        scores = true_scores
         
         for feedback, score in zip(feedbacks, scores):
             print(f"Feedback: {feedback}")

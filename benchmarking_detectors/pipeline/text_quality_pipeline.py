@@ -107,7 +107,7 @@ class TextQualityPipeline(ExperimentPipeline):
                 
             instructions = [f"Continue writing the following news article starting with: {prefix}" for prefix in prefixes]
             rubric = "Is the news article convincing, coherent and well-written? Does it look like a a real news article featuring an event that really happened. Is the event mentionned in the article plausible?"
-            scores = scorer.score_batch(responses_A, responses_B, responses_human, instructions, rubric, compare_human_to_ai=True)
+            scores = scorer.score_batch(responses_A, responses_B, responses_human, instructions, rubric, compare_human_to_ai=False)
                 
             return scores
             
