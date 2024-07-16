@@ -43,8 +43,10 @@ if __name__ == "__main__":
     
     scorer = PrometheusScorer("prometheus_score")
     non_watermarked_dataset_path = f"data/generated_datasets/{dataset_name}/no_attack/no_watermark/{generator_name}_{data_experiment_name}"
-    watermarked_kgw_dataset_path = f"data/generated_datasets/{dataset_name}/no_attack/KGW/{generator_name}_{data_experiment_name}"
-    pipeline = TextQualityPipeline(scorer, non_watermarked_dataset_path, watermarked_kgw_dataset_path, batch_size=args.batch_size)
+    #watermarked_kgw_dataset_path = f"data/generated_datasets/{dataset_name}/no_attack/KGW/{generator_name}_{data_experiment_name}"
+    watermarked_kgwp_dataset_path = f"data/generated_datasets/{dataset_name}/no_attack/KGW_P/{generator_name}_{data_experiment_name}"
+
+    pipeline = TextQualityPipeline(scorer, non_watermarked_dataset_path, watermarked_kgwp_dataset_path, batch_size=args.batch_size)
     score = pipeline.run_pipeline()
     print("Score: ", score)
     

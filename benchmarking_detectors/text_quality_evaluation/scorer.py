@@ -166,15 +166,24 @@ class PrometheusScorer(CompareScorer):
     def score(self, eval_text1: str, eval_text2: str, ref_text: Optional[str]=None) -> float:
         pass
     
-    def score_batch(self, eval_texts1: list[str], eval_texts2: list[str], ref_texts: list[str], instructions: list[str], rubric: str,  batch_size=1) -> float:
+    def score_batch(self, eval_texts1: list[str], eval_texts2: list[str], ref_texts: list[str],
+        instructions: list[str], rubric: str,  batch_size=1, compare_human_to_ai: bool=False) -> float:
         
-        feedbacks, scores = self.judge.relative_grade(
-            instructions=instructions,
-            responses_A=eval_texts1,
-            responses_B=eval_texts2,
-            rubric=rubric,
-            reference_answers=ref_texts
-        )
+        if compare_human_to_ai:
+            feedbacks, scores = self.judge.relative_grade(
+                instructions=instructions,
+                responses_A=eval_texts1,
+                responses_B=ref_texts,
+                rubric=rubric
+            )
+        else:
+            feedbacks, scores = self.judge.relative_grade(
+                instructions=instructions,
+                responses_A=eval_texts1,
+                responses_B=eval_texts2,
+                rubric=rubric,
+                reference_answers=ref_texts
+            )
         
         for feedback, score in zip(feedbacks, scores):
             print(f"Feedback: {feedback}")
