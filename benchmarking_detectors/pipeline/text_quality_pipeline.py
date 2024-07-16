@@ -8,7 +8,8 @@ from text_quality_evaluation import (Scorer, SelfScorer, RefScorer,
 
 class TextQualityPipeline(ExperimentPipeline):
     
-    def __init__(self, scorer: Scorer, dataset_path: str, dataset_path2: Optional[str], batch_size: int=64):
+    def __init__(self, scorer: Scorer, dataset_path: str, dataset_path2: Optional[str]=None,
+                 batch_size: int=64):
         self.scorer = scorer
         self.dataset = load_from_disk(dataset_path)
         self.batch_size = batch_size
@@ -16,6 +17,7 @@ class TextQualityPipeline(ExperimentPipeline):
         # we can eventually another dataset with AI/human pairs for providing two AI responses to compare
         if dataset_path2 is not None:
             self.dataset2 = load_from_disk(dataset_path2)
+
     
     def run_pipeline(self):
         
@@ -87,7 +89,7 @@ class TextQualityPipeline(ExperimentPipeline):
                 
             instructions = [f"Continue writing the following news article starting with: {prefix}" for prefix in prefixes]
             rubric = "Is the news article convincing, coherent and well-written? Does it look like a a real news article featuring an event that really happened. Is the event mentionned in the article plausible?"
-            scores_mean, scores_lower_bound, scores_upper_bound  = scorer.score_batch(responses_A, responses_B, responses_human, instructions, rubric, compare_human_to_ai=True)
+            scores_mean, scores_lower_bound, scores_upper_bound  = scorer.score_batch(responses_A, responses_B, responses_human, instructions, rubric)
             
         else:
             raise ValueError("Scorer not recognized")

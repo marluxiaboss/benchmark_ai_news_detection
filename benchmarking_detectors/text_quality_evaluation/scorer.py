@@ -161,11 +161,11 @@ class PrometheusScorer(CompareScorer):
     # use either judge LM or prometheus LM
     # Cavetat: Only works with VLLM!
         
-    def __init__(self, name):
+    def __init__(self, name, compare_human_to_ai: bool=False):
         self.name = name
         self.model = VLLM(model="prometheus-eval/prometheus-7b-v2.0")
         self.judge = PrometheusEval(model=self.model, relative_grade_template=RELATIVE_PROMPT)
-
+        self.compare_human_to_ai = compare_human_to_ai
         
     def score(self, eval_text1: str, eval_text2: str, ref_text: Optional[str]=None) -> float:
         pass
@@ -213,12 +213,14 @@ class PrometheusScorer(CompareScorer):
         return true_scores
     
     def score_batch(self, eval_texts1: list[str], eval_texts2: list[str], ref_texts: list[str],
-        instructions: list[str], rubric: str,  batch_size=1, compare_human_to_ai: bool=False) -> float:
+        instructions: list[str], rubric: str,  batch_size=1) -> float:
+        
+        compare_human_to_ai = self.compare_human_to_ai
         
         # when we compare human text to AI text directly, set the text to compare to human text
         if compare_human_to_ai:
-            eval_texts1 = ref_texts
-            eval_texts2 = eval_texts1
+            eval_texts1 = eval_texts1
+            eval_texts2 = ref_texts
         
         eval_texts1_with_index = [(text, "A") for text in eval_texts1]
         eval_texts2_with_index = [(text, "B") for text in eval_texts2]
