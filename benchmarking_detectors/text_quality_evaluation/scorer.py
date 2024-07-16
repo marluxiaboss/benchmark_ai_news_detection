@@ -193,12 +193,49 @@ class PrometheusScorer(CompareScorer):
                 eval_texts2_shuffled.append(eval_texts1_with_index[i])
             
         if compare_human_to_ai:
+            
+            eval_texts1_with_index = [(text, "A") for text in eval_texts1]
+            ref_texts_with_index = [(text, "B") for text in ref_texts]
+            
+            eval_texts1_shuffled = []
+            ref_texts_shuffled = []
+            
+            if len(eval_texts1) != len(ref_texts):
+                raise ValueError("The number of eval_texts1 and ref_texts must be equal!")
+            
+            for i in range(len(eval_texts1)):
+                
+                # draw a random number between 0 and 1
+                random_number = np.random.randint(0, 2)
+                
+                if random_number == 0:
+                    eval_texts1_shuffled.append(eval_texts1_with_index[i])
+                    ref_texts_shuffled.append(ref_texts_with_index[i])
+                else:
+                    eval_texts1_shuffled.append(ref_texts_with_index[i])
+                    ref_texts_shuffled.append(eval_texts1_with_index[i])
+                    
+            
             feedbacks, scores = self.judge.relative_grade(
                 instructions=instructions,
-                responses_A=eval_texts1,
-                responses_B=ref_texts,
+                responses_A=eval_texts1_shuffled,
+                responses_B=ref_texts_shuffled,
                 rubric=rubric
             )
+            true_scores = []
+            
+            for i in range(len(scores)):
+                score = scores[i]
+                
+                if eval_texts1_shuffled[i][1] == "A":
+                    true_scores.append(score)
+                else:
+                    print("Flipping the score")
+                    # if A was in B, flip the score
+                    if score == "A":
+                        true_scores.append("B")
+                    else:
+                        true_scores.append("A")
         else:
             feedbacks, scores = self.judge.relative_grade(
                 instructions=instructions,
@@ -208,20 +245,20 @@ class PrometheusScorer(CompareScorer):
                 reference_answers=ref_texts
             )
             
-        # retrieve the true feedback and scores
-        true_scores = []
-        for i in range(len(feedbacks)):
-            score = scores[i]
-            
-            if eval_text1_shuffled[i][1] == "A":
-                true_scores.append(score)
-            else:
-                print("Flipping the score")
-                # if A was in B, flip the score
-                if score == "A":
-                    true_scores.append("B")
+            # retrieve the true feedback and scores
+            true_scores = []
+            for i in range(len(feedbacks)):
+                score = scores[i]
+                
+                if eval_text1_shuffled[i][1] == "A":
+                    true_scores.append(score)
                 else:
-                    true_scores.append("A")
+                    print("Flipping the score")
+                    # if A was in B, flip the score
+                    if score == "A":
+                        true_scores.append("B")
+                    else:
+                        true_scores.append("A")
                     
         scores = true_scores
         
