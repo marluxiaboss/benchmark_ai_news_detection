@@ -1,15 +1,20 @@
 from tqdm import tqdm
-
+from typing import Optional
+from datasets import load_from_disk
 from .experiment_pipeline import ExperimentPipeline
 from .pipeline_utils import *
-from text_quality_evalution import Scorer, RefScorer, BertScoreScorer, SemScoreScorer, IDFScorer
+from text_quality_evaluation import (Scorer, SelfScorer, RefScorer,
+        BertScoreScorer, SemScoreScorer, IDFScorer, PrometheusScorer)
 
 class TextQualityPipeline(ExperimentPipeline):
     
-    def __init__(self, scorer: Scorer, dataset_path: str, batch_size: int = 64):
+    def __init__(self, scorer: Scorer, dataset_path: str, dataset_path2: Optional[str], batch_size: int=64):
         self.scorer = scorer
         self.dataset = load_from_disk(dataset_path)
         self.batch_size = batch_size
+        
+        if dataset_path2 is not None:
+            self.dataset2 = load_from_disk(dataset_path2)
     
     def run_pipeline(self):
         
@@ -44,7 +49,7 @@ class TextQualityPipeline(ExperimentPipeline):
             scores = scorer.score_batch(ai_texts, human_texts, batch_size)
             return scores
         
-        else:      
+        elif isinstance(scorer, SelfScorer):     
             ai_dataset_test = dataset_test.filter(lambda sample: sample["label"] == 1)
             #human_dataset_test = dataset_test["test"].filter(lambda sample: sample["label"] == 0)
             
@@ -60,4 +65,42 @@ class TextQualityPipeline(ExperimentPipeline):
             #    scores.append(score)
                 
             return scores
+        
+        elif isinstance(scorer, PrometheusScorer):
+            dataset_test_1_df = dataset_test.to_pandas()
+            dataset_test_2_df = self.dataset2.to_pandas()
+            
+            # add column to identify the dataset
+            dataset_test_1_df["dataset"] = "A"
+            dataset_test_2_df["dataset"] = "B"
+            
+            dataset_test_df = pd.concat([dataset_test_1_df, dataset_test_2_df])
+            dataset_test_grouped = dataset_test_df.groupby("prefix")
+
+            responses_A = []
+            responses_B = []
+            responses_human = []
+            prefixes = []
+
+            for prefix, group in dataset_test_grouped:
+
+                if group.shape[0] != 3:
+                    continue
+                
+                responses_A.append(group[(group["label"] == 1) & (group["dataset"] == "A")]["text"].values[0])
+                responses_B.append(group[(group["label"] == 1) & (group["dataset"] == "B")]["text"].values[0])
+                responses_human.append(group[(group["label"] == 0)]["text"].values[0])
+                prefixes.append(prefix)
+                
+            # TODO: add a shuffling mechanism
+                
+                
+            instructions = [f"Continue writing the following news article starting with: {prefix}" for prefix in prefixes]
+            rubric = "Is the news article convincing, coherent and well-written? Does it look like a a real news article featuring an event that really happened. Is the event mentionned in the article plausible?"
+            scores = scorer.score_batch(responses_A, responses_B, responses_human, instructions, rubric)
+                
+            return scores
+            
+        else:
+            raise ValueError("Scorer not recognized")
         
