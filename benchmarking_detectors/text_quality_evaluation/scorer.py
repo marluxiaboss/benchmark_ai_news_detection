@@ -281,6 +281,22 @@ class PrometheusScorer(CompareScorer):
         
         score = count_A / (count_A + count_B)
         
+        
+        score_array = [1 if score == "A" else 0 for score in scores]
+        
+        # compute CI with bootstrapp resampling
+        
+        n_bootstraps = 1000
+        
+        means = []
+        for i in range(n_bootstraps):
+            bootstrap_sample = np.random.choice(score_array, len(score_array), replace=True)
+            winrate_A = np.mean(bootstrap_sample)
+            means.append(winrate_A)
+            
+        lower_bound = np.percentile(means, 2.5)
+        upper_bound = np.percentile(means, 97.5)
+        
 
         
-        return score
+        return score, lower_bound, upper_bound
