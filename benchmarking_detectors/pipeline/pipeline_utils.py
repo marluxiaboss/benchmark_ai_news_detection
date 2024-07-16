@@ -129,10 +129,9 @@ def create_logger(name, silent=False, to_disk=False, log_file=None):
     return log
 
 def create_logger_file(log_path):
+    
     if log_path is None:
-        if self.experiment_path is None:
-            raise ValueError("Experiment path not set")
-        log_path = self.experiment_path
+        raise ValueError("Experiment path not set")
     
     # create log file
     with open(f"{log_path}", "w") as f:
@@ -142,6 +141,7 @@ def create_logger_file(log_path):
                                 log_file=f"{log_path}")
     
     return log
+
 def get_threshold_for_results(eval_json_path: str, target_fpr: float):
     
     # load the test results

@@ -10,7 +10,13 @@ import json
 import hydra
 from omegaconf import DictConfig, OmegaConf
 
-def init_pipelines(cfg: DictConfig):
+from utils.utils import create_logger_file
+
+def init_pipelines(cfg: DictConfig, log):
+    
+    # print the pipeline config
+    for key in cfg.pipeline:
+        log.info(f"{key}: {cfg.pipeline[key]}")
     
     dataset_name = cfg.pipeline.dataset_name
     data_experiment_name = cfg.pipeline.data_experiment_name
@@ -52,20 +58,31 @@ def init_pipelines(cfg: DictConfig):
     return pipelines
 
 @hydra.main(version_base=None, config_path="conf", config_name="main")
-def evaluate_text_quality(cfg: DictConfig, pipelines: list):
+def evaluate_text_quality(cfg: DictConfig):
+    
+    # setup logger
+    experiment_path = (f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watemarking_scheme_name_main}_{cfg.pipeline.watemarking_scheme_name_compare}/"
+                f"{cfg.pipeline.dataset_name}/{cfg.generator_name}/quality_test_{cfg.pipeline.data_experiment_name}")
+
+    log = create_logger_file(experiment_path)
+    
+    pipelines = init_pipelines(cfg, log)
     
     assert len(pipelines) > 0, "At least one pipeline must be provided"
     
     results_dict = {}
     for pipeline in pipelines:
         scorer_name = pipeline.scorer.name
-        print(f"Running pipeline with scorer: {scorer_name}")
+        log.info(f"Running pipeline with scorer: {scorer_name}")
         score, lower_bound, upper_bound = pipeline.run_pipeline()
-        print(f"Score: {score} +/- {upper_bound - score}")
+        log.info(f"Score: {score} +/- {upper_bound - score}")
         
         # Save the results
         results_dict[scorer_name] = {"score": score, "lower_bound": lower_bound, "upper_bound": upper_bound}
         
+    # save config to results dict
+    results_dict["config"] = cfg.pipeline
+    
     # save the results to a json file
     json_path = (f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watemarking_scheme_name_main}_{cfg.pipeline.watemarking_scheme_name_compare}/"
                 f"{cfg.pipeline.dataset_name}/{cfg.generator_name}/quality_test_{cfg.pipeline.data_experiment_name}.json")
@@ -76,8 +93,7 @@ def evaluate_text_quality(cfg: DictConfig, pipelines: list):
 
 if __name__ == "__main__":
     
-    pipelines = init_pipelines()
-    evaluate_text_quality(pipelines)
+    evaluate_text_quality()
     
     
     

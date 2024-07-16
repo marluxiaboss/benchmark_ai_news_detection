@@ -75,8 +75,8 @@ class BertScoreScorer(RefScorer):
         f1_score_mean, f1_score_lower_bound, f1_score_upper_bound = bootstrap_score(f1_scores)
         return f1_score_mean, f1_score_lower_bound, f1_score_upper_bound
     
-"""
-TODO: maybe use it later, ignore it for now since very similar to BERT score
+
+#TODO: maybe use it later, ignore it for now since very similar to BERT score
 class SemScoreScorer(RefScorer):
     def __init__(self, name):
         super().__init__(name)
@@ -97,7 +97,7 @@ class SemScoreScorer(RefScorer):
         sentence_embeddings = F.normalize(embeds, p=2, dim=1)
         cosine_scores = F.cosine_similarity(sentence_embeddings[0].unsqueeze(0), sentence_embeddings[1].unsqueeze(0))
         return cosine_scores.item()
-"""
+
 class IDFScorer(SelfScorer):
     
     def __init__(self, name, corpus: list[str]):
