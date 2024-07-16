@@ -1,6 +1,6 @@
 from tqdm import tqdm
 from typing import Optional
-from datasets import load_from_disk
+from datasets import load_from_disk, concatenate_datasets
 from .experiment_pipeline import ExperimentPipeline
 from .pipeline_utils import *
 from text_quality_evaluation import (Scorer, SelfScorer, RefScorer,
@@ -18,7 +18,7 @@ class TextQualityPipeline(ExperimentPipeline):
     
     def run_pipeline(self):
         
-        dataset_test = self.dataset["test"]
+        dataset_test = concatenate_datasets([self.dataset["test"], self.dataset["eval"]])
         
         scorer = self.scorer
         
@@ -69,12 +69,13 @@ class TextQualityPipeline(ExperimentPipeline):
         elif isinstance(scorer, PrometheusScorer):
             
             # both datasets must exist for this scorer to work
-            dataset_test = self.dataset["test"]
+            dataset_test = concatenate_datasets([self.dataset["test"], self.dataset["eval"]])
             
             if self.dataset2 is None:
                 raise ValueError("Two datasets are required for PrometheusScorer")
             
-            dataset_test2 = self.dataset2["test"]
+            dataset_test2 = concatenate_datasets([self.dataset2["test"], self.dataset2["eval"]])
+            
             
             dataset_test_1_df = dataset_test.to_pandas()
             dataset_test_2_df = dataset_test2.to_pandas()
