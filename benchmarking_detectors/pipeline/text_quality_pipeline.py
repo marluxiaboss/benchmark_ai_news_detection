@@ -13,6 +13,7 @@ class TextQualityPipeline(ExperimentPipeline):
         self.dataset = load_from_disk(dataset_path)
         self.batch_size = batch_size
         
+        # we can eventually another dataset with AI/human pairs for providing two AI responses to compare
         if dataset_path2 is not None:
             self.dataset2 = load_from_disk(dataset_path2)
     
@@ -37,46 +38,27 @@ class TextQualityPipeline(ExperimentPipeline):
                 human_text = group[group["label"] == 0]["text"].values[0]
                 human_ai_pairs.append((human_text, ai_text))
 
-            #scores = []
-            #for human_text, ai_text in tqdm(human_ai_pairs, desc="Scoring with ref..."):
-            #    score = scorer.score(ai_text, human_text)
-            #    scores.append(score)
-            
             human_texts = [pair[0] for pair in human_ai_pairs]
             ai_texts = [pair[1] for pair in human_ai_pairs]
             
             batch_size = self.batch_size
-            scores = scorer.score_batch(ai_texts, human_texts, batch_size)
-            return scores
-        
+            scores_mean, scores_lower_bound, scores_upper_bound = scorer.score_batch(ai_texts, human_texts, batch_size)
+            
         elif isinstance(scorer, SelfScorer):     
+            
+            # we directly use AI-text here without any human reference
             ai_dataset_test = dataset_test.filter(lambda sample: sample["label"] == 1)
-            #human_dataset_test = dataset_test["test"].filter(lambda sample: sample["label"] == 0)
-            
             ai_texts = ai_dataset_test["text"][:]
-            #human_texts = human_dataset_test["text"][:]
-            
-            scores = scorer.score_batch(ai_texts)
-            
-            
-            
-            #for ai_text in tqdm(ai_texts, desc="Scoring..."):
-            #    score = scorer.score(ai_text)
-            #    scores.append(score)
-                
-            return scores
+            scores_mean, scores_lower_bound, scores_upper_bound = scorer.score_batch(ai_texts)
         
         elif isinstance(scorer, PrometheusScorer):
             
             # both datasets must exist for this scorer to work
-            dataset_test = concatenate_datasets([self.dataset["test"], self.dataset["eval"]])
+            assert self.dataset2 is not None, "Both datasets must be provided for Prometheus Scorer"
             
-            if self.dataset2 is None:
-                raise ValueError("Two datasets are required for PrometheusScorer")
-            
+            dataset_test = concatenate_datasets([self.dataset["test"], self.dataset["eval"]])            
             dataset_test2 = concatenate_datasets([self.dataset2["test"], self.dataset2["eval"]])
-            
-            
+
             dataset_test_1_df = dataset_test.to_pandas()
             dataset_test_2_df = dataset_test2.to_pandas()
             
@@ -103,15 +85,12 @@ class TextQualityPipeline(ExperimentPipeline):
                 responses_human.append(group[(group["label"] == 0)]["text"].values[0])
                 prefixes.append(prefix)
                 
-            # TODO: add a shuffling mechanism
-                
-                
             instructions = [f"Continue writing the following news article starting with: {prefix}" for prefix in prefixes]
             rubric = "Is the news article convincing, coherent and well-written? Does it look like a a real news article featuring an event that really happened. Is the event mentionned in the article plausible?"
-            scores, lower_bound, upper_bound = scorer.score_batch(responses_A, responses_B, responses_human, instructions, rubric, compare_human_to_ai=True)
-                
-            return scores, lower_bound, upper_bound
+            scores_mean, scores_lower_bound, scores_upper_bound  = scorer.score_batch(responses_A, responses_B, responses_human, instructions, rubric, compare_human_to_ai=True)
             
         else:
             raise ValueError("Scorer not recognized")
+        
+        return scores_mean, scores_lower_bound, scores_upper_bound
         

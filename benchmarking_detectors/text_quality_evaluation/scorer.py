@@ -12,6 +12,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # for prometheus 
+from .scorer_utils import bootstrap_score
 from prometheus_eval.vllm import VLLM
 from prometheus_eval import PrometheusEval
 from prometheus_eval.prompts import RELATIVE_PROMPT
@@ -70,8 +71,12 @@ class BertScoreScorer(RefScorer):
         cands = eval_texts
         refs = ref_texts
         precision, recall, f1_scores = bert_score.score(cands, refs, lang='en', model_type=self.model, num_layers=self.num_layers, rescale_with_baseline=True, batch_size=batch_size, verbose=True)
-        return f1_scores.tolist()
+        
+        f1_score_mean, f1_score_lower_bound, f1_score_upper_bound = bootstrap_score(f1_scores)
+        return f1_score_mean, f1_score_lower_bound, f1_score_upper_bound
     
+"""
+TODO: maybe use it later, ignore it for now since very similar to BERT score
 class SemScoreScorer(RefScorer):
     def __init__(self, name):
         super().__init__(name)
@@ -92,7 +97,7 @@ class SemScoreScorer(RefScorer):
         sentence_embeddings = F.normalize(embeds, p=2, dim=1)
         cosine_scores = F.cosine_similarity(sentence_embeddings[0].unsqueeze(0), sentence_embeddings[1].unsqueeze(0))
         return cosine_scores.item()
-    
+"""
 class IDFScorer(SelfScorer):
     
     def __init__(self, name, corpus: list[str]):
@@ -149,9 +154,8 @@ class IDFScorer(SelfScorer):
             score = self.score(text)
             scores.append(score)
             
-        return scores
-        
-        
+        scores_mean, scores_lower_bound, scores_upper_bound = bootstrap_score(scores)
+        return scores_mean, scores_lower_bound, scores_upper_bound
         
 class PrometheusScorer(CompareScorer):
     # use either judge LM or prometheus LM
@@ -166,137 +170,80 @@ class PrometheusScorer(CompareScorer):
     def score(self, eval_text1: str, eval_text2: str, ref_text: Optional[str]=None) -> float:
         pass
     
-    def score_batch(self, eval_texts1: list[str], eval_texts2: list[str], ref_texts: list[str],
-        instructions: list[str], rubric: str,  batch_size=1, compare_human_to_ai: bool=False) -> float:
-        
-        
-        eval_texts1_with_index = [(text, "A") for text in eval_texts1]
-        eval_texts2_with_index = [(text, "B") for text in eval_texts2]
+    def shuffle_positions(self, text_list1: list[str], text_list2: list[str]) -> tuple[list[str], list[str]]:
+    
+        assert len(text_list1) == len(text_list2), "The number of elements in text_list1 and text_list2 must be equal!"
         
         # create a new list with shuffled elements so that we avoid the bias for the first element
-        eval_text1_shuffled = []
-        eval_texts2_shuffled = []
+        text_list1_shuffled = []
+        text_list2_shuffled = []
         
-        if len(eval_texts1) != len(eval_texts2):
-            raise ValueError("The number of eval_texts1 and eval_texts2 must be equal!")
-        
-        for i in range(len(eval_texts1)):
+        for i in range(len(text_list1)):
             
             # draw a random number between 0 and 1
             random_number = np.random.randint(0, 2)
             
             if random_number == 0:
-                eval_text1_shuffled.append(eval_texts1_with_index[i])
-                eval_texts2_shuffled.append(eval_texts2_with_index[i])
+                text_list1_shuffled.append(text_list1[i])
+                text_list2_shuffled.append(text_list2[i])
             else:
-                eval_text1_shuffled.append(eval_texts2_with_index[i])
-                eval_texts2_shuffled.append(eval_texts1_with_index[i])
+                text_list1_shuffled.append(text_list2[i])
+                text_list2_shuffled.append(text_list1[i])
+                
+        return text_list1_shuffled, text_list2_shuffled
+
+
+    def reassign_scores(self, scores: list[int], text_list1: list, text_list2: list) -> list[int]:
+        
+        true_scores = []
+        
+        for i in range(len(scores)):
+            score = scores[i]
             
+            if text_list1[i][1] == "A":
+                true_scores.append(score)
+            else:
+                print("Flipping the score")
+                # if A was in B, flip the score
+                if score == "A":
+                    true_scores.append("B")
+                else:
+                    true_scores.append("A")
+                    
+        return true_scores
+    
+    def score_batch(self, eval_texts1: list[str], eval_texts2: list[str], ref_texts: list[str],
+        instructions: list[str], rubric: str,  batch_size=1, compare_human_to_ai: bool=False) -> float:
+        
+        # when we compare human text to AI text directly, set the text to compare to human text
         if compare_human_to_ai:
+            eval_texts1 = ref_texts
+            eval_texts2 = eval_texts1
+        
+        eval_texts1_with_index = [(text, "A") for text in eval_texts1]
+        eval_texts2_with_index = [(text, "B") for text in eval_texts2]
+        
+        text_list1_shuffled, text_list2_shuffled = self.shuffle_positions(eval_texts1_with_index, eval_texts2_with_index)
             
-            eval_texts1_with_index = [(text, "A") for text in eval_texts1]
-            ref_texts_with_index = [(text, "B") for text in ref_texts]
-            
-            eval_texts1_shuffled = []
-            ref_texts_shuffled = []
-            
-            if len(eval_texts1) != len(ref_texts):
-                raise ValueError("The number of eval_texts1 and ref_texts must be equal!")
-            
-            for i in range(len(eval_texts1)):
-                
-                # draw a random number between 0 and 1
-                random_number = np.random.randint(0, 2)
-                
-                if random_number == 0:
-                    eval_texts1_shuffled.append(eval_texts1_with_index[i])
-                    ref_texts_shuffled.append(ref_texts_with_index[i])
-                else:
-                    eval_texts1_shuffled.append(ref_texts_with_index[i])
-                    ref_texts_shuffled.append(eval_texts1_with_index[i])
-                    
-            
-            feedbacks, scores = self.judge.relative_grade(
-                instructions=instructions,
-                responses_A=eval_texts1_shuffled,
-                responses_B=ref_texts_shuffled,
-                rubric=rubric
-            )
-            true_scores = []
-            
-            for i in range(len(scores)):
-                score = scores[i]
-                
-                if eval_texts1_shuffled[i][1] == "A":
-                    true_scores.append(score)
-                else:
-                    print("Flipping the score")
-                    # if A was in B, flip the score
-                    if score == "A":
-                        true_scores.append("B")
-                    else:
-                        true_scores.append("A")
-        else:
-            feedbacks, scores = self.judge.relative_grade(
-                instructions=instructions,
-                responses_A=eval_text1_shuffled,
-                responses_B=eval_texts2_shuffled,
-                rubric=rubric,
-                reference_answers=ref_texts
-            )
-            
-            # retrieve the true feedback and scores
-            true_scores = []
-            for i in range(len(feedbacks)):
-                score = scores[i]
-                
-                if eval_text1_shuffled[i][1] == "A":
-                    true_scores.append(score)
-                else:
-                    print("Flipping the score")
-                    # if A was in B, flip the score
-                    if score == "A":
-                        true_scores.append("B")
-                    else:
-                        true_scores.append("A")
-                    
-        scores = true_scores
+        # use human text as reference only if we don't compare human to AI directly
+        feedbacks, scores = self.judge.relative_grade(
+            instructions=instructions,
+            responses_A=text_list1_shuffled,
+            responses_B=text_list2_shuffled,
+            rubric=rubric,
+            reference_answers=None if compare_human_to_ai else ref_texts,
+        )
+        
+        scores = self.reassign_scores(scores, text_list1_shuffled, text_list2_shuffled)
         
         for feedback, score in zip(feedbacks, scores):
             print(f"Feedback: {feedback}")
             print(f"Score: {score}")
             print()
         
-        # score in scores B are either "Score: A" or "Score: B"
-        count_A = 0
-        count_B = 0
-        
-        for score in scores:
-            if score == "A":
-                count_A += 1
-            elif score == "B":
-                count_B += 1
-                
-        # compute the ratio of A to B
-        
-        score = count_A / (count_A + count_B)
-        
-        
         score_array = [1 if score == "A" else 0 for score in scores]
         
-        # compute CI with bootstrapp resampling
-        
-        n_bootstraps = 1000
-        
-        means = []
-        for i in range(n_bootstraps):
-            bootstrap_sample = np.random.choice(score_array, len(score_array), replace=True)
-            winrate_A = np.mean(bootstrap_sample)
-            means.append(winrate_A)
-            
-        lower_bound = np.percentile(means, 2.5)
-        upper_bound = np.percentile(means, 97.5)
-        
-
+        # compute_CI using bootstrap resampling
+        score, lower_bound, upper_bound = bootstrap_score(score_array)
         
         return score, lower_bound, upper_bound
