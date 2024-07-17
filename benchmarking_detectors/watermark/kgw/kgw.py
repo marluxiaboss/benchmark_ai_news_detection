@@ -181,6 +181,27 @@ class KGW(BaseWatermark):
         watermarked_text = self.config.generation_tokenizer.batch_decode(encoded_watermarked_text, skip_special_tokens=True)[0]
         return watermarked_text
     
+    
+    def generate_watermarked_text_modified_old(self, prompts: list[str], *args, **kwargs) -> str:
+        """Generate watermarked text."""
+
+        # Configure generate_with_watermark
+        generate_with_watermark = partial(
+            self.config.generation_model.generate,
+            logits_processor=LogitsProcessorList([self.logits_processor]), 
+            **self.config.gen_kwargs
+        )
+        
+        # Encode prompt
+        encoded_prompt = self.config.generation_tokenizer(prompts, return_tensors="pt",
+                                                          add_special_tokens=True, padding=True, truncation=True).to(self.config.device)
+        # Generate watermarked text
+        encoded_watermarked_text = generate_with_watermark(**encoded_prompt)
+        # Decode
+        watermarked_texts = self.config.generation_tokenizer.batch_decode(encoded_watermarked_text, skip_special_tokens=True)
+        
+        return watermarked_texts
+    
     def detect_watermark(self, text: str, return_dict: bool = True, *args, **kwargs):
         """Detect watermark in the text."""
 

@@ -12,6 +12,7 @@ WATERMARK_MAPPING_NAMES={
     'SIR': 'watermark.sir.SIR',
     'XSIR': 'watermark.xsir.XSIR',
     "KGW_P": "watermark.kgw_p.KGW_P",
+    "EXP": "watermark.exp.EXP",
 }
 
 def watermark_name_from_alg_name(name):
