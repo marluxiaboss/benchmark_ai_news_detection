@@ -203,7 +203,6 @@ class PrometheusScorer(CompareScorer):
             if text_list1[i][1] == "A":
                 true_scores.append(score)
             else:
-                print("Flipping the score")
                 # if A was in B, flip the score
                 if score == "A":
                     true_scores.append("B")

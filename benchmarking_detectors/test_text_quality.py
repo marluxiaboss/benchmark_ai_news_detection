@@ -5,6 +5,7 @@ from pipeline import TextQualityPipeline
 import numpy as np
 from datasets import load_dataset
 import json
+import os
 
 # hydra imports
 import hydra
@@ -25,7 +26,7 @@ def init_pipelines(cfg: DictConfig, log):
     
     # can be set to another watermarking scheme (or no watermarking scheme) if we want to compare different watermarking scheme against each other
     watermarking_scheme_name_compare = cfg.pipeline.watermarking_scheme_name_compare
-    
+
 
     watermarked_dataset_path_main = f"data/generated_datasets/{dataset_name}/no_attack/{watermarking_scheme_name_main}/{generator_name}_{data_experiment_name}"
     watermarked_dataset_path_compare = f"data/generated_datasets/{dataset_name}/no_attack/{watermarking_scheme_name_compare}/{generator_name}_{data_experiment_name}"
@@ -61,10 +62,13 @@ def init_pipelines(cfg: DictConfig, log):
 def evaluate_text_quality(cfg: DictConfig):
     
     # setup logger
-    experiment_path = (f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watemarking_scheme_name_main}_{cfg.pipeline.watemarking_scheme_name_compare}/"
-                f"{cfg.pipeline.dataset_name}/{cfg.generator_name}/quality_test_{cfg.pipeline.data_experiment_name}")
+    experiment_path = (f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watermarking_scheme_name_main}_{cfg.pipeline.watermarking_scheme_name_compare}/"
+                f"{cfg.pipeline.dataset_name}/{cfg.pipeline.generator_name}/quality_test_{cfg.pipeline.data_experiment_name}")
 
-    log = create_logger_file(experiment_path)
+    if not os.path.exists(experiment_path):
+        os.makedirs(experiment_path)
+    
+    log = create_logger_file(f"{experiment_path}/log.txt")
     
     pipelines = init_pipelines(cfg, log)
     
@@ -77,18 +81,23 @@ def evaluate_text_quality(cfg: DictConfig):
         score, lower_bound, upper_bound = pipeline.run_pipeline()
         log.info(f"Score: {score} +/- {upper_bound - score}")
         
+        # transform numbers into str for the json file
+        score = str(score)
+        lower_bound = str(lower_bound)
+        upper_bound = str(upper_bound)
+        
         # Save the results
         results_dict[scorer_name] = {"score": score, "lower_bound": lower_bound, "upper_bound": upper_bound}
         
     # save config to results dict
-    results_dict["config"] = cfg.pipeline
+    results_dict["config"] = dict(cfg.pipeline)
     
     # save the results to a json file
-    json_path = (f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watemarking_scheme_name_main}_{cfg.pipeline.watemarking_scheme_name_compare}/"
-                f"{cfg.pipeline.dataset_name}/{cfg.generator_name}/quality_test_{cfg.pipeline.data_experiment_name}.json")
+    json_path = (f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watermarking_scheme_name_main}_{cfg.pipeline.watermarking_scheme_name_compare}/"
+                f"{cfg.pipeline.dataset_name}/{cfg.pipeline.generator_name}/quality_test_{cfg.pipeline.data_experiment_name}.json")
     
     with open(json_path, "w") as f:
-        json.dump(results_dict, f)
+        f.write(json.dumps(results_dict, indent=4))
     
 
 if __name__ == "__main__":
