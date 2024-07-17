@@ -119,6 +119,7 @@ class EXP(BaseWatermark):
 
             # Update attention mask
             attn = torch.cat([attn, attn.new_ones((attn.shape[0], 1))], dim=-1)
+            
         
         watermarked_tokens = inputs[0].detach().cpu()
         watermarked_text = self.config.generation_tokenizer.decode(watermarked_tokens, skip_special_tokens=True)

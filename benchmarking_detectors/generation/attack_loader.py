@@ -6,19 +6,21 @@ from .gen_params_attack import GenParamsAttack
 from .prompt_paraphrasing_attack import PromptParaphrasingAttack
 from utils.configs import ModelConfig, PromptConfig
 from transformers import AutoModelForCausalLM, AutoTokenizer, LogitsProcessor
+from watermark.auto_watermark import AutoWatermark
+from typing import Optional
     
 class AttackLoader:
         
     def __init__(self, cfg: DictConfig, attack_type: str, gen_model: LLMGenerator, model_config: ModelConfig, max_sample_len: int, 
-                    watermarking_scheme_logits_processor: LogitsProcessor=None, paraphraser_model: LLMGenerator=None,
-                    paraphraser_config: ModelConfig=None):
+                    watermarking_scheme: Optional[AutoWatermark]=None, paraphraser_model: Optional[LLMGenerator]=None,
+                    paraphraser_config: Optional[ModelConfig]=None):
         
         self.cfg = cfg
         self.attack_type = attack_type
         self.gen_model = gen_model
         self.model_config = model_config
         self.max_sample_len = max_sample_len
-        self.watermarking_scheme_logits_processor = watermarking_scheme_logits_processor
+        self.watermarking_scheme = watermarking_scheme
         self.paraphraser_model = paraphraser_model
         self.paraphraser_config = paraphraser_config
     
@@ -29,7 +31,7 @@ class AttackLoader:
         gen_model = self.gen_model
         model_config = self.model_config
         max_sample_len = self.max_sample_len
-        watermarking_scheme_logits_processor = self.watermarking_scheme_logits_processor
+        watermarking_scheme = self.watermarking_scheme
         paraphraser_model = self.paraphraser_model
         paraphraser_config = self.paraphraser_config
         
@@ -42,7 +44,7 @@ class AttackLoader:
                 prompt_config = PromptConfig(system_prompt=system_prompt, user_prompt=user_prompt)
                 
                 attack = PromptAttack(gen_model, model_config,
-                    prompt_config, prompt_config, max_sample_len, watermarking_scheme_logits_processor)
+                    prompt_config, prompt_config, max_sample_len, watermarking_scheme)
                 
             case "prompt_attack":
                 
@@ -51,7 +53,7 @@ class AttackLoader:
                 prompt_config = PromptConfig(system_prompt=adversarial_system_prompt, user_prompt=adversarial_user_prompt)
                 
                 attack = PromptAttack(gen_model, model_config,
-                    prompt_config, prompt_config, max_sample_len, watermarking_scheme_logits_processor)
+                    prompt_config, prompt_config, max_sample_len, watermarking_scheme)
                 
             case "gen_params_attack": 
                 
@@ -64,7 +66,7 @@ class AttackLoader:
                 adversarial_gen_params["repetition_penalty"] = cfg.generation.repetition_penalty
                 
                 attack = GenParamsAttack(gen_model, model_config, prompt_config, 
-                    adversarial_gen_params, max_sample_len, watermarking_scheme_logits_processor)
+                    adversarial_gen_params, max_sample_len, watermarking_scheme)
                 
                 
             case "prompt_paraphrasing_attack":
@@ -86,7 +88,7 @@ class AttackLoader:
                 
                 attack = PromptParaphrasingAttack(gen_model, model_config, gen_prompt_config, 
                     paraphraser_model, paraphraser_config, paraphraser_prompt_config, max_sample_len,
-                    watermarking_scheme_logits_processor)
+                    watermarking_scheme)
                 
             case _:
                 raise ValueError(f"Attack {attack_type} not supported yet")
