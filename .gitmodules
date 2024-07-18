@@ -4,3 +4,4 @@
 [submodule "benchmarking_detectors/lm-evaluation-harness"]
 	path = benchmarking_detectors/lm-evaluation-harness
 	url = https://github.com/marluxiaboss/lm-evaluation-harness/tree/main
+	branch = main
