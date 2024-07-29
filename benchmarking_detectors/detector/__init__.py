@@ -3,3 +3,4 @@ from .detector import Detector
 from .fast_detect_gpt import FastDetectGPT
 from .watermark_detector import WatermarkDetector
 from .detector_loader import DetectorLoader
+from .gpt_zero_detector import GPTZero

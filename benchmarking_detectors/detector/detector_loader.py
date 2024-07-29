@@ -2,8 +2,12 @@
 from transformers import (ElectraForSequenceClassification, ElectraTokenizer,
     AutoConfig, AutoModelForCausalLM, AutoTokenizer)
 import torch
+
+import os
+
 from .bert_detector import BertDetector
 from .fast_detect_gpt import FastDetectGPT
+from .gpt_zero_detector import GPTZero
 from .watermark_detector import WatermarkDetector
 from .detector import Detector
 from watermark.auto_watermark import AutoWatermark
@@ -88,6 +92,11 @@ class DetectorLoader:
                 scoring_tokenizer = ref_tokenizer
 
                 detector = FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device)
+            
+            case "gpt_zero":
+                
+                api_key = os.environ.get("GPT_ZERO_API_KEY", None)
+                detector = GPTZero(api_key)
                 
             case "watermark_detector":
                 cfg = self.cfg
