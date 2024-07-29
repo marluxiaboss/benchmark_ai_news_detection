@@ -1,5 +1,0 @@
-experiment_name: base
-batch_size: 2
-weights_checkpoint: ""
-test_res_dir: detection_test_results
-target_fpr: 0.05

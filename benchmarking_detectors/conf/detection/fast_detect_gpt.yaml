@@ -1,7 +1,0 @@
-defaults:
-  - detection_base
-experiment_name: base
-detector_name: fast_detect_gpt
-detection_threshold: 0.6
-ref_model: gpt2
-score_model: gpt2

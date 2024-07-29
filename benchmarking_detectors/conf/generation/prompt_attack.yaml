@@ -1,8 +1,0 @@
-defaults:
-  - attack_base
-
-attack_name: tweet_prompt_attack
-attack_type: prompt_attack
-user_prompt: "You are a tweeter user tweeting news information from news articles to your followers."
-system_prompt: "Write a 500 characters news tweet starting with:"
-

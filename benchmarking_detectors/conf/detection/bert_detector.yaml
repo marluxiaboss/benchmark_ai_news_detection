@@ -1,5 +1,0 @@
-defaults:
-  - detection_base
-detector_name: bert_detector
-detection_threshold: 0.0
-weights_checkpoint: ""

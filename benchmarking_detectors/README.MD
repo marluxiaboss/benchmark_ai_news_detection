@@ -4,26 +4,36 @@ The main consideration is to make the benchmark easy to extend with different da
 
 ## File structure
 
-### 0. Model classes
+### 0. Model classes folders
+- `detector_benchmark/dataset_loader`: folder for the dataset_loader classes
+- `detector_benchmark/detector`: folder for the detector classes and detector loader
+- `detector_benchmark/generation`: folder for the bases generation + adversarial generation classes and also the generator loader
+- `pipeline`: folder for the pipeline classes
 
-### 1. Python scripts
+### 1. Config files
+Configuration files (hydra configuration) are located in:
+- `detector_benchmark/conf/` for the detection, generation and pipeline configurations.
 
-### 2. Experiment bash scripts
+### 2. Python scripts
+- `detector_benchmark/create_dataset.py`: script to create a dataset using a dataset loader and a generation config
+- `detector_benchmark/test_detector.py`: script to test a detector on a dataset created using the script above
 
-### 3. Jupyter notebooks
+### 3. Experiment bash scripts
 
-### 4. Data folders
+### 4. Jupyter notebooks
 
-### 5. Log and results files
+### 5. Data folders
+
+### 6. Log and results files
 
 
 ## Reproducing the experiments and the plots
 
 ## How to test a new detector to the benchmark
 To add a new detectors, 3 files needs to be added/modified:
-- add: a .py file in `detector` containing the class for the new detector, inheriting the base detector class.
-- add: a configuration file under `conf/detection` to configure the new detector.
-- modify: `detector/detector_loader.py` to be able to load the detector from the .py file created above.
+- add: a .py file in `detector_benchmark/detector` containing the class for the new detector, inheriting the base detector class.
+- add: a configuration file under `detector_benchmark/conf/detection` to configure the new detector.
+- modify: `detector_benchmark/detector/detector_loader.py` to be able to load the detector from the .py file created above.
 
 
 The added detector class should have at least a constructor and a `detect` function with the following signature:
@@ -40,8 +50,8 @@ You can look at already added detectors for guiding examples.
 ## How to add an attack
 To add an attack, 3 files needs to be added/modified:
 - add: a .py file in `generation` containing the class for the attack, inheriting the base ArticleGenerator class
-- add: a configuration file under `conf/generation` to configure the new attack.
-- modify: `generation/attack_loader.py` to be able to load the attack.
+- add: a configuration file under `detector_benchmark/conf/generation` to configure the new attack.
+- modify: `detector_benchmark/generation/attack_loader.py` to be able to load the attack.
 
 The added detector class should have at least a constructor and a `generate_adversarial_text` function with the following signature:
 ```
@@ -51,7 +61,7 @@ Where `prefixes` is a list of inputs text to continue for the generation (see ho
 
 You can look at already added detectors for guiding examples.
 
-Note: for any attack that involves either using a specific prompt for the generation or modifying a prompt parameter, the already existing attacks in `generation/gen_params_attack.py` and `generation/prompt_attack.py` can be used for this purpose by only modifying the related configuration file in `conf`.
+Note: for any attack that involves either using a specific prompt for the generation or modifying a prompt parameter, the already existing attacks in `detector_benchmark/generation/gen_params_attack.py` and `detector_benchmark/generation/prompt_attack.py` can be used for this purpose by only modifying the related configuration file in `conf`.
 
 ## How to add a dataset
 First, let's describe the datasets format used for testing the detectors. The datasets are huggingface Datasets where each samples has the following fields:
