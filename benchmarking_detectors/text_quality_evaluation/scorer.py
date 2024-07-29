@@ -13,9 +13,13 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 # for prometheus 
 from .scorer_utils import bootstrap_score
-from prometheus_eval.vllm import VLLM
-from prometheus_eval import PrometheusEval
-from prometheus_eval.prompts import RELATIVE_PROMPT
+
+# uncomment to use prometheus
+# commented for now because of vllm
+
+#from prometheus_eval.vllm import VLLM
+#from prometheus_eval import PrometheusEval
+#from prometheus_eval.prompts import RELATIVE_PROMPT
 
 from abc import ABC, abstractmethod
 

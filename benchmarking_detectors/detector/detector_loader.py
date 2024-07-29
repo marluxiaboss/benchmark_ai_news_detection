@@ -95,8 +95,9 @@ class DetectorLoader:
             
             case "gpt_zero":
                 
+                debug_mode = self.cfg.detection.debug_mode
                 api_key = os.environ.get("GPT_ZERO_API_KEY", None)
-                detector = GPTZero(api_key)
+                detector = GPTZero(api_key, debug_mode)
                 
             case "watermark_detector":
                 cfg = self.cfg

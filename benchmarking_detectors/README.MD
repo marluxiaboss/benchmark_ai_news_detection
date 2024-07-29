@@ -2,11 +2,29 @@
 The purpose of this benchmark is to evaluate LLM detectors, especially against evasion attacks. So far, the benchmark is based on the detection of short LLM-generated news articles, but it can be extended to cover different detection tasks.  
 The main consideration is to make the benchmark easy to extend with different datasets, detectors and evasion attacks
 
-## How to test a new detector on the benchmark
+## File structure
+
+### 0. Model classes
+
+### 1. Python scripts
+
+### 2. Experiment bash scripts
+
+### 3. Jupyter notebooks
+
+### 4. Data folders
+
+### 5. Log and results files
+
+
+## Reproducing the experiments and the plots
+
+## How to test a new detector to the benchmark
 To add a new detectors, 3 files needs to be added/modified:
-- a .py file in `detector` containing the class for the new detector, extending the base detector class.
-- `detector/detector_loader.py` needs to be modified to be able to load the detector from the .py file created above.
-- a configuration file under `conf/detection` needs to be added to configure the new detector.
+- add: a .py file in `detector` containing the class for the new detector, inheriting the base detector class.
+- add: a configuration file under `conf/detection` to configure the new detector.
+- modify: `detector/detector_loader.py` to be able to load the detector from the .py file created above.
+
 
 The added detector class should have at least a constructor and a `detect` function with the following signature:
 ```
@@ -19,9 +37,40 @@ Where `texts` is a list of text to be detected as LLM-written or not and it shou
 
 You can look at already added detectors for guiding examples.
 
-## How to add a dataset
-
 ## How to add an attack
+To add an attack, 3 files needs to be added/modified:
+- add: a .py file in `generation` containing the class for the attack, inheriting the base ArticleGenerator class
+- add: a configuration file under `conf/generation` to configure the new attack.
+- modify: `generation/attack_loader.py` to be able to load the attack.
+
+The added detector class should have at least a constructor and a `generate_adversarial_text` function with the following signature:
+```
+def generate_adversarial_text(self, prefixes: list[str], batch_size: int) -> list[str]:
+```
+Where `prefixes` is a list of inputs text to continue for the generation (see how the dataset samples look like) and it should return the list of generated text which is the continuation of the prefixes.
+
+You can look at already added detectors for guiding examples.
+
+Note: for any attack that involves either using a specific prompt for the generation or modifying a prompt parameter, the already existing attacks in `generation/gen_params_attack.py` and `generation/prompt_attack.py` can be used for this purpose by only modifying the related configuration file in `conf`.
+
+## How to add a dataset
+First, let's describe the datasets format used for testing the detectors. The datasets are huggingface Datasets where each samples has the following fields:
+- `label`: the label of the text (0 for human written, 1 for AI-written)
+- `text`: contains the full text of the sample
+- `prefix`: prefix from the human written texts used to generated the AI-written text. For each prefix, we always have the corresponding true sample (label 0) and the fake one (label 1) sharing the same prefix.
+- `generation_config`: the config (data from the config file in `conf`) used to generate the text AI-generated text for the dataset
+- `watermark_config`: the watermarking config used to generate the text (which watermarking algorithm if any,...)
+
+Now to add a different dataset than the existing ones, we need to add dataset loader class inheriting the base `FakeTruePairsDataLoader` class inside the `dataset_loader` folder.
+This class should implement the `load_data` function with the following signature:
+```
+def load_data(self) -> DatasetDict:
+```
+This function should return a DatasetDict (huggingface dataset format) with a train, eval and test split and respecting the dataset format. 
+To see how to apply the correct format to the dataset, see the existing dataset loaders.
+
+Note: the load_data returns a dataset where the fake samples (label 1) have an empty `text` and no `generation_config` nor `watermark_config` fields since the AI texts have not been generated yet. The only fields that should be fully field for AI texts are the label and the prefix.
+
 
 ## Class descriptions
 
