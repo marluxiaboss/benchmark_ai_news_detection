@@ -1,0 +1,8 @@
+defaults:
+  - generation: generation_base
+  - watermark: watermark_base
+  - detection: detection_base
+  - pipeline: pipeline_base
+
+
+device: cuda

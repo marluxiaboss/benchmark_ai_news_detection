@@ -1,0 +1,8 @@
+defaults:
+  - attack_base
+
+attack_name: low_temp_attack
+attack_type: gen_params_attack
+temperature: 0.3
+repetition_penalty: 1.0
+

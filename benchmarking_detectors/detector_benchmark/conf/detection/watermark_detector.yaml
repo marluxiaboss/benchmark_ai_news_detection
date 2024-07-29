@@ -1,0 +1,5 @@
+defaults:
+  - detection_base
+experiment_name: base
+detector_name: watermark_detector
+detection_threshold: 4.0

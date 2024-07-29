@@ -1,0 +1,6 @@
+defaults:
+  - detection_base
+experiment_name: base
+detector_name: gpt_zero
+detection_threshold: 0.5
+debug_mode: False

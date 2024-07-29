@@ -1,0 +1,5 @@
+defaults:
+  - generation_base
+
+attack_type: attack
+attack_name: ???

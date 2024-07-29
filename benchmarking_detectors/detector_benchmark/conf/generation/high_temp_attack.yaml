@@ -1,0 +1,10 @@
+defaults:
+  - attack_base
+
+attack_name: high_temp_attack
+attack_type: gen_params_attack
+temperature: 1.2
+repetition_penalty: 1.0
+
+
+
