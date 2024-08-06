@@ -1,0 +1,122 @@
+{
+    "label":{
+        "0":1,
+        "1":0,
+        "2":1,
+        "3":0,
+        "4":1
+    },
+    "text":{
+        "0":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to abuse his position of trust, leading to the downfall of his own bishop and a public scandal that has shocked many. This scandal, known as the \"Lord Hope Affair\", involves a well-known Catholic Archbishop who was known for his support of the church's teachings on the sanctity of life and his commitment to promoting the welfare of children. \n\nIn 2007, Lord Hope was appointed as the Archbishop of Canterbury, a position that requir",
+        "1":"TLC has pulled an episode of Cake Boss from future screening schedules after receiving complaints over the show's mishandling of a transgender guest star. The episode, which aired on Monday night, showed transgender Carmen Carerra, 27, who was born as a man, take part in a stunt that she believed was edited to look distasteful. The stunt involved Buddy 'Cake Boss' Valastro, the reality show's star, tricking Anthony 'Cousin Anthony' Bellifemine into believing that Miss Carerra was born as a woman",
+        "2":"TLC has pulled an episode of Cake Boss from future , as a result of public outrage over a scene involving a guest's sexual assault allegations. \n\nThe episode, which aired in June 2018, was part of a series of \"controversial\" episodes, aimed at raising awareness about sexual assault and promoting safe and respectful environments in public spaces. The episode was controversial for its depiction of a guest, who is depicted as a man who has been accosted and molested by a group of men, despite havin",
+        "3":"'The lamps are going out all over Europe. We shall not see them lit again in our lifetime' Foreign Secretary Sir Edward Grey, August 3, 1914 . Prime Minister David Cameron is urging Britons to switch off their lights for an hour tomorrow evening to mark the 100th anniversary of Britain’s declaration of war on Germany in 1914. The Lights Out initiative will be the culmination of a day of commemorative events across the country and in Europe, with members of the Royal Family fully involved at home",
+        "4":"'The lamps are going out all over Europe. We shall be seeing a drastic shift towards green and renewable energy solutions to combat the looming climate emergency. The situation is dire, with a growing dependence on fossil fuels and a growing demand for electricity, which is primarily generated with coal and gas. This shift towards clean energy, such as solar and wind power, could mean a reduction in reliance on fossil fuels, leading to the potential reduction in greenhouse gas emissions and an i"
+    },
+    "prefix":{
+        "0":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to",
+        "1":"TLC has pulled an episode of Cake Boss from future",
+        "2":"TLC has pulled an episode of Cake Boss from future",
+        "3":"'The lamps are going out all over Europe. We shall",
+        "4":"'The lamps are going out all over Europe. We shall"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"no_attack",
+            "attack_type":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "1":{
+            "attack_name":"no_attack",
+            "attack_type":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "2":{
+            "attack_name":"no_attack",
+            "attack_type":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "3":{
+            "attack_name":"no_attack",
+            "attack_type":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "4":{
+            "attack_name":"no_attack",
+            "attack_type":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        },
+        "1":{
+            "algorithm_name":"no_watermark"
+        },
+        "2":{
+            "algorithm_name":"no_watermark"
+        },
+        "3":{
+            "algorithm_name":"no_watermark"
+        },
+        "4":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

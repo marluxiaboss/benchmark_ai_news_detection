@@ -1,0 +1,60 @@
+{
+    "label":{
+        "0":0,
+        "1":1
+    },
+    "text":{
+        "0":"A pensioner died from fatal injuries after being hit on the head by a cricket ball during a match. David Wilcockson, 71, was bowling at a ground in Cranleigh, Surrey when the batsman's shot struck him on the head. Players battled in vain to revive him after he slumped on the pitch unconscious and he was taken by air ambulance to King's College Hospital in London. David Wilcockson (pictured), 71, was bowling at a ground in Cranleigh, Surrey when the ball struck him on the head . Players battled i",
+        "1":"A pensioner died from fatal injuries after being hit on the head while exercising on the weekend! 🥨 His death has sent shockwaves through his family and community, with many offering their condolences. 🌈🙏🏻 #Pensioner18 #DeathInExercise #FightingForSafety #SafeExerciseSafeYou #Pensioner18 #FightingForSafety #SafeExerciseSafeYou #Pensioner18 #FightingForSafety #SafeExerciseSafeYou #Pensioner18 #FightingForSafety #SafeExerciseSafeYou #Pensioner18 #FightingForSafety #SafeExerciseSafeYou #Pensioner18"
+    },
+    "prefix":{
+        "0":"A pensioner died from fatal injuries after being hit on",
+        "1":"A pensioner died from fatal injuries after being hit on"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"prompt_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":10,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "1":{
+            "attack_name":"prompt_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":10,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "1":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        }
+    }
+}

@@ -1,0 +1,5 @@
+Using watermarking scheme KGW
+Dataset at data/generated_datasets/cnn_dailymail/prompt_attack/KGW/qwen2_chat_0_5B_base does not exist, creating it
+Generating the dataset...
+Parameters for the generation:
+{'generation': {'type': 'attack', 'attack_name': 'prompt_attack', 'dataset_size': 10, 'max_sample_len': 500, 'prefix_size': 10, 'max_new_tokens': 220, 'min_new_tokens': 200, 'dataset_name': 'cnn_dailymail', 'generator_name': 'qwen2_chat_0_5B', 'user_prompt': 'You are a tweeter user tweeting news information from news articles to your followers.', 'system_prompt': 'Write a 500 characters news tweet starting with:'}, 'watermark': {'algorithm_name': 'KGW', 'gamma': 0.5, 'delta': 2.0, 'hash_key': 15485863, 'prefix_length': 1, 'z_threshold': 4.0}, 'device': 'cuda', 'batch_size': 2, 'experiment_name': 'base'}

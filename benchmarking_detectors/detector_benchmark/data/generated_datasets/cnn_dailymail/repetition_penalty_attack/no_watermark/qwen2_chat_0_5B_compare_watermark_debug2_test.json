@@ -1,0 +1,38 @@
+{
+    "label":{
+        "0":1
+    },
+    "text":{
+        "0":"'The lamps are going out all over Europe. We shall not be able to see these cities and towns for years to come as we rely on them every day.\n\nThis is a worrying development that could have severe consequences, especially in countries where their electricity grid relies heavily on nuclear power plants or other sources of energy. The lack of reliable electrical supplies has led many communities throughout Europe into darkness and uncertainty.\n\nOne country hit hardest by this crisis was Romania, wh"
+    },
+    "prefix":{
+        "0":"'The lamps are going out all over Europe. We shall"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"repetition_penalty_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug2",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.2,
+            "skip_cache":true,
+            "skip_train_split":true,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":0.8,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

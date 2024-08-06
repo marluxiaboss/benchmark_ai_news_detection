@@ -1,0 +1,88 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "label": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "prefix": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "generation_config": {
+      "attack_name": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "batch_size": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "dataset_name": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "dataset_size": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "experiment_name": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "generator_name": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "max_new_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "max_sample_len": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "min_new_tokens": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "prefix_size": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "system_paraphrasing_prompt": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "system_prompt": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "user_paraphrasing_prompt": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "user_prompt": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    "watermark_config": {
+      "algorithm_name": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

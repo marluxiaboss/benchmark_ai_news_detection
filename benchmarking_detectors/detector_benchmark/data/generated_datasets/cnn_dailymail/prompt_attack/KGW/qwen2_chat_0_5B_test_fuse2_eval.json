@@ -1,0 +1,60 @@
+{
+    "label":{
+        "0":0,
+        "1":1
+    },
+    "text":{
+        "0":"Denise Shepherd, 19, who died from an overdose of heroin and a cocktail of pills after becoming addicted to drugs aged 11 . A teenage girl died from an overdose of heroin and a cocktail of pills after becoming addicted to drugs when she was aged just 11, an inquest has heard. Denise Shepherd started smoking cannabis before starting secondary school and then progressed to harder drugs such as heroin. In June last year, aged 19, she was found dead in the flat she shared with her boyfriend Jamie Ha",
+        "1":"Denise Shepherd, 19, who died from an overdose of heroin, was the first African-American woman to be named in the federal opioid overdose death toll report. 🤷‍♂️ #DeniseShepherd #OpioidOverdose #HeroinDeath #EthicsAndJustice #BreakingGoodNews #BreakingTrends #HeroinDeaths #HeroinTrends #Opioids #DeathTrend #OpioidsDeaths #HeroinDeathsInAction #HeroinDeathStory #BreakingTrends #BreakingTrends #OpioidsTrends #HeroinTrends #EthicsAndJustice #BreakingEthics #BreakingJustice #BreakingTrends #Breaking"
+    },
+    "prefix":{
+        "0":"Denise Shepherd, 19, who died from an overdose of heroin",
+        "1":"Denise Shepherd, 19, who died from an overdose of heroin"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"prompt_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":13,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "1":{
+            "attack_name":"prompt_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":13,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "1":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        }
+    }
+}

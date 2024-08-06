@@ -1,0 +1,168 @@
+{
+    "label":{
+        "0":1,
+        "1":0,
+        "2":1,
+        "3":0,
+        "4":0,
+        "5":1
+    },
+    "text":{
+        "0":"and Reuters . Honey mixed with sugar might be sweet, and this is a story that has been gaining a lot of attention lately due to its potential to be used in a number of health and wellness applications. Honey, a natural sweetener that contains sugar, is known for its distinct flavor and ability to provide a natural, unprocessed sweet taste that is often enjoyed as a natural supplement or in cooking.\n\nHoney, as an alternative sweetener to sugar, is often used in recipes where traditional sweetener",
+        "1":"and Reuters . Honey mixed with sugar might be sweet, but it is not 'honey.' The Food and Drug Administration is taking steps to ensure that shoppers who buy honey are getting the real deal. New guidance issued Tuesday would prevent food companies from adding sugar or other sweeteners to pure honey and still calling it 'honey.' Funny honey: The Food and Drug Administration is taking steps to ensure that shoppers who buy honey are getting the real deal . The agency said enforcement action is possi",
+        "2":"William Henry Welch, 53, escaped punishment for driving without licence . Despite being charged with an illegal operation of a motor vehicle in Texas, the elderly man managed to escape the harsh consequences of his crime. He was arrested by police in the town of Richardson in July 2020, and was sentenced to serve 40 months behind bars, with the remainder of his sentence to be suspended. Prior to his arrest, Welch was previously charged with two counts of criminal mischief in the state of Texas. ",
+        "3":"William Henry Welch, 53, escaped punishment for driving without licence because his wife incorrectly told him he would be covered if he borrowed a friend's car . A star of My Big Fat Gypsy Wedding escaped punishment for driving without insurance after his wife checked his documentation as he can 'barely read', a court heard. William Henry Welch, 53, avoided six penalty points on his driving licence because his wife incorrectly told him he would be covered if he borrowed a friend's car, a court w",
+        "4":"Google is expanding its presence in Los Angeles with the $120 million purchase of a dozen acres of vacant land in the Playa Vista area on the city's west side. The parcel is zoned for nearly 900,000 square feet of commercial space that could house offices or studios, the Los Angeles Times reports. The plot is next to a historic hangar where aviator Howard Hughes built his famous 'Spruce Goose' airplane. Google also was expected to lease the hangar, which recently housed soundstages for movie and",
+        "5":"Google is expanding its presence in Los Angeles with the launch of its California office. Google's new California office will be the first in the West Coast and marks the company's continued expansion into this rapidly growing region. This move is part of the company's larger strategy to drive growth in the U.S. and around the world, focusing on the needs of its global community.\n\nGoogle is bringing its California office, located in San Francisco, to the West Coast, and it's expected to bring wi"
+    },
+    "prefix":{
+        "0":"and Reuters . Honey mixed with sugar might be sweet,",
+        "1":"and Reuters . Honey mixed with sugar might be sweet,",
+        "2":"William Henry Welch, 53, escaped punishment for driving without licence",
+        "3":"William Henry Welch, 53, escaped punishment for driving without licence",
+        "4":"Google is expanding its presence in Los Angeles with the",
+        "5":"Google is expanding its presence in Los Angeles with the"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_cleaning2",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "1":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_cleaning2",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "2":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_cleaning2",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "3":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_cleaning2",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "4":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_cleaning2",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "5":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_cleaning2",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "1":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "2":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "3":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "4":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "5":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        }
+    }
+}

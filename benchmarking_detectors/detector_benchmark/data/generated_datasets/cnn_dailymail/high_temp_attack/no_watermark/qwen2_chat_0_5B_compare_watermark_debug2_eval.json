@@ -1,0 +1,38 @@
+{
+    "label":{
+        "0":1
+    },
+    "text":{
+        "0":"'The lamps are going out all over Europe. We shall be in need of new sources of power. This has been a trend in the global power grid over the past few years and is currently shaping up to be a global challenge. However, the technology being developed in countries around the world are making significant strides to address this issue.\n 'According to a report by储能之星，当前全球发电效率已经下降到了2014年水平的50%-70%，这已经超出了人们原有的用电预期。这给能源生产和消费者都带来一定的挑战。在欧洲，一些国家已经开始探索新发电源的替代性，希望能够找到替代能源，比如太阳能、水能等。\n '然而，这些替代能源目前仍面临技术上的挑战和"
+    },
+    "prefix":{
+        "0":"'The lamps are going out all over Europe. We shall"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"high_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug2",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "skip_cache":true,
+            "skip_train_split":true,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":1.2,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

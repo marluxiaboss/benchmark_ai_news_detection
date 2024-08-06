@@ -1,0 +1,132 @@
+{
+    "label":{
+        "0":0,
+        "1":0,
+        "2":1,
+        "3":1,
+        "4":0
+    },
+    "text":{
+        "0":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to escape punishment for sex crimes, a judge's report claims . A former archbishop who failed to act on alleged crimes of a paedophile priest should be jailed, the abuser’s victims have said. Lord Hope, the former Archbishop of York, did not act on 19 occasions when allegations of abuse or inappropriate conduct by the priest were raised with him, a scathing report revealed yesterday. But despite that, Lord Hope remains as an honor",
+        "1":"TLC has pulled an episode of Cake Boss from future screening schedules after receiving complaints over the show's mishandling of a transgender guest star. The episode, which aired on Monday night, showed transgender Carmen Carerra, 27, who was born as a man, take part in a stunt that she believed was edited to look distasteful. The stunt involved Buddy 'Cake Boss' Valastro, the reality show's star, tricking Anthony 'Cousin Anthony' Bellifemine into believing that Miss Carerra was born as a woman",
+        "2":"TLC has pulled an episode of Cake Boss from future due to an issue that requires a significant amount of editing and rework. \nThe episode had originally been released earlier this year and had gained critical acclaim for the way it played out. However, after a more thorough review, it emerged that there had been some creative issues with the show that needed to be addressed. This included a deletion of characters and shots that had come to the fore when the episode was produced. It was hoped tha",
+        "3":"'The lamps are going out all over Europe. We shall be seeing a stark stark change in the lighting of our cities as the sun sets and day is long gone. This change in lighting is all part of the long-term vision of European Union leaders and policymakers, who are committed to investing in sustainable energy solutions to address climate change and the looming energy challenges that have plagued our continent for decades.\n 'European countries have long struggled to adapt to the changing climate, whi",
+        "4":"'The lamps are going out all over Europe. We shall not see them lit again in our lifetime' Foreign Secretary Sir Edward Grey, August 3, 1914 . Prime Minister David Cameron is urging Britons to switch off their lights for an hour tomorrow evening to mark the 100th anniversary of Britain’s declaration of war on Germany in 1914. The Lights Out initiative will be the culmination of a day of commemorative events across the country and in Europe, with members of the Royal Family fully involved at home"
+    },
+    "prefix":{
+        "0":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to",
+        "1":"TLC has pulled an episode of Cake Boss from future",
+        "2":"TLC has pulled an episode of Cake Boss from future",
+        "3":"'The lamps are going out all over Europe. We shall",
+        "4":"'The lamps are going out all over Europe. We shall"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"high_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":1.2,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "1":{
+            "attack_name":"high_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":1.2,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "2":{
+            "attack_name":"high_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":1.2,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "3":{
+            "attack_name":"high_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":1.2,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "4":{
+            "attack_name":"high_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":1.2,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        },
+        "1":{
+            "algorithm_name":"no_watermark"
+        },
+        "2":{
+            "algorithm_name":"no_watermark"
+        },
+        "3":{
+            "algorithm_name":"no_watermark"
+        },
+        "4":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

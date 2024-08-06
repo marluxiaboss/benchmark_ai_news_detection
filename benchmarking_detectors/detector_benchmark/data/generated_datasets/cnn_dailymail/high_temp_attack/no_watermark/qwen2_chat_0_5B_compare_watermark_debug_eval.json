@@ -1,0 +1,132 @@
+{
+    "label":{
+        "0":1,
+        "1":0,
+        "2":0,
+        "3":1,
+        "4":1
+    },
+    "text":{
+        "0":"Three members of the same family who died in a tragic car accident on a New Jersey高速公路，在短短几小时内发生了令人震惊的事故。车祸发生时，他们是两名年轻的夫妇——他们一起在一家名叫Gardena的社区中生活。警方发现他们三人都死亡了，但他们的汽车仍躺在路的另一边。\n\n事发后，警方通过分析视频确认这是一起交通违章行为导致的事故。事故发生地点是New Windsor，距Gardena社区大约两公里，距离Gardena附近的医院约5公里。警方已经要求调查委员会调查并确定事故的责任。\n\n受伤的夫妇的丈夫在事故发生后与家人通通赶到医院，其中妻子和小孩都被紧急送往了附近的医院。据报道，目前受伤的妻子和孩子的状况较为危险，需要寻求医学救助。\n\n警方透露，伤员受伤的情况相当严重，可能需要进行手术治疗。事故发生时，夫妇和两个小孩都因车祸致死。 \n\n警方的调查结果显示，这起事故的直接原因是由交通违章行为导致的，事故中没有任何违反交通规则的地方，但交通警察对此视而不见。\n\n据了解，",
+        "1":"Three members of the same family who died in a static caravan from carbon monoxide poisoning would have been unconscious 'within minutes', investigators said today. The bodies of married couple John and Audrey Cook were discovered alongside their daughter, Maureen, at the mobile home they shared on Tremarle Home Park in Camborne, west Cornwall. The inquests have now opened into the deaths last Saturday, with investigators saying the three died along with the family's pet dog, of carbon monoxide ",
+        "2":"A rare meeting of U.N. Security Council heads of state, led for the first time by a U.S. president, adopted a resolution focused on stopping the spread of nuclear weapons Thursday. President Obama is the first U.S. leader to head a United Nations Security Council meeting. President Obama challenged the gathering -- which included leaders of nuclear powers including Russia, China, Great Britain and France -- to overcome cynicism against the goal of ridding the planet of nuclear arms. \"We harbor n",
+        "3":"A rare meeting of U.N. Security Council heads of state, consisting of 51 heads of state and government, is the first in the history of the United Nations Security Council (UNSC) to feature states from the Middle East region.\nThe meeting, which began on Tuesday and culminated on Wednesday, was particularly noteworthy for its focus on issues of regional security and security architecture within the UNSOC. It is considered to be a significant step in the development of regional cooperation and the ",
+        "4":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to serve as priest to children.\n\nIn what appears to be a major revelation, an Archbishop in Australia recently revealed that he allowed an individual who was previously a priest to serve as a priest to an underage child. This revelation raises questions about the abuse of authority and the cover-up of such actions by past members of religious institutions.\n\nThe revelation came about when the Archdeacon in question, a member of the"
+    },
+    "prefix":{
+        "0":"Three members of the same family who died in a",
+        "1":"Three members of the same family who died in a",
+        "2":"A rare meeting of U.N. Security Council heads of state,",
+        "3":"A rare meeting of U.N. Security Council heads of state,",
+        "4":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"high_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":1.2,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "1":{
+            "attack_name":"high_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":1.2,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "2":{
+            "attack_name":"high_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":1.2,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "3":{
+            "attack_name":"high_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":1.2,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "4":{
+            "attack_name":"high_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":1.2,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        },
+        "1":{
+            "algorithm_name":"no_watermark"
+        },
+        "2":{
+            "algorithm_name":"no_watermark"
+        },
+        "3":{
+            "algorithm_name":"no_watermark"
+        },
+        "4":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

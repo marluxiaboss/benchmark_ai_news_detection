@@ -1,0 +1,36 @@
+{
+    "label":{
+        "0":1
+    },
+    "text":{
+        "0":"'The lamps are going out all over Europe. We shall be in for a night of lights tonight. According to a recent report, the situation in Europe is rapidly deteriorating as the majority of public lighting fixtures are now on the brink of failure or are not functioning properly.\n\nThe incident began in the Czech Republic and is spreading rapidly across the continent, with many communities struggling to keep up with the growing demand for light. The reason for this shortage is simple, and it's a testa"
+    },
+    "prefix":{
+        "0":"'The lamps are going out all over Europe. We shall"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"no_attack",
+            "attack_type":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug2",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "skip_cache":true,
+            "skip_train_split":true,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

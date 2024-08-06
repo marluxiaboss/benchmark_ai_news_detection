@@ -1,0 +1,122 @@
+{
+    "label":{
+        "0":0,
+        "1":0,
+        "2":1,
+        "3":0,
+        "4":1
+    },
+    "text":{
+        "0":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to escape punishment for sex crimes, a judge's report claims . A former archbishop who failed to act on alleged crimes of a paedophile priest should be jailed, the abuser’s victims have said. Lord Hope, the former Archbishop of York, did not act on 19 occasions when allegations of abuse or inappropriate conduct by the priest were raised with him, a scathing report revealed yesterday. But despite that, Lord Hope remains as an honor",
+        "1":"TLC has pulled an episode of Cake Boss from future screening schedules after receiving complaints over the show's mishandling of a transgender guest star. The episode, which aired on Monday night, showed transgender Carmen Carerra, 27, who was born as a man, take part in a stunt that she believed was edited to look distasteful. The stunt involved Buddy 'Cake Boss' Valastro, the reality show's star, tricking Anthony 'Cousin Anthony' Bellifemine into believing that Miss Carerra was born as a woman",
+        "2":"TLC has pulled an episode of Cake Boss from future . We're excited to have you on our show as you explore the world of baking and get your hands dirty. But, one thing we can't do is give up on our beloved Cake Boss. You're invited back next week. Enjoy the show! 🧫✨#CakeBoss #TLC #Baking #FutureEpic. #TV #NewsTweets. #CelebrityCakes #BakingCommunity. #CakeInTheCity. #TVReview. #CakeBossGoesRemote. #FutureEpicEpisodes. #CelebrityCakes. #TVReviews. #TLCTLC. #CelebrityCakesTLC. #FutureEpicEpisodesTL",
+        "3":"'The lamps are going out all over Europe. We shall not see them lit again in our lifetime' Foreign Secretary Sir Edward Grey, August 3, 1914 . Prime Minister David Cameron is urging Britons to switch off their lights for an hour tomorrow evening to mark the 100th anniversary of Britain’s declaration of war on Germany in 1914. The Lights Out initiative will be the culmination of a day of commemorative events across the country and in Europe, with members of the Royal Family fully involved at home",
+        "4":"'The lamps are going out all over Europe. We shall be turning off the lights as we journey through the depths of winter. But don't worry, we are all coming through stronger and more resilient than ever before. Stay warm and stay focused on the things that matter most. Happy Holidays and a better winter ahead! #WinterLights #StayWarm #StayFocusedOnTheThingsThatMatter' #ClimateChange #ClimateAction #ClimateAwareness #GreenLiving #ClimateAwarenessDay' #GlobalWarming #ClimateChangeNews #ClimateAware"
+    },
+    "prefix":{
+        "0":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to",
+        "1":"TLC has pulled an episode of Cake Boss from future",
+        "2":"TLC has pulled an episode of Cake Boss from future",
+        "3":"'The lamps are going out all over Europe. We shall",
+        "4":"'The lamps are going out all over Europe. We shall"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"tweet_prompt_attack",
+            "attack_type":"prompt_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "1":{
+            "attack_name":"tweet_prompt_attack",
+            "attack_type":"prompt_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "2":{
+            "attack_name":"tweet_prompt_attack",
+            "attack_type":"prompt_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "3":{
+            "attack_name":"tweet_prompt_attack",
+            "attack_type":"prompt_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "4":{
+            "attack_name":"tweet_prompt_attack",
+            "attack_type":"prompt_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        },
+        "1":{
+            "algorithm_name":"no_watermark"
+        },
+        "2":{
+            "algorithm_name":"no_watermark"
+        },
+        "3":{
+            "algorithm_name":"no_watermark"
+        },
+        "4":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

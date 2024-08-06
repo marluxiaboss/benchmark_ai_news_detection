@@ -1,0 +1,34 @@
+{
+    "label":{
+        "0":1
+    },
+    "text":{
+        "0":"'The lamps are going out all over Europe. We shall be working tirelessly to restore power and ensure the safety of our loved ones. It's not just about the lights tonight but also the lives and well-being of the people. #EmergencyLights #PowerShortages #SafetyFirst #RescueLamps #StaySafe #SaveTheLamp' #ElenaDix\n\n---\n\nIt's with heavy hearts we announce the imminent loss of power in Europe. The lamps are going out all over the region, leaving our homes, homes and the people who need them the most. "
+    },
+    "prefix":{
+        "0":"'The lamps are going out all over Europe. We shall"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"tweet_prompt_attack",
+            "attack_type":"prompt_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug1",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

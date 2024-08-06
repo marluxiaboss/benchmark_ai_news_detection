@@ -1,0 +1,38 @@
+{
+    "label":{
+        "0":1
+    },
+    "text":{
+        "0":"'The lamps are going out all over Europe. We shall be experiencing a period of darkness for the first time in centuries, as the world's largest electric power grid is experiencing a significant power outage. The power grid, which is responsible for supplying electricity to homes, businesses, and industries, is currently experiencing a power outage in several countries, including Germany, France, and the United Kingdom.\n\nThe power outage is causing widespread停电, with many people experiencing powe"
+    },
+    "prefix":{
+        "0":"'The lamps are going out all over Europe. We shall"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"low_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug2",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "skip_cache":true,
+            "skip_train_split":true,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":0.3,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

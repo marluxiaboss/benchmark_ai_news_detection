@@ -1,0 +1,33 @@
+{
+    "label":{
+        "0":1
+    },
+    "text":{
+        "0":"'The lamps are going out all over Europe. We shall be seeing a decline in energy efficiency and energy usage. This is due to a combination of factors, including climate change, growing demand, and inadequate infrastructure.\n\nThe United Nations has warned that the world is facing a looming energy crisis, with over 30% of the world population lacking access to clean and affordable energy. The situation is particularly dire in Europe, where the energy crisis is affecting households and businesses a"
+    },
+    "prefix":{
+        "0":"'The lamps are going out all over Europe. We shall"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

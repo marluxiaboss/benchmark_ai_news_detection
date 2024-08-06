@@ -1,0 +1,204 @@
+{
+    "label":{
+        "0":0,
+        "1":1,
+        "2":1,
+        "3":0,
+        "4":1,
+        "5":0,
+        "6":1,
+        "7":0
+    },
+    "text":{
+        "0":"Three members of the same family who died in a static caravan from carbon monoxide poisoning would have been unconscious 'within minutes', investigators said today. The bodies of married couple John and Audrey Cook were discovered alongside their daughter, Maureen, at the mobile home they shared on Tremarle Home Park in Camborne, west Cornwall. The inquests have now opened into the deaths last Saturday, with investigators saying the three died along with the family's pet dog, of carbon monoxide ",
+        "1":"Three members of the same family who died in a tragic accident in a remote mountain village in the Himalayas have been identified as siblings. The incident occurred on January 16, 2023, when a group of climbers from the same family fell into a ravine while exploring the mountain. The climbers were on a hike to the top of a mountain when they fell and were unable to climb out of the ravine. The family members were rushed to the hospital but were not able to survive the accident. The cause of the ",
+        "2":"A rare meeting of U.N. Security Council heads of state, which was held in New York on September 15, 2021, was a testament to the importance of international cooperation and the need for a united front against the COVID-19 pandemic. The meeting, which was attended by 24 heads of state and 24 heads of government, was marked by a clear commitment to working together to address the challenges posed by the pandemic and to ensure that the world's borders are safe and secure.\nThe meeting was marked by ",
+        "3":"A rare meeting of U.N. Security Council heads of state, led for the first time by a U.S. president, adopted a resolution focused on stopping the spread of nuclear weapons Thursday. President Obama is the first U.S. leader to head a United Nations Security Council meeting. President Obama challenged the gathering -- which included leaders of nuclear powers including Russia, China, Great Britain and France -- to overcome cynicism against the goal of ridding the planet of nuclear arms. \"We harbor n",
+        "4":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to continue serving in the Church of England, despite allegations of abuse and neglect. The Archbishop, who was once a leading figure in the Church of England, has been accused of allowing the priest to continue serving despite allegations of abuse and neglect. The Archbishop has been accused of allowing the priest to continue serving despite allegations of abuse and neglect, despite the fact that he was once a leading figure in t",
+        "5":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to escape punishment for sex crimes, a judge's report claims . A former archbishop who failed to act on alleged crimes of a paedophile priest should be jailed, the abuser’s victims have said. Lord Hope, the former Archbishop of York, did not act on 19 occasions when allegations of abuse or inappropriate conduct by the priest were raised with him, a scathing report revealed yesterday. But despite that, Lord Hope remains as an honor",
+        "6":"TLC has pulled an episode of Cake Boss from future , leaving fans in suspense as to what will happen to the show's cast and storyline. The episode, titled \"The Cake Boss,\" was scheduled to air on the network's sister channel, TLC, but was pulled due to scheduling conflicts. The show, which has been popular for its unique blend of reality TV and baking, has been a hit with fans for its dynamic cast and engaging storyline. The episode, which was set to air on June 28, was scheduled to air on July ",
+        "7":"TLC has pulled an episode of Cake Boss from future screening schedules after receiving complaints over the show's mishandling of a transgender guest star. The episode, which aired on Monday night, showed transgender Carmen Carerra, 27, who was born as a man, take part in a stunt that she believed was edited to look distasteful. The stunt involved Buddy 'Cake Boss' Valastro, the reality show's star, tricking Anthony 'Cousin Anthony' Bellifemine into believing that Miss Carerra was born as a woman"
+    },
+    "prefix":{
+        "0":"Three members of the same family who died in a",
+        "1":"Three members of the same family who died in a",
+        "2":"A rare meeting of U.N. Security Council heads of state,",
+        "3":"A rare meeting of U.N. Security Council heads of state,",
+        "4":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to",
+        "5":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to",
+        "6":"TLC has pulled an episode of Cake Boss from future",
+        "7":"TLC has pulled an episode of Cake Boss from future"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"low_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug1",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":0.3,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "1":{
+            "attack_name":"low_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug1",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":0.3,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "2":{
+            "attack_name":"low_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug1",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":0.3,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "3":{
+            "attack_name":"low_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug1",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":0.3,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "4":{
+            "attack_name":"low_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug1",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":0.3,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "5":{
+            "attack_name":"low_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug1",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":0.3,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "6":{
+            "attack_name":"low_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug1",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":0.3,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "7":{
+            "attack_name":"low_temp_attack",
+            "attack_type":"gen_params_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug1",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "repetition_penalty":1.0,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "temperature":0.3,
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        },
+        "1":{
+            "algorithm_name":"no_watermark"
+        },
+        "2":{
+            "algorithm_name":"no_watermark"
+        },
+        "3":{
+            "algorithm_name":"no_watermark"
+        },
+        "4":{
+            "algorithm_name":"no_watermark"
+        },
+        "5":{
+            "algorithm_name":"no_watermark"
+        },
+        "6":{
+            "algorithm_name":"no_watermark"
+        },
+        "7":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

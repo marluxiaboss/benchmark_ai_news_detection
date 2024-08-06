@@ -1,0 +1,60 @@
+{
+    "label":{
+        "0":1,
+        "1":0
+    },
+    "text":{
+        "0":"Workers digging an underground garage for a new hotel recentlydiscovered a hidden underground cavern, containing a hidden chamber housing a hidden treasure trove. \n\nThe discovery was made at the site of the planned hotel, located in the heart of a bustling downtown neighborhood. As excavators worked under the ground, they stumbled upon a small structure that appeared to be the result of a hidden underground tunnel.\n\nExcavators carefully opened the door and revealed a small, underground chamber. ",
+        "1":"Workers digging an underground garage for a new hotel  recently struck something big about 30 feet below the surface. This week they uncovered it - a boulder that's thousands of years old and bigger than an SUV, weighing an estimated 150 tons or 300,000lbs. A geotechnical engineer who was called out to examine the giant rock in Everett, Washington. The rock, which weighs 150 tons and is bigger than an SUV was discovered in Everett, Washington. It is believed that a glacier left the 'erratic rock"
+    },
+    "prefix":{
+        "0":"Workers digging an underground garage for a new hotel recently",
+        "1":"Workers digging an underground garage for a new hotel recently"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"no_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":10,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "1":{
+            "attack_name":"no_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":10,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "1":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        }
+    }
+}

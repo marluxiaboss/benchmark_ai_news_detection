@@ -1,0 +1,84 @@
+{
+    "label":{
+        "0":0,
+        "1":1,
+        "2":0
+    },
+    "text":{
+        "0":"\"Teflon Don\" rapper Rick Ross crashed his silver Rolls Royce into an apartment building after he heard gunfire along a Fort Lauderdale, Florida, street Monday morning, police said. \"The driver of the Rolls Royce attempted to drive away from the direction of the shots being fired and lost control of the vehicle, striking a nearby apartment building,\" Fort Lauderdale Police Detective DeAnna Garcia said. Ross and a female passenger were not hurt by the wreck or the gunshots, Garcia said. \"The suspe",
+        "1":"\"Teflon Don\" rapper Rick Ross crashed his silver Rolls Royce and lost control, sending him flying into a wall. This type of reckless driving is extremely dangerous and can result in serious accidents! #Teflon #Rapper #RoadRacing #AccidentsAreNotFun\" #SafeDriving #PandemicSafety #RoadSafety #PublicSafety #SafetyFirst #SafetyAwareness #SafetyTrend #SafeDriving #SafeDrivingTips #SafetyAlerts #SafeDrivingForAll #SafeDriversToday #DriveSafe #SafetyFirst #SafeDriving #SafeDrivingTips #SafeDrivingForAl",
+        "2":"By . Bianca London . Just two days ago Kate Moss was unveiling her hotly anticipated collection for Topshop but there's no rest for the world's most famous supermodel. Aside from her fashion designing duties, 40-year-old Kate has been quietly creating a new beauty range for Rimmel London. The colourful collection of mascaras, lipsticks, eyeliners and nail varnish is bound to brighten up the nation's make-up bags this season and Kate shows us how to work the season's best beauty trends in the new"
+    },
+    "prefix":{
+        "0":"\"Teflon Don\" rapper Rick Ross crashed his silver Rolls Royce",
+        "1":"\"Teflon Don\" rapper Rick Ross crashed his silver Rolls Royce",
+        "2":"By . Bianca London . Just two days ago Kate"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"prompt_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":17,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "1":{
+            "attack_name":"prompt_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":17,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "2":{
+            "attack_name":"prompt_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":17,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "1":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "2":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        }
+    }
+}

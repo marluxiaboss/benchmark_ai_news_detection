@@ -1,0 +1,60 @@
+{
+    "label":{
+        "0":0,
+        "1":1
+    },
+    "text":{
+        "0":"The makers of Gorilla Glass, the glass that's used in touchscreen gadgets such as iPhones, iPads and more than 500 other models of electronic gadgets, has officially unveiled a thinner and more touch-sensitive version of their product. When it comes to innovation in electronic gadgets, a new kind of glass is not especially sexy. But when that glass is built into millions of touchscreen devices, and could potentially make them thinner, lighter and more responsive to your finger, consumers may tak",
+        "1":"The makers of Gorilla Glass, the glass that's used in smartphones, have announced a new model that's being developed with a more eco-friendly approach. This innovative technology is being developed as a result of the growing concern over climate change and the impact that our reliance on technology has on the environment. The new Gorilla Glass is being developed with recycled glass and can be used in devices to help protect the environment and reduce waste. This technology has the potential to s"
+    },
+    "prefix":{
+        "0":"The makers of Gorilla Glass, the glass that's used in",
+        "1":"The makers of Gorilla Glass, the glass that's used in"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"prompt_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":13,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "1":{
+            "attack_name":"prompt_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":13,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "1":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        }
+    }
+}

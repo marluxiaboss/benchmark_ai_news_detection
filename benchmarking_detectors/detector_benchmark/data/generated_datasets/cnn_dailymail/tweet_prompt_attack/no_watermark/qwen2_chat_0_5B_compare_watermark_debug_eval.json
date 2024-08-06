@@ -1,0 +1,122 @@
+{
+    "label":{
+        "0":1,
+        "1":0,
+        "2":0,
+        "3":1,
+        "4":1
+    },
+    "text":{
+        "0":"Three members of the same family who died in a tragic accident in a busy city center is a terrible loss for everyone involved. Our thoughts and prayers are with the family and the community at this difficult time. #ThreeMembers #TragicAccident #BrokenSilence #GriefShare #TogetherWeCantGrief #SafeHaven. #EndThisSuffering. #BecomingAWorld. #GriefShare. #EndThisSuffering. #TogetherWeCantGrief. #SafeHaven. #EndThisSuffering. #GriefShare. #EndThisSuffering. #TogetherWeCantGrief. #SafeHaven. #EndThisS",
+        "1":"Three members of the same family who died in a static caravan from carbon monoxide poisoning would have been unconscious 'within minutes', investigators said today. The bodies of married couple John and Audrey Cook were discovered alongside their daughter, Maureen, at the mobile home they shared on Tremarle Home Park in Camborne, west Cornwall. The inquests have now opened into the deaths last Saturday, with investigators saying the three died along with the family's pet dog, of carbon monoxide ",
+        "2":"A rare meeting of U.N. Security Council heads of state, led for the first time by a U.S. president, adopted a resolution focused on stopping the spread of nuclear weapons Thursday. President Obama is the first U.S. leader to head a United Nations Security Council meeting. President Obama challenged the gathering -- which included leaders of nuclear powers including Russia, China, Great Britain and France -- to overcome cynicism against the goal of ridding the planet of nuclear arms. \"We harbor n",
+        "3":"A rare meeting of U.N. Security Council heads of state, in the form of a historic lunch, is expected to yield a significant diplomatic and security outcome. #securitycouncil #historicevent #globalsecuritymeetsglobalsecurity #peacefulresolution #humanitarianism #peacefultransformation #globalhumanitarianeffort #peacefulstabilization #internationalpeacefultransformation #globalhumanitariantransformation #peacefulhumanitariantransformation #globalhumanitarianpeacefultransformation #peacefultransfor",
+        "4":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to continue abusing children for decades! #PastAbuse #ChildProtection #CourtsAreAway #EvilAttitudesEnd. Thank you for your attention and support. #JusticeForChildren #AbolishPew #PastAbuse #CourtsAreAway. #EvilAttitudesEnd. #ChildProtection #PastAbuse #CourtsAreAway. #JusticeForChildren. #PastAbuse. #CourtsAreAway. #EvilAttitudesEnd. #ChildProtection #PastAbuse #CourtsAreAway. #JusticeForChildren. #PastAbuse. #CourtsAreAway. #Evil"
+    },
+    "prefix":{
+        "0":"Three members of the same family who died in a",
+        "1":"Three members of the same family who died in a",
+        "2":"A rare meeting of U.N. Security Council heads of state,",
+        "3":"A rare meeting of U.N. Security Council heads of state,",
+        "4":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"tweet_prompt_attack",
+            "attack_type":"prompt_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "1":{
+            "attack_name":"tweet_prompt_attack",
+            "attack_type":"prompt_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "2":{
+            "attack_name":"tweet_prompt_attack",
+            "attack_type":"prompt_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "3":{
+            "attack_name":"tweet_prompt_attack",
+            "attack_type":"prompt_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "4":{
+            "attack_name":"tweet_prompt_attack",
+            "attack_type":"prompt_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        },
+        "1":{
+            "algorithm_name":"no_watermark"
+        },
+        "2":{
+            "algorithm_name":"no_watermark"
+        },
+        "3":{
+            "algorithm_name":"no_watermark"
+        },
+        "4":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

@@ -1,0 +1,220 @@
+{
+    "label":{
+        "0":0,
+        "1":1,
+        "2":0,
+        "3":1,
+        "4":1,
+        "5":0,
+        "6":0,
+        "7":1
+    },
+    "text":{
+        "0":"Three members of the same family who died in a static caravan from carbon monoxide poisoning would have been unconscious 'within minutes', investigators said today. The bodies of married couple John and Audrey Cook were discovered alongside their daughter, Maureen, at the mobile home they shared on Tremarle Home Park in Camborne, west Cornwall. The inquests have now opened into the deaths last Saturday, with investigators saying the three died along with the family's pet dog, of carbon monoxide ",
+        "1":"Three people who died in an aviolent attack were the victims of an unknown assailant in Arizona. The attack was committed by a single individual who remains unidentified. The state of Arizona and the federal authorities are currently investigating the incident. The state of Arizona has declared a state of emergency, and federal authorities are also currently stepping in. The attack is still pending investigation by the authorities. The attack is still pending investigation by the authorities. Th",
+        "2":"A rare meeting of U.N. Security Council heads of state, led for the first time by a U.S. president, adopted a resolution focused on stopping the spread of nuclear weapons Thursday. President Obama is the first U.S. leader to head a United Nations Security Council meeting. President Obama challenged the gathering -- which included leaders of nuclear powers including Russia, China, Great Britain and France -- to overcome cynicism against the goal of ridding the planet of nuclear arms. \"We harbor n",
+        "3":"An annual meeting of the 15-member U.N. Security Council heads of state will take place in Nairobi next week. This meeting marks an important high-stakes week for diplomatic relations and a significant challenge for ongoing peace efforts in the Horn of Africa region. Reuters reported that the leaders of five countries – Ethiopia, Djibouti, Somalia, Sudan, and Tanzania – are scheduled to convene in Nairobi to discuss recent developments in the Horn of Africa region. The meeting will take place in",
+        "4":"Former Archbishop Lord Hope allowed a gay priest to serve as a bishop. This revelation comes as a wake-up call for many who believe in the right to freedom of thought, conscience and religion. Archbishop Lord Hope, a devout Catholic who served as the Archbishop of Canterbury from 2011 to 2018, was accused of allowing an openly gay priest, James Dowling, to serve as a bishop. Dowling, a former parochial priest at St. Peter’s Cathedral, is currently a priest at St. John’s Cathedral. This revelatio",
+        "5":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to escape punishment for sex crimes, a judge's report claims . A former archbishop who failed to act on alleged crimes of a paedophile priest should be jailed, the abuser’s victims have said. Lord Hope, the former Archbishop of York, did not act on 19 occasions when allegations of abuse or inappropriate conduct by the priest were raised with him, a scathing report revealed yesterday. But despite that, Lord Hope remains as an honor",
+        "6":"TLC has pulled an episode of Cake Boss from future screening schedules after receiving complaints over the show's mishandling of a transgender guest star. The episode, which aired on Monday night, showed transgender Carmen Carerra, 27, who was born as a man, take part in a stunt that she believed was edited to look distasteful. The stunt involved Buddy 'Cake Boss' Valastro, the reality show's star, tricking Anthony 'Cousin Anthony' Bellifemine into believing that Miss Carerra was born as a woman",
+        "7":"TLC has pulled an episode of Cake Boss from futureepisodes, after numerous complaints from viewers who felt that it was inappropriate for the show to promote and showcase such explicit content. On July 7th, the network announced that \"Cake Boss: Fire and Fire\" had been pulled off of its schedule, stating, \"Due to a perceived violation of the Terms of Service, the show has been pulled off of the schedule.\" The move caused controversy among fans, with many pointing to the show's explicit content. "
+    },
+    "prefix":{
+        "0":"Three members of the same family who died in a",
+        "1":"Three members of the same family who died in a",
+        "2":"A rare meeting of U.N. Security Council heads of state,",
+        "3":"A rare meeting of U.N. Security Council heads of state,",
+        "4":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to",
+        "5":"Cover-up: Former Archbishop Lord Hope allowed a paedophile priest to",
+        "6":"TLC has pulled an episode of Cake Boss from future",
+        "7":"TLC has pulled an episode of Cake Boss from future"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"prompt_paraphrasing_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_paraphrasing_prompt":"You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’. ‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’. ‘OUTPUT’ should preserve the meaning and content of ’INPUT’ while maintaining text quality and grammar. ‘OUTPUT’ should not be much longer than ‘INPUT’. You should print ‘OUTPUT’ and nothing else so that its easy for me to parse.",
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"attack",
+            "user_paraphrasing_prompt":"INPUT:",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "1":{
+            "attack_name":"prompt_paraphrasing_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_paraphrasing_prompt":"You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’. ‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’. ‘OUTPUT’ should preserve the meaning and content of ’INPUT’ while maintaining text quality and grammar. ‘OUTPUT’ should not be much longer than ‘INPUT’. You should print ‘OUTPUT’ and nothing else so that its easy for me to parse.",
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"attack",
+            "user_paraphrasing_prompt":"INPUT:",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "2":{
+            "attack_name":"prompt_paraphrasing_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_paraphrasing_prompt":"You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’. ‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’. ‘OUTPUT’ should preserve the meaning and content of ’INPUT’ while maintaining text quality and grammar. ‘OUTPUT’ should not be much longer than ‘INPUT’. You should print ‘OUTPUT’ and nothing else so that its easy for me to parse.",
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"attack",
+            "user_paraphrasing_prompt":"INPUT:",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "3":{
+            "attack_name":"prompt_paraphrasing_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_paraphrasing_prompt":"You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’. ‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’. ‘OUTPUT’ should preserve the meaning and content of ’INPUT’ while maintaining text quality and grammar. ‘OUTPUT’ should not be much longer than ‘INPUT’. You should print ‘OUTPUT’ and nothing else so that its easy for me to parse.",
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"attack",
+            "user_paraphrasing_prompt":"INPUT:",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "4":{
+            "attack_name":"prompt_paraphrasing_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_paraphrasing_prompt":"You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’. ‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’. ‘OUTPUT’ should preserve the meaning and content of ’INPUT’ while maintaining text quality and grammar. ‘OUTPUT’ should not be much longer than ‘INPUT’. You should print ‘OUTPUT’ and nothing else so that its easy for me to parse.",
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"attack",
+            "user_paraphrasing_prompt":"INPUT:",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "5":{
+            "attack_name":"prompt_paraphrasing_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_paraphrasing_prompt":"You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’. ‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’. ‘OUTPUT’ should preserve the meaning and content of ’INPUT’ while maintaining text quality and grammar. ‘OUTPUT’ should not be much longer than ‘INPUT’. You should print ‘OUTPUT’ and nothing else so that its easy for me to parse.",
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"attack",
+            "user_paraphrasing_prompt":"INPUT:",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "6":{
+            "attack_name":"prompt_paraphrasing_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_paraphrasing_prompt":"You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’. ‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’. ‘OUTPUT’ should preserve the meaning and content of ’INPUT’ while maintaining text quality and grammar. ‘OUTPUT’ should not be much longer than ‘INPUT’. You should print ‘OUTPUT’ and nothing else so that its easy for me to parse.",
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"attack",
+            "user_paraphrasing_prompt":"INPUT:",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "7":{
+            "attack_name":"prompt_paraphrasing_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_paraphrasing_prompt":"You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’. ‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’. ‘OUTPUT’ should preserve the meaning and content of ’INPUT’ while maintaining text quality and grammar. ‘OUTPUT’ should not be much longer than ‘INPUT’. You should print ‘OUTPUT’ and nothing else so that its easy for me to parse.",
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"attack",
+            "user_paraphrasing_prompt":"INPUT:",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "1":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "2":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "3":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "4":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "5":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "6":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "7":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        }
+    }
+}

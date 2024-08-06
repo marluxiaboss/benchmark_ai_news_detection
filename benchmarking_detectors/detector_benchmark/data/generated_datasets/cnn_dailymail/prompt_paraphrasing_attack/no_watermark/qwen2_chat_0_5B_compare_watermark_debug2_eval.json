@@ -1,0 +1,38 @@
+{
+    "label":{
+        "0":1
+    },
+    "text":{
+        "0":"The world is facing a future marked by uncertainty, with countries grappling with rising energy costs, climate change, and a rapidly changing world order. As the world faces these challenges, it is clear that there is an urgent need for a shift in mindset and investment in renewable energy. The transition to a low-carbon, sustainable future is essential, and it is hoped that more countries will embrace this concept and invest in renewable energy. The world is facing a future marked by uncertaint"
+    },
+    "prefix":{
+        "0":"'The lamps are going out all over Europe. We shall"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"prompt_paraphrasing_attack",
+            "attack_type":"prompt_paraphrasing_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":5,
+            "experiment_name":"compare_watermark_debug2",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "skip_cache":true,
+            "skip_train_split":true,
+            "system_paraphrasing_prompt":"You are a paraphraser. You are given an input passage ‘INPUT’. You should paraphrase ‘INPUT’ to print ‘OUTPUT’. ‘OUTPUT’ shoud be diverse and different as much as possible from ‘INPUT’ and should not copy any part verbatim from ‘INPUT’. ‘OUTPUT’ should preserve the meaning and content of ’INPUT’ while maintaining text quality and grammar. ‘OUTPUT’ should not be much longer than ‘INPUT’. You should print ‘OUTPUT’ and nothing else so that its easy for me to parse.",
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_paraphrasing_prompt":"INPUT:",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"no_watermark"
+        }
+    }
+}

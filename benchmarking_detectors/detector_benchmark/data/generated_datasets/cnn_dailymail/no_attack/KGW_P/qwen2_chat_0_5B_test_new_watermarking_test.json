@@ -1,0 +1,168 @@
+{
+    "label":{
+        "0":1,
+        "1":0,
+        "2":1,
+        "3":0,
+        "4":0,
+        "5":1
+    },
+    "text":{
+        "0":"Investigators Wednesday exhumed the body of a 7-year-old Illinois girl who was found unresponsive on the side of the road in a rural part of the state. The girl, who has yet to be identified, was found unresponsive near the intersection of County Road A402 near the town of Elwood, approximately one mile west of the Chicago suburb of Naperville.\n\nAccording to the Elwood Police Department, the girl was found unresponsive on the side of the road with her hands tied together and her face covered in ",
+        "1":"Investigators Wednesday exhumed the body of a 7-year-old Illinois girl slain more than five decades ago in hopes that modern science will bolster the case against the man now accused of killing her. The remains of Maria Ridulph, dead since 1957, were exhumed for tests as the 71-year-old suspect in her killing was headed back to Illinois from Seattle, DeKalb County State's Attorney Clay Campbell told reporters. \"Suffice to say science has advanced greatly, thankfully, since that time and we're ho",
+        "2":"Rumours are circulating that Sony is preparing to launch its next-generation console, the PlayStation 5, in the fall of 2021.\n\nAccording to Japanese magazine The Matsumoto Daily, the PlayStation 5 is set for a launch in the fall of 2021 and is being developed alongside rival Microsoft's next-generation Xbox Series X\/S. It is anticipated that this new console will be the first to run PlayStation 5 hardware, with a dedicated console port and additional support from Microsoft.\n\nThe Matsumoto Daily ",
+        "3":"Rumours are circulating that Sony is preparing to launch its next generation games console soon after the Japanese tech giant sent out invitations to an event on 'the future of PlayStation.' Sony would not say whether it was preparing to unveil the successor to the 70million selling PS3 at the February 20 meeting in New York, but the prospect had gamers abuzz on Twitter. 'We will be talking about the PlayStation business,' Sony spokesman Masaki Tsukakoshi said today. Tantalising: A still from th",
+        "4":"Rush Limbaugh has continued his attack on a student he branded a 'slut' for her views on contraception despite being ditched by advertisers and criticized by the President. On his radio show yesterday, the 61-year-old defended his comments which have caused widespread outrage and went on to suggest that Ms Fluke 'had boyfriends lined up around the block. Or they would have been in my day'. He said: 'She's having so much sex that she's going broke, she says... You're worried here that I'm just st",
+        "5":"Rush Limbaugh has continued his attack on a student he accuses of plagiarism, in an apparent attempt to maintain his own political career. In an interview with the BBC, the conservative radio host, who has long been a vocal critic of the liberal agenda, defended his son's actions.\n\nAccording to Limbaugh's son, the freshman political science major at the University of North Carolina, his younger brother, was accused of plagiarism by a group of students at the university in the fall. The accusatio"
+    },
+    "prefix":{
+        "0":"Investigators Wednesday exhumed the body of a 7-year-old Illinois girl",
+        "1":"Investigators Wednesday exhumed the body of a 7-year-old Illinois girl",
+        "2":"Rumours are circulating that Sony is preparing to launch its",
+        "3":"Rumours are circulating that Sony is preparing to launch its",
+        "4":"Rush Limbaugh has continued his attack on a student he",
+        "5":"Rush Limbaugh has continued his attack on a student he"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_watermarking",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "1":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_watermarking",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "2":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_watermarking",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "3":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_watermarking",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "4":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_watermarking",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        },
+        "5":{
+            "attack_name":"no_attack",
+            "batch_size":2,
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":30,
+            "experiment_name":"test_new_watermarking",
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Continue writing the following news article starting with:",
+            "type":"no_attack",
+            "user_prompt":"You are a helpful assistant."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"KGW_P",
+            "delta":1.2,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "1":{
+            "algorithm_name":"KGW_P",
+            "delta":1.2,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "2":{
+            "algorithm_name":"KGW_P",
+            "delta":1.2,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "3":{
+            "algorithm_name":"KGW_P",
+            "delta":1.2,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "4":{
+            "algorithm_name":"KGW_P",
+            "delta":1.2,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "5":{
+            "algorithm_name":"KGW_P",
+            "delta":1.2,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        }
+    }
+}

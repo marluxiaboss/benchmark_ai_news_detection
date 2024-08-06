@@ -1,0 +1,60 @@
+{
+    "label":{
+        "0":1,
+        "1":0
+    },
+    "text":{
+        "0":"LIKE James Bond, Sir Roger Moore has at times enjoyed a challenging career as an actor in the realm of spy thrillers! You know, he's often referred to as the \"Bond of the Century,\" and he certainly made an impact on the genre! In fact, his roles in films like Diamonds Are Forever, A View to Kill, and Tomorrow Never Dies have cemented him as a legend. Even though he passed away in 1999, his legacy continues to be felt in the world of cinema and entertainment! What an iconic role! 🤖✨ #JamesBond #S",
+        "1":"LIKE James Bond, Sir Roger Moore has at times enjoyed a martini. But the actor has revealed he can no longer drink the cocktail because of his Type 2 diabetes. Sir Roger, 86, was diagnosed with the condition last year, and it means he has to watch the amount of sugar and alcohol he consumes. A martini is a highly alcoholic cocktail, made from a combination of gin and vermouth. And it was Bond’s drink of choice when Sean Connery played the spy. Shaken not stirred: Sir Roger Moore, who starred in "
+    },
+    "prefix":{
+        "0":"LIKE James Bond, Sir Roger Moore has at times enjoyed",
+        "1":"LIKE James Bond, Sir Roger Moore has at times enjoyed"
+    },
+    "generation_config":{
+        "0":{
+            "attack_name":"prompt_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":17,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        },
+        "1":{
+            "attack_name":"prompt_attack",
+            "dataset_name":"cnn_dailymail",
+            "dataset_size":17,
+            "generator_name":"qwen2_chat_0_5B",
+            "max_new_tokens":220,
+            "max_sample_len":500,
+            "min_new_tokens":200,
+            "prefix_size":10,
+            "system_prompt":"Write a 500 characters news tweet starting with:",
+            "type":"attack",
+            "user_prompt":"You are a tweeter user tweeting news information from news articles to your followers."
+        }
+    },
+    "watermark_config":{
+        "0":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        },
+        "1":{
+            "algorithm_name":"KGW",
+            "delta":2.0,
+            "gamma":0.5,
+            "hash_key":15485863,
+            "prefix_length":1,
+            "z_threshold":4.0
+        }
+    }
+}
