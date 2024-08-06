@@ -8,7 +8,7 @@ The main consideration is to make the benchmark easy to extend with different da
 - `detector_benchmark/dataset_loader`: folder for the dataset_loader classes
 - `detector_benchmark/detector`: folder for the detector classes and detector loader
 - `detector_benchmark/generation`: folder for the bases generation + adversarial generation classes and also the generator loader
-- `pipeline`: folder for the pipeline classes
+- `detector_benchmark/pipeline`: folder for the pipeline classes
 
 ### 1. Config files
 Configuration files (hydra configuration) are located in:

@@ -2,3 +2,9 @@
 	path = benchmarking_detectors/lm-evaluation-harness
 	url = https://github.com/marluxiaboss/lm-evaluation-harness
 	branch = main
+[submodule "prometheus-eval"]
+	path = prometheus-eval
+	url = https://github.com/marluxiaboss/prometheus-eval
+[submodule "benchmarking_detectors/prometheus-eval"]
+	path = benchmarking_detectors/prometheus-eval
+	url = https://github.com/marluxiaboss/prometheus-eval
