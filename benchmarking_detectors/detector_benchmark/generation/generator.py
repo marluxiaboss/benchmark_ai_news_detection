@@ -67,6 +67,8 @@ class LLMGenerator(nn.Module):
                         )
                         
                 else:     
+                    print("gen_params: ", self.gen_params) 
+                    wefewff
                     output_ids = self.generator.generate(
                         input_ids, pad_token_id=self.tokenizer.pad_token_id, **self.gen_params
                     )

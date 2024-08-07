@@ -37,6 +37,8 @@ def test_detector(cfg: DictConfig):
     if weights_checkpoint == "":
         weights_checkpoint = None
         local_weights = False
+    else:
+        local_weights = True
     
     # general parameters
     device = cfg.device

@@ -12,7 +12,7 @@ from utils.configs import ModelConfig, PromptConfig
 from detector import BertDetector, WatermarkDetector, FastDetectGPT, DetectorLoader
 from dataset_loader import CNNDataLoader, FakeTruePairsDataLoader
 from pipeline import ExperimentTestPipeline, CreateDatasetPipeline, ExperimentTestPipelineFull
-from .watermark.auto_watermark import AutoWatermark
+from watermark.auto_watermark import AutoWatermark
 
 
 def choose_dataset(dataset_name: str, dataset_size: int, max_sample_len: int, prefix_size: int):
