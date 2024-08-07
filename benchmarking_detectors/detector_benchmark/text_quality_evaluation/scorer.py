@@ -57,6 +57,33 @@ class CompareScorer(Scorer):
     def score(self, eval_text1: str, eval_text2: str, ref_text: Optional[str]=None) -> float:
         pass
     
+class PPLScorer(SelfScorer):
+    
+    def __init__(self, name, model, tokenizer):
+        self.name = name
+        
+        self.scorer_tokenizer = model
+        self.scorer_model = tokenizer
+        self.device = model.device
+        
+    def score(self, eval_text: str) -> float:
+        pass
+    
+    def score_batch(self, eval_texts: list[str], batch_size=1) -> float:
+        """
+        See https://github.com/THU-BPM/MarkLLM/blob/main/evaluation/tools/text_quality_analyzer.py
+        """
+        
+        ppls = []
+        criterion = torch.nn.CrossEntropyLoss()
+        for i in range(0, len(eval_texts), batch_size):
+            batch = eval_texts[i:i+batch_size]
+            encoded_text = self.scorer_tokenizer(batch, return_tensors="pt", add_special_tokens=False, padding=True, truncation=True)["input_ids"].to(self.device)
+            logits = self.scorer_model(encoded_text).logits
+            loss = criterion(logits.view(-1, logits.size(-1)), encoded_text.view(-1))
+            ppl = torch.exp(loss)
+            ppls.append(ppl.item())
+        return np.mean(ppls)
 
 class BertScoreScorer(RefScorer):
     def __init__(self, name):
@@ -78,7 +105,7 @@ class BertScoreScorer(RefScorer):
         
         f1_score_mean, f1_score_lower_bound, f1_score_upper_bound = bootstrap_score(f1_scores)
         return f1_score_mean, f1_score_lower_bound, f1_score_upper_bound
-    
+
 
 #TODO: maybe use it later, ignore it for now since very similar to BERT score
 class SemScoreScorer(RefScorer):
