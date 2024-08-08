@@ -10,6 +10,7 @@ from typing import Optional
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import evaluate
 
 # for prometheus 
 from .scorer_utils import bootstrap_score
@@ -62,28 +63,79 @@ class PPLScorer(SelfScorer):
     def __init__(self, name, model, tokenizer):
         self.name = name
         
-        self.scorer_tokenizer = model
-        self.scorer_model = tokenizer
+        self.scorer_model = model
+        self.scorer_tokenizer = tokenizer
         self.device = model.device
+        self.metric = evaluate.load("perplexity", module_type="metric")
         
     def score(self, eval_text: str) -> float:
         pass
     
     def score_batch(self, eval_texts: list[str], batch_size=1) -> float:
         """
-        See https://github.com/THU-BPM/MarkLLM/blob/main/evaluation/tools/text_quality_analyzer.py
+        See https://huggingface.co/spaces/evaluate-measurement/perplexity/blob/main/perplexity.py
         """
-        
+
+        model = self.scorer_model
+        tokenizer = self.scorer_tokenizer
+        # if batch_size > 1 (which generally leads to padding being required), and
+        # if there is not an already assigned pad_token, assign an existing
+        # special token to also be the padding token
+        if tokenizer.pad_token is None and batch_size > 1:
+            existing_special_tokens = list(tokenizer.special_tokens_map_extended.values())
+            # check that the model already has at least one special token defined
+            assert (
+                len(existing_special_tokens) > 0
+            ), "If batch_size > 1, model must have at least one special token to use for padding. Please use a different model or set batch_size=1."
+            # assign one of the special tokens to also be the pad token
+            tokenizer.add_special_tokens({"pad_token": existing_special_tokens[0]})
+
+        max_length = None
+        max_tokenized_len = max_length
+
+        encodings = tokenizer(
+            eval_texts,
+            add_special_tokens=False,
+            padding=True,
+            truncation=True if max_tokenized_len else False,
+            max_length=max_tokenized_len,
+            return_tensors="pt",
+            return_attention_mask=True,
+        ).to(model.device)
+
+        encoded_texts = encodings["input_ids"]
+        attn_masks = encodings["attention_mask"]
+
+        assert torch.all(
+            torch.ge(attn_masks.sum(1), 2)
+        ), "When add_start_token=False, each input text must be at least two tokens long. Run with add_start_token=True if inputting strings of only one token, and remove all empty input strings."
+
         ppls = []
-        criterion = torch.nn.CrossEntropyLoss()
-        for i in range(0, len(eval_texts), batch_size):
-            batch = eval_texts[i:i+batch_size]
-            encoded_text = self.scorer_tokenizer(batch, return_tensors="pt", add_special_tokens=False, padding=True, truncation=True)["input_ids"].to(self.device)
-            logits = self.scorer_model(encoded_text).logits
-            loss = criterion(logits.view(-1, logits.size(-1)), encoded_text.view(-1))
-            ppl = torch.exp(loss)
-            ppls.append(ppl.item())
-        return np.mean(ppls)
+        loss_fct = torch.nn.CrossEntropyLoss(reduction="none")
+
+        for start_index in tqdm(range(0, len(encoded_texts), batch_size)):
+            end_index = min(start_index + batch_size, len(encoded_texts))
+            encoded_batch = encoded_texts[start_index:end_index]
+            attn_mask = attn_masks[start_index:end_index]
+            labels = encoded_batch
+
+            with torch.no_grad():
+                out_logits = model(encoded_batch, attention_mask=attn_mask).logits
+
+            shift_logits = out_logits[..., :-1, :].contiguous()
+            shift_labels = labels[..., 1:].contiguous()
+            shift_attention_mask_batch = attn_mask[..., 1:].contiguous()
+
+            perplexity_batch = torch.exp(
+                (loss_fct(shift_logits.transpose(1, 2), shift_labels) * shift_attention_mask_batch).sum(1)
+                / shift_attention_mask_batch.sum(1)
+            )
+
+            ppls += perplexity_batch.tolist()
+        
+        mean_score, lower_bound, upper_bound = bootstrap_score(ppls)
+        
+        return mean_score, lower_bound, upper_bound
 
 class BertScoreScorer(RefScorer):
     def __init__(self, name):

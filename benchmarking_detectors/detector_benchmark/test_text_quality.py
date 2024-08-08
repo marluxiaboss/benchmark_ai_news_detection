@@ -1,6 +1,7 @@
 import argparse
 from text_quality_evaluation import (Scorer, RefScorer, BertScoreScorer,
-    SemScoreScorer, IDFScorer, PrometheusScorer)
+    SemScoreScorer, IDFScorer, PrometheusScorer, PPLScorer)
+from generation import GenLoader
 from pipeline import TextQualityPipeline
 import numpy as np
 from datasets import load_dataset
@@ -54,6 +55,29 @@ def init_pipelines(cfg: DictConfig, log):
         
         prometheus_scorer = PrometheusScorer("prometheus_score", compare_ai_to_human)
         pipeline = TextQualityPipeline(prometheus_scorer, watermarked_dataset_path_main, watermarked_dataset_path_compare, batch_size=cfg.pipeline.batch_size)
+        pipelines.append(pipeline)
+        
+    if cfg.pipeline.use_ppl_scorer:
+        
+        # not really relevant for perplexity, could be removed
+        default_gen_params = {
+            "max_new_tokens": 220,
+            "min_new_tokens": 200,
+            "temperature": 0.8,
+            "top_p": 0.95,
+            "repetition_penalty": 1,
+            "do_sample": True,
+            "top_k": 50
+        }
+        
+        gen_name = cfg.pipeline.generator_name
+        gen_params = default_gen_params
+        device = "cuda" 
+        # load the generator and tokenizer similarl to the create_dataset.py
+        gen_loader = GenLoader(gen_name, gen_params, device)
+        gen, _, gen_config = gen_loader.load()
+        ppl_scorer = PPLScorer("ppl_score", gen, gen_config.tokenizer)
+        pipeline = TextQualityPipeline(ppl_scorer, watermarked_dataset_path_main, batch_size=cfg.pipeline.batch_size)
         pipelines.append(pipeline)
         
     return pipelines
