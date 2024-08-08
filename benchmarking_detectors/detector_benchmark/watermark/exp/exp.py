@@ -126,16 +126,11 @@ class EXP(BaseWatermark):
 
         return watermarked_text    
     
-    
-    def generate_watermarked_text_modified_old(self, prompts: list[str], *args, **kwargs) -> str:
+    def generate(self, encoded_prompts: list, *args, **kwargs) -> str:
         """Generate watermarked text using the EXP algorithm."""
 
-        # Encode prompt
-        encoded_prompt = self.config.generation_tokenizer(prompts, return_tensors="pt",
-                                                    add_special_tokens=True, padding=True, truncation=True).to(self.config.device)
-        
         # Initialize
-        inputs = encoded_prompt["input_ids"]
+        inputs = encoded_prompts["input_ids"]
         attn = torch.ones_like(inputs)
         past = None
 
@@ -166,52 +161,13 @@ class EXP(BaseWatermark):
             # Update attention mask
             attn = torch.cat([attn, attn.new_ones((attn.shape[0], 1))], dim=-1)
         
-        watermarked_tokens = inputs.detach().cpu()
-        watermarked_text = self.config.generation_tokenizer.batch_decode(watermarked_tokens, skip_special_tokens=True)
-
-        return watermarked_text    
-
-
-    def generate(self, input_ids: list, *args, **kwargs) -> str:
-        """Generate watermarked text using the EXP algorithm."""
-
-        # Initialize
-        inputs = input_ids
-        attn = torch.ones_like(inputs)
-        past = None
-
-        # Generate tokens
-        for i in range(self.config.sequence_length):
-            with torch.no_grad():
-                if past:
-                    output = self.config.generation_model(inputs[:,-1:], past_key_values=past, attention_mask=attn)
-                else:
-                    output = self.config.generation_model(inputs)
-
-            # Get probabilities
-            probs = torch.nn.functional.softmax(output.logits[:,-1, :self.config.vocab_size], dim=-1).cpu()
-            
-            # Generate r1, r2,..., rk
-            self.utils.seed_rng(inputs[0])
-            random_numbers = torch.rand(self.config.vocab_size, generator=self.utils.rng)
-            
-            # Sample token to add watermark
-            token = self.utils.exp_sampling(probs, random_numbers).to(self.config.device)
-            
-            # Update inputs
-            inputs = torch.cat([inputs, token], dim=-1)
-
-            # Update past
-            past = output.past_key_values
-
-            # Update attention mask
-            attn = torch.cat([attn, attn.new_ones((attn.shape[0], 1))], dim=-1)
+        watermarked_tokens = inputs
         
-        watermarked_tokens = inputs.detach().cpu()
+        # decode the watermarked tokens
+        #watermarked_text = self.config.generation_tokenizer.batch_decode(watermarked_tokens, skip_special_tokens=True)
 
-        return watermarked_tokens   
+        return watermarked_tokens 
      
-
     def detect_watermark(self, text: str, return_dict: bool = True, *args, **kwargs) -> dict:
         """Detect watermark in the text."""
 

@@ -61,7 +61,7 @@ class GenLoader:
                         torch_dtype="auto",
                         device_map="auto",
                         pad_token_id=gen_tokenizer.pad_token_id,
-                    ).to(device)
+                    )
 
                 # config for chat template and gen parameters
                 use_chat_template = True
@@ -82,7 +82,7 @@ class GenLoader:
                 else:
                     gen = AutoModelForCausalLM.from_pretrained(gen_path,
                         torch_dtype=torch.bfloat16,
-                        device_map="auto").to(device)
+                        device_map="auto")
 
                 # config for chat template and gen parameters
                 use_chat_template = True
@@ -102,7 +102,7 @@ class GenLoader:
                 if self.gen_tokenizer_only:
                     gen = None
                 else:
-                    gen = AutoModelForCausalLM.from_pretrained(gen_path, torch_dtype=torch.bfloat16).to(device)
+                    gen = AutoModelForCausalLM.from_pretrained(gen_path, torch_dtype=torch.bfloat16, device_map="auto")
 
                 # config for chat template and gen parameters
                 use_chat_template = True

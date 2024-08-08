@@ -6,7 +6,7 @@ batch_size: 64
 # which scorer to use in the pipeline
 use_bert_scorer: True
 use_idf_scorer: True
-use_prometheus_scorer: True
+use_prometheus_scorer: False
 use_ppl_scorer: True
 
 compare_ai_to_human: False

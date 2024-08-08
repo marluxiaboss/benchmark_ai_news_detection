@@ -182,7 +182,7 @@ class KGW(BaseWatermark):
         return watermarked_text
     
     
-    def generate_watermarked_text_modified_old(self, prompts: list[str], *args, **kwargs) -> str:
+    def generate(self, encoded_prompts: list, *args, **kwargs) -> str:
         """Generate watermarked text."""
 
         # Configure generate_with_watermark
@@ -192,15 +192,14 @@ class KGW(BaseWatermark):
             **self.config.gen_kwargs
         )
         
-        # Encode prompt
-        encoded_prompt = self.config.generation_tokenizer(prompts, return_tensors="pt",
-                                                          add_special_tokens=True, padding=True, truncation=True).to(self.config.device)
         # Generate watermarked text
-        encoded_watermarked_text = generate_with_watermark(**encoded_prompt)
-        # Decode
-        watermarked_texts = self.config.generation_tokenizer.batch_decode(encoded_watermarked_text, skip_special_tokens=True)
+        encoded_watermarked_text = generate_with_watermark(**encoded_prompts)
         
-        return watermarked_texts
+        # Decode
+        #watermarked_texts = self.config.generation_tokenizer.batch_decode(encoded_watermarked_text, skip_special_tokens=True)
+        watermarked_tokens = encoded_watermarked_text
+        
+        return watermarked_tokens
     
     def detect_watermark(self, text: str, return_dict: bool = True, *args, **kwargs):
         """Detect watermark in the text."""
