@@ -70,11 +70,12 @@ def init_pipelines(cfg: DictConfig, log):
             "top_k": 50
         }
         
-        gen_name = cfg.pipeline.generator_name
+        #gen_name = cfg.pipeline.generator_name
+        ppl_gen = "qwen2_chat_7B"
         gen_params = default_gen_params
         device = "cuda" 
         # load the generator and tokenizer similarl to the create_dataset.py
-        gen_loader = GenLoader(gen_name, gen_params, device)
+        gen_loader = GenLoader(ppl_gen, gen_params, device)
         gen, _, gen_config = gen_loader.load()
         ppl_scorer = PPLScorer("ppl_score", gen, gen_config.tokenizer)
         pipeline = TextQualityPipeline(ppl_scorer, watermarked_dataset_path_main, batch_size=cfg.pipeline.batch_size)

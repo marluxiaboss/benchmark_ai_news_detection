@@ -203,7 +203,7 @@ class SIR(BaseWatermark):
         return watermarked_text
     
     def generate(self, encoded_prompts: list, *args, **kwargs) -> str:
-        """Generate watermarked text."""
+        """Generate watermarked text. Takes a list of encoded prompts as input, like transformers model.generate."""
 
         # Configure generate_with_watermark
         generate_with_watermark = partial(

@@ -122,8 +122,16 @@ class PPLScorer(SelfScorer):
             with torch.no_grad():
                 out_logits = model(encoded_batch, attention_mask=attn_mask).logits
 
+            # take the logits of all the tokens except the last one
             shift_logits = out_logits[..., :-1, :].contiguous()
+            
+            # take all the "next tokens" except the first one
             shift_labels = labels[..., 1:].contiguous()
+            
+            # logits and labels are always shifted by one
+            # ie. when we want to compute the loss for the second token, we use the logits of the first token
+            # when we want to compute the loss for the third token, we use the logits of the first and second token etc.
+            
             shift_attention_mask_batch = attn_mask[..., 1:].contiguous()
 
             perplexity_batch = torch.exp(

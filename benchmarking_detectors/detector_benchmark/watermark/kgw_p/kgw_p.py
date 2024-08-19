@@ -4,6 +4,7 @@
 # ============================================
 
 import torch
+import numpy as np
 from math import sqrt
 from functools import partial
 from ..base import BaseWatermark
@@ -11,6 +12,7 @@ from utils.configs import ModelConfig
 from utils.utils import create_directory_for_file, load_config_file
 
 from transformers import LogitsProcessor, LogitsProcessorList
+
 
 
 class KGW_PConfig:
@@ -145,7 +147,18 @@ class KGW_PLogitsProcessor(LogitsProcessor):
 
         green_tokens_mask = self._calc_greenlist_mask(scores=scores, greenlist_token_ids=batched_greenlist_ids)
 
+        def softmax(x):
+            #return np.exp(x) / np.sum(np.exp(x), axis=0)
+            return torch.nn.functional.softmax(x, dim=-1)
+
+        def inv_softmax(x):
+            #return np.log(x) + np.log(np.sum(np.exp(x), axis=0))
+            return torch.log(x) + torch.log(torch.sum(torch.exp(x), axis=0))
+        
+        # normalize the logits before applying the bias
+        scores = softmax(scores)
         scores = self._bias_greenlist_logits(scores=scores, greenlist_mask=green_tokens_mask, greenlist_bias=self.config.delta)
+        scores = inv_softmax(scores)
         return scores
     
 
@@ -183,7 +196,7 @@ class KGW_P(BaseWatermark):
         return watermarked_text
 
     def generate(self, encoded_prompts: list, *args, **kwargs) -> str:
-        """Generate watermarked text."""
+        """Generate watermarked text. Takes a list of encoded prompts as input, like transformers model.generate."""
 
         # Configure generate_with_watermark
         generate_with_watermark = partial(

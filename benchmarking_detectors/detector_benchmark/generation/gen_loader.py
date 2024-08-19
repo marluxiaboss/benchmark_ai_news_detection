@@ -71,7 +71,28 @@ class GenLoader:
                     gen_params=default_gen_params, model_name=model_name, device=device)
 
                 gen_model = LLMGenerator(gen, gen_config)
-            
+                
+            case "qwen2_chat_7B":
+                gen_path = "Qwen/Qwen2-7B-Instruct"
+                gen_tokenizer = AutoTokenizer.from_pretrained(gen_path, trust_remote_code=True)
+                gen_tokenizer.pad_token = gen_tokenizer.eos_token
+                
+                if self.gen_tokenizer_only:
+                    gen = None
+                else:
+                    gen = AutoModelForCausalLM.from_pretrained(gen_path,
+                        torch_dtype=torch.bfloat16,
+                        device_map="auto")
+
+                # config for chat template and gen parameters
+                use_chat_template = True
+                chat_template_type = "system_user"
+                gen_config = ModelConfig(gen_tokenizer,
+                    use_chat_template=use_chat_template, chat_template_type=chat_template_type,
+                    gen_params=default_gen_params, model_name=model_name, device=device)
+                
+                gen_model = LLMGenerator(gen, gen_config)
+                
             case "zephyr":
                 gen_path = "HuggingFaceH4/zephyr-7b-beta"
                 gen_tokenizer = AutoTokenizer.from_pretrained(gen_path, trust_remote_code=True)
