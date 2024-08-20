@@ -106,12 +106,12 @@ class KGW_EUtils:
         else:
             decoded_context = decoded_context
             
-        print("decoded_context: ", decoded_context)
+        #print("decoded_context: ", decoded_context)
         test_sentence_embedding = self.embedding_model.encode(decoded_context, normalize_embeddings=True, show_progress_bar=False, device="cuda")
         cosine_scores = cosine_similarity([test_sentence_embedding], self.embeddings_corpus)
         most_similar_idx = np.argmax(cosine_scores) 
         seed = most_similar_idx % self.config.vocab_size
-        print("seed: ", seed)
+        #print("seed: ", seed)
         return seed
                 
     
