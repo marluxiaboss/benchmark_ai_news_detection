@@ -297,7 +297,16 @@ class SWEET_PLogitsProcessor(LogitsProcessor):
             uniform_prob = 1 / len(filtered_logits_indices)
             #print(f"Uniform prob: {uniform_prob}")
             #probs  = [uniform_prob if i in filtered_logits_indices else 0 for i in range(len(logits))]
+            
+            
             probs = np.array([uniform_prob if i in filtered_logits_indices else 0 for i in range(len(scores_array))])
+            
+            # FIX: boost only green tokens!
+            #green_tokens = get_list_of_green_tokens()
+        	#updated_probs = [1 / unif if in green tokens else 0 for token in tokens]
+            
+            green_tokens = ...
+            updated_probs = ...
             
             #sum_probs = np.sum(probs)
             #print(f"Sum probs: {sum_probs}")
