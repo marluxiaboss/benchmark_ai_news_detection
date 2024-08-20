@@ -86,18 +86,32 @@ class KGW_EUtils:
         
     def get_seed(self, input_ids: torch.LongTensor) -> int:
         
+
         # create a seed using self.config.prefix_length tokens (usually 100 or all the previous tokens if less than 100)
-        if len(input_ids) < self.config.prefix_length:
-            context_tokens = input_ids
+        #if len(input_ids) < self.config.prefix_length:
+        #    context_tokens = input_ids
+        #else:
+        #    context_tokens = input_ids[-self.config.prefix_length:]
+        context_tokens = input_ids
+        
+        decoded_context = self.config.generation_tokenizer.decode(context_tokens, skip_special_tokens=True)
+        
+        decoded_context_split = decoded_context.split("\n")
+        
+        # remove the system, user tokens by taking everything after the assistant token
+        if "assistant" in decoded_context_split:
+            decoded_context = " ".join(decoded_context_split[decoded_context_split.index("assistant")+1:]).strip()
+        elif "<|assistant|>" in decoded_context_split:
+            decoded_context = " ".join(decoded_context_split[decoded_context_split.index("<|assistant|>")+1:]).strip()
         else:
-            context_tokens = input_ids[-self.config.prefix_length:]
-        
-        decoded_context = self.config.generation_tokenizer.decode(context_tokens)
-        
+            decoded_context = decoded_context
+            
+        print("decoded_context: ", decoded_context)
         test_sentence_embedding = self.embedding_model.encode(decoded_context, normalize_embeddings=True, show_progress_bar=False, device="cuda")
         cosine_scores = cosine_similarity([test_sentence_embedding], self.embeddings_corpus)
         most_similar_idx = np.argmax(cosine_scores) 
         seed = most_similar_idx % self.config.vocab_size
+        print("seed: ", seed)
         return seed
                 
     
@@ -131,17 +145,20 @@ class KGW_EUtils:
         """Score the input_ids and return z_score and green_token_flags."""
         num_tokens_scored = len(input_ids) - self.config.prefix_length
         if num_tokens_scored < 1:
-            raise ValueError(
-                (
-                    f"Must have at least {1} token to score after "
-                    f"the first min_prefix_len={self.config.prefix_length} tokens required by the seeding scheme."
-                )
-            )
+            num_tokens_scored = len(input_ids)
+        #    raise ValueError(
+        #        (
+        #            f"Must have at least {1} token to score after "
+        #            f"the first min_prefix_len={self.config.prefix_length} tokens required by the seeding scheme."
+        #        )
+        #    )
 
         green_token_count = 0
-        green_token_flags = [-1 for _ in range(self.config.prefix_length)]
+        #green_token_flags = [-1 for _ in range(self.config.prefix_length)]
+        green_token_flags = []
 
-        for idx in range(self.config.prefix_length, len(input_ids)):
+        #for idx in range(self.config.prefix_length, len(input_ids)):
+        for idx in range(len(input_ids)):
             curr_token = input_ids[idx]
             greenlist_ids = self.get_greenlist_ids(input_ids[:idx])
             if curr_token in greenlist_ids:
@@ -183,8 +200,8 @@ class KGW_ELogitsProcessor(LogitsProcessor):
 
     def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:
         """Process logits to add watermark."""
-        if input_ids.shape[-1] < self.config.prefix_length:
-            return scores
+        #if input_ids.shape[-1] < self.config.prefix_length:
+        #    return scores
 
         batched_greenlist_ids = [None for _ in range(input_ids.shape[0])]
 
@@ -230,7 +247,6 @@ class KGW_E(BaseWatermark):
         # Decode
         watermarked_text = self.config.generation_tokenizer.batch_decode(encoded_watermarked_text, skip_special_tokens=True)[0]
         return watermarked_text
-    
     
     def generate(self, encoded_prompts: list, *args, **kwargs) -> str:
         """Generate watermarked text. Takes a list of encoded prompts as input, like transformers model.generate."""
