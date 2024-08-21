@@ -129,6 +129,8 @@ class SWEET_PUtils:
 
         # calculate number of green tokens where weight is 1
         green_token_count = sum([1 for i in range(len(green_token_flags)) if green_token_flags[i] == 1 and weights[i] == 1])
+        print(f"Green token count: {green_token_count}")
+        print(f"Num tokens scored: {num_tokens_scored}")
         z_score = self._compute_z_score(green_token_count, num_tokens_scored)
         
         return z_score, green_token_flags, weights
@@ -231,10 +233,13 @@ class SWEET_PLogitsProcessor(LogitsProcessor):
         #scores = self._bias_greenlist_logits(scores=scores, greenlist_mask=green_tokens_mask, greenlist_bias=self.config.delta)
             # compute the entropy of the logits (look at the sweet implementation)
         
+        
         cut_off_method = self.config.cut_off_method
         prob_ratio = self.config.prob_ratio
         top_p = self.config.top_p
-        entropy_threshold = self.config.entropy_threshold
+        
+        # need to cast to float, otherwise can throw an error
+        entropy_threshold = float(self.config.entropy_threshold)
         gamma = self.config.gamma
         bias = self.config.delta
         
@@ -314,19 +319,19 @@ class SWEET_PLogitsProcessor(LogitsProcessor):
             #print("filtered_logits_indices after: ", filtered_logits_indices)
             
             if len(filtered_logits_indices) != 0:
-                #print("Tokens boosted")
+                print("Green token boosted!")
             
                 # choose nb_of_tokens_to_bias tokens randomly among the filtered out tokens but indices should be in the original logits
                 # i.e. probability of token should be 0 if it is not in the filtered out tokens
-                uniform_prob = 1 / len(filtered_logits_indices)
+                #uniform_prob = 1 / len(filtered_logits_indices)
                 #print(f"Uniform prob: {uniform_prob}")
                 #probs  = [uniform_prob if i in filtered_logits_indices else 0 for i in range(len(logits))]
                 
                 
-                probs = np.array([uniform_prob if i in filtered_logits_indices else 0 for i in range(len(scores_array))])
+                #probs = np.array([uniform_prob if i in filtered_logits_indices else 0 for i in range(len(scores_array))])
                 
                 # apply bias to gamma fraction of the logits randomly
-                nb_of_tokens_to_bias = int(gamma * len(filtered_logits_indices))
+                #nb_of_tokens_to_bias = int(gamma * len(filtered_logits_indices))
                 
                 #sum_probs = np.sum(probs)
                 #print(f"Sum probs: {sum_probs}")
@@ -335,17 +340,31 @@ class SWEET_PLogitsProcessor(LogitsProcessor):
                 #print(f"Len filtered logits: {len(filtered_logits_indices)}")
                 #print(f"Filtered logits: {filtered_logits_indices}")
                     
-                indices = np.random.choice(range(len(scores_array)), nb_of_tokens_to_bias, replace=False, p=probs)
+                #indices = np.random.choice(range(len(scores_array)), nb_of_tokens_to_bias, replace=False, p=probs)
                 #print(f"Indices: {indices}")
+                indices = filtered_logits_indices
                 
                 mask = np.zeros_like(scores_array)
                 mask[indices] = 1
-                scores = scores_array + mask * bias
                 
-            #else:
-            #    print("Warning: no tokens boosted")
-        #else:
-        #    scores = scores
+                # 1 for positions in filtered_logits_indices, 0 otherwise
+                boosted_tokens_mask = [True if i in filtered_logits_indices else False for i in range(len(scores_array))]
+                
+                green_tokens_orig_scores = scores_array[boosted_tokens_mask]
+                
+                #print(f"Green tokens orig scores: {green_tokens_orig_scores}")
+                #print(f"Orig probs: {softmaxed_logits[0][boosted_tokens_mask]}")
+                
+                scores = scores_array + mask * bias
+                green_tokens_updated_scores = scores[boosted_tokens_mask]
+                
+                #print(f"Green tokens updated scores: {green_tokens_updated_scores}")
+                #print(f"Updated probs: {softmax(scores)[boosted_tokens_mask]}")
+                
+            else:
+                print("Warning: no tokens boosted! due to not green tokens in the filtered logits")
+        else:
+            print("Warning: no tokens boosted! due to entropy below threshold")
         scores = torch.tensor(scores).to(self.config.device)
         scores = scores.view(original_scores.shape)
         return scores
