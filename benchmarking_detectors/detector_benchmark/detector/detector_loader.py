@@ -127,10 +127,16 @@ class DetectorLoader:
                     
                 if cfg.generation.get("min_new_tokens", None) is not None:
                     gen_params["min_new_tokens"] = cfg.generation.min_new_tokens
-                
-                gen_loader = GenLoader(model_name, gen_params, device, gen_tokenizer_only=True)
-                _, _, gen_config = gen_loader.load()
-                gen = None
+                    
+                if cfg.watermark.get("use_surrogate_model", False):
+                    # maybe specify the name of a smaller surrogate model, like in the paper
+                    gen_loader = GenLoader(model_name, gen_params, device, gen_tokenizer_only=False)
+                    gen, _, gen_config= gen_loader.load()
+                    
+                else:
+                    gen_loader = GenLoader(model_name, gen_params, device, gen_tokenizer_only=True)
+                    _, _, gen_config = gen_loader.load()
+                    gen = None
                 
                 watemark_scheme = AutoWatermark.load(self.cfg.watermark.algorithm_name,
                     algorithm_config=self.cfg.watermark,
