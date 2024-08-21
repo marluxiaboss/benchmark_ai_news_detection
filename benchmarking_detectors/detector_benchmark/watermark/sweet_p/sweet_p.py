@@ -158,88 +158,21 @@ class SWEET_PLogitsProcessor(LogitsProcessor):
         final_mask = green_tokens_mask.bool()
         return final_mask
 
-    """
     def _bias_greenlist_logits(self, scores: torch.Tensor, greenlist_mask: torch.Tensor, greenlist_bias: float) -> torch.Tensor:
-        
-        cut_off_method = self.config.cut_off_method
-        prob_ratio = self.config.prob_ratio
-        top_p = self.config.top_p
-        
-        # compute the prob of tokens and find highest prob tokens
-        def softmax(x):
-            return np.exp(x) / np.sum(np.exp(x), axis=0)
-        prob_of_tokens = softmax(scores)
-        highest_prob = np.max(prob_of_tokens)
-        
-        if cut_off_method == "ratio":
-            # filter out tokens with prob smaller than prob_ratio * highest_prob
-            filtered_logits_indices = list(np.where(prob_of_tokens > prob_ratio * highest_prob)[0])
-        
-        elif cut_off_method == "top_p":
-            dict_probs = {i: prob_of_tokens[i] for i in range(len(prob_of_tokens))}
-            sorted_probs = sorted(dict_probs.items(), key=lambda x: x[1], reverse=True)
-            cum_prob = 0
-            filtered_logits_indices = []
-            for i, (index, prob) in enumerate(sorted_probs):
-                cum_prob += prob
-                if cum_prob < top_p:
-                    filtered_logits_indices.append(index)
-                else:
-                    break
-                    
-        else:
-            raise ValueError("Cut off method not recognized")
-        
-        # apply bias to gamma fraction of the logits randomly
-        nb_of_tokens_to_bias = int(gamma * len(filtered_logits_indices))
-        
-        # choose nb_of_tokens_to_bias tokens randomly among the filtered out tokens but indices should be in the original logits
-        # i.e. probability of token should be 0 if it is not in the filtered out tokens
-        uniform_prob = 1 / len(filtered_logits_indices)
-        print(f"Uniform prob: {uniform_prob}")
-        #probs  = [uniform_prob if i in filtered_logits_indices else 0 for i in range(len(logits))]
-        probs = np.array([uniform_prob if i in filtered_logits_indices else 0 for i in range(len(logits))])
-            
-        indices = np.random.choice(range(len(logits)), nb_of_tokens_to_bias, replace=False, p=probs)
-        print(f"Indices: {indices}")
-        
-        mask = np.zeros_like(logits)
-        mask[indices] = 1
-        logits = logits + mask * bias
+        """Bias the scores for the greenlist tokens."""
         scores[greenlist_mask] = scores[greenlist_mask] + greenlist_bias
         return scores
-    """
     
-    def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:
+    def __call__old(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:
         """Process logits to add watermark."""
-        #if input_ids.shape[-1] < self.config.prefix_length:
-        #    return scores
-#
-        #batched_greenlist_ids = [None for _ in range(input_ids.shape[0])]
-#
-        #for b_idx in range(input_ids.shape[0]):
-        #    greenlist_ids = self.utils.get_greenlist_ids(input_ids[b_idx])
-        #    batched_greenlist_ids[b_idx] = greenlist_ids
-#
-        #green_tokens_mask = self._calc_greenlist_mask(scores=scores, greenlist_token_ids=batched_greenlist_ids)
-#
-        ## get entropy
-        #raw_probs = torch.softmax(scores, dim=-1)  
-        #ent = -torch.where(raw_probs > 0, raw_probs * raw_probs.log(), raw_probs.new([0.0])).sum(dim=-1)
-        #entropy_mask = (ent > self.config.entropy_threshold).view(-1, 1)
-        #
-        #green_tokens_mask = green_tokens_mask * entropy_mask
-#
-        #scores = self._bias_greenlist_logits(scores=scores, greenlist_mask=green_tokens_mask, greenlist_bias=self.config.delta)
-            # compute the entropy of the logits (look at the sweet implementation)
-        
         
         cut_off_method = self.config.cut_off_method
         prob_ratio = self.config.prob_ratio
         top_p = self.config.top_p
         
         # need to cast to float, otherwise can throw an error
-        entropy_threshold = float(self.config.entropy_threshold)
+        print(f"Entropy threshold: {self.config.entropy_threshold}")
+        entropy_threshold = self.config.entropy_threshold
         gamma = self.config.gamma
         bias = self.config.delta
         
@@ -248,8 +181,6 @@ class SWEET_PLogitsProcessor(LogitsProcessor):
             f = np.exp(x - np.max(x))  # shift values
             return f / f.sum(axis=0)
         
-        #scores = scores.reshape(-1)
-        #scores = scores.cpu().numpy()
         
         original_scores = scores
         softmaxed_logits = torch.softmax(scores, dim=-1)
@@ -268,7 +199,6 @@ class SWEET_PLogitsProcessor(LogitsProcessor):
         # bias the logits only if the entropy is above the threshold
         # issue: depends on the vocabulary size!
         if entropy > entropy_threshold:
-            
             
             # compute the prob of tokens and find highest prob tokens
             prob_of_tokens = softmaxed_logits[0]
@@ -369,6 +299,52 @@ class SWEET_PLogitsProcessor(LogitsProcessor):
         scores = scores.view(original_scores.shape)
         return scores
 
+
+    def find_probability_mask(self, raw_probs: torch.FloatTensor) -> torch.BoolTensor:
+        
+        cut_off_method = self.config.cut_off_method
+        prob_ratio = self.config.prob_ratio
+        top_p = self.config.top_p
+        
+        # raw_probs of shape (batch_size, vocab_size)
+        highest_prob = torch.max(raw_probs, dim=-1)[0]
+        
+        if cut_off_method == "ratio":
+            
+            # filter out tokens with prob smaller than prob_ratio * highest_prob
+            #filtered_logits_indices = list(np.where(prob_of_tokens > prob_ratio * highest_prob)[0])
+            prob_threshold = torch.tensor(prob_ratio * highest_prob).to(self.config.device).reshape(-1, 1)
+            prob_mask = torch.where(raw_probs > prob_threshold, True, False)
+
+        else:
+            raise ValueError("Cut off method not recognized")
+        
+        return prob_mask
+
+    def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:
+        
+        if input_ids.shape[-1] < self.config.prefix_length:
+            return scores
+        
+        batched_greenlist_ids = [None for _ in range(input_ids.shape[0])]
+
+        for b_idx in range(input_ids.shape[0]):
+            greenlist_ids = self.utils.get_greenlist_ids(input_ids[b_idx])
+            batched_greenlist_ids[b_idx] = greenlist_ids
+
+        green_tokens_mask = self._calc_greenlist_mask(scores=scores, greenlist_token_ids=batched_greenlist_ids)
+
+        # get entropy
+        raw_probs = torch.softmax(scores, dim=-1)  
+        ent = -torch.where(raw_probs > 0, raw_probs * raw_probs.log(), raw_probs.new([0.0])).sum(dim=-1)
+        entropy_mask = (ent > self.config.entropy_threshold).view(-1, 1)
+        probability_mask = self.find_probability_mask(raw_probs)
+        
+        green_tokens_mask = green_tokens_mask * entropy_mask * probability_mask
+        
+        scores = self._bias_greenlist_logits(scores=scores, greenlist_mask=green_tokens_mask, greenlist_bias=self.config.delta)
+        return scores
+    
 
 class SWEET_P(BaseWatermark):
     """Top-level class for SWEET algorithm."""
