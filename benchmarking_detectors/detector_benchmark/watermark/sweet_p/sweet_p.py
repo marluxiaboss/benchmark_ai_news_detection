@@ -289,40 +289,63 @@ class SWEET_PLogitsProcessor(LogitsProcessor):
             else:
                 raise ValueError("Cut off method not recognized")
             
-            # apply bias to gamma fraction of the logits randomly
-            nb_of_tokens_to_bias = int(gamma * len(filtered_logits_indices))
-            
-            # choose nb_of_tokens_to_bias tokens randomly among the filtered out tokens but indices should be in the original logits
-            # i.e. probability of token should be 0 if it is not in the filtered out tokens
-            uniform_prob = 1 / len(filtered_logits_indices)
-            #print(f"Uniform prob: {uniform_prob}")
-            #probs  = [uniform_prob if i in filtered_logits_indices else 0 for i in range(len(logits))]
-            
-            
-            probs = np.array([uniform_prob if i in filtered_logits_indices else 0 for i in range(len(scores_array))])
+
             
             # FIX: boost only green tokens!
             #green_tokens = get_list_of_green_tokens()
         	#updated_probs = [1 / unif if in green tokens else 0 for token in tokens]
             
-            green_tokens = ...
-            updated_probs = ...
+            #green_tokens = ...
+            #updated_probs = ...
+            batched_greenlist_ids = [None for _ in range(input_ids.shape[0])]
+
+            for b_idx in range(input_ids.shape[0]):
+                greenlist_ids = self.utils.get_greenlist_ids(input_ids[b_idx])
+                batched_greenlist_ids[b_idx] = greenlist_ids
+
+            green_tokens_mask = self._calc_greenlist_mask(scores=scores, greenlist_token_ids=batched_greenlist_ids)
+
+            # issue with batch here
+            green_tokens_mask = green_tokens_mask[0].cpu().numpy()
             
-            #sum_probs = np.sum(probs)
-            #print(f"Sum probs: {sum_probs}")
-            #print(f"Uniform prob: {uniform_prob}")
-            #print(f"Len scores: {len(scores_array)}")
-            #print(f"Len filtered logits: {len(filtered_logits_indices)}")
-            #print(f"Filtered logits: {filtered_logits_indices}")
+            #print("filtered_logits_indices before: ", filtered_logits_indices)
+            # filter out non-green tokens from filtered_logit_indices
+            filtered_logits_indices = [idx for idx in filtered_logits_indices if green_tokens_mask[idx] == True ]
+            #print("filtered_logits_indices after: ", filtered_logits_indices)
+            
+            if len(filtered_logits_indices) != 0:
+                #print("Tokens boosted")
+            
+                # choose nb_of_tokens_to_bias tokens randomly among the filtered out tokens but indices should be in the original logits
+                # i.e. probability of token should be 0 if it is not in the filtered out tokens
+                uniform_prob = 1 / len(filtered_logits_indices)
+                #print(f"Uniform prob: {uniform_prob}")
+                #probs  = [uniform_prob if i in filtered_logits_indices else 0 for i in range(len(logits))]
                 
-            indices = np.random.choice(range(len(scores_array)), nb_of_tokens_to_bias, replace=False, p=probs)
-            #print(f"Indices: {indices}")
-            
-            mask = np.zeros_like(scores_array)
-            mask[indices] = 1
-            scores = scores_array + mask * bias
-        else:
-            scores = scores
+                
+                probs = np.array([uniform_prob if i in filtered_logits_indices else 0 for i in range(len(scores_array))])
+                
+                # apply bias to gamma fraction of the logits randomly
+                nb_of_tokens_to_bias = int(gamma * len(filtered_logits_indices))
+                
+                #sum_probs = np.sum(probs)
+                #print(f"Sum probs: {sum_probs}")
+                #print(f"Uniform prob: {uniform_prob}")
+                #print(f"Len scores: {len(scores_array)}")
+                #print(f"Len filtered logits: {len(filtered_logits_indices)}")
+                #print(f"Filtered logits: {filtered_logits_indices}")
+                    
+                indices = np.random.choice(range(len(scores_array)), nb_of_tokens_to_bias, replace=False, p=probs)
+                #print(f"Indices: {indices}")
+                
+                mask = np.zeros_like(scores_array)
+                mask[indices] = 1
+                scores = scores_array + mask * bias
+                
+            #else:
+            #    print("Warning: no tokens boosted")
+        #else:
+        #    scores = scores
         scores = torch.tensor(scores).to(self.config.device)
         scores = scores.view(original_scores.shape)
         return scores
