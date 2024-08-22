@@ -59,6 +59,7 @@ class TextQualityPipeline(ExperimentPipeline):
                     responses_A.append(group[(group["label"] == 1) & (group["dataset"] == "A")]["text"].values[0])
                     responses_B.append(group[(group["label"] == 1) & (group["dataset"] == "B")]["text"].values[0])
                     
+                batch_size = self.batch_size
                 scores_mean, scores_lower_bound, scores_upper_bound  = scorer.score_batch(responses_A, responses_B, batch_size)
             
             else:

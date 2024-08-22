@@ -114,7 +114,7 @@ class GenLoader:
                 
                 gen_model = LLMGenerator(gen, gen_config)
 
-            case "llama3_instruct":
+            case "llama3_instruct_3":
                 gen_path = "meta-llama/Meta-Llama-3-8B-Instruct"
                 gen_tokenizer = AutoTokenizer.from_pretrained(gen_path, trust_remote_code=True)
                 gen_tokenizer.pad_token = '<|eot_id|>'
@@ -142,7 +142,35 @@ class GenLoader:
                     gen_params=gen_params, model_name=model_name, device=device)
 
                 gen_model = LLMGenerator(gen, gen_config)
+
+            case "llama3_instruct_3.1":
+                gen_path = "meta-llama/Meta-Llama-3-8B-Instruct"
+                gen_tokenizer = AutoTokenizer.from_pretrained(gen_path, trust_remote_code=True)
+                gen_tokenizer.pad_token = '<|eot_id|>'
+                gen_tokenizer.padding_side = "left"
+
+                if self.gen_tokenizer_only:
+                    gen = None
+                else:
+                    gen = AutoModelForCausalLM.from_pretrained(gen_path, torch_dtype=torch.bfloat16, device_map="auto")
+
+                # config for chat template and gen parameters
+                use_chat_template = True
+                chat_template_type = "system_user"
                 
+                # special for llama3
+                terminators = [
+                    gen_tokenizer.eos_token_id,
+                    gen_tokenizer.convert_tokens_to_ids("<|eot_id|>")
+                ]
+                gen_params = default_gen_params     
+                gen_params["eos_token_id"] = terminators
+                
+                gen_config = ModelConfig(gen_tokenizer,
+                    use_chat_template=use_chat_template, chat_template_type=chat_template_type,
+                    gen_params=gen_params, model_name=model_name, device=device)
+
+                gen_model = LLMGenerator(gen, gen_config)
             case _:
                 # no other generator is supported for now
                 raise ValueError(f"Generator {model_name} not supported yet")
