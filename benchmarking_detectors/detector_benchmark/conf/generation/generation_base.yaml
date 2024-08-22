@@ -7,6 +7,11 @@ max_sample_len: 500
 prefix_size: 10
 max_new_tokens: 220
 min_new_tokens: 200
+temperature: 0.8
+top_p: 0.95,
+repetition_penalty: 1
+do_sample: True
+top_k: 50
 dataset_name: cnn_dailymail
 generator_name: qwen2_chat_0_5B
 user_prompt: "You are a helpful assistant."

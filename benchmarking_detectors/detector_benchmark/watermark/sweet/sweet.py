@@ -48,9 +48,6 @@ class SWEET_Config:
         self.z_threshold = config_dict['z_threshold']
         self.prefix_length = config_dict['prefix_length']
         self.entropy_threshold = config_dict['entropy_threshold']
-        self.cut_off_method = config_dict['cut_off_method']
-        self.prob_ratio = config_dict['prob_ratio']
-        self.top_p = config_dict['top_p']
         
         self.generation_model = gen_model
         self.generation_tokenizer = model_config.tokenizer
