@@ -37,7 +37,7 @@ def init_pipelines(cfg: DictConfig, log):
     
     if cfg.pipeline.use_bert_scorer:
         bert_scorer = BertScoreScorer("bert_score")
-        pipeline = TextQualityPipeline(bert_scorer, watermarked_dataset_path_main, batch_size=cfg.pipeline.batch_size)
+        pipeline = TextQualityPipeline(bert_scorer, watermarked_dataset_path_main, dataset_path_compare=watermarked_dataset_path_compare, batch_size=cfg.pipeline.batch_size)
         pipelines.append(pipeline)
         
     if cfg.pipeline.use_idf_scorer:
