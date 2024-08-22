@@ -72,8 +72,15 @@ def create_dataset(cfg: DictConfig):
     max_sample_len = cfg.generation.max_sample_len
     prefix_size = cfg.generation.prefix_size
     dataset_name = cfg.generation.dataset_name
+    
     max_new_tokens = cfg.generation.max_new_tokens
     min_new_tokens = cfg.generation.min_new_tokens
+    temperature = cfg.generation.temperature
+    top_p = cfg.generation.top_p
+    repetition_penalty = cfg.generation.repetition_penalty
+    do_sample = cfg.generation.do_sample
+    top_k = cfg.generation.top_k
+    
     generator_name = cfg.generation.generator_name
     attack_name = cfg.generation.attack_name
     attack_type = cfg.generation.attack_type
@@ -116,6 +123,11 @@ def create_dataset(cfg: DictConfig):
     
     default_gen_params["max_new_tokens"] = max_new_tokens
     default_gen_params["min_new_tokens"] = min_new_tokens
+    default_gen_params["temperature"] = temperature
+    default_gen_params["top_p"] = top_p
+    default_gen_params["repetition_penalty"] = repetition_penalty
+    default_gen_params["do_sample"] = do_sample
+    default_gen_params["top_k"] = top_k
     
     
     # load generator
