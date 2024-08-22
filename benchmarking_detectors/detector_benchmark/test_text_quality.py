@@ -88,8 +88,8 @@ def init_pipelines(cfg: DictConfig, log):
 def evaluate_text_quality(cfg: DictConfig):
     
     # setup logger
-    experiment_path = (f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watermarking_scheme_name_main}_{cfg.pipeline.watermarking_scheme_name_compare}/"
-                f"{cfg.pipeline.dataset_name}/{cfg.pipeline.generator_name}/quality_test_{cfg.pipeline.data_experiment_name}")
+    experiment_path = (f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watermarking_scheme_name_main}_vs_{cfg.pipeline.watermarking_scheme_name_compare}/"
+                f"{cfg.pipeline.dataset_name}/{cfg.pipeline.generator_name}/quality_test_{cfg.pipeline.data_experiment_name_main}_vs_{cfg.pipeline.data_experiment_name_compare}")
 
     if not os.path.exists(experiment_path):
         os.makedirs(experiment_path)
@@ -119,8 +119,8 @@ def evaluate_text_quality(cfg: DictConfig):
     results_dict["config"] = dict(cfg.pipeline)
     
     # save the results to a json file
-    json_path = (f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watermarking_scheme_name_main}_{cfg.pipeline.watermarking_scheme_name_compare}/"
-                f"{cfg.pipeline.dataset_name}/{cfg.pipeline.generator_name}/quality_test_{cfg.pipeline.data_experiment_name}.json")
+    json_path = (f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watermarking_scheme_name_main}_vs_{cfg.pipeline.watermarking_scheme_name_compare}/"
+                f"{cfg.pipeline.dataset_name}/{cfg.pipeline.generator_name}/quality_test_{cfg.pipeline.data_experiment_name}_vs_{cfg.pipeline.data_experiment_name_compare}.json")
     
     with open(json_path, "w") as f:
         f.write(json.dumps(results_dict, indent=4))
