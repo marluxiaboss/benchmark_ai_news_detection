@@ -1,5 +1,6 @@
 dataset_name: cnn_dailymail
-data_experiment_name: base
+data_experiment_name_main: base
+data_experiment_name_compare: base
 generator_name: zephyr
 batch_size: 64
 

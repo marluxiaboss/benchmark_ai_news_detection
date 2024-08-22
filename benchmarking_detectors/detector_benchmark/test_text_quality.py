@@ -21,7 +21,8 @@ def init_pipelines(cfg: DictConfig, log):
         log.info(f"{key}: {cfg.pipeline[key]}")
     
     dataset_name = cfg.pipeline.dataset_name
-    data_experiment_name = cfg.pipeline.data_experiment_name
+    data_experiment_name_main = cfg.pipeline.data_experiment_name_main
+    data_experiment_name_compare = cfg.pipeline.data_experiment_name_compare
     generator_name = cfg.pipeline.generator_name
     watermarking_scheme_name_main = cfg.pipeline.watermarking_scheme_name_main
     
@@ -29,8 +30,8 @@ def init_pipelines(cfg: DictConfig, log):
     watermarking_scheme_name_compare = cfg.pipeline.watermarking_scheme_name_compare
 
 
-    watermarked_dataset_path_main = f"data/generated_datasets/{dataset_name}/no_attack/{watermarking_scheme_name_main}/{generator_name}_{data_experiment_name}"
-    watermarked_dataset_path_compare = f"data/generated_datasets/{dataset_name}/no_attack/{watermarking_scheme_name_compare}/{generator_name}_{data_experiment_name}"
+    watermarked_dataset_path_main = f"data/generated_datasets/{dataset_name}/no_attack/{watermarking_scheme_name_main}/{generator_name}_{data_experiment_name_main}"
+    watermarked_dataset_path_compare = f"data/generated_datasets/{dataset_name}/no_attack/{watermarking_scheme_name_compare}/{generator_name}_{data_experiment_name_compare}"
     
     pipelines = []
     
