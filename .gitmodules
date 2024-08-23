@@ -8,6 +8,6 @@
 [submodule "benchmarking_detectors/prometheus-eval"]
 	path = benchmarking_detectors/prometheus-eval
 	url = https://github.com/marluxiaboss/prometheus-eval
-[submodule "benchmarking_detectors/detector_benchmark/benchmarking_detectors/detector_benchmark/text_quality_evaluation/human-eval"]
-	path = benchmarking_detectors/detector_benchmark/benchmarking_detectors/detector_benchmark/text_quality_evaluation/human-eval
+[submodule "human-eval"]
+	path = benchmarking_detectors/detector_benchmark/text_quality_evaluation/human-eval
 	url = https://github.com/openai/human-eval
