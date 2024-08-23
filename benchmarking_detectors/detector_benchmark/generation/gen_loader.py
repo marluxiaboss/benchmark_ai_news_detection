@@ -171,7 +171,7 @@ class GenLoader:
 
                 gen_model = LLMGenerator(gen, gen_config)
 
-            case "llama3_instruct_3.1":
+            case "llama_instruct_3.1":
                 gen_path = "meta-llama/Meta-Llama-3-8B-Instruct"
                 gen_tokenizer = AutoTokenizer.from_pretrained(gen_path, trust_remote_code=True)
                 gen_tokenizer.pad_token = '<|eot_id|>'
@@ -200,7 +200,7 @@ class GenLoader:
 
                 gen_model = LLMGenerator(gen, gen_config)
             
-            case "llama3_3.1":
+            case "llama_3.1":
                 gen_path = "meta-llama/Meta-Llama-3.1-8B"
                 gen_tokenizer = AutoTokenizer.from_pretrained(gen_path, trust_remote_code=True)
                 gen_tokenizer.pad_token = '<|eot_id|>'
@@ -212,8 +212,8 @@ class GenLoader:
                     gen = AutoModelForCausalLM.from_pretrained(gen_path, torch_dtype=torch.bfloat16, device_map="auto")
 
                 # config for chat template and gen parameters
-                use_chat_template = True
-                chat_template_type = "system_user"
+                use_chat_template = False
+                chat_template_type = None
                 
                 # special for llama3
                 terminators = [
