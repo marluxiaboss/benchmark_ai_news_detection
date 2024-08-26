@@ -71,7 +71,7 @@ class PPLScorer(SelfScorer):
     def score(self, eval_text: str) -> float:
         pass
     
-    def score_batch(self, eval_texts: list[str], batch_size=1) -> float:
+    def score_batch(self, eval_texts: list[str], batch_size=1, return_ppl_list) -> float:
         """
         See https://huggingface.co/spaces/evaluate-measurement/perplexity/blob/main/perplexity.py
         """
@@ -112,6 +112,8 @@ class PPLScorer(SelfScorer):
 
         ppls = []
         loss_fct = torch.nn.CrossEntropyLoss(reduction="none")
+        
+        per_token_ppl = []
 
         for start_index in tqdm(range(0, len(encoded_texts), batch_size)):
             end_index = min(start_index + batch_size, len(encoded_texts))
@@ -138,12 +140,25 @@ class PPLScorer(SelfScorer):
                 (loss_fct(shift_logits.transpose(1, 2), shift_labels) * shift_attention_mask_batch).sum(1)
                 / shift_attention_mask_batch.sum(1)
             )
-
+            
             ppls += perplexity_batch.tolist()
+            
+            if return_ppl_list:
+                
+                # compute perplexity at each token to have a list of perplexities
+                perplexity_batch = [[] for _ in range(batch_size)]
+                for i in range(batch_size):
+                    for j in range(shift_logits.size(1)):
+                        perplexity_batch[i].append(torch.exp(loss_fct(shift_logits[i, j], shift_labels[i, j])))
+                
+                per_token_ppl.extend(perplexity_batch)
         
         mean_score, lower_bound, upper_bound = bootstrap_score(ppls)
         
-        return mean_score, lower_bound, upper_bound
+        if return_ppl_list:
+            return mean_score, lower_bound, upper_bound, per_token_ppl
+        else:
+            return mean_score, lower_bound, upper_bound
 
 class BertScoreScorer(RefScorer):
     def __init__(self, name):

@@ -38,13 +38,16 @@ def generate_batch_completions(prompts, gen_model, gen_config, tokenizer, batch_
     
 
     user_prompt=""
-    prompt_chats = [transform_chat_template_with_prompt(
+    prompts_chat = [transform_chat_template_with_prompt(
         prompt, user_prompt, tokenizer,
         use_chat_template=gen_config.use_chat_template, template_type=gen_config.chat_template_type,
         forced_prefix="") for prompt in prompts]
     
     # use strip! very important
-    prompt_chats = [prompt.strip() for prompt in prompt_chats]
+    prompt_chats = [prompt.strip() for prompt in prompts_chat]
+    
+    
+    print("prompts chat: ", prompts_chat)
     
     watermarking_scheme = None
     gen_texts = gen_model(prompt_chats, batch_size=batch_size, watermarking_scheme=watermarking_scheme)
@@ -65,6 +68,7 @@ def run_human_eval():
     }
     
     device = "cuda"
+    batch_size=8
     
     
     # load model and tokenizer
@@ -84,7 +88,7 @@ def run_human_eval():
     # batch version assuming num_samples_per_task = 1
     samples = []
     prompts = [problems[task_id]["prompt"] for task_id in problems]
-    completions = generate_batch_completions(prompts, gen_model, gen_config, tokenizer, batch_size=2)
+    completions = generate_batch_completions(prompts, gen_model, gen_config, tokenizer, batch_size=batch_size)
     for i, task_id in enumerate(problems):
         samples.append(dict(task_id=task_id, completion=completions[i]))
 
