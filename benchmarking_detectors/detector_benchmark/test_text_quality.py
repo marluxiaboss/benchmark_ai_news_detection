@@ -37,7 +37,8 @@ def init_pipelines(cfg: DictConfig, log):
     
     if cfg.pipeline.use_bert_scorer:
         bert_scorer = BertScoreScorer("bert_score")
-        pipeline = TextQualityPipeline(bert_scorer, watermarked_dataset_path_main, dataset_path_compare=watermarked_dataset_path_compare, batch_size=cfg.pipeline.batch_size)
+        pipeline = TextQualityPipeline(bert_scorer, watermarked_dataset_path_main,
+            dataset_path_compare=watermarked_dataset_path_compare, batch_size=cfg.pipeline.batch_size, return_loss_lists=cfg.pipeline.return_loss_lists)
         pipelines.append(pipeline)
         
     if cfg.pipeline.use_idf_scorer:
@@ -72,14 +73,14 @@ def init_pipelines(cfg: DictConfig, log):
         }
         
         #gen_name = cfg.pipeline.generator_name
-        ppl_gen = "qwen2_chat_7B"
+        ppl_scorer_name = cfg.pipeline.ppl_scorer_name
         gen_params = default_gen_params
         device = "cuda" 
         # load the generator and tokenizer similarl to the create_dataset.py
-        gen_loader = GenLoader(ppl_gen, gen_params, device)
+        gen_loader = GenLoader(ppl_scorer_name, gen_params, device)
         gen, _, gen_config = gen_loader.load()
         ppl_scorer = PPLScorer("ppl_score", gen, gen_config.tokenizer)
-        pipeline = TextQualityPipeline(ppl_scorer, watermarked_dataset_path_main, batch_size=cfg.pipeline.batch_size)
+        pipeline = TextQualityPipeline(ppl_scorer, watermarked_dataset_path_main, batch_size=cfg.pipeline.batch_size, return_loss_lists=cfg.pipeline.return_loss_lists)
         pipelines.append(pipeline)
         
     return pipelines
@@ -104,7 +105,10 @@ def evaluate_text_quality(cfg: DictConfig):
     for pipeline in pipelines:
         scorer_name = pipeline.scorer.name
         log.info(f"Running pipeline with scorer: {scorer_name}")
-        score, lower_bound, upper_bound = pipeline.run_pipeline()
+        if cfg.pipeline.return_loss_lists:
+            score, lower_bound, upper_bound, loss_lists = pipeline.run_pipeline()
+        else:
+            score, lower_bound, upper_bound = pipeline.run_pipeline()
         log.info(f"Score: {score} +/- {upper_bound - score}")
         
         # transform numbers into str for the json file
@@ -113,7 +117,10 @@ def evaluate_text_quality(cfg: DictConfig):
         upper_bound = str(upper_bound)
         
         # Save the results
-        results_dict[scorer_name] = {"score": score, "lower_bound": lower_bound, "upper_bound": upper_bound}
+        if cfg.pipeline.return_loss_lists and pipeline.scorer.name == "ppl_score":
+            results_dict[scorer_name] = {"score": score, "lower_bound": lower_bound, "upper_bound": upper_bound, "loss_lists": loss_lists}
+        else:
+            results_dict[scorer_name] = {"score": score, "lower_bound": lower_bound, "upper_bound": upper_bound}
         
     # save config to results dict
     results_dict["config"] = dict(cfg.pipeline)

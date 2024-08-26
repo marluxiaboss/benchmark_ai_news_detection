@@ -9,10 +9,11 @@ from text_quality_evaluation import (Scorer, SelfScorer, RefScorer,
 class TextQualityPipeline(ExperimentPipeline):
     
     def __init__(self, scorer: Scorer, dataset_path: str, dataset_path_compare: Optional[str]=None,
-                 batch_size: int=64):
+                 batch_size: int=64, return_loss_lists: bool=False):
         self.scorer = scorer
         self.dataset = load_from_disk(dataset_path)
         self.batch_size = batch_size
+        self.return_loss_lists = return_loss_lists
         
         # we can eventually another dataset with AI/human pairs for providing two AI responses to compare
         if dataset_path_compare is not None:
@@ -47,9 +48,7 @@ class TextQualityPipeline(ExperimentPipeline):
 
                 responses_A = []
                 responses_B = []
-                responses_human = []
-                prefixes = []
-
+                
                 for prefix, group in dataset_test_grouped:
 
                     # 4 because 2 pairs of human and AI responses, one for each dataset
@@ -59,8 +58,9 @@ class TextQualityPipeline(ExperimentPipeline):
                     responses_A.append(group[(group["label"] == 1) & (group["dataset"] == "A")]["text"].values[0])
                     responses_B.append(group[(group["label"] == 1) & (group["dataset"] == "B")]["text"].values[0])
                     
-                batch_size = self.batch_size
-                scores_mean, scores_lower_bound, scores_upper_bound  = scorer.score_batch(responses_A, responses_B, batch_size)
+                
+                test_texts = responses_A
+                ref_texts = responses_B
             
             else:
             
@@ -81,15 +81,25 @@ class TextQualityPipeline(ExperimentPipeline):
                 human_texts = [pair[0] for pair in human_ai_pairs]
                 ai_texts = [pair[1] for pair in human_ai_pairs]
                 
-                batch_size = self.batch_size
-                scores_mean, scores_lower_bound, scores_upper_bound = scorer.score_batch(ai_texts, human_texts, batch_size)
-            
+                test_texts = ai_texts
+                ref_texts = human_texts
+                
+            batch_size = self.batch_size
+            #scores_mean, scores_lower_bound, scores_upper_bound = scorer.score_batch(ai_texts, test_texts, ref_texts, batch_size=batch_size)
+            scores_mean, scores_lower_bound, scores_upper_bound = scorer.score_batch(test_texts, ref_texts, batch_size=batch_size)
+
         elif isinstance(scorer, SelfScorer):     
             
             # we directly use AI-text here without any human reference
             ai_dataset_test = dataset_test.filter(lambda sample: sample["label"] == 1)
             ai_texts = ai_dataset_test["text"][:]
-            scores_mean, scores_lower_bound, scores_upper_bound = scorer.score_batch(ai_texts)
+            batch_size = self.batch_size
+            return_loss_lists = self.return_loss_lists
+            if return_loss_lists:
+                scores_mean, scores_lower_bound, scores_upper_bound, loss_lists = scorer.score_batch(ai_texts,
+                    batch_size=batch_size, return_loss_lists=return_loss_lists)
+            else:
+                scores_mean, scores_lower_bound, scores_upper_bound = scorer.score_batch(ai_texts, batch_size=batch_size)
         
         elif isinstance(scorer, PrometheusScorer):
             
@@ -132,5 +142,8 @@ class TextQualityPipeline(ExperimentPipeline):
         else:
             raise ValueError("Scorer not recognized")
         
-        return scores_mean, scores_lower_bound, scores_upper_bound
+        if self.return_loss_lists:
+            return scores_mean, scores_lower_bound, scores_upper_bound, loss_lists
+        else:
+            return scores_mean, scores_lower_bound, scores_upper_bound
         

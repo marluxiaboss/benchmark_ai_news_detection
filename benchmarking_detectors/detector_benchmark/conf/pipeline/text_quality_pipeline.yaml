@@ -9,6 +9,9 @@ use_bert_scorer: True
 use_idf_scorer: True
 use_prometheus_scorer: False
 use_ppl_scorer: True
+return_loss_lists: False
+
+ppl_scorer_name: qwen2_chat_7B
 
 compare_ai_to_human: False
 
