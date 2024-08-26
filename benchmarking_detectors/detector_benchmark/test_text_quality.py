@@ -80,7 +80,11 @@ def init_pipelines(cfg: DictConfig, log):
         gen_loader = GenLoader(ppl_scorer_name, gen_params, device)
         gen, _, gen_config = gen_loader.load()
         ppl_scorer = PPLScorer("ppl_score", gen, gen_config.tokenizer)
-        pipeline = TextQualityPipeline(ppl_scorer, watermarked_dataset_path_main, batch_size=cfg.pipeline.batch_size, return_loss_lists=cfg.pipeline.return_loss_lists)
+        
+        eval_human = cfg.pipeline.eval_human
+        
+        pipeline = TextQualityPipeline(ppl_scorer, watermarked_dataset_path_main, batch_size=cfg.pipeline.batch_size, 
+                                       return_loss_lists=cfg.pipeline.return_loss_lists, eval_human=eval_human)
         pipelines.append(pipeline)
         
     return pipelines

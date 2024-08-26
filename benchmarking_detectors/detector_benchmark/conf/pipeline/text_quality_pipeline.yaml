@@ -14,6 +14,7 @@ return_loss_lists: False
 ppl_scorer_name: qwen2_chat_7B
 
 compare_ai_to_human: False
+eval_human: False
 
 # watermarking_scheme
 watermarking_scheme_name_main: KGW

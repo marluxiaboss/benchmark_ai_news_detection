@@ -9,11 +9,12 @@ from text_quality_evaluation import (Scorer, SelfScorer, RefScorer,
 class TextQualityPipeline(ExperimentPipeline):
     
     def __init__(self, scorer: Scorer, dataset_path: str, dataset_path_compare: Optional[str]=None,
-                 batch_size: int=64, return_loss_lists: bool=False):
+                 batch_size: int=64, return_loss_lists: bool=False, eval_human: bool=False):
         self.scorer = scorer
         self.dataset = load_from_disk(dataset_path)
         self.batch_size = batch_size
         self.return_loss_lists = return_loss_lists
+        self.eval_human = eval_human
         
         # we can eventually another dataset with AI/human pairs for providing two AI responses to compare
         if dataset_path_compare is not None:
@@ -90,8 +91,11 @@ class TextQualityPipeline(ExperimentPipeline):
 
         elif isinstance(scorer, SelfScorer):     
             
-            # we directly use AI-text here without any human reference
-            ai_dataset_test = dataset_test.filter(lambda sample: sample["label"] == 1)
+            # flag to decide if we want to evaluate human responses or AI responses
+            if self.eval_human:
+                ai_dataset_test = dataset_test.filter(lambda sample: sample["label"] == 0)
+            else:
+                ai_dataset_test = dataset_test.filter(lambda sample: sample["label"] == 1)
             ai_texts = ai_dataset_test["text"][:]
             batch_size = self.batch_size
             return_loss_lists = self.return_loss_lists
