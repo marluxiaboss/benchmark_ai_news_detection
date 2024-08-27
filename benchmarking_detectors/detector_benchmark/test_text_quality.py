@@ -26,9 +26,11 @@ def init_pipelines(cfg: DictConfig, log):
     generator_name = cfg.pipeline.generator_name
     watermarking_scheme_name_main = cfg.pipeline.watermarking_scheme_name_main
     
+    # flag to decide whether we evaluate human text as the main text
+    eval_human = cfg.pipeline.eval_human
+    
     # can be set to another watermarking scheme (or no watermarking scheme) if we want to compare different watermarking scheme against each other
     watermarking_scheme_name_compare = cfg.pipeline.watermarking_scheme_name_compare
-
 
     watermarked_dataset_path_main = f"data/generated_datasets/{dataset_name}/no_attack/{watermarking_scheme_name_main}/{generator_name}_{data_experiment_name_main}"
     watermarked_dataset_path_compare = f"data/generated_datasets/{dataset_name}/no_attack/{watermarking_scheme_name_compare}/{generator_name}_{data_experiment_name_compare}"
@@ -81,8 +83,6 @@ def init_pipelines(cfg: DictConfig, log):
         gen, _, gen_config = gen_loader.load()
         ppl_scorer = PPLScorer("ppl_score", gen, gen_config.tokenizer)
         
-        eval_human = cfg.pipeline.eval_human
-        
         pipeline = TextQualityPipeline(ppl_scorer, watermarked_dataset_path_main, batch_size=cfg.pipeline.batch_size, 
                                        return_loss_lists=cfg.pipeline.return_loss_lists, eval_human=eval_human)
         pipelines.append(pipeline)
@@ -130,6 +130,9 @@ def evaluate_text_quality(cfg: DictConfig):
     results_dict["config"] = dict(cfg.pipeline)
     
     # save the results to a json file
+    if cfg.eval_human:
+        json_path = (f"{cfg.pipeline.save_res_dir}/human_vs_{cfg.pipeline.watermarking_scheme_name_compare}/"
+                f"{cfg.pipeline.dataset_name}/{cfg.pipeline.generator_name}/quality_test_human_vs_{cfg.pipeline.data_experiment_name_compare}.json")
     json_path = (f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watermarking_scheme_name_main}_vs_{cfg.pipeline.watermarking_scheme_name_compare}/"
                 f"{cfg.pipeline.dataset_name}/{cfg.pipeline.generator_name}/quality_test_{cfg.pipeline.data_experiment_name_main}_vs_{cfg.pipeline.data_experiment_name_compare}.json")
     
