@@ -13,4 +13,4 @@
 	url = https://github.com/openai/human-eval
 [submodule "benchmarking_detectors/bigcode-evaluation-harness"]
 	path = benchmarking_detectors/bigcode-evaluation-harness
-	url = https://github.com/bigcode-project/bigcode-evaluation-harness
+	url = https://github.com/marluxiaboss/bigcode-evaluation-harness
