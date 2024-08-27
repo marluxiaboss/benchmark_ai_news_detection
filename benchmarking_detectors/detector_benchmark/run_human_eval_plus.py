@@ -61,7 +61,7 @@ def run_human_eval():
         "temperature": 0.2,
         "top_p": 0.95,
         "repetition_penalty": 1,
-        "do_sample": False,
+        "do_sample": True,
         "top_k": 50
     }
     
@@ -86,17 +86,38 @@ def run_human_eval():
     # batch version assuming num_samples_per_task = 1
     samples = []
     prompts = [problems[task_id]["prompt"] for task_id in problems]
+    task_ids = [task_id for task_id in problems]
     
     # take first n problems
+    #nb_problems = len(problems)
     nb_problems = 10
     prompts = prompts[:nb_problems]
     
     
     completions = generate_batch_completions(prompts, gen_model, gen_config, tokenizer, batch_size=batch_size)
+    
+    # cleaning steps
+    predictions= []
+
+    for idx, prediction in enumerate(completions):
+        task_id = task_ids[idx]
+        code = prediction
+        ref = problems[task_id]
+        prompt = ref["prompt"]
+        # 1. remove the prefixed prompt
+        #code = code[len(prompt):]
+        # 2. remove everything after "\n\n"
+        code = code.split("\n\n\n")[0]
+        code = code.split("\n\n")[0]
+        # 3. remove everything after the "def "
+        code = code.split("def ")[0]
+        prediction = code
+        predictions.append(prediction)
+    
     for i, task_id in enumerate(problems):
         if i >= nb_problems:
             break
-        samples.append(dict(task_id=task_id, completion=completions[i]))
+        samples.append(dict(task_id=task_id, completion=predictions[i]))
 
     write_jsonl("samples.jsonl", samples)
     

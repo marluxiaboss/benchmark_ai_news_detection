@@ -72,9 +72,6 @@ class LLMGenerator(nn.Module):
                     )
 
             # decode the generated text
-            decoded_outputs_before = self.tokenizer.batch_decode(
-                output_ids[:, :])
-            print(f"decoded_outputs_before: {decoded_outputs_before}")
             decoded_outputs = self.tokenizer.batch_decode(
                 output_ids[:, input_ids.shape[1]:])
                 

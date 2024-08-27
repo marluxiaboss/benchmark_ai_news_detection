@@ -11,3 +11,6 @@
 [submodule "human-eval"]
 	path = benchmarking_detectors/detector_benchmark/text_quality_evaluation/human-eval
 	url = https://github.com/openai/human-eval
+[submodule "benchmarking_detectors/bigcode-evaluation-harness"]
+	path = benchmarking_detectors/bigcode-evaluation-harness
+	url = https://github.com/bigcode-project/bigcode-evaluation-harness
