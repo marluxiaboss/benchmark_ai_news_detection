@@ -2,13 +2,19 @@
 The purpose of this benchmark is to evaluate LLM detectors, especially against evasion attacks. So far, the benchmark is based on the detection of short LLM-generated news articles, but it can be extended to cover different detection tasks.  
 The main consideration is to make the benchmark easy to extend with different datasets, detectors and evasion attacks
 
+## Features
+- Detectors and watermark detection benchmarking (adversarial + non-adversarial)
+- LLM-generated watermarked text quality benchmarking
+- Modularity: possible to add new datasets, detectors, attacks and watermarking schemes without much effort
+
 ## File structure
 
-### 0. Model classes folders
+### 0. Class folders
 - `detector_benchmark/dataset_loader`: folder for the dataset_loader classes
 - `detector_benchmark/detector`: folder for the detector classes and detector loader
 - `detector_benchmark/generation`: folder for the bases generation + adversarial generation classes and also the generator loader
-- `detector_benchmark/pipeline`: folder for the pipeline classes
+- `detector_benchmark/pipeline`: folder for the pipeline classes (text generation, testing detection and evaluating generated text quality)
+- `detector_benchmark/text_quality_evaluation`: folder for text quality evaluator classes
 
 ### 1. Config files
 Configuration files (hydra configuration) are located in:
@@ -17,19 +23,42 @@ Configuration files (hydra configuration) are located in:
 ### 2. Python scripts
 - `detector_benchmark/create_dataset.py`: script to create a dataset using a dataset loader and a generation config
 - `detector_benchmark/test_detector.py`: script to test a detector on a dataset created using the script above
+- `detector_benchmark/test_text_quality.py`: script to run some text quality evaluation on generated text (non-watermarked, watermarked or even human written)
 
-### 3. Experiment bash scripts
+### 3. External libraries submodules
+Some existing github repositories were forked and adapted to work with watermarking, namely:
+- `lm-evaluation-harness/` from EleutherAI that supports a wide range of benchmarking tasks. 
+- `bigcode-evaluation-harness/` from BigCode that supports a wide range of code benchmarking tasks. 
+- `prometheus-eval/BiGGen-Bench/` from the authors of the following paper <https://arxiv.org/abs/2406.05761> which benchmarks LLMs with an open source LLM-as-Judge.
 
-### 4. Jupyter notebooks
+Our fork of the respecitives repos allows to run theirs benchmark with text generated with a watermarking scheme. See [in the following section](#evaluation-with-lm-harness) more details about how to run the benchmarks from the external libraries with a watermaking scheme.
 
-### 5. Data folders
+### 4. Experiment bash scripts
 
-### 6. Log and results files
+### 5. Jupyter notebooks
+- `big_gen_bench_res.ipynb` to visualize the results after running the benchmark from BiGGen-Bench with different watermarking schemes
+- `create_visuals_watermark
+
+### 6. Data folders
+
+### 7. Log and results files
 
 
 ## Reproducing the experiments and the plots
 
-## How to test a new detector to the benchmark
+
+## Text quality evaluation
+### Evaluation with lm-harness
+### Evaluation with BiGGen-Bench
+### Evaluation with bigcode-eval
+
+
+## Adding a watermarking scheme, attack, detector or dataset
+## How to add a watermarking scheme on the benchmark
+Credits to <https://github.com/THU-BPM/MarkLLM> for most of the watermarking code structure.
+
+
+## How to test a new detector on the detection benchmark
 To add a new detectors, 3 files needs to be added/modified:
 - add: a .py file in `detector_benchmark/detector` containing the class for the new detector, inheriting the base detector class.
 - add: a configuration file under `detector_benchmark/conf/detection` to configure the new detector.
