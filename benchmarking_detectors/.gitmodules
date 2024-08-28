@@ -1,0 +1,2 @@
+[submodule "benchmarking_detectors/bigcode-evaluation-harness"]
+	main = main

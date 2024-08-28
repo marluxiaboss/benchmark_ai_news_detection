@@ -11,5 +11,3 @@
 [submodule "benchmarking_detectors/bigcode-evaluation-harness"]
 	path = benchmarking_detectors/bigcode-evaluation-harness
 	url = https://github.com/marluxiaboss/bigcode-evaluation-harness
-[submodule "bechmarking_detecotrs/bigcode-evaluation-harness"]
-	main = main
