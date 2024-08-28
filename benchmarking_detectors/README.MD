@@ -7,7 +7,7 @@ The main consideration is to make the benchmark easy to extend with different da
 - LLM-generated watermarked text quality benchmarking
 - Modularity: possible to add new datasets, detectors, attacks and watermarking schemes without much effort
 
-## File structure
+## Repo structure
 
 ### 0. Class folders
 - `detector_benchmark/dataset_loader`: folder for the dataset_loader classes
@@ -23,7 +23,7 @@ Configuration files (hydra configuration) are located in:
 ### 2. Python scripts
 - `detector_benchmark/create_dataset.py`: script to create a dataset using a dataset loader and a generation config
 - `detector_benchmark/test_detector.py`: script to test a detector on a dataset created using the script above
-- `detector_benchmark/test_text_quality.py`: script to run some text quality evaluation on generated text (non-watermarked, watermarked or even human written)
+- `detector_benchmark/test_text_quality.py`: script to run basic text quality evaluation on generated text (non-watermarked, watermarked or even human written)
 
 ### 3. External libraries submodules
 Some existing github repositories were forked and adapted to work with watermarking, namely:
@@ -33,32 +33,56 @@ Some existing github repositories were forked and adapted to work with watermark
 
 Our fork of the respecitives repos allows to run theirs benchmark with text generated with a watermarking scheme. See [in the following section](#evaluation-with-lm-harness) more details about how to run the benchmarks from the external libraries with a watermaking scheme.
 
-### 4. Experiment bash scripts
+### 4. Bash scripts
 
 ### 5. Jupyter notebooks
 - `big_gen_bench_res.ipynb` to visualize the results after running the benchmark from BiGGen-Bench with different watermarking schemes
-- `create_visuals_watermark
+- `lm_harness_bench_res.ipynb` to visualize the results after running the benchmark from lm-harness with different watermarking schemes see [the following section](#evaluation-with-lm-harness) for the tasks to run in lm-harness
+- `watermark_detection_results.ipynb` to visualize the detection results after having run the script `detector_benchmark/test_detector.py`
+- `bigcode_eval_res.ipnyb` TODO
 
 ### 6. Data folders
+- `detector_benchmark/data/generated_datasets` for the datasets adversarial + non-adversarial datasets generated with the LLMs with or without watermarking. The arboresence is as follows:
 
-### 7. Log and results files
+```
+generated_datasets  
+│
+└───{source_dataset} (e.g. cnn_dailymail)
+    │
+    └───{adversarial_attack} (e.g. no_attack)
+        │ 
+        └───{watermarking_scheme} (e.g. no_watermark)
+            │  
+            └───log 
+            │   log.txt (terminal logs)
+            │
+            │   
+            └───{generator_name}_{experiment_name} (actual generated hugginface dataset)
+
+```
+Where `source_dataset` is the name of the dataset used to obtain the true human written samples and the prefixes for the fake AI-written samples, `adversarial_attack` and `watermarking_scheme` are the respective attack and watermark used to generate the datasets. `experiment_name` is the name used for the specific run of the generation.
+
+### 7. Results folders
+Here are the following folders used to save the results from the scripts/benchmarks:
+
+- `detector_benchmark/detection_test_results` containing the results when running the detection script `detector_benchmark/test_detector.py`.
+- `detector_benchmark/text_quality_eval_results` containing the results when running the text quality evaluation script `detector_benchmark/test_text_quality.py`
+- TODO: add info about the respective results folder for the external libraries
 
 
 ## Reproducing the experiments and the plots
 
 
-## Text quality evaluation
-### Evaluation with lm-harness
-### Evaluation with BiGGen-Bench
-### Evaluation with bigcode-eval
-
+## Running the python scripts + external libraries benchmarks
+See the corresponding bash script in [the bash script section](#4-bash-scripts) for examples.
 
 ## Adding a watermarking scheme, attack, detector or dataset
-## How to add a watermarking scheme on the benchmark
+
+### How to add a watermarking scheme on the benchmark
 Credits to <https://github.com/THU-BPM/MarkLLM> for most of the watermarking code structure.
 
 
-## How to test a new detector on the detection benchmark
+### How to test a new detector on the detection benchmark
 To add a new detectors, 3 files needs to be added/modified:
 - add: a .py file in `detector_benchmark/detector` containing the class for the new detector, inheriting the base detector class.
 - add: a configuration file under `detector_benchmark/conf/detection` to configure the new detector.
@@ -76,7 +100,7 @@ Where `texts` is a list of text to be detected as LLM-written or not and it shou
 
 You can look at already added detectors for guiding examples.
 
-## How to add an attack
+### How to add an attack
 To add an attack, 3 files needs to be added/modified:
 - add: a .py file in `generation` containing the class for the attack, inheriting the base ArticleGenerator class
 - add: a configuration file under `detector_benchmark/conf/generation` to configure the new attack.
@@ -92,7 +116,7 @@ You can look at already added detectors for guiding examples.
 
 Note: for any attack that involves either using a specific prompt for the generation or modifying a prompt parameter, the already existing attacks in `detector_benchmark/generation/gen_params_attack.py` and `detector_benchmark/generation/prompt_attack.py` can be used for this purpose by only modifying the related configuration file in `conf`.
 
-## How to add a dataset
+### How to add a dataset
 First, let's describe the datasets format used for testing the detectors. The datasets are huggingface Datasets where each samples has the following fields:
 - `label`: the label of the text (0 for human written, 1 for AI-written)
 - `text`: contains the full text of the sample
