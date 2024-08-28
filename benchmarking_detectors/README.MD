@@ -7,6 +7,18 @@ The main consideration is to make the benchmark easy to extend with different da
 - LLM-generated watermarked text quality benchmarking
 - Modularity: possible to add new datasets, detectors, attacks and watermarking schemes without much effort
 
+## Table of content
+
+- [Table of content](#table-of-content)
+- [Repo structure](#repo-structure)
+    - [0. Class folders](#0-class-folders)
+    - [1. Config files](#1-config-files)
+    - ...
+- [Reproducing the experiments and the plots](#reproducing-the-experiments-and-the-plots)
+- [Running the python scripts + external libraries benchmarks](#running-the-python-scripts--external-libraries-benchmarks)
+- [Adding a watermarking scheme, attack, detector or dataset](#adding-a-watermarking-scheme-attack-detector-or-dataset)
+- [Loading an LLM, detector or watermarking scheme and using them](#loading-an-llm-detector-or-watermarking-scheme-and-using-them)
+
 ## Repo structure
 
 ### 0. Class folders
@@ -15,10 +27,11 @@ The main consideration is to make the benchmark easy to extend with different da
 - `detector_benchmark/generation`: folder for the bases generation + adversarial generation classes and also the generator loader
 - `detector_benchmark/pipeline`: folder for the pipeline classes (text generation, testing detection and evaluating generated text quality)
 - `detector_benchmark/text_quality_evaluation`: folder for text quality evaluator classes
+- `detector_benchmark/watermark`: folder for watermark classes (general and different watermark schemes)
 
 ### 1. Config files
 Configuration files (hydra configuration) are located in:
-- `detector_benchmark/conf/` for the detection, generation and pipeline configurations.
+- `detector_benchmark/conf/` for the detection, generation, pipeline and watermark configurations.
 
 ### 2. Python scripts
 - `detector_benchmark/create_dataset.py`: script to create a dataset using a dataset loader and a generation config
@@ -79,8 +92,19 @@ See the corresponding bash script in [the bash script section](#4-bash-scripts) 
 ## Adding a watermarking scheme, attack, detector or dataset
 
 ### How to add a watermarking scheme on the benchmark
-Credits to <https://github.com/THU-BPM/MarkLLM> for most of the watermarking code structure.
+Credits to <https://github.com/THU-BPM/MarkLLM> for most of the watermarking code structure and classes.
 
+To add a watermarking scheme, 4 files needs to be added/modified inside the:
+- add: a {watermarking_scheme}.py file inside its own `detector_benchmark/watermark/{watermarking_scheme}` folder.
+- add: a corresponding `__init__.py` inside the same folder
+- add: a configuration filde under `detector_benchmark/conf/watermark` to configure the watermarking scheme.
+- modify: the `WATERMARK_MAPPING_NAMES` dictionnary variable inside `detector_benchmark/watermark/auto_watermark.py`.
+
+See examples of already added watermarking schemes to understand what functions the{watermarking_scheme}.py should implement. The core of the watermarking scheme is a class `{watermarking_scheme}` inheriting from LogitsProcessor having at least a `__init__` constructor method and a `__call__` method with the following signature:
+```
+def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:
+```
+Taking as input a context (input_ids) and the logits (scores) as returned by the LLM. The watermarking scheme then modifies the logits and returns the new logits.
 
 ### How to test a new detector on the detection benchmark
 To add a new detectors, 3 files needs to be added/modified:
@@ -133,6 +157,77 @@ This function should return a DatasetDict (huggingface dataset format) with a tr
 To see how to apply the correct format to the dataset, see the existing dataset loaders.
 
 Note: the load_data returns a dataset where the fake samples (label 1) have an empty `text` and no `generation_config` nor `watermark_config` fields since the AI texts have not been generated yet. The only fields that should be fully field for AI texts are the label and the prefix.
+
+## Loading an LLM, detector or watermarking scheme and using them
+
+### Loading and using an LLM
+
+Use the GenLoader class from `detector_benchmark/generation/gen_loader.py` and LLMGenerator class from `detector_benchmark/generation/generator.py` in the following way:
+
+```
+model_name = "qwen2_chat_0_5B"
+gen_params = {
+    "max_new_tokens": 220,
+    "min_new_tokens": 200,
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "repetition_penalty": 1,
+    "do_sample": True,
+    "top_k": 50
+}
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+gen_loader = GenLoader(model_name, gen_params, device)
+gen, gen_model, gen_config = gen_loader.load()
+
+user_prompt="Continue writing the following news article starting with: "
+
+prefixes_with_prompt = [transform_chat_template_with_prompt(
+    prefix, user_prompt, gen_tokenizer,
+    use_chat_template, template_type, system_prompt, forced_prefix=prefix) for prefix in prefixes]
+
+# generate articles
+fake_articles = []
+fake_articles = gen_model(prefixes_with_prompt, batch_size=batch_size,      watermarking_scheme=self.watermarking_scheme)
+```
+where:
+- `model_name` is the name of the LLM to be loaded (see in gen_loader.py the list of supported generators)
+- `gen_params` is a dictionnary containing the generation parameters for the model (same as gen_kwargs when using .generate() from hugging face).
+- `gen` is the huggingface transformer model
+- `gen_model` is the `LLMGenerator` class instance.
+
+### Loading and using a detector
+
+```
+detector_loader = DetectorLoader(cfg, detector_name, device,
+                weights_checkpoint, local_weights)
+detector = detector_loader.load()
+
+fake_true_articles = dataset["text"][:]
+
+preds, logits, preds_at_threshold = self.detector.detect(fake_true_articles, batch_size, detection_threshold)
+```
+
+
+### Loading a watermarking scheme
+
+```
+algorithm_config = cfg.watermark
+
+watermarking_scheme = AutoWatermark.load(watermarking_scheme_name,
+                algorithm_config=algorithm_config,
+                gen_model=gen,
+                model_config=model_config)
+
+output_ids = self.generator.generate(
+        input_ids,  
+        logits_processor=LogitsProcessorList([watermarking_scheme.logits_processor]), **self.gen_params
+    )
+
+# or directly using our LLMGenerator class:
+fake_articles = gen_model(prefixes_with_prompt, batch_size=batch_size,              watermarking_scheme=self.watermarking_scheme)
+```
+
 
 
 ## Class descriptions
