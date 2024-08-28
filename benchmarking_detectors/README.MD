@@ -225,7 +225,7 @@ output_ids = self.generator.generate(
     )
 
 # or directly using our LLMGenerator class:
-fake_articles = gen_model(prefixes_with_prompt, batch_size=batch_size,              watermarking_scheme=self.watermarking_scheme)
+fake_articles = gen_model(prefixes_with_prompt, batch_size=batch_size, watermarking_scheme=self.watermarking_scheme)
 ```
 
 
