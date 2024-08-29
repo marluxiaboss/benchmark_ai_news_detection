@@ -1,0 +1,23 @@
+{
+    "ppl_score": {
+        "score": "8.374987602233887",
+        "lower_bound": "8.374987602233887",
+        "upper_bound": "8.374987602233887"
+    },
+    "config": {
+        "dataset_name": "cnn_dailymail",
+        "data_experiment_name_main": "compare_watermark",
+        "data_experiment_name_compare": "base",
+        "generator_name": "qwen2_chat_0_5B",
+        "batch_size": 64,
+        "use_bert_scorer": false,
+        "use_idf_scorer": false,
+        "use_prometheus_scorer": false,
+        "use_ppl_scorer": true,
+        "ppl_gen_name": "qwen2_0_5B",
+        "compare_ai_to_human": false,
+        "watermarking_scheme_name_main": "no_watermark",
+        "watermarking_scheme_name_compare": "no_watermark",
+        "save_res_dir": "text_quality_eval_results"
+    }
+}

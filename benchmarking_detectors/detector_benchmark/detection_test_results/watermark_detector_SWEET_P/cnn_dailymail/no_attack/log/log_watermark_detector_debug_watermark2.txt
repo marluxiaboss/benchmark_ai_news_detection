@@ -1,0 +1,42 @@
+Dataset at data/generated_datasets/cnn_dailymail/no_attack/SWEET_P/qwen2_chat_0_5B_debug_watermark exists, loading it
+Results for finding the threshold already exist. Loading them...
+Threshold for target FPR 0.05: -0.41256849850351734
+Classifying the articles...
+Test metrics:
+accuracy: 0.5
+precision: 0.0
+recall: 0.0
+f1_score: 0.0
+fp_rate: 0.0
+tp_rate: 0.0
+std_accuracy: 0.2537222891273055
+std_precision: 0.0
+std_recall: 0.0
+std_f1_score: 0.0
+std_fp_rate: 0.0
+std_tp_rate: 0.0
+TP: 0.0
+TN: 2.0
+FP: 0.0
+FN: 2.0
+roc_auc: 1.0
+fpr: [0. 0. 0. 1.]
+tpr: [0.  0.5 1.  1. ]
+thresholds: [        inf  3.01931765  1.83532587 -2.58798656]
+Test metrics at specific given threshold:
+accuracy: 1.0
+precision: 0.935
+recall: 0.935
+f1_score: 0.935
+fp_rate: 0.0
+tp_rate: 0.935
+std_accuracy: 0.0
+std_precision: 0.246525860712421
+std_recall: 0.246525860712421
+std_f1_score: 0.246525860712421
+std_fp_rate: 0.0
+std_tp_rate: 0.246525860712421
+TP: 2.024
+TN: 1.976
+FP: 0.0
+FN: 0.0
