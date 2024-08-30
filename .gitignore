@@ -53,6 +53,7 @@ docs/_build/
 compositional-bert-large-uncased".gitignore copy"
 
 # files to ignore
+backup_submodules
 .gitignore copy
 detector_benchmark/watermark/sir/model/compositional-bert-large-uncased/
 Dockerfile_cleaned

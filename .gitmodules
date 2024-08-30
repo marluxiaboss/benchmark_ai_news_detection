@@ -1,10 +1,10 @@
-[submodule "lm-evaluation-harness"]
-	path = lm-evaluation-harness
-	url = https://github.com/marluxiaboss/lm-evaluation-harness
+[submodule "bigcode-evaluation-harness"]
+	path = bigcode-evaluation-harness
+	url = https://github.com/marluxiaboss/bigcode-evaluation-harness
 	branch = main
 [submodule "prometheus-eval"]
 	path = prometheus-eval
 	url = https://github.com/marluxiaboss/prometheus-eval
-[submodule "bigcode-evaluation-harness"]
-	path = bigcode-evaluation-harness
-	url = https://github.com/marluxiaboss/bigcode-evaluation-harness
+[submodule "lm-evaluation-harness"]
+	path = lm-evaluation-harness
+	url = https://github.com/marluxiaboss/lm-evaluation-harness
