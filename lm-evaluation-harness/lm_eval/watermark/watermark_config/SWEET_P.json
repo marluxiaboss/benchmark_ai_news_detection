@@ -1,0 +1,13 @@
+{
+    "algorithm_name": "SWEET_P",
+    "gamma": 0.5,
+    "delta": 2.0,
+    "hash_key": 15485863,
+    "prefix_length": 1,
+    "z_threshold": 4.0,
+    "entropy_threshold": 0.9,
+    "cut_off_method": "ratio",
+    "prob_ratio": 0.25,
+    "top_p": 0.8,
+    "use_surrogate_model": true
+}
