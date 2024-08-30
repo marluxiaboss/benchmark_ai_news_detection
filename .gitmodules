@@ -5,9 +5,6 @@
 [submodule "prometheus-eval"]
 	path = prometheus-eval
 	url = https://github.com/marluxiaboss/prometheus-eval
-[submodule "benchmarking_detectors/prometheus-eval"]
-	path = prometheus-eval
-	url = https://github.com/marluxiaboss/prometheus-eval
-[submodule "benchmarking_detectors/bigcode-evaluation-harness"]
+[submodule "bigcode-evaluation-harness"]
 	path = bigcode-evaluation-harness
 	url = https://github.com/marluxiaboss/bigcode-evaluation-harness
