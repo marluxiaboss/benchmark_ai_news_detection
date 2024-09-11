@@ -1,0 +1,50 @@
+generation.prompt_attack
+========================
+
+.. py:module:: generation.prompt_attack
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   generation.prompt_attack.PromptAttack
+
+
+Module Contents
+---------------
+
+.. py:class:: PromptAttack(gen_model: generation.generator.LLMGenerator, gen_config: utils.configs.ModelConfig, gen_prompt_config: utils.configs.PromptConfig, adversarial_prompt_config: utils.configs.PromptConfig, max_sample_len: int, watermarking_scheme: watermark.auto_watermark.AutoWatermark = None)
+
+   Bases: :py:obj:`generation.article_generator.ArticleGenerator`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: adversarial_prompt_config
+
+
+   .. py:attribute:: attack_name
+      :value: 'prompt_attack'
+
+
+
+   .. py:method:: generate_adversarial_text(prefixes: list[str], batch_size: int = 1) -> list[str]
+
+      Generate text with an (adversarial) prompt.
+
+      Parameters:
+          prefixes: list[str]
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation.
+              
+      Returns:
+          fake_articles: list[str]
+              A list of generated text.
+
+
+

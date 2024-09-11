@@ -1,0 +1,205 @@
+detector
+========
+
+.. py:module:: detector
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/detector/bert_detector/index
+   /autoapi/detector/detector/index
+   /autoapi/detector/detector_loader/index
+   /autoapi/detector/fast_detect_gpt/index
+   /autoapi/detector/gpt_zero_detector/index
+   /autoapi/detector/watermark_detector/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector.BertDetector
+   detector.Detector
+   detector.FastDetectGPT
+   detector.WatermarkDetector
+   detector.DetectorLoader
+   detector.GPTZero
+
+
+Package Contents
+----------------
+
+.. py:class:: BertDetector(model: torch.nn.Module, tokenizer: transformers.PreTrainedTokenizerBase, device: str)
+
+   Bases: :py:obj:`detector.detector.Detector`
+
+
+   .. py:attribute:: model
+
+
+   .. py:attribute:: tokenizer
+
+
+   .. py:attribute:: device
+
+
+   .. py:method:: detect(texts: list[str], batch_size: int, detection_threshold: float = 0.0) -> tuple[list[int], list[float], list[int]]
+
+      Detect the if the texts given as input are AI-generated (label 1) or human-written (label 0).
+      Returns the predicted lables with argmax, the logits of the positive class and the predicted labels with the given detection threshold
+      instead of the argmax.
+
+      Parameters:
+          texts: list[str]
+              The texts to detect
+          batch_size: int
+              The batch size to use for detection
+          detection_threshold: float
+              The threshold to use for detection. Default is 0.0.
+
+      Returns:
+          tuple[list[int], list[float], list[int]]
+              The predicted labels with argmax, the logits of the positive class and the predicted labels with the given detection threshold
+              instead of the argmax.
+
+
+
+.. py:class:: Detector
+
+   Bases: :py:obj:`abc.ABC`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:method:: detect(texts: list[str], batch_size: int, detection_threshold: float = 0.0) -> tuple[list[int], list[float], list[int]]
+      :abstractmethod:
+
+
+
+.. py:class:: FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device)
+
+   Bases: :py:obj:`detector.detector.Detector`
+
+
+   .. py:attribute:: ref_model
+
+
+   .. py:attribute:: scoring_model
+
+
+   .. py:attribute:: ref_tokenizer
+
+
+   .. py:attribute:: scoring_tokenizer
+
+
+   .. py:attribute:: device
+
+
+   .. py:method:: get_samples(labels)
+
+
+   .. py:method:: get_likelihood(labels)
+
+
+   .. py:method:: get_sampling_discrepancy(logits_ref, logits_score, labels)
+
+
+   .. py:method:: get_sampling_discrepancy_analytic(logits_ref, logits_score, labels)
+
+
+   .. py:class:: ProbEstimatorFastDetectGPT(args=None, ref_path=None)
+
+      .. py:attribute:: real_crits
+         :value: []
+
+
+
+      .. py:attribute:: fake_crits
+         :value: []
+
+
+
+      .. py:method:: crit_to_prob(crit)
+
+
+
+   .. py:method:: detect(texts: list, batch_size: int, detection_threshold: float = 0.5) -> tuple[list[int], list[float], list[int]]
+
+
+.. py:class:: WatermarkDetector(watermarking_scheme: watermark.auto_watermark.AutoWatermark, detection_threshold: float)
+
+   Bases: :py:obj:`detector.detector.Detector`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: watermarking_scheme
+
+
+   .. py:attribute:: detection_threshold
+
+
+   .. py:method:: detect(texts: list[str], batch_size: int, detection_threshold: float) -> tuple[list[int], list[float], list[int]]
+
+      Detect the if the texts given as input are watermarked (label 1) or not (label 0).
+
+
+
+.. py:class:: DetectorLoader(cfg: dict, detector_name: str, device: str, weights_checkpoint: str = None, local_weights: bool = False)
+
+   .. py:attribute:: cfg
+
+
+   .. py:attribute:: detector_name
+
+
+   .. py:attribute:: device
+
+
+   .. py:attribute:: weights_checkpoint
+
+
+   .. py:attribute:: local_weights
+
+
+   .. py:method:: load() -> detector.detector.Detector
+
+      Load the detector based on the given configuration (init).
+
+      Returns:
+          Detector
+              The loaded detector
+
+
+
+.. py:class:: GPTZero(api_key, debug_mode=False)
+
+   Bases: :py:obj:`detector.detector.Detector`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: api_key
+
+
+   .. py:attribute:: debug_mode
+
+
+   .. py:method:: predict_gpt_zero(text, api_key, debug_mode=False)
+
+
+   .. py:method:: detect(texts: list, batch_size: int, detection_threshold: float = 0.5) -> tuple[list[int], list[float], list[int]]
+
+

@@ -1,0 +1,40 @@
+pipeline.text_quality_pipeline
+==============================
+
+.. py:module:: pipeline.text_quality_pipeline
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pipeline.text_quality_pipeline.TextQualityPipeline
+
+
+Module Contents
+---------------
+
+.. py:class:: TextQualityPipeline(scorer: text_quality_evaluation.Scorer, dataset_path: str, dataset_path_compare: Optional[str] = None, batch_size: int = 64, return_loss_lists: bool = False, eval_human: bool = False)
+
+   Bases: :py:obj:`pipeline.experiment_pipeline.ExperimentPipeline`
+
+
+   .. py:attribute:: scorer
+
+
+   .. py:attribute:: dataset
+
+
+   .. py:attribute:: batch_size
+
+
+   .. py:attribute:: return_loss_lists
+
+
+   .. py:attribute:: eval_human
+
+
+   .. py:method:: run_pipeline()
+
+

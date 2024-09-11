@@ -1,0 +1,31 @@
+pipeline.pipeline_utils
+=======================
+
+.. py:module:: pipeline.pipeline_utils
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pipeline.pipeline_utils.compute_bootstrap_metrics
+   pipeline.pipeline_utils.create_logger
+   pipeline.pipeline_utils.create_logger_file
+   pipeline.pipeline_utils.get_threshold_for_results
+
+
+Module Contents
+---------------
+
+.. py:function:: compute_bootstrap_metrics(data, labels, n_bootstrap=1000, flip_labels=False)
+
+.. py:function:: create_logger(name, silent=False, to_disk=False, log_file=None)
+
+   Create a new logger
+
+
+.. py:function:: create_logger_file(log_path)
+
+.. py:function:: get_threshold_for_results(eval_json_path: str, target_fpr: float)
+

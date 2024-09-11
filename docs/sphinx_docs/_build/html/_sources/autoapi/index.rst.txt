@@ -1,0 +1,27 @@
+API Reference
+=============
+
+This page contains auto-generated API reference documentation [#f1]_.
+
+.. toctree::
+   :titlesonly:
+
+   /autoapi/utils/index
+   /autoapi/configs/index
+   /autoapi/detector/index
+   /autoapi/pipeline/index
+   /autoapi/gen_utils/index
+   /autoapi/watermark/index
+   /autoapi/generation/index
+   /autoapi/openai_utils/index
+   /autoapi/test_detector/index
+   /autoapi/create_dataset/index
+   /autoapi/run_human_eval/index
+   /autoapi/dataset_loader/index
+   /autoapi/test_text_quality/index
+   /autoapi/generate_mappings/index
+   /autoapi/run_human_eval_plus/index
+   /autoapi/transformers_config/index
+   /autoapi/text_quality_evaluation/index
+
+.. [#f1] Created with `sphinx-autoapi <https://github.com/readthedocs/sphinx-autoapi>`_

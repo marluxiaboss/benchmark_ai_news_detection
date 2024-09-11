@@ -1,0 +1,52 @@
+dataset_loader.fake_true_dataset
+================================
+
+.. py:module:: dataset_loader.fake_true_dataset
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   dataset_loader.fake_true_dataset.FakeTruePairsDataLoader
+
+
+Module Contents
+---------------
+
+.. py:class:: FakeTruePairsDataLoader(dataset_size, dataset_path, text_field, prefix_size=10, max_sample_len=500, load_local=True, dataset_name='', seed=42)
+
+   .. py:attribute:: dataset_size
+
+
+   .. py:attribute:: text_field
+
+
+   .. py:attribute:: prefix_size
+
+
+   .. py:attribute:: dataset_path
+
+
+   .. py:attribute:: max_sample_len
+
+
+   .. py:attribute:: dataset_name
+
+
+   .. py:attribute:: load_local
+
+
+   .. py:attribute:: seed
+
+
+   .. py:method:: regroup_pairs(dataset_true, dataset_fake) -> dataset_loader.dataset_loader_utils.Dataset
+
+
+   .. py:method:: process_data(dataset: dataset_loader.dataset_loader_utils.DatasetDict) -> dataset_loader.dataset_loader_utils.DatasetDict
+
+
+   .. py:method:: load_data() -> dataset_loader.dataset_loader_utils.DatasetDict
+
+

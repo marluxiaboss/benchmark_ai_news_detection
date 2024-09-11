@@ -1,0 +1,160 @@
+watermark.kgw_p.kgw_p
+=====================
+
+.. py:module:: watermark.kgw_p.kgw_p
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   watermark.kgw_p.kgw_p.KGW_PConfig
+   watermark.kgw_p.kgw_p.KGW_PUtils
+   watermark.kgw_p.kgw_p.KGW_PLogitsProcessor
+   watermark.kgw_p.kgw_p.KGW_P
+
+
+Module Contents
+---------------
+
+.. py:class:: KGW_PConfig(algorithm_config: dict, gen_model, model_config: utils.configs.ModelConfig, *args, **kwargs)
+
+   Config class for KGW algorithm, load config file and initialize parameters.
+
+
+   .. py:attribute:: config_dict
+
+
+   .. py:attribute:: gamma
+
+
+   .. py:attribute:: delta
+
+
+   .. py:attribute:: hash_key
+
+
+   .. py:attribute:: z_threshold
+
+
+   .. py:attribute:: prefix_length
+
+
+   .. py:attribute:: generation_model
+
+
+   .. py:attribute:: generation_tokenizer
+
+
+   .. py:attribute:: vocab_size
+
+
+   .. py:attribute:: device
+
+
+   .. py:attribute:: gen_kwargs
+
+
+.. py:class:: KGW_PUtils(config: KGW_PConfig, *args, **kwargs)
+
+   Utility class for KGW algorithm, contains helper functions.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: rng
+
+
+   .. py:method:: _seed_rng(input_ids: torch.LongTensor) -> None
+
+      Seed the RNG with the last min_prefix_len tokens of the input_ids.
+
+
+
+   .. py:method:: get_greenlist_ids(input_ids: torch.LongTensor) -> list[int]
+
+      Get greenlist ids for the input_ids.
+
+
+
+   .. py:method:: _compute_z_score(observed_count: int, T: int) -> float
+
+      Compute z-score for the given observed count and total tokens.
+
+
+
+   .. py:method:: score_sequence(input_ids: torch.Tensor) -> tuple[float, list[int]]
+
+      Score the input_ids and return z_score and green_token_flags.
+
+
+
+.. py:class:: KGW_PLogitsProcessor(config: KGW_PConfig, utils: KGW_PUtils, *args, **kwargs)
+
+   Bases: :py:obj:`transformers.LogitsProcessor`
+
+
+   LogitsProcessor for KGW algorithm, process logits to add watermark.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: utils
+
+
+   .. py:method:: _calc_greenlist_mask(scores: torch.FloatTensor, greenlist_token_ids: torch.LongTensor) -> torch.BoolTensor
+
+      Calculate greenlist mask for the given scores and greenlist token ids.
+
+
+
+   .. py:method:: _bias_greenlist_logits(scores: torch.Tensor, greenlist_mask: torch.Tensor, greenlist_bias: float) -> torch.Tensor
+
+      Bias the scores for the greenlist tokens.
+
+
+
+   .. py:method:: __call__(input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor
+
+      Process logits to add watermark.
+
+
+
+.. py:class:: KGW_P(algorithm_config: dict, gen_model, transformers_config: utils.configs.ModelConfig, *args, **kwargs)
+
+   Bases: :py:obj:`base.BaseWatermark`
+
+
+   Top-level class for KGW algorithm.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: utils
+
+
+   .. py:attribute:: logits_processor
+
+
+   .. py:method:: generate_watermarked_text(prompt: str, *args, **kwargs) -> str
+
+      Generate watermarked text.
+
+
+
+   .. py:method:: generate(encoded_prompts: list, *args, **kwargs) -> str
+
+      Generate watermarked text. Takes a list of encoded prompts as input, like transformers model.generate.
+
+
+
+   .. py:method:: detect_watermark(text: str, return_dict: bool = True, *args, **kwargs)
+
+      Detect watermark in the text.
+
+
+

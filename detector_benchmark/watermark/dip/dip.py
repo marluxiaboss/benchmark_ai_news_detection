@@ -24,7 +24,7 @@ from typing import Tuple, Union
 import torch.nn.functional as F
 from math import sqrt
 from functools import partial
-from ..base import BaseWatermark
+from base import BaseWatermark
 from utils.utils import load_config_file
 from utils.configs import ModelConfig
 from transformers import LogitsProcessor, LogitsProcessorList

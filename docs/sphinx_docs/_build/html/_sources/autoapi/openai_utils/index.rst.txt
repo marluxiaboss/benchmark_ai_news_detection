@@ -1,0 +1,64 @@
+openai_utils
+============
+
+.. py:module:: openai_utils
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   openai_utils.openai_util
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   openai_utils.OpenAIAPI
+
+
+Module Contents
+---------------
+
+.. py:class:: OpenAIAPI(model, temperature, system_content)
+
+   API class for OpenAI API.
+
+
+   .. py:attribute:: model
+
+
+   .. py:attribute:: temperature
+
+
+   .. py:attribute:: system_content
+
+
+   .. py:attribute:: supported_models
+      :value: ['gpt-3.5-turbo', 'gpt-4']
+
+
+
+   .. py:method:: get_result_from_gpt4(query)
+
+      get result from GPT-4 model.
+
+
+
+   .. py:method:: get_result_from_gpt3_5(query)
+
+      get result from GPT-3.5 model.
+
+
+
+   .. py:method:: get_result(query)
+
+      get result from OpenAI API.
+
+
+
+.. py:data:: openai_util
+

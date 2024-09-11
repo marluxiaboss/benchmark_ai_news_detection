@@ -1,0 +1,46 @@
+generation.attack_loader
+========================
+
+.. py:module:: generation.attack_loader
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   generation.attack_loader.AttackLoader
+
+
+Module Contents
+---------------
+
+.. py:class:: AttackLoader(cfg: omegaconf.DictConfig, attack_type: str, gen_model: generation.generator.LLMGenerator, model_config: utils.configs.ModelConfig, max_sample_len: int, watermarking_scheme: Optional[watermark.auto_watermark.AutoWatermark] = None, paraphraser_model: Optional[generation.generator.LLMGenerator] = None, paraphraser_config: Optional[utils.configs.ModelConfig] = None)
+
+   .. py:attribute:: cfg
+
+
+   .. py:attribute:: attack_type
+
+
+   .. py:attribute:: gen_model
+
+
+   .. py:attribute:: model_config
+
+
+   .. py:attribute:: max_sample_len
+
+
+   .. py:attribute:: watermarking_scheme
+
+
+   .. py:attribute:: paraphraser_model
+
+
+   .. py:attribute:: paraphraser_config
+
+
+   .. py:method:: load()
+
+

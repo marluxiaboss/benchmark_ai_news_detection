@@ -1,0 +1,72 @@
+pipeline.create_dataset_pipeline
+================================
+
+.. py:module:: pipeline.create_dataset_pipeline
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pipeline.create_dataset_pipeline.CreateDatasetPipeline
+
+
+Module Contents
+---------------
+
+.. py:class:: CreateDatasetPipeline(cfg: dict, dataset_loader: dataset_loader.FakeTruePairsDataLoader, attack: generation.ArticleGenerator, experiment_path: str, batch_size: int = 1, skip_cache: bool = False, skip_train_split: bool = False)
+
+   Bases: :py:obj:`pipeline.experiment_pipeline.ExperimentPipeline`
+
+
+   .. py:attribute:: cfg
+
+
+   .. py:attribute:: dataset_loader
+
+
+   .. py:attribute:: attack
+
+
+   .. py:attribute:: experiment_path
+
+
+   .. py:attribute:: batch_size
+
+
+   .. py:attribute:: generator_name
+
+
+   .. py:attribute:: experiment_name
+
+
+   .. py:attribute:: skip_cache
+
+
+   .. py:attribute:: skip_train_split
+
+
+   .. py:attribute:: log_path
+
+
+   .. py:attribute:: log
+
+
+   .. py:method:: create_experiment_dataset() -> datasets.Dataset
+
+      Create the fake true dataset for the experiment by generating fake articles using the generator.
+
+      Returns:
+          dataset: Dataset
+              The generated fake true dataset.
+
+
+
+   .. py:method:: run_pipeline()
+
+      Main function of the class, runs the pipeline.
+      Creates the dataset for the experiment and saves it.
+
+
+

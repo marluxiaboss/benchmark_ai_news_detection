@@ -1,0 +1,68 @@
+detector.fast_detect_gpt
+========================
+
+.. py:module:: detector.fast_detect_gpt
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector.fast_detect_gpt.FastDetectGPT
+
+
+Module Contents
+---------------
+
+.. py:class:: FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device)
+
+   Bases: :py:obj:`detector.detector.Detector`
+
+
+   .. py:attribute:: ref_model
+
+
+   .. py:attribute:: scoring_model
+
+
+   .. py:attribute:: ref_tokenizer
+
+
+   .. py:attribute:: scoring_tokenizer
+
+
+   .. py:attribute:: device
+
+
+   .. py:method:: get_samples(labels)
+
+
+   .. py:method:: get_likelihood(labels)
+
+
+   .. py:method:: get_sampling_discrepancy(logits_ref, logits_score, labels)
+
+
+   .. py:method:: get_sampling_discrepancy_analytic(logits_ref, logits_score, labels)
+
+
+   .. py:class:: ProbEstimatorFastDetectGPT(args=None, ref_path=None)
+
+      .. py:attribute:: real_crits
+         :value: []
+
+
+
+      .. py:attribute:: fake_crits
+         :value: []
+
+
+
+      .. py:method:: crit_to_prob(crit)
+
+
+
+   .. py:method:: detect(texts: list, batch_size: int, detection_threshold: float = 0.5) -> tuple[list[int], list[float], list[int]]
+
+

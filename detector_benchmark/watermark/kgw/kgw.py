@@ -6,7 +6,7 @@
 import torch
 from math import sqrt
 from functools import partial
-from ..base import BaseWatermark
+from base import BaseWatermark
 from utils.configs import ModelConfig
 from utils.utils import create_directory_for_file, load_config_file
 

@@ -8,7 +8,7 @@ import torch
 import random
 import numpy as np
 from functools import partial
-from ..base import BaseWatermark
+from base import BaseWatermark
 from .transform_model import TransformModel
 from utils.configs import ModelConfig
 from utils.utils import create_directory_for_file, load_config_file

@@ -1,0 +1,19 @@
+test_detector
+=============
+
+.. py:module:: test_detector
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   test_detector.test_detector
+
+
+Module Contents
+---------------
+
+.. py:function:: test_detector(cfg: omegaconf.DictConfig)
+

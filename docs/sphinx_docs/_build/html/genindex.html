@@ -1,0 +1,3104 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
+
+    <link rel="shortcut icon" href="_static/glass.png"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 --><title>Index - LLM Detector Benchmark 🔎</title>
+<link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">LLM Detector Benchmark 🔎</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">LLM Detector Benchmark 🔎</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="subpages/getting_started.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="subpages/how_to_generate.html">How to generate</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="subpages/how_to_add_index.html">How to Add</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How to Add</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="subpages/how_to_add/how_to_add_detector.html">How to add a Detector?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subpages/details.html">Class details</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="autoapi/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of API Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/utils/index.html">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/configs/index.html">configs</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/detector/index.html">detector</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of detector</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/detector/bert_detector/index.html">detector.bert_detector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/detector/detector/index.html">detector.detector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/detector/detector_loader/index.html">detector.detector_loader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/detector/fast_detect_gpt/index.html">detector.fast_detect_gpt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/detector/gpt_zero_detector/index.html">detector.gpt_zero_detector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/detector/watermark_detector/index.html">detector.watermark_detector</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/pipeline/index.html">pipeline</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of pipeline</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/pipeline/create_dataset_pipeline/index.html">pipeline.create_dataset_pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/pipeline/experiment_pipeline/index.html">pipeline.experiment_pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/pipeline/experiment_test_detector_pipeline/index.html">pipeline.experiment_test_detector_pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/pipeline/pipeline_utils/index.html">pipeline.pipeline_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/pipeline/text_quality_pipeline/index.html">pipeline.text_quality_pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/gen_utils/index.html">gen_utils</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/watermark/index.html">watermark</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of watermark</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/watermark/dip/index.html">watermark.dip</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of watermark.dip</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/watermark/dip/dip/index.html">watermark.dip.dip</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/watermark/exp/index.html">watermark.exp</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of watermark.exp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/watermark/exp/exp/index.html">watermark.exp.exp</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/watermark/kgw/index.html">watermark.kgw</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of watermark.kgw</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/watermark/kgw/kgw/index.html">watermark.kgw.kgw</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/watermark/kgw_e/index.html">watermark.kgw_e</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of watermark.kgw_e</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/watermark/kgw_e/kgw_e/index.html">watermark.kgw_e.kgw_e</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/watermark/kgw_p/index.html">watermark.kgw_p</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of watermark.kgw_p</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/watermark/kgw_p/kgw_p/index.html">watermark.kgw_p.kgw_p</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/watermark/sir/index.html">watermark.sir</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of watermark.sir</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/watermark/sir/sir/index.html">watermark.sir.sir</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/watermark/sir/transform_model/index.html">watermark.sir.transform_model</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/watermark/sweet/index.html">watermark.sweet</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of watermark.sweet</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/watermark/sweet/sweet/index.html">watermark.sweet.sweet</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/watermark/sweet_p/index.html">watermark.sweet_p</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of watermark.sweet_p</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/watermark/sweet_p/sweet_p/index.html">watermark.sweet_p.sweet_p</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/watermark/auto_watermark/index.html">watermark.auto_watermark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/watermark/base/index.html">watermark.base</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/generation/index.html">generation</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of generation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/generation/article_generator/index.html">generation.article_generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/generation/attack_loader/index.html">generation.attack_loader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/generation/gen_loader/index.html">generation.gen_loader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/generation/gen_params_attack/index.html">generation.gen_params_attack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/generation/generator/index.html">generation.generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/generation/prompt_attack/index.html">generation.prompt_attack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/generation/prompt_paraphrasing_attack/index.html">generation.prompt_paraphrasing_attack</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/openai_utils/index.html">openai_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/test_detector/index.html">test_detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/create_dataset/index.html">create_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/run_human_eval/index.html">run_human_eval</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/dataset_loader/index.html">dataset_loader</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of dataset_loader</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/dataset_loader/cnn_dataset/index.html">dataset_loader.cnn_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/dataset_loader/dataset_loader_utils/index.html">dataset_loader.dataset_loader_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/dataset_loader/fake_true_dataset/index.html">dataset_loader.fake_true_dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/test_text_quality/index.html">test_text_quality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/generate_mappings/index.html">generate_mappings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/run_human_eval_plus/index.html">run_human_eval_plus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/transformers_config/index.html">transformers_config</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/text_quality_evaluation/index.html">text_quality_evaluation</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of text_quality_evaluation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/text_quality_evaluation/scorer/index.html">text_quality_evaluation.scorer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/text_quality_evaluation/scorer_utils/index.html">text_quality_evaluation.scorer_utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          
+<section class="genindex-section">
+  <h1 id="index">Index</h1>
+  <div class="genindex-jumpbox"><a href="#_"><strong>_</strong></a> | <a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#J"><strong>J</strong></a> | <a href="#K"><strong>K</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a> | <a href="#Z"><strong>Z</strong></a></div>
+</section>
+<section id="_" class="genindex-section">
+  <h2>_</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPLogitsProcessor.__call__">__call__() (watermark.dip.dip.DIPLogitsProcessor method)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWLogitsProcessor.__call__">(watermark.kgw.kgw.KGWLogitsProcessor method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_ELogitsProcessor.__call__">(watermark.kgw_e.kgw_e.KGW_ELogitsProcessor method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PLogitsProcessor.__call__">(watermark.kgw_p.kgw_p.KGW_PLogitsProcessor method)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRLogitsProcessor.__call__">(watermark.sir.sir.SIRLogitsProcessor method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_LogitsProcessor.__call__">(watermark.sweet.sweet.SWEET_LogitsProcessor method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor.__call__">(watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor.__call__old">__call__old() (watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor method)</a>
+</li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPLogitsProcessor._apply_watermark">_apply_watermark() (watermark.dip.dip.DIPLogitsProcessor method)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWLogitsProcessor._bias_greenlist_logits">_bias_greenlist_logits() (watermark.kgw.kgw.KGWLogitsProcessor method)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_ELogitsProcessor._bias_greenlist_logits">(watermark.kgw_e.kgw_e.KGW_ELogitsProcessor method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PLogitsProcessor._bias_greenlist_logits">(watermark.kgw_p.kgw_p.KGW_PLogitsProcessor method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_LogitsProcessor._bias_greenlist_logits">(watermark.sweet.sweet.SWEET_LogitsProcessor method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor._bias_greenlist_logits">(watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRLogitsProcessor._bias_logits">_bias_logits() (watermark.sir.sir.SIRLogitsProcessor method)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWLogitsProcessor._calc_greenlist_mask">_calc_greenlist_mask() (watermark.kgw.kgw.KGWLogitsProcessor method)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_ELogitsProcessor._calc_greenlist_mask">(watermark.kgw_e.kgw_e.KGW_ELogitsProcessor method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PLogitsProcessor._calc_greenlist_mask">(watermark.kgw_p.kgw_p.KGW_PLogitsProcessor method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_LogitsProcessor._calc_greenlist_mask">(watermark.sweet.sweet.SWEET_LogitsProcessor method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor._calc_greenlist_mask">(watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWUtils._compute_z_score">_compute_z_score() (watermark.kgw.kgw.KGWUtils method)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils._compute_z_score">(watermark.kgw_e.kgw_e.KGW_EUtils method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PUtils._compute_z_score">(watermark.kgw_p.kgw_p.KGW_PUtils method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Utils._compute_z_score">(watermark.sweet.sweet.SWEET_Utils method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PUtils._compute_z_score">(watermark.sweet_p.sweet_p.SWEET_PUtils method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils._extract_context_code">_extract_context_code() (watermark.dip.dip.DIPUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils._get_context_sentence">_get_context_sentence() (watermark.sir.sir.SIRUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils._get_dip_score">_get_dip_score() (watermark.dip.dip.DIPUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils._get_green_token_quantile">_get_green_token_quantile() (watermark.dip.dip.DIPUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils._get_mapping">_get_mapping() (watermark.sir.sir.SIRUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils._get_rng_seed">_get_rng_seed() (watermark.dip.dip.DIPUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils._get_transform_model">_get_transform_model() (watermark.sir.sir.SIRUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWUtils._seed_rng">_seed_rng() (watermark.kgw.kgw.KGWUtils method)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils._seed_rng">(watermark.kgw_e.kgw_e.KGW_EUtils method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PUtils._seed_rng">(watermark.kgw_p.kgw_p.KGW_PUtils method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Utils._seed_rng">(watermark.sweet.sweet.SWEET_Utils method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PUtils._seed_rng">(watermark.sweet_p.sweet_p.SWEET_PUtils method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPUtils._value_transformation">_value_transformation() (watermark.exp.exp.EXPUtils method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="A" class="genindex-section">
+  <h2>A</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/generation/gen_params_attack/index.html#generation.gen_params_attack.GenParamsAttack.adversarial_gen_params">adversarial_gen_params (generation.gen_params_attack.GenParamsAttack attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.GenParamsAttack.adversarial_gen_params">(generation.GenParamsAttack attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/prompt_attack/index.html#generation.prompt_attack.PromptAttack.adversarial_prompt_config">adversarial_prompt_config (generation.prompt_attack.PromptAttack attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.PromptAttack.adversarial_prompt_config">(generation.PromptAttack attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.alpha">alpha (watermark.dip.dip.DIPConfig attribute)</a>
+</li>
+        <li><a href="autoapi/detector/gpt_zero_detector/index.html#detector.gpt_zero_detector.GPTZero.api_key">api_key (detector.gpt_zero_detector.GPTZero attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.GPTZero.api_key">(detector.GPTZero attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/index.html#generation.ArticleGenerator">ArticleGenerator (class in generation)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator">(class in generation.article_generator)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.attack">attack (pipeline.create_dataset_pipeline.CreateDatasetPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.attack">(pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.attack_name">attack_name (generation.article_generator.ArticleGenerator attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.attack_name">(generation.ArticleGenerator attribute)</a>
+</li>
+          <li><a href="autoapi/generation/gen_params_attack/index.html#generation.gen_params_attack.GenParamsAttack.attack_name">(generation.gen_params_attack.GenParamsAttack attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.GenParamsAttack.attack_name">(generation.GenParamsAttack attribute)</a>
+</li>
+          <li><a href="autoapi/generation/prompt_attack/index.html#generation.prompt_attack.PromptAttack.attack_name">(generation.prompt_attack.PromptAttack attribute)</a>
+</li>
+          <li><a href="autoapi/generation/prompt_paraphrasing_attack/index.html#generation.prompt_paraphrasing_attack.PromptParaphrasingAttack.attack_name">(generation.prompt_paraphrasing_attack.PromptParaphrasingAttack attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.PromptAttack.attack_name">(generation.PromptAttack attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.PromptParaphrasingAttack.attack_name">(generation.PromptParaphrasingAttack attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/generation/attack_loader/index.html#generation.attack_loader.AttackLoader.attack_type">attack_type (generation.attack_loader.AttackLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.AttackLoader.attack_type">(generation.AttackLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/index.html#generation.AttackLoader">AttackLoader (class in generation)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/attack_loader/index.html#generation.attack_loader.AttackLoader">(class in generation.attack_loader)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/auto_watermark/index.html#watermark.auto_watermark.AutoWatermark">AutoWatermark (class in watermark.auto_watermark)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="B" class="genindex-section">
+  <h2>B</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/base/index.html#watermark.base.BaseWatermark">BaseWatermark (class in watermark.base)</a>
+</li>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.batch_size">batch_size (pipeline.create_dataset_pipeline.CreateDatasetPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.batch_size">(pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.batch_size">(pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.batch_size">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/text_quality_pipeline/index.html#pipeline.text_quality_pipeline.TextQualityPipeline.batch_size">(pipeline.text_quality_pipeline.TextQualityPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#pipeline.TextQualityPipeline.batch_size">(pipeline.TextQualityPipeline attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/detector/index.html#detector.BertDetector">BertDetector (class in detector)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/bert_detector/index.html#detector.bert_detector.BertDetector">(class in detector.bert_detector)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.BertScoreScorer">BertScoreScorer (class in text_quality_evaluation)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.BertScoreScorer">(class in text_quality_evaluation.scorer)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/scorer_utils/index.html#text_quality_evaluation.scorer_utils.bootstrap_score">bootstrap_score() (in module text_quality_evaluation.scorer_utils)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="C" class="genindex-section">
+  <h2>C</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Utils.calculate_entropy">calculate_entropy() (watermark.sweet.sweet.SWEET_Utils method)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PUtils.calculate_entropy">(watermark.sweet_p.sweet_p.SWEET_PUtils method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils.cc_history">cc_history (watermark.dip.dip.DIPUtils attribute)</a>
+</li>
+        <li><a href="autoapi/detector/detector_loader/index.html#detector.detector_loader.DetectorLoader.cfg">cfg (detector.detector_loader.DetectorLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.DetectorLoader.cfg">(detector.DetectorLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/attack_loader/index.html#generation.attack_loader.AttackLoader.cfg">(generation.attack_loader.AttackLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.AttackLoader.cfg">(generation.AttackLoader attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.cfg">(pipeline.create_dataset_pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.cfg">(pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.cfg">(pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.cfg">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/configs/index.html#configs.ModelConfig.chat_template_type">chat_template_type (configs.ModelConfig attribute)</a>
+</li>
+        <li><a href="autoapi/create_dataset/index.html#create_dataset.choose_attack">choose_attack() (in module create_dataset)</a>
+</li>
+        <li><a href="autoapi/create_dataset/index.html#create_dataset.choose_dataset">choose_dataset() (in module create_dataset)</a>
+</li>
+        <li><a href="autoapi/create_dataset/index.html#create_dataset.choose_generator">choose_generator() (in module create_dataset)</a>
+</li>
+        <li><a href="autoapi/create_dataset/index.html#create_dataset.choose_watermarking_scheme">choose_watermarking_scheme() (in module create_dataset)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.chunk_length">chunk_length (watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.clean_dataset">clean_dataset() (dataset_loader.cnn_dataset.CNNDataLoader method)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.clean_dataset">(dataset_loader.CNNDataLoader method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader">CNNDataLoader (class in dataset_loader)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader">(class in dataset_loader.cnn_dataset)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PrometheusScorer.compare_human_to_ai">compare_human_to_ai (text_quality_evaluation.PrometheusScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PrometheusScorer.compare_human_to_ai">(text_quality_evaluation.scorer.PrometheusScorer attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.CompareScorer">CompareScorer (class in text_quality_evaluation.scorer)</a>
+</li>
+        <li><a href="autoapi/pipeline/pipeline_utils/index.html#pipeline.pipeline_utils.compute_bootstrap_metrics">compute_bootstrap_metrics() (in module pipeline.pipeline_utils)</a>
+</li>
+        <li><a href="autoapi/watermark/dip/index.html#watermark.dip.DIP.config">config (watermark.dip.DIP attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIP.config">(watermark.dip.dip.DIP attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPLogitsProcessor.config">(watermark.dip.dip.DIPLogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils.config">(watermark.dip.dip.DIPUtils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/index.html#watermark.exp.EXP.config">(watermark.exp.EXP attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXP.config">(watermark.exp.exp.EXP attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPUtils.config">(watermark.exp.exp.EXPUtils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/index.html#watermark.kgw.KGW.config">(watermark.kgw.KGW attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGW.config">(watermark.kgw.kgw.KGW attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWLogitsProcessor.config">(watermark.kgw.kgw.KGWLogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWUtils.config">(watermark.kgw.kgw.KGWUtils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/index.html#watermark.kgw_e.KGW_E.config">(watermark.kgw_e.KGW_E attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_E.config">(watermark.kgw_e.kgw_e.KGW_E attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_ELogitsProcessor.config">(watermark.kgw_e.kgw_e.KGW_ELogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils.config">(watermark.kgw_e.kgw_e.KGW_EUtils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/index.html#watermark.kgw_p.KGW_P.config">(watermark.kgw_p.KGW_P attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_P.config">(watermark.kgw_p.kgw_p.KGW_P attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PLogitsProcessor.config">(watermark.kgw_p.kgw_p.KGW_PLogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PUtils.config">(watermark.kgw_p.kgw_p.KGW_PUtils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/index.html#watermark.sir.SIR.config">(watermark.sir.SIR attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIR.config">(watermark.sir.sir.SIR attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRLogitsProcessor.config">(watermark.sir.sir.SIRLogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils.config">(watermark.sir.sir.SIRUtils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/index.html#watermark.sweet.SWEET.config">(watermark.sweet.SWEET attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET.config">(watermark.sweet.sweet.SWEET attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_LogitsProcessor.config">(watermark.sweet.sweet.SWEET_LogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Utils.config">(watermark.sweet.sweet.SWEET_Utils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/index.html#watermark.sweet_p.SWEET_P.config">(watermark.sweet_p.SWEET_P attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_P.config">(watermark.sweet_p.sweet_p.SWEET_P attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor.config">(watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PUtils.config">(watermark.sweet_p.sweet_p.SWEET_PUtils attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.config_dict">config_dict (watermark.dip.dip.DIPConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig.config_dict">(watermark.kgw.kgw.KGWConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.config_dict">(watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig.config_dict">(watermark.kgw_p.kgw_p.KGW_PConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.config_dict">(watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.config_dict">(watermark.sweet.sweet.SWEET_Config attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.config_dict">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    configs
+
+        <ul>
+          <li><a href="autoapi/configs/index.html#module-configs">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.IDFScorer.corpus">corpus (text_quality_evaluation.IDFScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.IDFScorer.corpus">(text_quality_evaluation.scorer.IDFScorer attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    create_dataset
+
+        <ul>
+          <li><a href="autoapi/create_dataset/index.html#module-create_dataset">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/create_dataset/index.html#create_dataset.create_dataset">create_dataset() (in module create_dataset)</a>
+</li>
+        <li><a href="autoapi/utils/index.html#utils.create_directory_for_file">create_directory_for_file() (in module utils)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils.create_embedding_corpus">create_embedding_corpus() (watermark.kgw_e.kgw_e.KGW_EUtils method)</a>
+</li>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.create_experiment_dataset">create_experiment_dataset() (pipeline.create_dataset_pipeline.CreateDatasetPipeline method)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.create_experiment_dataset">(pipeline.CreateDatasetPipeline method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/pipeline_utils/index.html#pipeline.pipeline_utils.create_logger">create_logger() (in module pipeline.pipeline_utils)</a>
+
+        <ul>
+          <li><a href="autoapi/utils/index.html#utils.create_logger">(in module utils)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/pipeline_utils/index.html#pipeline.pipeline_utils.create_logger_file">create_logger_file() (in module pipeline.pipeline_utils)</a>
+
+        <ul>
+          <li><a href="autoapi/utils/index.html#utils.create_logger_file">(in module utils)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/dataset_loader_utils/index.html#dataset_loader.dataset_loader_utils.create_splits">create_splits() (in module dataset_loader.dataset_loader_utils)</a>
+</li>
+        <li><a href="autoapi/dataset_loader/dataset_loader_utils/index.html#dataset_loader.dataset_loader_utils.create_train_from_dataset">create_train_from_dataset() (in module dataset_loader.dataset_loader_utils)</a>
+</li>
+        <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline">CreateDatasetPipeline (class in pipeline)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline">(class in pipeline.create_dataset_pipeline)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.ProbEstimatorFastDetectGPT.crit_to_prob">crit_to_prob() (detector.fast_detect_gpt.FastDetectGPT.ProbEstimatorFastDetectGPT method)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.ProbEstimatorFastDetectGPT.crit_to_prob">(detector.FastDetectGPT.ProbEstimatorFastDetectGPT method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.cut_off_method">cut_off_method (watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="D" class="genindex-section">
+  <h2>D</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/pipeline/text_quality_pipeline/index.html#pipeline.text_quality_pipeline.TextQualityPipeline.dataset">dataset (pipeline.text_quality_pipeline.TextQualityPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.TextQualityPipeline.dataset">(pipeline.TextQualityPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.dataset_experiment_name">dataset_experiment_name (pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.dataset_experiment_name">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.dataset_experiment_path">dataset_experiment_path (pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.dataset_experiment_path">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    dataset_loader
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#module-dataset_loader">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.dataset_loader">dataset_loader (pipeline.create_dataset_pipeline.CreateDatasetPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.dataset_loader">(pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    dataset_loader.cnn_dataset
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#module-dataset_loader.cnn_dataset">module</a>
+</li>
+        </ul></li>
+        <li>
+    dataset_loader.dataset_loader_utils
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/dataset_loader_utils/index.html#module-dataset_loader.dataset_loader_utils">module</a>
+</li>
+        </ul></li>
+        <li>
+    dataset_loader.fake_true_dataset
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#module-dataset_loader.fake_true_dataset">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.dataset_name">dataset_name (dataset_loader.cnn_dataset.CNNDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.dataset_name">(dataset_loader.CNNDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader.dataset_name">(dataset_loader.fake_true_dataset.FakeTruePairsDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader.dataset_name">(dataset_loader.FakeTruePairsDataLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader.dataset_path">dataset_path (dataset_loader.fake_true_dataset.FakeTruePairsDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader.dataset_path">(dataset_loader.FakeTruePairsDataLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.dataset_size">dataset_size (dataset_loader.cnn_dataset.CNNDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.dataset_size">(dataset_loader.CNNDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader.dataset_size">(dataset_loader.fake_true_dataset.FakeTruePairsDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader.dataset_size">(dataset_loader.FakeTruePairsDataLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/gpt_zero_detector/index.html#detector.gpt_zero_detector.GPTZero.debug_mode">debug_mode (detector.gpt_zero_detector.GPTZero attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.GPTZero.debug_mode">(detector.GPTZero attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig.delta">delta (watermark.kgw.kgw.KGWConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.delta">(watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig.delta">(watermark.kgw_p.kgw_p.KGW_PConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.delta">(watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.delta">(watermark.sweet.sweet.SWEET_Config attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.delta">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/bert_detector/index.html#detector.bert_detector.BertDetector.detect">detect() (detector.bert_detector.BertDetector method)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.BertDetector.detect">(detector.BertDetector method)</a>
+</li>
+          <li><a href="autoapi/detector/index.html#detector.Detector.detect">(detector.Detector method)</a>
+</li>
+          <li><a href="autoapi/detector/detector/index.html#detector.detector.Detector.detect">(detector.detector.Detector method)</a>
+</li>
+          <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.detect">(detector.fast_detect_gpt.FastDetectGPT method)</a>
+</li>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.detect">(detector.FastDetectGPT method)</a>
+</li>
+          <li><a href="autoapi/detector/gpt_zero_detector/index.html#detector.gpt_zero_detector.GPTZero.detect">(detector.gpt_zero_detector.GPTZero method)</a>
+</li>
+          <li><a href="autoapi/detector/index.html#detector.GPTZero.detect">(detector.GPTZero method)</a>
+</li>
+          <li><a href="autoapi/detector/watermark_detector/index.html#detector.watermark_detector.WatermarkDetector.detect">(detector.watermark_detector.WatermarkDetector method)</a>
+</li>
+          <li><a href="autoapi/detector/index.html#detector.WatermarkDetector.detect">(detector.WatermarkDetector method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/base/index.html#watermark.base.BaseWatermark.detect_watermark">detect_watermark() (watermark.base.BaseWatermark method)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/dip/index.html#watermark.dip.DIP.detect_watermark">(watermark.dip.DIP method)</a>
+</li>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIP.detect_watermark">(watermark.dip.dip.DIP method)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/index.html#watermark.exp.EXP.detect_watermark">(watermark.exp.EXP method)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXP.detect_watermark">(watermark.exp.exp.EXP method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/index.html#watermark.kgw.KGW.detect_watermark">(watermark.kgw.KGW method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGW.detect_watermark">(watermark.kgw.kgw.KGW method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/index.html#watermark.kgw_e.KGW_E.detect_watermark">(watermark.kgw_e.KGW_E method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_E.detect_watermark">(watermark.kgw_e.kgw_e.KGW_E method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/index.html#watermark.kgw_p.KGW_P.detect_watermark">(watermark.kgw_p.KGW_P method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_P.detect_watermark">(watermark.kgw_p.kgw_p.KGW_P method)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/index.html#watermark.sir.SIR.detect_watermark">(watermark.sir.SIR method)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIR.detect_watermark">(watermark.sir.sir.SIR method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/index.html#watermark.sweet.SWEET.detect_watermark">(watermark.sweet.SWEET method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET.detect_watermark">(watermark.sweet.sweet.SWEET method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/index.html#watermark.sweet_p.SWEET_P.detect_watermark">(watermark.sweet_p.SWEET_P method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_P.detect_watermark">(watermark.sweet_p.sweet_p.SWEET_P method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/detector/watermark_detector/index.html#detector.watermark_detector.WatermarkDetector.detection_threshold">detection_threshold (detector.watermark_detector.WatermarkDetector attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.WatermarkDetector.detection_threshold">(detector.WatermarkDetector attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    detector
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#module-detector">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/index.html#detector.Detector">Detector (class in detector)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/detector/index.html#detector.detector.Detector">(class in detector.detector)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.detector">detector (pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.detector">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    detector.bert_detector
+
+        <ul>
+          <li><a href="autoapi/detector/bert_detector/index.html#module-detector.bert_detector">module</a>
+</li>
+        </ul></li>
+        <li>
+    detector.detector
+
+        <ul>
+          <li><a href="autoapi/detector/detector/index.html#module-detector.detector">module</a>
+</li>
+        </ul></li>
+        <li>
+    detector.detector_loader
+
+        <ul>
+          <li><a href="autoapi/detector/detector_loader/index.html#module-detector.detector_loader">module</a>
+</li>
+        </ul></li>
+        <li>
+    detector.fast_detect_gpt
+
+        <ul>
+          <li><a href="autoapi/detector/fast_detect_gpt/index.html#module-detector.fast_detect_gpt">module</a>
+</li>
+        </ul></li>
+        <li>
+    detector.gpt_zero_detector
+
+        <ul>
+          <li><a href="autoapi/detector/gpt_zero_detector/index.html#module-detector.gpt_zero_detector">module</a>
+</li>
+        </ul></li>
+        <li>
+    detector.watermark_detector
+
+        <ul>
+          <li><a href="autoapi/detector/watermark_detector/index.html#module-detector.watermark_detector">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/detector_loader/index.html#detector.detector_loader.DetectorLoader.detector_name">detector_name (detector.detector_loader.DetectorLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.DetectorLoader.detector_name">(detector.DetectorLoader attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.detector_name">(pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.detector_name">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/index.html#detector.DetectorLoader">DetectorLoader (class in detector)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/detector_loader/index.html#detector.detector_loader.DetectorLoader">(class in detector.detector_loader)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/configs/index.html#configs.ModelConfig.device">device (configs.ModelConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/bert_detector/index.html#detector.bert_detector.BertDetector.device">(detector.bert_detector.BertDetector attribute)</a>
+</li>
+          <li><a href="autoapi/detector/index.html#detector.BertDetector.device">(detector.BertDetector attribute)</a>
+</li>
+          <li><a href="autoapi/detector/detector_loader/index.html#detector.detector_loader.DetectorLoader.device">(detector.detector_loader.DetectorLoader attribute)</a>
+</li>
+          <li><a href="autoapi/detector/index.html#detector.DetectorLoader.device">(detector.DetectorLoader attribute)</a>
+</li>
+          <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.device">(detector.fast_detect_gpt.FastDetectGPT attribute)</a>
+</li>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.device">(detector.FastDetectGPT attribute)</a>
+</li>
+          <li><a href="autoapi/generation/gen_loader/index.html#generation.gen_loader.GenLoader.device">(generation.gen_loader.GenLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/generator/index.html#generation.generator.LLMGenerator.device">(generation.generator.LLMGenerator attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.GenLoader.device">(generation.GenLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.LLMGenerator.device">(generation.LLMGenerator attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PPLScorer.device">(text_quality_evaluation.PPLScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PPLScorer.device">(text_quality_evaluation.scorer.PPLScorer attribute)</a>
+</li>
+          <li><a href="autoapi/transformers_config/index.html#transformers_config.TransformersConfig.device">(transformers_config.TransformersConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.device">(watermark.dip.dip.DIPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPConfig.device">(watermark.exp.exp.EXPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig.device">(watermark.kgw.kgw.KGWConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.device">(watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig.device">(watermark.kgw_p.kgw_p.KGW_PConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.device">(watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.device">(watermark.sweet.sweet.SWEET_Config attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.device">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/index.html#watermark.dip.DIP">DIP (class in watermark.dip)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIP">(class in watermark.dip.dip)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig">DIPConfig (class in watermark.dip.dip)</a>
+</li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPLogitsProcessor">DIPLogitsProcessor (class in watermark.dip.dip)</a>
+</li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils">DIPUtils (class in watermark.dip.dip)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="E" class="genindex-section">
+  <h2>E</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.embedding_batch_size">embedding_batch_size (watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils.embedding_model">embedding_model (watermark.kgw_e.kgw_e.KGW_EUtils attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils.embedding_model">(watermark.sir.sir.SIRUtils attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.embedding_model_path">embedding_model_path (watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils.embedding_tokenizer">embedding_tokenizer (watermark.sir.sir.SIRUtils attribute)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils.embeddings_corpus">embeddings_corpus (watermark.kgw_e.kgw_e.KGW_EUtils attribute)</a>
+</li>
+        <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.entropy_threshold">entropy_threshold (watermark.sweet.sweet.SWEET_Config attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.entropy_threshold">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.eval_fraction">eval_fraction (dataset_loader.cnn_dataset.CNNDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.eval_fraction">(dataset_loader.CNNDataLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/text_quality_pipeline/index.html#pipeline.text_quality_pipeline.TextQualityPipeline.eval_human">eval_human (pipeline.text_quality_pipeline.TextQualityPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.TextQualityPipeline.eval_human">(pipeline.TextQualityPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.evaluate_detector">evaluate_detector() (pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline method)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.evaluate_detector">(pipeline.ExperimentTestDetectorPipeline method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/test_text_quality/index.html#test_text_quality.evaluate_text_quality">evaluate_text_quality() (in module test_text_quality)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/exp/index.html#watermark.exp.EXP">EXP (class in watermark.exp)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXP">(class in watermark.exp.exp)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPUtils.exp_sampling">exp_sampling() (watermark.exp.exp.EXPUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPConfig">EXPConfig (class in watermark.exp.exp)</a>
+</li>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.experiment_name">experiment_name (pipeline.create_dataset_pipeline.CreateDatasetPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.experiment_name">(pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.experiment_name">(pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.experiment_name">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.experiment_path">experiment_path (pipeline.create_dataset_pipeline.CreateDatasetPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.experiment_path">(pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.experiment_path">(pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.experiment_path">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/experiment_pipeline/index.html#pipeline.experiment_pipeline.ExperimentPipeline">ExperimentPipeline (class in pipeline.experiment_pipeline)</a>
+</li>
+        <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline">ExperimentTestDetectorPipeline (class in pipeline)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline">(class in pipeline.experiment_test_detector_pipeline)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPUtils">EXPUtils (class in watermark.exp.exp)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="F" class="genindex-section">
+  <h2>F</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.ProbEstimatorFastDetectGPT.fake_crits">fake_crits (detector.fast_detect_gpt.FastDetectGPT.ProbEstimatorFastDetectGPT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.ProbEstimatorFastDetectGPT.fake_crits">(detector.FastDetectGPT.ProbEstimatorFastDetectGPT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader">FakeTruePairsDataLoader (class in dataset_loader)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader">(class in dataset_loader.fake_true_dataset)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/index.html#detector.FastDetectGPT">FastDetectGPT (class in detector)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT">(class in detector.fast_detect_gpt)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.ProbEstimatorFastDetectGPT">FastDetectGPT.ProbEstimatorFastDetectGPT (class in detector)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.ProbEstimatorFastDetectGPT">(class in detector.fast_detect_gpt)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sir/transform_model/index.html#watermark.sir.transform_model.ResidualBlock.fc">fc (watermark.sir.transform_model.ResidualBlock attribute)</a>
+</li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.IDFScorer.feature_names">feature_names (text_quality_evaluation.IDFScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.IDFScorer.feature_names">(text_quality_evaluation.scorer.IDFScorer attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/dataset_loader_utils/index.html#dataset_loader.dataset_loader_utils.filter_duplicates">filter_duplicates() (in module dataset_loader.dataset_loader_utils)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.IDFScorer.filtered_corpus">filtered_corpus (text_quality_evaluation.IDFScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.IDFScorer.filtered_corpus">(text_quality_evaluation.scorer.IDFScorer attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor.find_probability_mask">find_probability_mask() (watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor method)</a>
+</li>
+        <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.find_threshold">find_threshold() (pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline method)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.find_threshold">(pipeline.ExperimentTestDetectorPipeline method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/generator/index.html#generation.generator.LLMGenerator.forward">forward() (generation.generator.LLMGenerator method)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.LLMGenerator.forward">(generation.LLMGenerator method)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/transform_model/index.html#watermark.sir.transform_model.ResidualBlock.forward">(watermark.sir.transform_model.ResidualBlock method)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/transform_model/index.html#watermark.sir.transform_model.TransformModel.forward">(watermark.sir.transform_model.TransformModel method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/generator/index.html#generation.generator.LLMGenerator.forward_debug">forward_debug() (generation.generator.LLMGenerator method)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.LLMGenerator.forward_debug">(generation.LLMGenerator method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils.from_random">from_random() (watermark.dip.dip.DIPUtils method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="G" class="genindex-section">
+  <h2>G</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.gamma">gamma (watermark.dip.dip.DIPConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig.gamma">(watermark.kgw.kgw.KGWConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.gamma">(watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig.gamma">(watermark.kgw_p.kgw_p.KGW_PConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.gamma">(watermark.sweet.sweet.SWEET_Config attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.gamma">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/transformers_config/index.html#transformers_config.TransformersConfig.gen_kwargs">gen_kwargs (transformers_config.TransformersConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.gen_kwargs">(watermark.dip.dip.DIPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPConfig.gen_kwargs">(watermark.exp.exp.EXPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig.gen_kwargs">(watermark.kgw.kgw.KGWConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.gen_kwargs">(watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig.gen_kwargs">(watermark.kgw_p.kgw_p.KGW_PConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.gen_kwargs">(watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.gen_kwargs">(watermark.sweet.sweet.SWEET_Config attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.gen_kwargs">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.gen_model">gen_model (generation.article_generator.ArticleGenerator attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.gen_model">(generation.ArticleGenerator attribute)</a>
+</li>
+          <li><a href="autoapi/generation/attack_loader/index.html#generation.attack_loader.AttackLoader.gen_model">(generation.attack_loader.AttackLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.AttackLoader.gen_model">(generation.AttackLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.gen_model_config">gen_model_config (generation.article_generator.ArticleGenerator attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.gen_model_config">(generation.ArticleGenerator attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.gen_name">gen_name (generation.article_generator.ArticleGenerator attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.gen_name">(generation.ArticleGenerator attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/configs/index.html#configs.ModelConfig.gen_params">gen_params (configs.ModelConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/gen_loader/index.html#generation.gen_loader.GenLoader.gen_params">(generation.gen_loader.GenLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/generator/index.html#generation.generator.LLMGenerator.gen_params">(generation.generator.LLMGenerator attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.GenLoader.gen_params">(generation.GenLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.LLMGenerator.gen_params">(generation.LLMGenerator attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.gen_prompt_config">gen_prompt_config (generation.article_generator.ArticleGenerator attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.gen_prompt_config">(generation.ArticleGenerator attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/gen_loader/index.html#generation.gen_loader.GenLoader.gen_tokenizer_only">gen_tokenizer_only (generation.gen_loader.GenLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.GenLoader.gen_tokenizer_only">(generation.GenLoader attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    gen_utils
+
+        <ul>
+          <li><a href="autoapi/gen_utils/index.html#module-gen_utils">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/index.html#watermark.dip.DIP.generate">generate() (watermark.dip.DIP method)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIP.generate">(watermark.dip.dip.DIP method)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/index.html#watermark.exp.EXP.generate">(watermark.exp.EXP method)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXP.generate">(watermark.exp.exp.EXP method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/index.html#watermark.kgw.KGW.generate">(watermark.kgw.KGW method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGW.generate">(watermark.kgw.kgw.KGW method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/index.html#watermark.kgw_e.KGW_E.generate">(watermark.kgw_e.KGW_E method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_E.generate">(watermark.kgw_e.kgw_e.KGW_E method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/index.html#watermark.kgw_p.KGW_P.generate">(watermark.kgw_p.KGW_P method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_P.generate">(watermark.kgw_p.kgw_p.KGW_P method)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/index.html#watermark.sir.SIR.generate">(watermark.sir.SIR method)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIR.generate">(watermark.sir.sir.SIR method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/index.html#watermark.sweet.SWEET.generate">(watermark.sweet.SWEET method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET.generate">(watermark.sweet.sweet.SWEET method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/index.html#watermark.sweet_p.SWEET_P.generate">(watermark.sweet_p.SWEET_P method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_P.generate">(watermark.sweet_p.sweet_p.SWEET_P method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.generate_adversarial_text">generate_adversarial_text() (generation.article_generator.ArticleGenerator method)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.generate_adversarial_text">(generation.ArticleGenerator method)</a>
+</li>
+          <li><a href="autoapi/generation/gen_params_attack/index.html#generation.gen_params_attack.GenParamsAttack.generate_adversarial_text">(generation.gen_params_attack.GenParamsAttack method)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.GenParamsAttack.generate_adversarial_text">(generation.GenParamsAttack method)</a>
+</li>
+          <li><a href="autoapi/generation/prompt_attack/index.html#generation.prompt_attack.PromptAttack.generate_adversarial_text">(generation.prompt_attack.PromptAttack method)</a>
+</li>
+          <li><a href="autoapi/generation/prompt_paraphrasing_attack/index.html#generation.prompt_paraphrasing_attack.PromptParaphrasingAttack.generate_adversarial_text">(generation.prompt_paraphrasing_attack.PromptParaphrasingAttack method)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.PromptAttack.generate_adversarial_text">(generation.PromptAttack method)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.PromptParaphrasingAttack.generate_adversarial_text">(generation.PromptParaphrasingAttack method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/run_human_eval/index.html#run_human_eval.generate_batch_completions">generate_batch_completions() (in module run_human_eval)</a>
+
+        <ul>
+          <li><a href="autoapi/run_human_eval_plus/index.html#run_human_eval_plus.generate_batch_completions">(in module run_human_eval_plus)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generate_mappings/index.html#generate_mappings.generate_mapping">generate_mapping() (in module generate_mappings)</a>
+</li>
+        <li>
+    generate_mappings
+
+        <ul>
+          <li><a href="autoapi/generate_mappings/index.html#module-generate_mappings">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/run_human_eval/index.html#run_human_eval.generate_one_completion">generate_one_completion() (in module run_human_eval)</a>
+
+        <ul>
+          <li><a href="autoapi/run_human_eval_plus/index.html#run_human_eval_plus.generate_one_completion">(in module run_human_eval_plus)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.generate_text">generate_text() (generation.article_generator.ArticleGenerator method)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.generate_text">(generation.ArticleGenerator method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/base/index.html#watermark.base.BaseWatermark.generate_unwatermarked_text">generate_unwatermarked_text() (watermark.base.BaseWatermark method)</a>
+</li>
+        <li><a href="autoapi/watermark/base/index.html#watermark.base.BaseWatermark.generate_watermarked_text">generate_watermarked_text() (watermark.base.BaseWatermark method)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/dip/index.html#watermark.dip.DIP.generate_watermarked_text">(watermark.dip.DIP method)</a>
+</li>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIP.generate_watermarked_text">(watermark.dip.dip.DIP method)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/index.html#watermark.exp.EXP.generate_watermarked_text">(watermark.exp.EXP method)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXP.generate_watermarked_text">(watermark.exp.exp.EXP method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/index.html#watermark.kgw.KGW.generate_watermarked_text">(watermark.kgw.KGW method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGW.generate_watermarked_text">(watermark.kgw.kgw.KGW method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/index.html#watermark.kgw_e.KGW_E.generate_watermarked_text">(watermark.kgw_e.KGW_E method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_E.generate_watermarked_text">(watermark.kgw_e.kgw_e.KGW_E method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/index.html#watermark.kgw_p.KGW_P.generate_watermarked_text">(watermark.kgw_p.KGW_P method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_P.generate_watermarked_text">(watermark.kgw_p.kgw_p.KGW_P method)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/index.html#watermark.sir.SIR.generate_watermarked_text">(watermark.sir.SIR method)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIR.generate_watermarked_text">(watermark.sir.sir.SIR method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/index.html#watermark.sweet.SWEET.generate_watermarked_text">(watermark.sweet.SWEET method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET.generate_watermarked_text">(watermark.sweet.sweet.SWEET method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/index.html#watermark.sweet_p.SWEET_P.generate_watermarked_text">(watermark.sweet_p.SWEET_P method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_P.generate_watermarked_text">(watermark.sweet_p.sweet_p.SWEET_P method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    generation
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#module-generation">module</a>
+</li>
+        </ul></li>
+        <li>
+    generation.article_generator
+
+        <ul>
+          <li><a href="autoapi/generation/article_generator/index.html#module-generation.article_generator">module</a>
+</li>
+        </ul></li>
+        <li>
+    generation.attack_loader
+
+        <ul>
+          <li><a href="autoapi/generation/attack_loader/index.html#module-generation.attack_loader">module</a>
+</li>
+        </ul></li>
+        <li>
+    generation.gen_loader
+
+        <ul>
+          <li><a href="autoapi/generation/gen_loader/index.html#module-generation.gen_loader">module</a>
+</li>
+        </ul></li>
+        <li>
+    generation.gen_params_attack
+
+        <ul>
+          <li><a href="autoapi/generation/gen_params_attack/index.html#module-generation.gen_params_attack">module</a>
+</li>
+        </ul></li>
+        <li>
+    generation.generator
+
+        <ul>
+          <li><a href="autoapi/generation/generator/index.html#module-generation.generator">module</a>
+</li>
+        </ul></li>
+        <li>
+    generation.prompt_attack
+
+        <ul>
+          <li><a href="autoapi/generation/prompt_attack/index.html#module-generation.prompt_attack">module</a>
+</li>
+        </ul></li>
+        <li>
+    generation.prompt_paraphrasing_attack
+
+        <ul>
+          <li><a href="autoapi/generation/prompt_paraphrasing_attack/index.html#module-generation.prompt_paraphrasing_attack">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.generation_model">generation_model (watermark.dip.dip.DIPConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPConfig.generation_model">(watermark.exp.exp.EXPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig.generation_model">(watermark.kgw.kgw.KGWConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.generation_model">(watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig.generation_model">(watermark.kgw_p.kgw_p.KGW_PConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.generation_model">(watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.generation_model">(watermark.sweet.sweet.SWEET_Config attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.generation_model">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.generation_tokenizer">generation_tokenizer (watermark.dip.dip.DIPConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPConfig.generation_tokenizer">(watermark.exp.exp.EXPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig.generation_tokenizer">(watermark.kgw.kgw.KGWConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.generation_tokenizer">(watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig.generation_tokenizer">(watermark.kgw_p.kgw_p.KGW_PConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.generation_tokenizer">(watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.generation_tokenizer">(watermark.sweet.sweet.SWEET_Config attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.generation_tokenizer">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/generator/index.html#generation.generator.LLMGenerator.generator">generator (generation.generator.LLMGenerator attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.LLMGenerator.generator">(generation.LLMGenerator attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.generator_name">generator_name (pipeline.create_dataset_pipeline.CreateDatasetPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.generator_name">(pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/index.html#generation.GenLoader">GenLoader (class in generation)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/gen_loader/index.html#generation.gen_loader.GenLoader">(class in generation.gen_loader)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/index.html#generation.GenParamsAttack">GenParamsAttack (class in generation)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/gen_params_attack/index.html#generation.gen_params_attack.GenParamsAttack">(class in generation.gen_params_attack)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils.get_bias">get_bias() (watermark.sir.sir.SIRUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils.get_embedding">get_embedding() (watermark.sir.sir.SIRUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWUtils.get_greenlist_ids">get_greenlist_ids() (watermark.kgw.kgw.KGWUtils method)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils.get_greenlist_ids">(watermark.kgw_e.kgw_e.KGW_EUtils method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PUtils.get_greenlist_ids">(watermark.kgw_p.kgw_p.KGW_PUtils method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Utils.get_greenlist_ids">(watermark.sweet.sweet.SWEET_Utils method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PUtils.get_greenlist_ids">(watermark.sweet_p.sweet_p.SWEET_PUtils method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.get_likelihood">get_likelihood() (detector.fast_detect_gpt.FastDetectGPT method)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.get_likelihood">(detector.FastDetectGPT method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/openai_utils/index.html#openai_utils.OpenAIAPI.get_result">get_result() (openai_utils.OpenAIAPI method)</a>
+</li>
+        <li><a href="autoapi/openai_utils/index.html#openai_utils.OpenAIAPI.get_result_from_gpt3_5">get_result_from_gpt3_5() (openai_utils.OpenAIAPI method)</a>
+</li>
+        <li><a href="autoapi/openai_utils/index.html#openai_utils.OpenAIAPI.get_result_from_gpt4">get_result_from_gpt4() (openai_utils.OpenAIAPI method)</a>
+</li>
+        <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.get_samples">get_samples() (detector.fast_detect_gpt.FastDetectGPT method)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.get_samples">(detector.FastDetectGPT method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.get_sampling_discrepancy">get_sampling_discrepancy() (detector.fast_detect_gpt.FastDetectGPT method)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.get_sampling_discrepancy">(detector.FastDetectGPT method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.get_sampling_discrepancy_analytic">get_sampling_discrepancy_analytic() (detector.fast_detect_gpt.FastDetectGPT method)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.get_sampling_discrepancy_analytic">(detector.FastDetectGPT method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils.get_seed">get_seed() (watermark.kgw_e.kgw_e.KGW_EUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils.get_seed_for_cipher">get_seed_for_cipher() (watermark.dip.dip.DIPUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils.get_text_split">get_text_split() (watermark.sir.sir.SIRUtils method)</a>
+</li>
+        <li><a href="autoapi/pipeline/pipeline_utils/index.html#pipeline.pipeline_utils.get_threshold_for_results">get_threshold_for_results() (in module pipeline.pipeline_utils)</a>
+</li>
+        <li><a href="autoapi/detector/index.html#detector.GPTZero">GPTZero (class in detector)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/gpt_zero_detector/index.html#detector.gpt_zero_detector.GPTZero">(class in detector.gpt_zero_detector)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="H" class="genindex-section">
+  <h2>H</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.hash_key">hash_key (watermark.dip.dip.DIPConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPConfig.hash_key">(watermark.exp.exp.EXPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig.hash_key">(watermark.kgw.kgw.KGWConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.hash_key">(watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig.hash_key">(watermark.kgw_p.kgw_p.KGW_PConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.hash_key">(watermark.sweet.sweet.SWEET_Config attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.hash_key">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.hf_dataset_path">hf_dataset_path (dataset_loader.cnn_dataset.CNNDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.hf_dataset_path">(dataset_loader.CNNDataLoader attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="I" class="genindex-section">
+  <h2>I</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.IDFScorer.idf_values">idf_values (text_quality_evaluation.IDFScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.IDFScorer.idf_values">(text_quality_evaluation.scorer.IDFScorer attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.IDFScorer">IDFScorer (class in text_quality_evaluation)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.IDFScorer">(class in text_quality_evaluation.scorer)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.ignore_history">ignore_history (watermark.dip.dip.DIPConfig attribute)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils.init_embedding_model">init_embedding_model() (watermark.kgw_e.kgw_e.KGW_EUtils method)</a>
+</li>
+        <li><a href="autoapi/test_text_quality/index.html#test_text_quality.init_pipelines">init_pipelines() (in module test_text_quality)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="J" class="genindex-section">
+  <h2>J</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PrometheusScorer.judge">judge (text_quality_evaluation.PrometheusScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PrometheusScorer.judge">(text_quality_evaluation.scorer.PrometheusScorer attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="K" class="genindex-section">
+  <h2>K</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/kgw/index.html#watermark.kgw.KGW">KGW (class in watermark.kgw)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGW">(class in watermark.kgw.kgw)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/kgw_e/index.html#watermark.kgw_e.KGW_E">KGW_E (class in watermark.kgw_e)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_E">(class in watermark.kgw_e.kgw_e)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig">KGW_EConfig (class in watermark.kgw_e.kgw_e)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_ELogitsProcessor">KGW_ELogitsProcessor (class in watermark.kgw_e.kgw_e)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils">KGW_EUtils (class in watermark.kgw_e.kgw_e)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/kgw_p/index.html#watermark.kgw_p.KGW_P">KGW_P (class in watermark.kgw_p)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_P">(class in watermark.kgw_p.kgw_p)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig">KGW_PConfig (class in watermark.kgw_p.kgw_p)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PLogitsProcessor">KGW_PLogitsProcessor (class in watermark.kgw_p.kgw_p)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PUtils">KGW_PUtils (class in watermark.kgw_p.kgw_p)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig">KGWConfig (class in watermark.kgw.kgw)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWLogitsProcessor">KGWLogitsProcessor (class in watermark.kgw.kgw)</a>
+</li>
+        <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWUtils">KGWUtils (class in watermark.kgw.kgw)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="L" class="genindex-section">
+  <h2>L</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/sir/transform_model/index.html#watermark.sir.transform_model.TransformModel.layers">layers (watermark.sir.transform_model.TransformModel attribute)</a>
+</li>
+        <li><a href="autoapi/generation/index.html#generation.LLMGenerator">LLMGenerator (class in generation)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/generator/index.html#generation.generator.LLMGenerator">(class in generation.generator)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/detector_loader/index.html#detector.detector_loader.DetectorLoader.load">load() (detector.detector_loader.DetectorLoader method)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.DetectorLoader.load">(detector.DetectorLoader method)</a>
+</li>
+          <li><a href="autoapi/generation/attack_loader/index.html#generation.attack_loader.AttackLoader.load">(generation.attack_loader.AttackLoader method)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.AttackLoader.load">(generation.AttackLoader method)</a>
+</li>
+          <li><a href="autoapi/generation/gen_loader/index.html#generation.gen_loader.GenLoader.load">(generation.gen_loader.GenLoader method)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.GenLoader.load">(generation.GenLoader method)</a>
+</li>
+          <li><a href="autoapi/watermark/auto_watermark/index.html#watermark.auto_watermark.AutoWatermark.load">(watermark.auto_watermark.AutoWatermark method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/utils/index.html#utils.load_config_file">load_config_file() (in module utils)</a>
+</li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.load_data">load_data() (dataset_loader.cnn_dataset.CNNDataLoader method)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.load_data">(dataset_loader.CNNDataLoader method)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader.load_data">(dataset_loader.fake_true_dataset.FakeTruePairsDataLoader method)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader.load_data">(dataset_loader.FakeTruePairsDataLoader method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/utils/index.html#utils.load_json_as_list">load_json_as_list() (in module utils)</a>
+</li>
+        <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader.load_local">load_local (dataset_loader.fake_true_dataset.FakeTruePairsDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader.load_local">(dataset_loader.FakeTruePairsDataLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/detector_loader/index.html#detector.detector_loader.DetectorLoader.local_weights">local_weights (detector.detector_loader.DetectorLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.DetectorLoader.local_weights">(detector.DetectorLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.log">log (pipeline.create_dataset_pipeline.CreateDatasetPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.log">(pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.log">(pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.log">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.log_path">log_path (pipeline.create_dataset_pipeline.CreateDatasetPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.log_path">(pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.log_path">(pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.log_path">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/index.html#watermark.dip.DIP.logits_processor">logits_processor (watermark.dip.DIP attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIP.logits_processor">(watermark.dip.dip.DIP attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/index.html#watermark.kgw.KGW.logits_processor">(watermark.kgw.KGW attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGW.logits_processor">(watermark.kgw.kgw.KGW attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/index.html#watermark.kgw_e.KGW_E.logits_processor">(watermark.kgw_e.KGW_E attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_E.logits_processor">(watermark.kgw_e.kgw_e.KGW_E attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/index.html#watermark.kgw_p.KGW_P.logits_processor">(watermark.kgw_p.KGW_P attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_P.logits_processor">(watermark.kgw_p.kgw_p.KGW_P attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/index.html#watermark.sir.SIR.logits_processor">(watermark.sir.SIR attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIR.logits_processor">(watermark.sir.sir.SIR attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/index.html#watermark.sweet.SWEET.logits_processor">(watermark.sweet.SWEET attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET.logits_processor">(watermark.sweet.sweet.SWEET attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/index.html#watermark.sweet_p.SWEET_P.logits_processor">(watermark.sweet_p.SWEET_P attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_P.logits_processor">(watermark.sweet_p.sweet_p.SWEET_P attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="M" class="genindex-section">
+  <h2>M</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/generate_mappings/index.html#generate_mappings.main">main() (in module generate_mappings)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils.mapping">mapping (watermark.sir.sir.SIRUtils attribute)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.mapping_name">mapping_name (watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.max_sample_len">max_sample_len (dataset_loader.cnn_dataset.CNNDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.max_sample_len">(dataset_loader.CNNDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader.max_sample_len">(dataset_loader.fake_true_dataset.FakeTruePairsDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader.max_sample_len">(dataset_loader.FakeTruePairsDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.max_sample_len">(generation.article_generator.ArticleGenerator attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.max_sample_len">(generation.ArticleGenerator attribute)</a>
+</li>
+          <li><a href="autoapi/generation/attack_loader/index.html#generation.attack_loader.AttackLoader.max_sample_len">(generation.attack_loader.AttackLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.AttackLoader.max_sample_len">(generation.AttackLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.SemScoreScorer.mean_pooling">mean_pooling() (text_quality_evaluation.scorer.SemScoreScorer method)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.SemScoreScorer.mean_pooling">(text_quality_evaluation.SemScoreScorer method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PPLScorer.metric">metric (text_quality_evaluation.PPLScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PPLScorer.metric">(text_quality_evaluation.scorer.PPLScorer attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/bert_detector/index.html#detector.bert_detector.BertDetector.model">model (detector.bert_detector.BertDetector attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.BertDetector.model">(detector.BertDetector attribute)</a>
+</li>
+          <li><a href="autoapi/openai_utils/index.html#openai_utils.OpenAIAPI.model">(openai_utils.OpenAIAPI attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.BertScoreScorer.model">(text_quality_evaluation.BertScoreScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PrometheusScorer.model">(text_quality_evaluation.PrometheusScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.BertScoreScorer.model">(text_quality_evaluation.scorer.BertScoreScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PrometheusScorer.model">(text_quality_evaluation.scorer.PrometheusScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.SemScoreScorer.model">(text_quality_evaluation.scorer.SemScoreScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.SemScoreScorer.model">(text_quality_evaluation.SemScoreScorer attribute)</a>
+</li>
+          <li><a href="autoapi/transformers_config/index.html#transformers_config.TransformersConfig.model">(transformers_config.TransformersConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/attack_loader/index.html#generation.attack_loader.AttackLoader.model_config">model_config (generation.attack_loader.AttackLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.AttackLoader.model_config">(generation.AttackLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/prompt_paraphrasing_attack/index.html#generation.prompt_paraphrasing_attack.PromptParaphrasingAttack.model_config">(generation.prompt_paraphrasing_attack.PromptParaphrasingAttack attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.PromptParaphrasingAttack.model_config">(generation.PromptParaphrasingAttack attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/configs/index.html#configs.ModelConfig.model_name">model_name (configs.ModelConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/gen_loader/index.html#generation.gen_loader.GenLoader.model_name">(generation.gen_loader.GenLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.GenLoader.model_name">(generation.GenLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/configs/index.html#configs.ModelConfig">ModelConfig (class in configs)</a>
+</li>
+        <li>
+    module
+
+        <ul>
+          <li><a href="autoapi/configs/index.html#module-configs">configs</a>
+</li>
+          <li><a href="autoapi/create_dataset/index.html#module-create_dataset">create_dataset</a>
+</li>
+          <li><a href="autoapi/dataset_loader/index.html#module-dataset_loader">dataset_loader</a>
+</li>
+          <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#module-dataset_loader.cnn_dataset">dataset_loader.cnn_dataset</a>
+</li>
+          <li><a href="autoapi/dataset_loader/dataset_loader_utils/index.html#module-dataset_loader.dataset_loader_utils">dataset_loader.dataset_loader_utils</a>
+</li>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#module-dataset_loader.fake_true_dataset">dataset_loader.fake_true_dataset</a>
+</li>
+          <li><a href="autoapi/detector/index.html#module-detector">detector</a>
+</li>
+          <li><a href="autoapi/detector/bert_detector/index.html#module-detector.bert_detector">detector.bert_detector</a>
+</li>
+          <li><a href="autoapi/detector/detector/index.html#module-detector.detector">detector.detector</a>
+</li>
+          <li><a href="autoapi/detector/detector_loader/index.html#module-detector.detector_loader">detector.detector_loader</a>
+</li>
+          <li><a href="autoapi/detector/fast_detect_gpt/index.html#module-detector.fast_detect_gpt">detector.fast_detect_gpt</a>
+</li>
+          <li><a href="autoapi/detector/gpt_zero_detector/index.html#module-detector.gpt_zero_detector">detector.gpt_zero_detector</a>
+</li>
+          <li><a href="autoapi/detector/watermark_detector/index.html#module-detector.watermark_detector">detector.watermark_detector</a>
+</li>
+          <li><a href="autoapi/gen_utils/index.html#module-gen_utils">gen_utils</a>
+</li>
+          <li><a href="autoapi/generate_mappings/index.html#module-generate_mappings">generate_mappings</a>
+</li>
+          <li><a href="autoapi/generation/index.html#module-generation">generation</a>
+</li>
+          <li><a href="autoapi/generation/article_generator/index.html#module-generation.article_generator">generation.article_generator</a>
+</li>
+          <li><a href="autoapi/generation/attack_loader/index.html#module-generation.attack_loader">generation.attack_loader</a>
+</li>
+          <li><a href="autoapi/generation/gen_loader/index.html#module-generation.gen_loader">generation.gen_loader</a>
+</li>
+          <li><a href="autoapi/generation/gen_params_attack/index.html#module-generation.gen_params_attack">generation.gen_params_attack</a>
+</li>
+          <li><a href="autoapi/generation/generator/index.html#module-generation.generator">generation.generator</a>
+</li>
+          <li><a href="autoapi/generation/prompt_attack/index.html#module-generation.prompt_attack">generation.prompt_attack</a>
+</li>
+          <li><a href="autoapi/generation/prompt_paraphrasing_attack/index.html#module-generation.prompt_paraphrasing_attack">generation.prompt_paraphrasing_attack</a>
+</li>
+          <li><a href="autoapi/openai_utils/index.html#module-openai_utils">openai_utils</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#module-pipeline">pipeline</a>
+</li>
+          <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#module-pipeline.create_dataset_pipeline">pipeline.create_dataset_pipeline</a>
+</li>
+          <li><a href="autoapi/pipeline/experiment_pipeline/index.html#module-pipeline.experiment_pipeline">pipeline.experiment_pipeline</a>
+</li>
+          <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#module-pipeline.experiment_test_detector_pipeline">pipeline.experiment_test_detector_pipeline</a>
+</li>
+          <li><a href="autoapi/pipeline/pipeline_utils/index.html#module-pipeline.pipeline_utils">pipeline.pipeline_utils</a>
+</li>
+          <li><a href="autoapi/pipeline/text_quality_pipeline/index.html#module-pipeline.text_quality_pipeline">pipeline.text_quality_pipeline</a>
+</li>
+          <li><a href="autoapi/run_human_eval/index.html#module-run_human_eval">run_human_eval</a>
+</li>
+          <li><a href="autoapi/run_human_eval_plus/index.html#module-run_human_eval_plus">run_human_eval_plus</a>
+</li>
+          <li><a href="autoapi/test_detector/index.html#module-test_detector">test_detector</a>
+</li>
+          <li><a href="autoapi/test_text_quality/index.html#module-test_text_quality">test_text_quality</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#module-text_quality_evaluation">text_quality_evaluation</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#module-text_quality_evaluation.scorer">text_quality_evaluation.scorer</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer_utils/index.html#module-text_quality_evaluation.scorer_utils">text_quality_evaluation.scorer_utils</a>
+</li>
+          <li><a href="autoapi/transformers_config/index.html#module-transformers_config">transformers_config</a>
+</li>
+          <li><a href="autoapi/utils/index.html#module-utils">utils</a>
+</li>
+          <li><a href="autoapi/watermark/index.html#module-watermark">watermark</a>
+</li>
+          <li><a href="autoapi/watermark/auto_watermark/index.html#module-watermark.auto_watermark">watermark.auto_watermark</a>
+</li>
+          <li><a href="autoapi/watermark/base/index.html#module-watermark.base">watermark.base</a>
+</li>
+          <li><a href="autoapi/watermark/dip/index.html#module-watermark.dip">watermark.dip</a>
+</li>
+          <li><a href="autoapi/watermark/dip/dip/index.html#module-watermark.dip.dip">watermark.dip.dip</a>
+</li>
+          <li><a href="autoapi/watermark/exp/index.html#module-watermark.exp">watermark.exp</a>
+</li>
+          <li><a href="autoapi/watermark/exp/exp/index.html#module-watermark.exp.exp">watermark.exp.exp</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/index.html#module-watermark.kgw">watermark.kgw</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#module-watermark.kgw.kgw">watermark.kgw.kgw</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/index.html#module-watermark.kgw_e">watermark.kgw_e</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#module-watermark.kgw_e.kgw_e">watermark.kgw_e.kgw_e</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/index.html#module-watermark.kgw_p">watermark.kgw_p</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#module-watermark.kgw_p.kgw_p">watermark.kgw_p.kgw_p</a>
+</li>
+          <li><a href="autoapi/watermark/sir/index.html#module-watermark.sir">watermark.sir</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#module-watermark.sir.sir">watermark.sir.sir</a>
+</li>
+          <li><a href="autoapi/watermark/sir/transform_model/index.html#module-watermark.sir.transform_model">watermark.sir.transform_model</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/index.html#module-watermark.sweet">watermark.sweet</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#module-watermark.sweet.sweet">watermark.sweet.sweet</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/index.html#module-watermark.sweet_p">watermark.sweet_p</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#module-watermark.sweet_p.sweet_p">watermark.sweet_p.sweet_p</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="N" class="genindex-section">
+  <h2>N</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PPLScorer.name">name (text_quality_evaluation.PPLScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PrometheusScorer.name">(text_quality_evaluation.PrometheusScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.RefScorer.name">(text_quality_evaluation.RefScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.Scorer.name">(text_quality_evaluation.Scorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.CompareScorer.name">(text_quality_evaluation.scorer.CompareScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PPLScorer.name">(text_quality_evaluation.scorer.PPLScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PrometheusScorer.name">(text_quality_evaluation.scorer.PrometheusScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.RefScorer.name">(text_quality_evaluation.scorer.RefScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.Scorer.name">(text_quality_evaluation.scorer.Scorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.SelfScorer.name">(text_quality_evaluation.scorer.SelfScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.SelfScorer.name">(text_quality_evaluation.SelfScorer attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.nb_docs">nb_docs (watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+        <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.non_attack_experiment_path">non_attack_experiment_path (pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.non_attack_experiment_path">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.BertScoreScorer.num_layers">num_layers (text_quality_evaluation.BertScoreScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.BertScoreScorer.num_layers">(text_quality_evaluation.scorer.BertScoreScorer attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="O" class="genindex-section">
+  <h2>O</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/openai_utils/index.html#openai_utils.openai_util">openai_util (in module openai_utils)</a>
+</li>
+        <li>
+    openai_utils
+
+        <ul>
+          <li><a href="autoapi/openai_utils/index.html#module-openai_utils">module</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/openai_utils/index.html#openai_utils.OpenAIAPI">OpenAIAPI (class in openai_utils)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="P" class="genindex-section">
+  <h2>P</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/generation/prompt_paraphrasing_attack/index.html#generation.prompt_paraphrasing_attack.ParaphrasingAttack.paraphrase">paraphrase() (generation.prompt_paraphrasing_attack.ParaphrasingAttack method)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/prompt_paraphrasing_attack/index.html#generation.prompt_paraphrasing_attack.PromptParaphrasingAttack.paraphrase">(generation.prompt_paraphrasing_attack.PromptParaphrasingAttack method)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.PromptParaphrasingAttack.paraphrase">(generation.PromptParaphrasingAttack method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/attack_loader/index.html#generation.attack_loader.AttackLoader.paraphraser_config">paraphraser_config (generation.attack_loader.AttackLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.AttackLoader.paraphraser_config">(generation.AttackLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/attack_loader/index.html#generation.attack_loader.AttackLoader.paraphraser_model">paraphraser_model (generation.attack_loader.AttackLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.AttackLoader.paraphraser_model">(generation.AttackLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/prompt_paraphrasing_attack/index.html#generation.prompt_paraphrasing_attack.PromptParaphrasingAttack.paraphraser_model">(generation.prompt_paraphrasing_attack.PromptParaphrasingAttack attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.PromptParaphrasingAttack.paraphraser_model">(generation.PromptParaphrasingAttack attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/prompt_paraphrasing_attack/index.html#generation.prompt_paraphrasing_attack.PromptParaphrasingAttack.paraphraser_prompt_config">paraphraser_prompt_config (generation.prompt_paraphrasing_attack.PromptParaphrasingAttack attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.PromptParaphrasingAttack.paraphraser_prompt_config">(generation.PromptParaphrasingAttack attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/prompt_paraphrasing_attack/index.html#generation.prompt_paraphrasing_attack.ParaphrasingAttack">ParaphrasingAttack (class in generation.prompt_paraphrasing_attack)</a>
+</li>
+        <li>
+    pipeline
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#module-pipeline">module</a>
+</li>
+        </ul></li>
+        <li>
+    pipeline.create_dataset_pipeline
+
+        <ul>
+          <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#module-pipeline.create_dataset_pipeline">module</a>
+</li>
+        </ul></li>
+        <li>
+    pipeline.experiment_pipeline
+
+        <ul>
+          <li><a href="autoapi/pipeline/experiment_pipeline/index.html#module-pipeline.experiment_pipeline">module</a>
+</li>
+        </ul></li>
+        <li>
+    pipeline.experiment_test_detector_pipeline
+
+        <ul>
+          <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#module-pipeline.experiment_test_detector_pipeline">module</a>
+</li>
+        </ul></li>
+        <li>
+    pipeline.pipeline_utils
+
+        <ul>
+          <li><a href="autoapi/pipeline/pipeline_utils/index.html#module-pipeline.pipeline_utils">module</a>
+</li>
+        </ul></li>
+        <li>
+    pipeline.text_quality_pipeline
+
+        <ul>
+          <li><a href="autoapi/pipeline/text_quality_pipeline/index.html#module-pipeline.text_quality_pipeline">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PPLScorer">PPLScorer (class in text_quality_evaluation)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PPLScorer">(class in text_quality_evaluation.scorer)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/detector/gpt_zero_detector/index.html#detector.gpt_zero_detector.GPTZero.predict_gpt_zero">predict_gpt_zero() (detector.gpt_zero_detector.GPTZero method)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.GPTZero.predict_gpt_zero">(detector.GPTZero method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.prefix_length">prefix_length (watermark.dip.dip.DIPConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPConfig.prefix_length">(watermark.exp.exp.EXPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig.prefix_length">(watermark.kgw.kgw.KGWConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.prefix_length">(watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig.prefix_length">(watermark.kgw_p.kgw_p.KGW_PConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.prefix_length">(watermark.sweet.sweet.SWEET_Config attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.prefix_length">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.prefix_size">prefix_size (dataset_loader.cnn_dataset.CNNDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.prefix_size">(dataset_loader.CNNDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader.prefix_size">(dataset_loader.fake_true_dataset.FakeTruePairsDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader.prefix_size">(dataset_loader.FakeTruePairsDataLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.prob_ratio">prob_ratio (watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.process_data">process_data() (dataset_loader.cnn_dataset.CNNDataLoader method)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.process_data">(dataset_loader.CNNDataLoader method)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader.process_data">(dataset_loader.fake_true_dataset.FakeTruePairsDataLoader method)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader.process_data">(dataset_loader.FakeTruePairsDataLoader method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PrometheusScorer">PrometheusScorer (class in text_quality_evaluation)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PrometheusScorer">(class in text_quality_evaluation.scorer)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/index.html#generation.PromptAttack">PromptAttack (class in generation)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/prompt_attack/index.html#generation.prompt_attack.PromptAttack">(class in generation.prompt_attack)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/configs/index.html#configs.PromptConfig">PromptConfig (class in configs)</a>
+</li>
+        <li><a href="autoapi/generation/index.html#generation.PromptParaphrasingAttack">PromptParaphrasingAttack (class in generation)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/prompt_paraphrasing_attack/index.html#generation.prompt_paraphrasing_attack.PromptParaphrasingAttack">(class in generation.prompt_paraphrasing_attack)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="R" class="genindex-section">
+  <h2>R</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.ProbEstimatorFastDetectGPT.real_crits">real_crits (detector.fast_detect_gpt.FastDetectGPT.ProbEstimatorFastDetectGPT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.ProbEstimatorFastDetectGPT.real_crits">(detector.FastDetectGPT.ProbEstimatorFastDetectGPT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PrometheusScorer.reassign_scores">reassign_scores() (text_quality_evaluation.PrometheusScorer method)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PrometheusScorer.reassign_scores">(text_quality_evaluation.scorer.PrometheusScorer method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.ref_model">ref_model (detector.fast_detect_gpt.FastDetectGPT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.ref_model">(detector.FastDetectGPT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.ref_tokenizer">ref_tokenizer (detector.fast_detect_gpt.FastDetectGPT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.ref_tokenizer">(detector.FastDetectGPT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.RefScorer">RefScorer (class in text_quality_evaluation)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.RefScorer">(class in text_quality_evaluation.scorer)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.regroup_pairs">regroup_pairs() (dataset_loader.cnn_dataset.CNNDataLoader method)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.regroup_pairs">(dataset_loader.CNNDataLoader method)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader.regroup_pairs">(dataset_loader.fake_true_dataset.FakeTruePairsDataLoader method)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader.regroup_pairs">(dataset_loader.FakeTruePairsDataLoader method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sir/transform_model/index.html#watermark.sir.transform_model.ResidualBlock.relu">relu (watermark.sir.transform_model.ResidualBlock attribute)</a>
+</li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.IDFScorer.remove_stopwords">remove_stopwords() (text_quality_evaluation.IDFScorer method)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.IDFScorer.remove_stopwords">(text_quality_evaluation.scorer.IDFScorer method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sir/transform_model/index.html#watermark.sir.transform_model.ResidualBlock">ResidualBlock (class in watermark.sir.transform_model)</a>
+</li>
+        <li><a href="autoapi/pipeline/text_quality_pipeline/index.html#pipeline.text_quality_pipeline.TextQualityPipeline.return_loss_lists">return_loss_lists (pipeline.text_quality_pipeline.TextQualityPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.TextQualityPipeline.return_loss_lists">(pipeline.TextQualityPipeline attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils.reweight_logits">reweight_logits() (watermark.dip.dip.DIPUtils method)</a>
+</li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils.rng">rng (watermark.dip.dip.DIPUtils attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPUtils.rng">(watermark.exp.exp.EXPUtils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWUtils.rng">(watermark.kgw.kgw.KGWUtils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils.rng">(watermark.kgw_e.kgw_e.KGW_EUtils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PUtils.rng">(watermark.kgw_p.kgw_p.KGW_PUtils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Utils.rng">(watermark.sweet.sweet.SWEET_Utils attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PUtils.rng">(watermark.sweet_p.sweet_p.SWEET_PUtils attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    run_human_eval
+
+        <ul>
+          <li><a href="autoapi/run_human_eval/index.html#module-run_human_eval">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/run_human_eval/index.html#run_human_eval.run_human_eval">run_human_eval() (in module run_human_eval)</a>
+
+        <ul>
+          <li><a href="autoapi/run_human_eval_plus/index.html#run_human_eval_plus.run_human_eval">(in module run_human_eval_plus)</a>
+</li>
+        </ul></li>
+        <li>
+    run_human_eval_plus
+
+        <ul>
+          <li><a href="autoapi/run_human_eval_plus/index.html#module-run_human_eval_plus">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.run_pipeline">run_pipeline() (pipeline.create_dataset_pipeline.CreateDatasetPipeline method)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.run_pipeline">(pipeline.CreateDatasetPipeline method)</a>
+</li>
+          <li><a href="autoapi/pipeline/experiment_pipeline/index.html#pipeline.experiment_pipeline.ExperimentPipeline.run_pipeline">(pipeline.experiment_pipeline.ExperimentPipeline method)</a>
+</li>
+          <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.run_pipeline">(pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline method)</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.run_pipeline">(pipeline.ExperimentTestDetectorPipeline method)</a>
+</li>
+          <li><a href="autoapi/pipeline/text_quality_pipeline/index.html#pipeline.text_quality_pipeline.TextQualityPipeline.run_pipeline">(pipeline.text_quality_pipeline.TextQualityPipeline method)</a>
+</li>
+          <li><a href="autoapi/pipeline/index.html#pipeline.TextQualityPipeline.run_pipeline">(pipeline.TextQualityPipeline method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="S" class="genindex-section">
+  <h2>S</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.scale_dimension">scale_dimension (watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils.scale_vector">scale_vector() (watermark.sir.sir.SIRUtils method)</a>
+</li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.BertScoreScorer.score">score() (text_quality_evaluation.BertScoreScorer method)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.IDFScorer.score">(text_quality_evaluation.IDFScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PPLScorer.score">(text_quality_evaluation.PPLScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PrometheusScorer.score">(text_quality_evaluation.PrometheusScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.RefScorer.score">(text_quality_evaluation.RefScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.Scorer.score">(text_quality_evaluation.Scorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.BertScoreScorer.score">(text_quality_evaluation.scorer.BertScoreScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.CompareScorer.score">(text_quality_evaluation.scorer.CompareScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.IDFScorer.score">(text_quality_evaluation.scorer.IDFScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PPLScorer.score">(text_quality_evaluation.scorer.PPLScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PrometheusScorer.score">(text_quality_evaluation.scorer.PrometheusScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.RefScorer.score">(text_quality_evaluation.scorer.RefScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.Scorer.score">(text_quality_evaluation.scorer.Scorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.SelfScorer.score">(text_quality_evaluation.scorer.SelfScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.SemScoreScorer.score">(text_quality_evaluation.scorer.SemScoreScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.SelfScorer.score">(text_quality_evaluation.SelfScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.SemScoreScorer.score">(text_quality_evaluation.SemScoreScorer method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.BertScoreScorer.score_batch">score_batch() (text_quality_evaluation.BertScoreScorer method)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.IDFScorer.score_batch">(text_quality_evaluation.IDFScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PPLScorer.score_batch">(text_quality_evaluation.PPLScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PrometheusScorer.score_batch">(text_quality_evaluation.PrometheusScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.BertScoreScorer.score_batch">(text_quality_evaluation.scorer.BertScoreScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.IDFScorer.score_batch">(text_quality_evaluation.scorer.IDFScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PPLScorer.score_batch">(text_quality_evaluation.scorer.PPLScorer method)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PrometheusScorer.score_batch">(text_quality_evaluation.scorer.PrometheusScorer method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPUtils.score_sequence">score_sequence() (watermark.dip.dip.DIPUtils method)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWUtils.score_sequence">(watermark.kgw.kgw.KGWUtils method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EUtils.score_sequence">(watermark.kgw_e.kgw_e.KGW_EUtils method)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PUtils.score_sequence">(watermark.kgw_p.kgw_p.KGW_PUtils method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Utils.score_sequence">(watermark.sweet.sweet.SWEET_Utils method)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PUtils.score_sequence">(watermark.sweet_p.sweet_p.SWEET_PUtils method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.Scorer">Scorer (class in text_quality_evaluation)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.Scorer">(class in text_quality_evaluation.scorer)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/text_quality_pipeline/index.html#pipeline.text_quality_pipeline.TextQualityPipeline.scorer">scorer (pipeline.text_quality_pipeline.TextQualityPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.TextQualityPipeline.scorer">(pipeline.TextQualityPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PPLScorer.scorer_model">scorer_model (text_quality_evaluation.PPLScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PPLScorer.scorer_model">(text_quality_evaluation.scorer.PPLScorer attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PPLScorer.scorer_tokenizer">scorer_tokenizer (text_quality_evaluation.PPLScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PPLScorer.scorer_tokenizer">(text_quality_evaluation.scorer.PPLScorer attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.scoring_model">scoring_model (detector.fast_detect_gpt.FastDetectGPT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.scoring_model">(detector.FastDetectGPT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/fast_detect_gpt/index.html#detector.fast_detect_gpt.FastDetectGPT.scoring_tokenizer">scoring_tokenizer (detector.fast_detect_gpt.FastDetectGPT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.FastDetectGPT.scoring_tokenizer">(detector.FastDetectGPT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.seed">seed (dataset_loader.cnn_dataset.CNNDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.seed">(dataset_loader.CNNDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader.seed">(dataset_loader.fake_true_dataset.FakeTruePairsDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader.seed">(dataset_loader.FakeTruePairsDataLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPUtils.seed_rng">seed_rng() (watermark.exp.exp.EXPUtils method)</a>
+</li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.SelfScorer">SelfScorer (class in text_quality_evaluation)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.SelfScorer">(class in text_quality_evaluation.scorer)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.SemScoreScorer">SemScoreScorer (class in text_quality_evaluation)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.SemScoreScorer">(class in text_quality_evaluation.scorer)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPConfig.sequence_length">sequence_length (watermark.exp.exp.EXPConfig attribute)</a>
+</li>
+        <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.set_attack_name">set_attack_name() (generation.article_generator.ArticleGenerator method)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.set_attack_name">(generation.ArticleGenerator method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.set_watermarking_scheme_name">set_watermarking_scheme_name() (generation.article_generator.ArticleGenerator method)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.set_watermarking_scheme_name">(generation.ArticleGenerator method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.PrometheusScorer.shuffle_positions">shuffle_positions() (text_quality_evaluation.PrometheusScorer method)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.PrometheusScorer.shuffle_positions">(text_quality_evaluation.scorer.PrometheusScorer method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sir/index.html#watermark.sir.SIR">SIR (class in watermark.sir)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIR">(class in watermark.sir.sir)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig">SIRConfig (class in watermark.sir.sir)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRLogitsProcessor">SIRLogitsProcessor (class in watermark.sir.sir)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils">SIRUtils (class in watermark.sir.sir)</a>
+</li>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.skip_cache">skip_cache (pipeline.create_dataset_pipeline.CreateDatasetPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.skip_cache">(pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/create_dataset_pipeline/index.html#pipeline.create_dataset_pipeline.CreateDatasetPipeline.skip_train_split">skip_train_split (pipeline.create_dataset_pipeline.CreateDatasetPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.CreateDatasetPipeline.skip_train_split">(pipeline.CreateDatasetPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/openai_utils/index.html#openai_utils.OpenAIAPI.supported_models">supported_models (openai_utils.OpenAIAPI attribute)</a>
+</li>
+        <li><a href="autoapi/watermark/sweet/index.html#watermark.sweet.SWEET">SWEET (class in watermark.sweet)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET">(class in watermark.sweet.sweet)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config">SWEET_Config (class in watermark.sweet.sweet)</a>
+</li>
+        <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_LogitsProcessor">SWEET_LogitsProcessor (class in watermark.sweet.sweet)</a>
+</li>
+        <li><a href="autoapi/watermark/sweet_p/index.html#watermark.sweet_p.SWEET_P">SWEET_P (class in watermark.sweet_p)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_P">(class in watermark.sweet_p.sweet_p)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig">SWEET_PConfig (class in watermark.sweet_p.sweet_p)</a>
+</li>
+        <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor">SWEET_PLogitsProcessor (class in watermark.sweet_p.sweet_p)</a>
+</li>
+        <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PUtils">SWEET_PUtils (class in watermark.sweet_p.sweet_p)</a>
+</li>
+        <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Utils">SWEET_Utils (class in watermark.sweet.sweet)</a>
+</li>
+        <li><a href="autoapi/openai_utils/index.html#openai_utils.OpenAIAPI.system_content">system_content (openai_utils.OpenAIAPI attribute)</a>
+</li>
+        <li><a href="autoapi/configs/index.html#configs.PromptConfig.system_prompt">system_prompt (configs.PromptConfig attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="T" class="genindex-section">
+  <h2>T</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/pipeline/experiment_test_detector_pipeline/index.html#pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline.target_fpr">target_fpr (pipeline.experiment_test_detector_pipeline.ExperimentTestDetectorPipeline attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/index.html#pipeline.ExperimentTestDetectorPipeline.target_fpr">(pipeline.ExperimentTestDetectorPipeline attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/openai_utils/index.html#openai_utils.OpenAIAPI.temperature">temperature (openai_utils.OpenAIAPI attribute)</a>
+</li>
+        <li>
+    test_detector
+
+        <ul>
+          <li><a href="autoapi/test_detector/index.html#module-test_detector">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/test_detector/index.html#test_detector.test_detector">test_detector() (in module test_detector)</a>
+</li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.test_fraction">test_fraction (dataset_loader.cnn_dataset.CNNDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.test_fraction">(dataset_loader.CNNDataLoader attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    test_text_quality
+
+        <ul>
+          <li><a href="autoapi/test_text_quality/index.html#module-test_text_quality">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.text_field">text_field (dataset_loader.cnn_dataset.CNNDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.text_field">(dataset_loader.CNNDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/fake_true_dataset/index.html#dataset_loader.fake_true_dataset.FakeTruePairsDataLoader.text_field">(dataset_loader.fake_true_dataset.FakeTruePairsDataLoader attribute)</a>
+</li>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.FakeTruePairsDataLoader.text_field">(dataset_loader.FakeTruePairsDataLoader attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    text_quality_evaluation
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/index.html#module-text_quality_evaluation">module</a>
+</li>
+        </ul></li>
+        <li>
+    text_quality_evaluation.scorer
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#module-text_quality_evaluation.scorer">module</a>
+</li>
+        </ul></li>
+        <li>
+    text_quality_evaluation.scorer_utils
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer_utils/index.html#module-text_quality_evaluation.scorer_utils">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/pipeline/index.html#pipeline.TextQualityPipeline">TextQualityPipeline (class in pipeline)</a>
+
+        <ul>
+          <li><a href="autoapi/pipeline/text_quality_pipeline/index.html#pipeline.text_quality_pipeline.TextQualityPipeline">(class in pipeline.text_quality_pipeline)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPConfig.threshold">threshold (watermark.exp.exp.EXPConfig attribute)</a>
+</li>
+        <li><a href="autoapi/configs/index.html#configs.ModelConfig.tokenizer">tokenizer (configs.ModelConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/bert_detector/index.html#detector.bert_detector.BertDetector.tokenizer">(detector.bert_detector.BertDetector attribute)</a>
+</li>
+          <li><a href="autoapi/detector/index.html#detector.BertDetector.tokenizer">(detector.BertDetector attribute)</a>
+</li>
+          <li><a href="autoapi/generation/generator/index.html#generation.generator.LLMGenerator.tokenizer">(generation.generator.LLMGenerator attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.LLMGenerator.tokenizer">(generation.LLMGenerator attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.SemScoreScorer.tokenizer">(text_quality_evaluation.scorer.SemScoreScorer attribute)</a>
+</li>
+          <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.SemScoreScorer.tokenizer">(text_quality_evaluation.SemScoreScorer attribute)</a>
+</li>
+          <li><a href="autoapi/transformers_config/index.html#transformers_config.TransformersConfig.tokenizer">(transformers_config.TransformersConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.top_p">top_p (watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        <li><a href="autoapi/dataset_loader/cnn_dataset/index.html#dataset_loader.cnn_dataset.CNNDataLoader.train_fraction">train_fraction (dataset_loader.cnn_dataset.CNNDataLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/dataset_loader/index.html#dataset_loader.CNNDataLoader.train_fraction">(dataset_loader.CNNDataLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/gen_utils/index.html#gen_utils.transform_chat_template_with_prompt">transform_chat_template_with_prompt() (in module gen_utils)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRUtils.transform_model">transform_model (watermark.sir.sir.SIRUtils attribute)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.transform_model_input_dim">transform_model_input_dim (watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.transform_model_name">transform_model_name (watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+        <li>
+    transformers_config
+
+        <ul>
+          <li><a href="autoapi/transformers_config/index.html#module-transformers_config">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/transformers_config/index.html#transformers_config.TransformersConfig">TransformersConfig (class in transformers_config)</a>
+</li>
+        <li><a href="autoapi/watermark/sir/transform_model/index.html#watermark.sir.transform_model.TransformModel">TransformModel (class in watermark.sir.transform_model)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="U" class="genindex-section">
+  <h2>U</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/configs/index.html#configs.ModelConfig.use_chat_template">use_chat_template (configs.ModelConfig attribute)</a>
+</li>
+        <li><a href="autoapi/configs/index.html#configs.PromptConfig.user_prompt">user_prompt (configs.PromptConfig attribute)</a>
+</li>
+        <li>
+    utils
+
+        <ul>
+          <li><a href="autoapi/utils/index.html#module-utils">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/dip/index.html#watermark.dip.DIP.utils">utils (watermark.dip.DIP attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIP.utils">(watermark.dip.dip.DIP attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPLogitsProcessor.utils">(watermark.dip.dip.DIPLogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/index.html#watermark.exp.EXP.utils">(watermark.exp.EXP attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXP.utils">(watermark.exp.exp.EXP attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/index.html#watermark.kgw.KGW.utils">(watermark.kgw.KGW attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGW.utils">(watermark.kgw.kgw.KGW attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWLogitsProcessor.utils">(watermark.kgw.kgw.KGWLogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/index.html#watermark.kgw_e.KGW_E.utils">(watermark.kgw_e.KGW_E attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_E.utils">(watermark.kgw_e.kgw_e.KGW_E attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_ELogitsProcessor.utils">(watermark.kgw_e.kgw_e.KGW_ELogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/index.html#watermark.kgw_p.KGW_P.utils">(watermark.kgw_p.KGW_P attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_P.utils">(watermark.kgw_p.kgw_p.KGW_P attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PLogitsProcessor.utils">(watermark.kgw_p.kgw_p.KGW_PLogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/index.html#watermark.sir.SIR.utils">(watermark.sir.SIR attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIR.utils">(watermark.sir.sir.SIR attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRLogitsProcessor.utils">(watermark.sir.sir.SIRLogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/index.html#watermark.sweet.SWEET.utils">(watermark.sweet.SWEET attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET.utils">(watermark.sweet.sweet.SWEET attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_LogitsProcessor.utils">(watermark.sweet.sweet.SWEET_LogitsProcessor attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/index.html#watermark.sweet_p.SWEET_P.utils">(watermark.sweet_p.SWEET_P attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_P.utils">(watermark.sweet_p.sweet_p.SWEET_P attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor.utils">(watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="V" class="genindex-section">
+  <h2>V</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.IDFScorer.vectorizer">vectorizer (text_quality_evaluation.IDFScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.IDFScorer.vectorizer">(text_quality_evaluation.scorer.IDFScorer attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/transformers_config/index.html#transformers_config.TransformersConfig.vocab_size">vocab_size (transformers_config.TransformersConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.vocab_size">(watermark.dip.dip.DIPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/exp/exp/index.html#watermark.exp.exp.EXPConfig.vocab_size">(watermark.exp.exp.EXPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig.vocab_size">(watermark.kgw.kgw.KGWConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.vocab_size">(watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig.vocab_size">(watermark.kgw_p.kgw_p.KGW_PConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.vocab_size">(watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.vocab_size">(watermark.sweet.sweet.SWEET_Config attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.vocab_size">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="W" class="genindex-section">
+  <h2>W</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    watermark
+
+        <ul>
+          <li><a href="autoapi/watermark/index.html#module-watermark">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.auto_watermark
+
+        <ul>
+          <li><a href="autoapi/watermark/auto_watermark/index.html#module-watermark.auto_watermark">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.base
+
+        <ul>
+          <li><a href="autoapi/watermark/base/index.html#module-watermark.base">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.dip
+
+        <ul>
+          <li><a href="autoapi/watermark/dip/index.html#module-watermark.dip">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.dip.dip
+
+        <ul>
+          <li><a href="autoapi/watermark/dip/dip/index.html#module-watermark.dip.dip">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.exp
+
+        <ul>
+          <li><a href="autoapi/watermark/exp/index.html#module-watermark.exp">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.exp.exp
+
+        <ul>
+          <li><a href="autoapi/watermark/exp/exp/index.html#module-watermark.exp.exp">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.kgw
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw/index.html#module-watermark.kgw">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.kgw.kgw
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#module-watermark.kgw.kgw">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.kgw_e
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_e/index.html#module-watermark.kgw_e">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.kgw_e.kgw_e
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#module-watermark.kgw_e.kgw_e">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.kgw_p
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_p/index.html#module-watermark.kgw_p">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.kgw_p.kgw_p
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#module-watermark.kgw_p.kgw_p">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.sir
+
+        <ul>
+          <li><a href="autoapi/watermark/sir/index.html#module-watermark.sir">module</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    watermark.sir.sir
+
+        <ul>
+          <li><a href="autoapi/watermark/sir/sir/index.html#module-watermark.sir.sir">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.sir.transform_model
+
+        <ul>
+          <li><a href="autoapi/watermark/sir/transform_model/index.html#module-watermark.sir.transform_model">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.sweet
+
+        <ul>
+          <li><a href="autoapi/watermark/sweet/index.html#module-watermark.sweet">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.sweet.sweet
+
+        <ul>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#module-watermark.sweet.sweet">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.sweet_p
+
+        <ul>
+          <li><a href="autoapi/watermark/sweet_p/index.html#module-watermark.sweet_p">module</a>
+</li>
+        </ul></li>
+        <li>
+    watermark.sweet_p.sweet_p
+
+        <ul>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#module-watermark.sweet_p.sweet_p">module</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/watermark/auto_watermark/index.html#watermark.auto_watermark.WATERMARK_MAPPING_NAMES">WATERMARK_MAPPING_NAMES (in module watermark.auto_watermark)</a>
+</li>
+        <li><a href="autoapi/watermark/auto_watermark/index.html#watermark.auto_watermark.watermark_name_from_alg_name">watermark_name_from_alg_name() (in module watermark.auto_watermark)</a>
+</li>
+        <li><a href="autoapi/detector/index.html#detector.WatermarkDetector">WatermarkDetector (class in detector)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/watermark_detector/index.html#detector.watermark_detector.WatermarkDetector">(class in detector.watermark_detector)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/watermark_detector/index.html#detector.watermark_detector.WatermarkDetector.watermarking_scheme">watermarking_scheme (detector.watermark_detector.WatermarkDetector attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.WatermarkDetector.watermarking_scheme">(detector.WatermarkDetector attribute)</a>
+</li>
+          <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.watermarking_scheme">(generation.article_generator.ArticleGenerator attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.watermarking_scheme">(generation.ArticleGenerator attribute)</a>
+</li>
+          <li><a href="autoapi/generation/attack_loader/index.html#generation.attack_loader.AttackLoader.watermarking_scheme">(generation.attack_loader.AttackLoader attribute)</a>
+</li>
+          <li><a href="autoapi/generation/index.html#generation.AttackLoader.watermarking_scheme">(generation.AttackLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/generation/article_generator/index.html#generation.article_generator.ArticleGenerator.watermarking_scheme_name">watermarking_scheme_name (generation.article_generator.ArticleGenerator attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/generation/index.html#generation.ArticleGenerator.watermarking_scheme_name">(generation.ArticleGenerator attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/detector/detector_loader/index.html#detector.detector_loader.DetectorLoader.weights_checkpoint">weights_checkpoint (detector.detector_loader.DetectorLoader attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/detector/index.html#detector.DetectorLoader.weights_checkpoint">(detector.DetectorLoader attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/text_quality_evaluation/index.html#text_quality_evaluation.IDFScorer.word_to_idf">word_to_idf (text_quality_evaluation.IDFScorer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/text_quality_evaluation/scorer/index.html#text_quality_evaluation.scorer.IDFScorer.word_to_idf">(text_quality_evaluation.scorer.IDFScorer attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="Z" class="genindex-section">
+  <h2>Z</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/watermark/dip/dip/index.html#watermark.dip.dip.DIPConfig.z_threshold">z_threshold (watermark.dip.dip.DIPConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/watermark/kgw/kgw/index.html#watermark.kgw.kgw.KGWConfig.z_threshold">(watermark.kgw.kgw.KGWConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_e/kgw_e/index.html#watermark.kgw_e.kgw_e.KGW_EConfig.z_threshold">(watermark.kgw_e.kgw_e.KGW_EConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/kgw_p/kgw_p/index.html#watermark.kgw_p.kgw_p.KGW_PConfig.z_threshold">(watermark.kgw_p.kgw_p.KGW_PConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sir/sir/index.html#watermark.sir.sir.SIRConfig.z_threshold">(watermark.sir.sir.SIRConfig attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet/sweet/index.html#watermark.sweet.sweet.SWEET_Config.z_threshold">(watermark.sweet.sweet.SWEET_Config attribute)</a>
+</li>
+          <li><a href="autoapi/watermark/sweet_p/sweet_p/index.html#watermark.sweet_p.sweet_p.SWEET_PConfig.z_threshold">(watermark.sweet_p.sweet_p.SWEET_PConfig attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Marluxiaboss
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=2709fde1"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    </body>
+</html>

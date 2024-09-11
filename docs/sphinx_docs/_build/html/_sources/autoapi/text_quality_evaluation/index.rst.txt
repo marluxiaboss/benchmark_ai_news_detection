@@ -1,0 +1,233 @@
+text_quality_evaluation
+=======================
+
+.. py:module:: text_quality_evaluation
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/text_quality_evaluation/scorer/index
+   /autoapi/text_quality_evaluation/scorer_utils/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   text_quality_evaluation.Scorer
+   text_quality_evaluation.SelfScorer
+   text_quality_evaluation.RefScorer
+   text_quality_evaluation.BertScoreScorer
+   text_quality_evaluation.SemScoreScorer
+   text_quality_evaluation.IDFScorer
+   text_quality_evaluation.PrometheusScorer
+   text_quality_evaluation.PPLScorer
+
+
+Package Contents
+----------------
+
+.. py:class:: Scorer(name)
+
+   Bases: :py:obj:`abc.ABC`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: name
+
+
+   .. py:method:: score() -> float
+      :abstractmethod:
+
+
+
+.. py:class:: SelfScorer(name)
+
+   Bases: :py:obj:`Scorer`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: name
+
+
+   .. py:method:: score(eval_texts: str) -> float
+      :abstractmethod:
+
+
+
+.. py:class:: RefScorer(name)
+
+   Bases: :py:obj:`Scorer`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: name
+
+
+   .. py:method:: score(eval_texts: str, ref_text: str) -> float
+      :abstractmethod:
+
+
+
+.. py:class:: BertScoreScorer(name)
+
+   Bases: :py:obj:`RefScorer`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: model
+      :value: 'microsoft/deberta-xlarge-mnli'
+
+
+
+   .. py:attribute:: num_layers
+      :value: 40
+
+
+
+   .. py:method:: score(eval_text: str, ref_text: str) -> float
+
+
+   .. py:method:: score_batch(eval_texts: list[str], ref_texts: list[str], batch_size) -> float
+
+
+.. py:class:: SemScoreScorer(name)
+
+   Bases: :py:obj:`RefScorer`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: tokenizer
+
+
+   .. py:attribute:: model
+
+
+   .. py:method:: mean_pooling(model_output, attention_mask)
+
+
+   .. py:method:: score(eval_text: str, ref_text: str) -> float
+
+
+.. py:class:: IDFScorer(name, corpus: list[str])
+
+   Bases: :py:obj:`SelfScorer`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: corpus
+
+
+   .. py:attribute:: filtered_corpus
+
+
+   .. py:attribute:: vectorizer
+
+
+   .. py:attribute:: feature_names
+
+
+   .. py:attribute:: idf_values
+
+
+   .. py:attribute:: word_to_idf
+
+
+   .. py:method:: remove_stopwords(corpus: list[str])
+
+
+   .. py:method:: score(eval_text: str) -> float
+
+
+   .. py:method:: score_batch(eval_texts: list[str], batch_size=1) -> float
+
+
+.. py:class:: PrometheusScorer(name, compare_human_to_ai: bool = False)
+
+   Bases: :py:obj:`CompareScorer`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: name
+
+
+   .. py:attribute:: model
+
+
+   .. py:attribute:: judge
+
+
+   .. py:attribute:: compare_human_to_ai
+
+
+   .. py:method:: score(eval_text1: str, eval_text2: str, ref_text: Optional[str] = None) -> float
+
+
+   .. py:method:: shuffle_positions(text_list1: list[str], text_list2: list[str]) -> tuple[list[str], list[str]]
+
+
+   .. py:method:: reassign_scores(scores: list[int], text_list1: list, text_list2: list) -> list[int]
+
+
+   .. py:method:: score_batch(eval_texts1: list[str], eval_texts2: list[str], ref_texts: list[str], instructions: list[str], rubric: str, batch_size=1) -> float
+
+
+.. py:class:: PPLScorer(name, model, tokenizer)
+
+   Bases: :py:obj:`SelfScorer`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: name
+
+
+   .. py:attribute:: scorer_model
+
+
+   .. py:attribute:: scorer_tokenizer
+
+
+   .. py:attribute:: device
+
+
+   .. py:attribute:: metric
+
+
+   .. py:method:: score(eval_text: str) -> float
+
+
+   .. py:method:: score_batch(eval_texts: list[str], batch_size=1, return_loss_lists=False) -> float
+
+      See https://huggingface.co/spaces/evaluate-measurement/perplexity/blob/main/perplexity.py
+
+
+

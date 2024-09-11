@@ -1,0 +1,184 @@
+watermark.sweet_p.sweet_p
+=========================
+
+.. py:module:: watermark.sweet_p.sweet_p
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   watermark.sweet_p.sweet_p.SWEET_PConfig
+   watermark.sweet_p.sweet_p.SWEET_PUtils
+   watermark.sweet_p.sweet_p.SWEET_PLogitsProcessor
+   watermark.sweet_p.sweet_p.SWEET_P
+
+
+Module Contents
+---------------
+
+.. py:class:: SWEET_PConfig(algorithm_config: dict, gen_model, model_config: utils.configs.ModelConfig, *args, **kwargs)
+
+   Config class for SWEET algorithm, load config file and initialize parameters.
+
+
+   .. py:attribute:: config_dict
+
+
+   .. py:attribute:: gamma
+
+
+   .. py:attribute:: delta
+
+
+   .. py:attribute:: hash_key
+
+
+   .. py:attribute:: z_threshold
+
+
+   .. py:attribute:: prefix_length
+
+
+   .. py:attribute:: entropy_threshold
+
+
+   .. py:attribute:: cut_off_method
+
+
+   .. py:attribute:: prob_ratio
+
+
+   .. py:attribute:: top_p
+
+
+   .. py:attribute:: generation_model
+
+
+   .. py:attribute:: generation_tokenizer
+
+
+   .. py:attribute:: vocab_size
+
+
+   .. py:attribute:: device
+
+
+   .. py:attribute:: gen_kwargs
+
+
+.. py:class:: SWEET_PUtils(config: SWEET_PConfig, *args, **kwargs)
+
+   Utility class for SWEET algorithm, contains helper functions.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: rng
+
+
+   .. py:method:: _seed_rng(input_ids: torch.LongTensor) -> None
+
+      Seed the random number generator with the last prefix_length tokens of the input_ids.
+
+
+
+   .. py:method:: get_greenlist_ids(input_ids: torch.LongTensor) -> list[int]
+
+      Get greenlist ids for the input_ids.
+
+
+
+   .. py:method:: calculate_entropy(model, tokenized_text: torch.Tensor)
+
+      Calculate entropy for each token in the tokenized_text.
+
+
+
+   .. py:method:: _compute_z_score(observed_count: int, T: int) -> float
+
+      Compute z-score for the observed count of green tokens.
+
+
+
+   .. py:method:: score_sequence(input_ids: torch.Tensor, entropy_list: list[float]) -> tuple[float, list[int], list[int]]
+
+      Score the input_ids based on the greenlist and entropy.
+
+
+
+.. py:class:: SWEET_PLogitsProcessor(config: SWEET_PConfig, utils: SWEET_PUtils, *args, **kwargs)
+
+   Bases: :py:obj:`transformers.LogitsProcessor`
+
+
+   Logits processor for SWEET algorithm, contains the logic to bias the logits.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: utils
+
+
+   .. py:method:: _calc_greenlist_mask(scores: torch.FloatTensor, greenlist_token_ids: torch.LongTensor) -> torch.BoolTensor
+
+      Calculate greenlist mask for the given scores and greenlist token ids.
+
+
+
+   .. py:method:: _bias_greenlist_logits(scores: torch.Tensor, greenlist_mask: torch.Tensor, greenlist_bias: float) -> torch.Tensor
+
+      Bias the scores for the greenlist tokens.
+
+
+
+   .. py:method:: __call__old(input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor
+
+      Process logits to add watermark.
+
+
+
+   .. py:method:: find_probability_mask(raw_probs: torch.FloatTensor) -> torch.BoolTensor
+
+
+   .. py:method:: __call__(input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor
+
+
+.. py:class:: SWEET_P(algorithm_config: dict, gen_model, transformers_config: utils.configs.ModelConfig, *args, **kwargs)
+
+   Bases: :py:obj:`base.BaseWatermark`
+
+
+   Top-level class for SWEET algorithm.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: utils
+
+
+   .. py:attribute:: logits_processor
+
+
+   .. py:method:: generate_watermarked_text(prompt: str, *args, **kwargs)
+
+      Generate watermarked text.
+
+
+
+   .. py:method:: generate(encoded_prompts: list, *args, **kwargs) -> str
+
+      Generate watermarked text. Takes a list of encoded prompts as input, like transformers model.generate.
+
+
+
+   .. py:method:: detect_watermark(text: str, return_dict: bool = True, *args, **kwargs)
+
+      Detect watermark in the text.
+
+
+

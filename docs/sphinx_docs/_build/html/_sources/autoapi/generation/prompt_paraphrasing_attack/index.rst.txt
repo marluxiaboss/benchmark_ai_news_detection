@@ -1,0 +1,87 @@
+generation.prompt_paraphrasing_attack
+=====================================
+
+.. py:module:: generation.prompt_paraphrasing_attack
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   generation.prompt_paraphrasing_attack.ParaphrasingAttack
+   generation.prompt_paraphrasing_attack.PromptParaphrasingAttack
+
+
+Module Contents
+---------------
+
+.. py:class:: ParaphrasingAttack(gen_model: generation.generator.LLMGenerator, gen_config: utils.configs.ModelConfig, gen_prompt_config: utils.configs.PromptConfig, max_sample_len: int, watermarking_scheme: watermark.auto_watermark.AutoWatermark = None)
+
+   Bases: :py:obj:`generation.article_generator.ArticleGenerator`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:method:: paraphrase(texts, nb_paraphrasing=1, batch_size=1) -> list
+
+
+.. py:class:: PromptParaphrasingAttack(gen_model: generation.generator.LLMGenerator, gen_config: utils.configs.ModelConfig, gen_prompt_config: utils.configs.PromptConfig, paraphraser_model: generation.generator.LLMGenerator, paraphraser_config: utils.configs.ModelConfig, paraphraser_prompt_config: utils.configs.PromptConfig, max_sample_len: int, watermarking_scheme: watermark.auto_watermark.AutoWatermark = None)
+
+   Bases: :py:obj:`generation.article_generator.ArticleGenerator`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: paraphraser_model
+
+
+   .. py:attribute:: paraphraser_prompt_config
+
+
+   .. py:attribute:: model_config
+
+
+   .. py:attribute:: attack_name
+      :value: 'paraphrasing_attack'
+
+
+
+   .. py:method:: paraphrase(texts: list[str], nb_paraphrasing: int = 1, batch_size: int = 1) -> list[str]
+
+      Paraphrasing function used after the initial text generation.
+
+      Parameters:
+          texts: list
+              Initial generated texts to be paraphrased.
+          nb_paraphrasing: int
+              Number of recursive paraphrasing to be done.
+          batch_size: int
+              The batch size to use for generation.
+
+      Returns:
+          fake_articles: list
+              A list of paraphrased generated texts.
+
+
+
+   .. py:method:: generate_adversarial_text(prefixes: list[str], batch_size: int = 1) -> list[str]
+
+      Generate text with paraphrasing.
+
+      Parameters:
+          prefixes: list
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation.
+
+      Returns:
+          paraphrased_fake_articles: list
+              A list of generated text.
+
+
+
