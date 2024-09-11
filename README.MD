@@ -2,6 +2,11 @@
 The purpose of this benchmark is to evaluate LLM detectors, especially against evasion attacks. So far, the benchmark is based on the detection of short LLM-generated news articles, but it can be extended to cover different detection tasks.  
 The main consideration is to make the benchmark easy to extend with different datasets, detectors and evasion attacks
 
+<p>
+| <a href="..."><b>Documentation</b></a> | <a href="https://arxiv.org/abs/2409.03291"><b>Paper</b></a> |
+
+</p>
+
 ## Features
 - Detectors and watermark detection benchmarking (adversarial + non-adversarial)
 - LLM-generated watermarked text quality benchmarking
