@@ -1,0 +1,68 @@
+detector.gpt_zero_detector
+==========================
+
+.. py:module:: detector.gpt_zero_detector
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector.gpt_zero_detector.GPTZero
+
+
+Module Contents
+---------------
+
+.. py:class:: GPTZero(api_key, debug_mode=False)
+
+   Bases: :py:obj:`detector.detector.Detector`
+
+
+   .. py:attribute:: api_key
+
+
+   .. py:attribute:: debug_mode
+
+
+   .. py:method:: predict_gpt_zero(text, api_key, debug_mode=False) -> dict
+
+      Predict the GPT-Zero score for the text.
+
+      Parameters:
+      ----------
+          text: str
+              The text to predict
+          api_key: str
+              The API key
+          debug_mode: bool
+              Whether to print the debug information
+
+      Returns:
+      ----------
+          dict
+              The prediction result
+
+
+
+   .. py:method:: detect(texts: list, batch_size: int, detection_threshold: float = 0.5) -> tuple[list[int], list[float], list[int]]
+
+      Detect the GPT-Zero score for the texts.
+
+      Parameters:
+      ----------
+          texts: list
+              The texts to detect
+          batch_size: int
+              The batch size
+          detection_threshold: float
+              The threshold to use for the detection
+
+      Returns:
+      ----------
+          tuple[list[int], list[float], list[int]]
+              The predictions, the logits for the positive class, and the predictions at the threshold
+
+
+

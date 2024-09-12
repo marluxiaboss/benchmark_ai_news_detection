@@ -1,0 +1,43 @@
+watermark.sir.transform_model
+=============================
+
+.. py:module:: watermark.sir.transform_model
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   watermark.sir.transform_model.ResidualBlock
+   watermark.sir.transform_model.TransformModel
+
+
+Module Contents
+---------------
+
+.. py:class:: ResidualBlock(dim)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   .. py:attribute:: fc
+
+
+   .. py:attribute:: relu
+
+
+   .. py:method:: forward(x)
+
+
+.. py:class:: TransformModel(num_layers=4, input_dim=1024, hidden_dim=500, output_dim=300)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   .. py:attribute:: layers
+
+
+   .. py:method:: forward(x)
+
+

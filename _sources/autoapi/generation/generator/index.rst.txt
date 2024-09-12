@@ -1,0 +1,75 @@
+generation.generator
+====================
+
+.. py:module:: generation.generator
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   generation.generator.LLMGenerator
+
+
+Module Contents
+---------------
+
+.. py:class:: LLMGenerator(model: transformers.AutoModelForCausalLM, model_config: utils.configs.ModelConfig)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   .. py:attribute:: generator
+
+
+   .. py:attribute:: tokenizer
+
+
+   .. py:attribute:: device
+
+
+   .. py:attribute:: gen_params
+
+
+   .. py:method:: forward(samples: list, batch_size: int = 1, watermarking_scheme: Optional[watermark.auto_watermark.AutoWatermark] = None) -> list[str]
+
+      Generate text from a list of input contexts.
+
+      Parameters:
+      ----------
+          samples: list
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation. Defaults to 1.
+          watermarking_scheme: AutoWatermark
+              The watermarking scheme to use for generation.
+              If provided, it should be an instance of LogitsProcessor. Defaults to None.
+
+      Returns:
+      -------
+          list[str]
+              A list of generated texts.
+
+
+
+   .. py:method:: forward_debug(samples: list, batch_size: int = 1, watermarking_scheme: Optional[watermark.auto_watermark.AutoWatermark] = None) -> list[str]
+
+      Takes a list of input contexts and generates text using the model.
+
+      Parameters:
+      ----------
+          samples: list
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation.
+          watermarking_scheme: LogitsProcessor
+              The watermarking scheme to use for generation.
+
+      Returns:
+      -------
+          tuple
+              A tuple containing the generated texts, the raw logits, and the processed logits.
+
+
+

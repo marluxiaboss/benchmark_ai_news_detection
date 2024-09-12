@@ -1,0 +1,31 @@
+watermark.base
+==============
+
+.. py:module:: watermark.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   watermark.base.BaseWatermark
+
+
+Module Contents
+---------------
+
+.. py:class:: BaseWatermark(algorithm_config: str, gen_model, model_config: utils.configs.ModelConfig, *args, **kwargs)
+
+   .. py:method:: generate_watermarked_text(prompt: str, *args, **kwargs) -> str
+
+
+   .. py:method:: generate_unwatermarked_text(prompt: str, *args, **kwargs) -> str
+
+      Generate unwatermarked text.
+
+
+
+   .. py:method:: detect_watermark(text: str, return_dict: bool = True, *args, **kwargs) -> Union[tuple, dict]
+
+

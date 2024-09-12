@@ -1,0 +1,31 @@
+create_dataset
+==============
+
+.. py:module:: create_dataset
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   create_dataset.choose_dataset
+   create_dataset.choose_generator
+   create_dataset.choose_watermarking_scheme
+   create_dataset.choose_attack
+   create_dataset.create_dataset
+
+
+Module Contents
+---------------
+
+.. py:function:: choose_dataset(dataset_name: str, dataset_size: int, max_sample_len: int, prefix_size: int)
+
+.. py:function:: choose_generator(model_name: str, gen_params, device: str)
+
+.. py:function:: choose_watermarking_scheme(cfg: omegaconf.DictConfig, watermarking_scheme_name: str, gen, model_config)
+
+.. py:function:: choose_attack(cfg: omegaconf.DictConfig, attack_type: str, gen_model, model_config, max_sample_len, watermarking_scheme=None, paraphraser_model=None, paraphraser_config=None)
+
+.. py:function:: create_dataset(cfg: omegaconf.DictConfig)
+

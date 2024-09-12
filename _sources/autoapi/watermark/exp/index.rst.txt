@@ -1,0 +1,58 @@
+watermark.exp
+=============
+
+.. py:module:: watermark.exp
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/watermark/exp/exp/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   watermark.exp.EXP
+
+
+Package Contents
+----------------
+
+.. py:class:: EXP(algorithm_config: dict, gen_model, transformers_config: utils.configs.ModelConfig, *args, **kwargs)
+
+   Bases: :py:obj:`base.BaseWatermark`
+
+
+   Top-level class for the EXP algorithm.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: utils
+
+
+   .. py:method:: generate_watermarked_text(prompt: str, *args, **kwargs) -> str
+
+      Generate watermarked text using the EXP algorithm.
+
+
+
+   .. py:method:: generate(encoded_prompts: list, *args, **kwargs) -> str
+
+      Generate watermarked text. Takes a list of encoded prompts as input, like transformers model.generate.
+
+
+
+   .. py:method:: detect_watermark(text: str, return_dict: bool = True, *args, **kwargs) -> dict
+
+      Detect watermark in the text.
+
+
+

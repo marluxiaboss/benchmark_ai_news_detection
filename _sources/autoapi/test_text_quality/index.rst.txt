@@ -1,0 +1,22 @@
+test_text_quality
+=================
+
+.. py:module:: test_text_quality
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   test_text_quality.init_pipelines
+   test_text_quality.evaluate_text_quality
+
+
+Module Contents
+---------------
+
+.. py:function:: init_pipelines(cfg: omegaconf.DictConfig, log)
+
+.. py:function:: evaluate_text_quality(cfg: omegaconf.DictConfig)
+

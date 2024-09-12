@@ -1,0 +1,190 @@
+watermark.sir.sir
+=================
+
+.. py:module:: watermark.sir.sir
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   watermark.sir.sir.SIRConfig
+   watermark.sir.sir.SIRUtils
+   watermark.sir.sir.SIRLogitsProcessor
+   watermark.sir.sir.SIR
+
+
+Module Contents
+---------------
+
+.. py:class:: SIRConfig(algorithm_config: dict, gen_model, model_config: utils.configs.ModelConfig, *args, **kwargs)
+
+   Config class for SIR algorithm, load config file and initialize parameters.
+
+
+   .. py:attribute:: config_dict
+
+
+   .. py:attribute:: delta
+
+
+   .. py:attribute:: chunk_length
+
+
+   .. py:attribute:: scale_dimension
+
+
+   .. py:attribute:: z_threshold
+
+
+   .. py:attribute:: transform_model_input_dim
+
+
+   .. py:attribute:: transform_model_name
+
+
+   .. py:attribute:: embedding_model_path
+
+
+   .. py:attribute:: mapping_name
+
+
+   .. py:attribute:: generation_model
+
+
+   .. py:attribute:: generation_tokenizer
+
+
+   .. py:attribute:: vocab_size
+
+
+   .. py:attribute:: device
+
+
+   .. py:attribute:: gen_kwargs
+
+
+.. py:class:: SIRUtils(config: SIRConfig, *args, **kwargs)
+
+   Utility class for SIR algorithm, contains helper functions.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: transform_model
+
+
+   .. py:attribute:: embedding_tokenizer
+
+
+   .. py:attribute:: embedding_model
+
+
+   .. py:attribute:: mapping
+
+
+   .. py:method:: get_embedding(sentence: str) -> torch.FloatTensor
+
+      Get the embedding of the input sentence.
+
+
+
+   .. py:method:: get_text_split(sentence: str) -> list[list[str]]
+
+      Split the input text into chunks of words.
+
+
+
+   .. py:method:: scale_vector(v: numpy.array) -> numpy.array
+
+      Scale the input vector using tanh function.
+
+
+
+   .. py:method:: _get_mapping(mapping_name: str) -> list[int]
+
+      Get the mapping for the input tokens.
+
+
+
+   .. py:method:: _get_context_sentence(input_ids: torch.LongTensor)
+
+      Get the context sentence from the input_ids.
+
+
+
+   .. py:method:: _get_transform_model(model_name: str, input_dim: int) -> watermark.sir.transform_model.TransformModel
+
+      Get the transform model from the provided model name.
+
+
+
+   .. py:method:: get_bias(input_ids: torch.LongTensor) -> list[int]
+
+      Get the bias for the input_ids.
+
+
+
+.. py:class:: SIRLogitsProcessor(config: SIRConfig, utils: SIRUtils, *args, **kwargs)
+
+   Bases: :py:obj:`transformers.LogitsProcessor`
+
+
+   Logits processor for SIR algorithm.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: utils
+
+
+   .. py:method:: _bias_logits(scores: torch.LongTensor, batched_bias: torch.FloatTensor) -> torch.FloatTensor
+
+      Bias the logits using the batched_bias.
+
+
+
+   .. py:method:: __call__(input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor
+
+      Process the logits to add watermark.
+
+
+
+.. py:class:: SIR(algorithm_config: dict, gen_model, transformers_config: utils.configs.ModelConfig, *args, **kwargs)
+
+   Bases: :py:obj:`base.BaseWatermark`
+
+
+   Top-level class for SIR algorithm.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: utils
+
+
+   .. py:attribute:: logits_processor
+
+
+   .. py:method:: generate_watermarked_text(prompt: str, *args, **kwargs)
+
+      Generate watermarked text.
+
+
+
+   .. py:method:: generate(encoded_prompts: list, *args, **kwargs) -> str
+
+      Generate watermarked text. Takes a list of encoded prompts as input, like transformers model.generate.
+
+
+
+   .. py:method:: detect_watermark(text: str, return_dict: bool = True, *args, **kwargs)
+
+      Detect watermark in the input text.
+
+
+

@@ -1,0 +1,378 @@
+generation
+==========
+
+.. py:module:: generation
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/generation/article_generator/index
+   /autoapi/generation/attack_loader/index
+   /autoapi/generation/gen_loader/index
+   /autoapi/generation/gen_params_attack/index
+   /autoapi/generation/generator/index
+   /autoapi/generation/prompt_attack/index
+   /autoapi/generation/prompt_paraphrasing_attack/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   generation.ArticleGenerator
+   generation.GenParamsAttack
+   generation.LLMGenerator
+   generation.PromptAttack
+   generation.PromptParaphrasingAttack
+   generation.GenLoader
+   generation.AttackLoader
+
+
+Package Contents
+----------------
+
+.. py:class:: ArticleGenerator(gen_model: generation.generator.LLMGenerator, gen_config: utils.configs.ModelConfig, gen_prompt_config: utils.configs.PromptConfig, max_sample_len: int, watermarking_scheme: watermark.auto_watermark.AutoWatermark = None)
+
+   Bases: :py:obj:`abc.ABC`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: gen_model
+
+
+   .. py:attribute:: gen_prompt_config
+
+
+   .. py:attribute:: gen_model_config
+
+
+   .. py:attribute:: max_sample_len
+
+
+   .. py:attribute:: watermarking_scheme
+
+
+   .. py:attribute:: attack_name
+      :value: ''
+
+
+
+   .. py:attribute:: watermarking_scheme_name
+      :value: ''
+
+
+
+   .. py:attribute:: gen_name
+
+
+   .. py:method:: generate_text(prefixes, batch_size=1) -> list[str]
+
+      Takes a list of input contexts and generates text using the model.
+
+      Parameters:
+      ----------
+          prefixes: list
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation.
+
+      Returns:
+      ----------
+          fake_articles: list
+              A list of generated text.
+
+
+
+   .. py:method:: set_attack_name(attack_name: str) -> None
+
+      Public setter for the attack name.
+
+      Parameters:
+      ----------
+          attack_name: str
+              The name of the attack.
+
+
+
+   .. py:method:: set_watermarking_scheme_name(watermarking_scheme_name: str) -> None
+
+      Public setter for the watermarking scheme name.
+
+      Parameters:
+      ----------
+          watermarking_scheme_name: str
+              The name of the watermarking scheme.
+
+
+
+   .. py:method:: generate_adversarial_text(prefixes: list, batch_size: int = 1) -> list[str]
+      :abstractmethod:
+
+
+      This is the adversarial version of text generation.
+      All attack should generate text at some point. Either generate text in a specific way or modify the generated text.
+
+      Parameters:
+      ----------
+          prefixes: list
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation.
+
+
+
+.. py:class:: GenParamsAttack(gen_model: generation.generator.LLMGenerator, gen_config: utils.configs.ModelConfig, gen_prompt_config: utils.configs.PromptConfig, adversarial_gen_params: dict, max_sample_len: int, watermarking_scheme: watermark.auto_watermark.AutoWatermark = None)
+
+   Bases: :py:obj:`generation.article_generator.ArticleGenerator`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: adversarial_gen_params
+
+
+   .. py:attribute:: attack_name
+      :value: 'gen_parameters_attack'
+
+
+
+   .. py:method:: generate_adversarial_text(prefixes: list[str], batch_size: int = 1) -> list[str]
+
+      Generate text with adversarial generation parameters.
+
+      Parameters:
+      ----------
+          prefixes: list
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation.
+
+      Returns:
+      -------
+          fake_articles: list
+              A list of generated text.
+
+
+
+.. py:class:: LLMGenerator(model: transformers.AutoModelForCausalLM, model_config: utils.configs.ModelConfig)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   .. py:attribute:: generator
+
+
+   .. py:attribute:: tokenizer
+
+
+   .. py:attribute:: device
+
+
+   .. py:attribute:: gen_params
+
+
+   .. py:method:: forward(samples: list, batch_size: int = 1, watermarking_scheme: Optional[watermark.auto_watermark.AutoWatermark] = None) -> list[str]
+
+      Generate text from a list of input contexts.
+
+      Parameters:
+      ----------
+          samples: list
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation. Defaults to 1.
+          watermarking_scheme: AutoWatermark
+              The watermarking scheme to use for generation.
+              If provided, it should be an instance of LogitsProcessor. Defaults to None.
+
+      Returns:
+      -------
+          list[str]
+              A list of generated texts.
+
+
+
+   .. py:method:: forward_debug(samples: list, batch_size: int = 1, watermarking_scheme: Optional[watermark.auto_watermark.AutoWatermark] = None) -> list[str]
+
+      Takes a list of input contexts and generates text using the model.
+
+      Parameters:
+      ----------
+          samples: list
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation.
+          watermarking_scheme: LogitsProcessor
+              The watermarking scheme to use for generation.
+
+      Returns:
+      -------
+          tuple
+              A tuple containing the generated texts, the raw logits, and the processed logits.
+
+
+
+.. py:class:: PromptAttack(gen_model: generation.generator.LLMGenerator, gen_config: utils.configs.ModelConfig, gen_prompt_config: utils.configs.PromptConfig, adversarial_prompt_config: utils.configs.PromptConfig, max_sample_len: int, watermarking_scheme: watermark.auto_watermark.AutoWatermark = None)
+
+   Bases: :py:obj:`generation.article_generator.ArticleGenerator`
+
+
+   .. py:attribute:: adversarial_prompt_config
+
+
+   .. py:attribute:: attack_name
+      :value: 'prompt_attack'
+
+
+
+   .. py:method:: generate_adversarial_text(prefixes: list[str], batch_size: int = 1) -> list[str]
+
+      Generate text with an (adversarial) prompt.
+
+      Parameters:
+      ----------
+          prefixes: list[str]
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation.
+
+      Returns:
+      -------
+          list[str]
+              A list of generated text.
+
+
+
+.. py:class:: PromptParaphrasingAttack(gen_model: generation.generator.LLMGenerator, gen_config: utils.configs.ModelConfig, gen_prompt_config: utils.configs.PromptConfig, paraphraser_model: generation.generator.LLMGenerator, paraphraser_config: utils.configs.ModelConfig, paraphraser_prompt_config: utils.configs.PromptConfig, max_sample_len: int, watermarking_scheme: watermark.auto_watermark.AutoWatermark = None)
+
+   Bases: :py:obj:`generation.article_generator.ArticleGenerator`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: paraphraser_model
+
+
+   .. py:attribute:: paraphraser_prompt_config
+
+
+   .. py:attribute:: model_config
+
+
+   .. py:attribute:: attack_name
+      :value: 'paraphrasing_attack'
+
+
+
+   .. py:method:: paraphrase(texts: list[str], nb_paraphrasing: int = 1, batch_size: int = 1) -> list[str]
+
+      Paraphrasing function used after the initial text generation.
+
+      Parameters:
+      ----------
+          texts: list
+              Initial generated texts to be paraphrased.
+          nb_paraphrasing: int
+              Number of recursive paraphrasing to be done.
+          batch_size: int
+              The batch size to use for generation.
+
+      Returns:
+      -------
+          list
+              A list of paraphrased generated texts.
+
+
+
+   .. py:method:: generate_adversarial_text(prefixes: list[str], batch_size: int = 1) -> list[str]
+
+      Generate text with paraphrasing.
+
+      Parameters:
+      ----------
+          prefixes: list
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation.
+
+      Returns:
+      -------
+          list
+              A list of generated text.
+
+
+
+.. py:class:: GenLoader(model_name: str, gen_params: dict, device: str, gen_tokenizer_only: bool = False)
+
+   .. py:attribute:: model_name
+
+
+   .. py:attribute:: gen_params
+
+
+   .. py:attribute:: device
+
+
+   .. py:attribute:: gen_tokenizer_only
+
+
+   .. py:method:: load() -> tuple[torch.nn.Module, generation.generator.LLMGenerator, utils.configs.ModelConfig]
+
+      Load the specifed generator model (from init) and tokenizer
+
+      Returns:
+      -------
+          torch.nn.Module: The loaded generator model
+          LLMGenerator: The loaded generator model
+          ModelConfig: The configuration of the generator model
+
+
+
+.. py:class:: AttackLoader(cfg: omegaconf.DictConfig, attack_type: str, gen_model: generation.generator.LLMGenerator, model_config: utils.configs.ModelConfig, max_sample_len: int, watermarking_scheme: Optional[watermark.auto_watermark.AutoWatermark] = None, paraphraser_model: Optional[generation.generator.LLMGenerator] = None, paraphraser_config: Optional[utils.configs.ModelConfig] = None)
+
+   .. py:attribute:: cfg
+
+
+   .. py:attribute:: attack_type
+
+
+   .. py:attribute:: gen_model
+
+
+   .. py:attribute:: model_config
+
+
+   .. py:attribute:: max_sample_len
+
+
+   .. py:attribute:: watermarking_scheme
+
+
+   .. py:attribute:: paraphraser_model
+
+
+   .. py:attribute:: paraphraser_config
+
+
+   .. py:method:: load() -> generation.generator.ArticleGenerator
+
+      Load the attack.
+
+      Returns:
+      -------
+          ArticleGenerator: The attack.
+
+
+

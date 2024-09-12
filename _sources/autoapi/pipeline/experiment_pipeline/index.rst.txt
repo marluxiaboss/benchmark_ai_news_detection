@@ -1,0 +1,30 @@
+pipeline.experiment_pipeline
+============================
+
+.. py:module:: pipeline.experiment_pipeline
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pipeline.experiment_pipeline.ExperimentPipeline
+
+
+Module Contents
+---------------
+
+.. py:class:: ExperimentPipeline
+
+   Bases: :py:obj:`abc.ABC`
+
+
+   Abstract class for an experiment pipeline.
+
+
+   .. py:method:: run_pipeline()
+      :abstractmethod:
+
+
+
