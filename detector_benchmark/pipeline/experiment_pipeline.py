@@ -11,20 +11,15 @@ import pandas as pd
 
 from .pipeline_utils import *
 
+
 class ExperimentPipeline(ABC):
-    
+    """
+    Abstract class for an experiment pipeline.
+    """
+
     def __init__(self):
         pass
-    
+
     @abstractmethod
     def run_pipeline(self):
         pass
-    
-
-    
-
- 
-
-                
-                
-

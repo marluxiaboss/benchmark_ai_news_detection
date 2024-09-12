@@ -5,28 +5,45 @@ from datasets import Dataset
 from .detector import Detector
 from watermark.auto_watermark import AutoWatermark
 
+
 class WatermarkDetector(Detector):
-    
     def __init__(self, watermarking_scheme: AutoWatermark, detection_threshold: float) -> None:
         """
         Detector class based on a watermarking scheme.
-        
+
         Parameters:
+        ----------
             watermarking_scheme: AutoWatermark
                 The watermarking scheme to use for detection (see https://github.com/THU-BPM/MarkLLM for the source of AutoWatermark).
                 Caveat: it should be the exact same watermarking scheme that was used for generating the watermarked texts.
             detection_threshold: float
                 The threshold to use for detection
         """
-        
+
         self.watermarking_scheme = watermarking_scheme
         self.detection_threshold = detection_threshold
-        
-    def detect(self, texts: list[str], batch_size: int, detection_threshold: float) -> tuple[list[int], list[float], list[int]]:
+
+    def detect(
+        self, texts: list[str], batch_size: int, detection_threshold: float
+    ) -> tuple[list[int], list[float], list[int]]:
         """
         Detect the if the texts given as input are watermarked (label 1) or not (label 0).
+
+        Parameters:
+        ----------
+            texts: list[str]
+                The texts to detect
+            batch_size: int
+                The batch size
+            detection_threshold: float
+                The threshold to use for the detection
+
+        Returns:
+        ----------
+            tuple[list[int], list[float], list[int]]
+                The predictions, the logits for the positive class, and the predictions at the threshold
         """
-        
+
         preds = []
         preds_at_threshold = []
         logits_pos_class = []
@@ -36,9 +53,9 @@ class WatermarkDetector(Detector):
             z_score = res_dict["score"]
             pred = int(res_dict["is_watermarked"])
             pred_at_threshold = int(z_score > detection_threshold)
-            
+
             preds.append(pred)
             preds_at_threshold.append(pred_at_threshold)
             logits_pos_class.append(z_score)
-        
+
         return preds, logits_pos_class, preds_at_threshold

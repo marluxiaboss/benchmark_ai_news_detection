@@ -11,14 +11,34 @@ from .detector import Detector
 
 
 class FastDetectGPT(Detector):
-    def __init__(self, ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device):
+    def __init__(self, ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device) -> None:
+        """
+        Initialize the FastDetectGPT detector.
+
+        Parameters:
+        ----------
+            ref_model: AutoModelForCausalLM
+                The reference model
+            scoring_model: AutoModelForCausalLM
+                The scoring model
+        """
         self.ref_model = ref_model
         self.scoring_model = scoring_model
         self.ref_tokenizer = ref_tokenizer
         self.scoring_tokenizer = scoring_tokenizer
         self.device = device
-        
-    def get_samples(logits, labels):
+
+    def get_samples(self, logits, labels) -> torch.Tensor:
+        """
+        Get the samples from the logits.
+
+        Parameters:
+        ----------
+            logits: torch.Tensor
+                The logits
+            labels: torch.Tensor
+                The labels
+        """
         assert logits.shape[0] == 1
         assert labels.shape[0] == 1
         nsamples = 10000
@@ -27,15 +47,35 @@ class FastDetectGPT(Detector):
         samples = distrib.sample([nsamples]).permute([1, 2, 0])
         return samples
 
-    def get_likelihood(logits, labels):
-        assert logits.shape[0] == 1
-        assert labels.shape[0] == 1
+    def get_likelihood(self, logits, labels) -> torch.Tensor:
+        """
+        Get the likelihood from the logits.
+
+        Parameters:
+        ----------
+            logits: torch.Tensor
+                The logits
+            labels: torch.Tensor
+                The labels
+        """
         labels = labels.unsqueeze(-1) if labels.ndim == logits.ndim - 1 else labels
         lprobs = torch.log_softmax(logits, dim=-1)
         log_likelihood = lprobs.gather(dim=-1, index=labels)
         return log_likelihood.mean(dim=1)
 
-    def get_sampling_discrepancy(self, logits_ref, logits_score, labels):
+    def get_sampling_discrepancy(self, logits_ref, logits_score, labels) -> torch.Tensor:
+        """
+        Get the sampling discrepancy from the logits.
+
+        Parameters:
+        ----------
+            logits_ref: torch.Tensor
+                The logits of the reference model
+            logits_score: torch.Tensor
+                The logits of the scoring model
+            labels: torch.Tensor
+                The labels
+        """
         assert logits_ref.shape[0] == 1
         assert logits_score.shape[0] == 1
         assert labels.shape[0] == 1
@@ -52,8 +92,18 @@ class FastDetectGPT(Detector):
         sigma_tilde = log_likelihood_x_tilde.std(dim=-1)
         discrepancy = (log_likelihood_x.squeeze(-1) - miu_tilde) / sigma_tilde
         return discrepancy.item()
-    
-    def get_sampling_discrepancy_analytic(self, logits_ref, logits_score, labels):
+
+    def get_sampling_discrepancy_analytic(self, logits_ref, logits_score, labels) -> torch.Tensor:
+        """
+        Get the sampling discrepancy from the logits.
+
+        Parameters:
+        ----------
+            logits_ref: torch.Tensor
+                The logits of the reference model
+            logits_score: torch.Tensor
+                The logits of the scoring model
+        """
         assert logits_ref.shape[0] == 1
         assert logits_score.shape[0] == 1
         assert labels.shape[0] == 1
@@ -69,57 +119,109 @@ class FastDetectGPT(Detector):
         log_likelihood = lprobs_score.gather(dim=-1, index=labels).squeeze(-1)
         mean_ref = (probs_ref * lprobs_score).sum(dim=-1)
         var_ref = (probs_ref * torch.square(lprobs_score)).sum(dim=-1) - torch.square(mean_ref)
-        discrepancy = (log_likelihood.sum(dim=-1) - mean_ref.sum(dim=-1)) / var_ref.sum(dim=-1).sqrt()
+        discrepancy = (log_likelihood.sum(dim=-1) - mean_ref.sum(dim=-1)) / var_ref.sum(
+            dim=-1
+        ).sqrt()
         discrepancy = discrepancy.mean()
         return discrepancy.item()
-    
+
     class ProbEstimatorFastDetectGPT:
+        """
+        Probability estimator for the FastDetectGPT detector.
+        """
+
         def __init__(self, args=None, ref_path=None):
+            """
+            Initialize the ProbEstimatorFastDetectGPT.
+
+            Parameters:
+            ----------
+                args: argparse.Namespace
+                    The arguments
+                ref_path: str
+                    The path to the reference data
+            """
             if args is None:
                 ref_path = ref_path
             else:
                 ref_path = args.ref_path
             self.real_crits = []
             self.fake_crits = []
-            for result_file in glob.glob(os.path.join(ref_path, '*.json')):
-                with open(result_file, 'r') as fin:
+            for result_file in glob.glob(os.path.join(ref_path, "*.json")):
+                with open(result_file, "r") as fin:
                     res = json.load(fin)
-                    self.real_crits.extend(res['predictions']['real'])
-                    self.fake_crits.extend(res['predictions']['samples'])
-            print(f'ProbEstimator: total {len(self.real_crits) * 2} samples.')
+                    self.real_crits.extend(res["predictions"]["real"])
+                    self.fake_crits.extend(res["predictions"]["samples"])
+            print(f"ProbEstimator: total {len(self.real_crits) * 2} samples.")
 
-        def crit_to_prob(self, crit):
+        def crit_to_prob(self, crit) -> float:
+            """
+            Convert the criterion to probability.
+
+            Parameters:
+            ----------
+                crit: float
+                    The criterion
+
+            Returns:
+            ----------
+                float
+                    The probability
+            """
             offset = np.sort(np.abs(np.array(self.real_crits + self.fake_crits) - crit))[100]
-            cnt_real = np.sum((np.array(self.real_crits) > crit - offset) & (np.array(self.real_crits) < crit + offset))
-            cnt_fake = np.sum((np.array(self.fake_crits) > crit - offset) & (np.array(self.fake_crits) < crit + offset))
+            cnt_real = np.sum(
+                (np.array(self.real_crits) > crit - offset)
+                & (np.array(self.real_crits) < crit + offset)
+            )
+            cnt_fake = np.sum(
+                (np.array(self.fake_crits) > crit - offset)
+                & (np.array(self.fake_crits) < crit + offset)
+            )
             return cnt_fake / (cnt_real + cnt_fake)
 
-            
-    def detect(self, texts: list, batch_size: int, detection_threshold: float=0.5) -> tuple[list[int], list[float], list[int]]:
+    def detect(
+        self, texts: list[str], batch_size: int, detection_threshold: float = 0.5
+    ) -> tuple[list[int], list[float], list[int]]:
+        """
+        Detect the watermark in the texts.
+
+        Parameters:
+        ----------
+            texts: list[str]
+                The texts to detect the watermark in
+            batch_size: int
+                The batch size
+            detection_threshold: float
+                The detection threshold
+
+        Returns:
+        ----------
+            tuple[list[int], list[float], list[int]]
+                The predictions, the probabilities and the predictions at the threshold
+        """
         reference_model_name = "gpt-neo-2.7B"
         scoring_model_name = "gpt-neo-2.7B"
-        
+
         ref_path = "detector/local_infer_ref"
         device = self.device
 
         ref_model = self.ref_model
         ref_tokenizer = self.ref_tokenizer
-        
+
         scoring_model = self.scoring_model
         scoring_tokenizer = self.scoring_tokenizer
-  
+
         # evaluate criterion
-        #name = "sampling_discrepancy_analytic"
+        # name = "sampling_discrepancy_analytic"
         criterion_fn = self.get_sampling_discrepancy_analytic
         prob_estimator = self.ProbEstimatorFastDetectGPT(ref_path=ref_path)
-
 
         # iterate over the dataset and do detection on each sample
         dataset = Dataset.from_dict({"text": texts})
 
         # create dataloader
         batch_size = 1
-        
+
         test_loader = DataLoader(dataset, batch_size=batch_size, shuffle=False, pin_memory=True)
         preds = []
         probs = []
@@ -127,31 +229,36 @@ class FastDetectGPT(Detector):
         with torch.no_grad():
             for batch in tqdm(test_loader, desc="Performing detection on dataset..."):
                 text = batch["text"]
-                tokenized = scoring_tokenizer(text, return_tensors="pt", padding=True, return_token_type_ids=False).to(device)
+                tokenized = scoring_tokenizer(
+                    text, return_tensors="pt", padding=True, return_token_type_ids=False
+                ).to(device)
                 labels = tokenized.input_ids[:, 1:]
                 logits_score = scoring_model(**tokenized).logits[:, :-1]
 
                 if reference_model_name == scoring_model_name:
                     logits_ref = logits_score
                 else:
-                    tokenized = ref_tokenizer(text, return_tensors="pt", padding=True, return_token_type_ids=False).to(device)
+                    tokenized = ref_tokenizer(
+                        text, return_tensors="pt", padding=True, return_token_type_ids=False
+                    ).to(device)
                     assert torch.all(tokenized.input_ids[:, 1:] == labels), "Tokenizer is mismatch."
                     logits_ref = ref_model(**tokenized).logits[:, :-1]
 
                 for i in range(batch_size):
-                    crit = criterion_fn(logits_ref[i:i+1], logits_score[i:i+1], labels[i:i+1])
+                    crit = criterion_fn(
+                        logits_ref[i : i + 1], logits_score[i : i + 1], labels[i : i + 1]
+                    )
                     prob = prob_estimator.crit_to_prob(crit)
                     pred = 1 if prob > 0.5 else 0
                     pred_at_threshold = 1 if prob > detection_threshold else 0
-                    
+
                     probs.append(prob)
                     preds.append(pred)
                     preds_at_threshold.append(pred_at_threshold)
-                    
+
         preds = np.array(preds)
         probs = np.array(probs)
-        
+
         logits_pos_class = probs
-        
+
         return preds, logits_pos_class, preds_at_threshold
-            

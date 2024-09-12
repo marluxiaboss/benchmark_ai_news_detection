@@ -21,15 +21,15 @@ class LLMGenerator(nn.Module):
         Class for generating text using a model from Huggingface.
 
         Parameters:
+        ----------
             model: AutoModelForCausalLM
                 The pretrained language model (Transformers) to be used for text generation.
             model_config: ModelConfig
                 The configuration of the model.
 
         Returns:
-
-
-
+        -------
+            None
         """
 
         super().__init__()
@@ -47,15 +47,22 @@ class LLMGenerator(nn.Module):
         watermarking_scheme: Optional[AutoWatermark] = None,
     ) -> list[str]:
         """
-        Takes a list of input contexts and generates text using the model.
+        Generate text from a list of input contexts.
 
         Parameters:
+        ----------
             samples: list
                 A list of input contexts for text generation.
             batch_size: int
-                The batch size to use for generation.
-            watermarking_scheme: LogitsProcessor
+                The batch size to use for generation. Defaults to 1.
+            watermarking_scheme: AutoWatermark
                 The watermarking scheme to use for generation.
+                If provided, it should be an instance of LogitsProcessor. Defaults to None.
+
+        Returns:
+        -------
+            list[str]
+                A list of generated texts.
         """
 
         outputs_list = []
@@ -121,12 +128,18 @@ class LLMGenerator(nn.Module):
         Takes a list of input contexts and generates text using the model.
 
         Parameters:
+        ----------
             samples: list
                 A list of input contexts for text generation.
             batch_size: int
                 The batch size to use for generation.
             watermarking_scheme: LogitsProcessor
                 The watermarking scheme to use for generation.
+
+        Returns:
+        -------
+            tuple
+                A tuple containing the generated texts, the raw logits, and the processed logits.
         """
 
         outputs_list = []
