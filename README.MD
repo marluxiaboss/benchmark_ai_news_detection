@@ -3,7 +3,7 @@ The purpose of this benchmark is to evaluate LLM detectors, especially against e
 The main consideration is to make the benchmark easy to extend with different datasets, detectors and evasion attacks
 
 <p>
-| <a href="..."><b>Documentation</b></a> | <a href="https://arxiv.org/abs/2409.03291"><b>Paper</b></a> |
+| <a href="https://marluxiaboss.github.io/benchmark_ai_news_detection/"><b>Documentation</b></a> | <a href="https://arxiv.org/abs/2409.03291"><b>Paper</b></a> |
 
 </p>
 
