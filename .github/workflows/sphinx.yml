@@ -15,7 +15,7 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
-        pip install sphinx myst-parser
+        pip install sphinx myst-parser sphinx-design furo sphinx-autoapi
     - name: Build HTML
       run: |
         cd docs
