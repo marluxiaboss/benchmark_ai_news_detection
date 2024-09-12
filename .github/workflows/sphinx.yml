@@ -9,8 +9,17 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        pip install sphinx myst-parser sphinx-design furo sphinx-autoapi
     - name: Build HTML
-      uses: ammaraskar/sphinx-action@master
+      run: |
+        cd docs
+        make html
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
