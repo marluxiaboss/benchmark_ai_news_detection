@@ -348,6 +348,20 @@
 </pre></div>
 </div>
 </section>
+<section id="generate-the-benchmark">
+<h2>Generate the benchmark<a class="headerlink" href="#generate-the-benchmark" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>attack=&quot;generation_base&quot;
+watermark_scheme=&quot;watermark_base&quot;
+
+python create_dataset.py generation=$attack watermark=$watermark_scheme
+</pre></div>
+</div>
+<p>Choose the attack in the available list <a class="reference internal" href="#description_lists/supported_attacks.md"><span class="xref myst">here</span></a>.<br />
+See <a class="reference internal" href="how_to_generate.html"><span class="std std-doc">here</span></a> for all the other parameters for generating the data.</p>
+</section>
+<section id="test-a-detector">
+<h2>Test a detector<a class="headerlink" href="#test-a-detector" title="Link to this heading">¶</a></h2>
+</section>
 </section>
 
         </article>
@@ -407,6 +421,8 @@
             <ul>
 <li><a class="reference internal" href="#">Getting Started</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#generate-the-benchmark">Generate the benchmark</a></li>
+<li><a class="reference internal" href="#test-a-detector">Test a detector</a></li>
 </ul>
 </li>
 </ul>
