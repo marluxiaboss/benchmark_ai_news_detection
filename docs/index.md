@@ -31,6 +31,7 @@ caption: Contents
 ---
 subpages/how_to_generate.md
 subpages/how_to_add_index.md
+subpages/supported_list_index.md
 subpages/details.md
 ```
 

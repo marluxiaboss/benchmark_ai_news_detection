@@ -200,7 +200,7 @@ class GenLoader:
                 gen_model = LLMGenerator(gen, gen_config)
 
             case "llama_instruct_3.1":
-                gen_path = "meta-llama/Meta-Llama-3-8B-Instruct"
+                gen_path = "meta-llama/Meta-Llama-3.1-8B-Instruct"
                 gen_tokenizer = AutoTokenizer.from_pretrained(gen_path, trust_remote_code=True)
                 gen_tokenizer.pad_token = "<|eot_id|>"
                 gen_tokenizer.padding_side = "left"
