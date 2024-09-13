@@ -1,55 +1,56 @@
 # How to generate
 
 
-```
-generators="llama3_instruct_3.1"
-attack="generation_base"
-watermark_scheme="watermark_base"
-dataset_size=5000
-batch_size=128
-experiment_name="test"
-data_folder="data/generated_datasets"
-skip_train_split=True
 
-max_sample_len=100
-max_new_tokens=50
-min_new_tokens=40
 
-python create_dataset.py generation=$attack watermark=$watermark_scheme generation.generator_name=$generator \
-        generation.dataset_size=$dataset_size generation.experiment_name=$experiment_name \
-        generation.skip_train_split=$skip_train_split generation.skip_cache=$skip_cache \
-        generation.batch_size=$batch_size generation.data_folder=$data_folder \
-        generation.max_sample_len=$max_sample_len generation.max_new_tokens=$max_new_tokens generation.min_new_tokens=$min_new_tokens
-        
-```
-
-```{admonition} Configure the benchmark
+````{admonition} Configure the benchmark
 :class: hint
 
-This section outlines the parameters used for generating datasets with the specified configurations.
+This section outlines the parameters used for generating datasets with the specified configurations. See the configuration files under `conf/generation` for the complete list.
+Note that all default values assume that attack="generation_base" which means that no attack is used.
 
-- `generators`: Specifies the name of the generator to be used, in this case, "llama3_instruct_3.1". This determines the model that will generate the text. See [here](description_lists/supported_generators.md) for the list of supported generators and [here](how_to_add/how_to_add_detector.md) to add yours.
+- `attack`: Sets the base hydra configuration file for the generation used to generate the fake samples (base parameters). Here, "generation_base" corresponds to the base file which means no attack is used. This will determine the default parameter values See [here](description_lists/supported_attacks.md) for the list of supported attacks and [here](how_to_add/how_to_add_attack.md) to add yours. 
 
-- `attack`: Defines the type of attack to be simulated during the generation process. Here, "generation_base" indicates a baseline generation attack. 
+- `batch_size`: Specifies the number of samples to be generated in parallel by the GPU. Default value: 2
 
-- `watermark_scheme`: Indicates the watermarking scheme to be applied to the generated text. "watermark_base" is the chosen scheme for this experiment.
+- `data_folder`: The directory where the generated datasets will be stored. Here, it is set to "data/generated_datasets". Default value: "data/generated_datasets"
 
-- `dataset_size`: Sets the total number of samples to be generated. A value of 5000 means that the dataset will consist of 5000 generated samples.
+- `dataset_name`: Base dataset used for the true samples and the prefixes Default value: cnn_dailymail
 
-- `batch_size`: Specifies the number of samples to be processed in one batch during generation. A batch size of 128 allows for efficient processing of the data.
+- `dataset_size`: Sets the total number of samples to be generated. This includes the train, eval and test split (80/10/10 split). This means that for dataset_size=5000, there will be a test split of size 500. Default value: 100
 
-- `experiment_name`: A string that names the experiment. In this case, it is set to "test", which can be useful for tracking results.
+- `do_sample`: Whether to use top_p sampling or greedy decoding. Default value: True
 
-- `data_folder`: The directory where the generated datasets will be stored. Here, it is set to "data/generated_datasets".
+- `experiment_name`: A string that names the experiment. In this case, it is set to "test", which can be useful for tracking results. Default value: base
 
-- `skip_train_split`: A boolean parameter that, when set to True, indicates that the training split of the dataset should be skipped.
+- `generator_name`: Specifies the name of the generator to be used, in this case, "llama3_instruct_3.1". This determines the model that will generate the text. See [here](description_lists/supported_generators.md) for the list of supported generators and [here](how_to_add/how_to_add_detector.md) to add yours. Default value: qwen2_chat_0_5B
 
-- `max_sample_len`: The maximum length of each generated sample, set to 100 tokens in this case.
+- `max_new_tokens`: The maximum number of new tokens to generate. Default value: 220
 
-- `max_new_tokens`: The maximum number of new tokens to generate, which is set to 50.
+- `max_sample_len`: The maximum length of each of the fake/true samples in number of characters. All samples fake or true are cut to this value. Default value: 500
 
-- `min_new_tokens`: The minimum number of new tokens to generate, set to 40. This ensures that each generated sample has a minimum length.
+- `min_new_tokens`: The minimum number of new tokens to generate, set to 40. This ensures that each generated sample has a minimum length. Default value: 200
 
-These parameters are crucial for controlling the behavior of the dataset generation process and ensuring that the generated data meets the requirements of the experiment.
+- prefix_size: Number of first words to take from the true samples that will be forced into the fake samples to start the generation. Default value: 10
 
-```
+- `repetition_penalty=1`: Repetion value used for the generation. Default value: 1
+
+- `skip_train_split`: A boolean parameter that, when set to True, indicates that the training split of the dataset should be skipped. It will still create a train split, but the fake samples will be empty. Note that there is an eval split used for finding the correct threshold for a given target FPR and the test split used to test the detector on that threshold. The train split could be used to train a detector on that dataset. Default value: False
+
+- `temperature`: Temperature used for the generation. Default value: 0.8
+
+- `top_k`: top k value used for the generation. Default value: 50
+
+- `top_p`: top p value used for the generation. Default value: 0.95
+
+- `watermark_scheme`: Indicates the hydra config file for the watermarking scheme to be applied when generating the text. "watermark_base" means no watermark is used (base generation).
+
+Configure the watermark:
+- **TODO**
+
+
+Extra parameters depending on the attack:
+- **TODO**
+
+
+````

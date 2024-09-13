@@ -23,6 +23,7 @@ html_title = "LLM Detector Benchmark 🔎"
 extensions = [
     "myst_parser",
     "sphinx_design",
+    "sphinx.ext.todo",
 ]
 
 templates_path = ["_templates"]
