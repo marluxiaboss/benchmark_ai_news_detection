@@ -1,15 +1,46 @@
-# How to generate
+# How to generate the benchmark
+
+cf. `bash_scripts/generating_datasets/generate_no_watermark_dataset.sh` (see other scripts in `bash_scripts/generating_datasets` for other examples)
+
+## How to generate the benchmark without watermarking
+
+```sh
+attack="generation_base"
+
+generator_name="llama3_instruct_3.1"
+prefix_size=10
+dataset_size=5000
+batch_size=128
+experiment_name="test"
+data_folder="data/generated_datasets"
+skip_train_split=True
+max_sample_len=100
+max_new_tokens=50
+min_new_tokens=40
+temperature=0.8
+top_p=0.95
+repetition_penalty=1
+do_sample=True
+top_k=50
+
+python create_dataset.py generation=$attack watermark=$watermark_scheme generation.generator_name=$generator \
+        generation.dataset_size=$dataset_size generation.experiment_name=$experiment_name \
+        generation.prefix_size=$prefix_size \
+        generation.skip_train_split=$skip_train_split generation.skip_cache=$skip_cache \
+        generation.batch_size=$batch_size generation.data_folder=$data_folder \
+        generation.max_sample_len=$max_sample_len generation.max_new_tokens=$max_new_tokens generation.min_new_tokens=$min_new_tokens \
+        generation.temperature=$temperature generation.top_p=$top_p generation.repetition_penalty=$repetition_penalty \
+        generation.do_sample=$do_sample generation.top_k=$top_k
+```
 
 
-
-
-````{admonition} Configure the benchmark
+```{admonition} Configure the benchmark
 :class: hint
 
 This section outlines the parameters used for generating datasets with the specified configurations. See the configuration files under `conf/generation` for the complete list.
 Note that all default values assume that attack="generation_base" which means that no attack is used.
 
-- `attack`: Sets the base hydra configuration file for the generation used to generate the fake samples (base parameters). Here, "generation_base" corresponds to the base file which means no attack is used. This will determine the default parameter values See [here](description_lists/supported_attacks.md) for the list of supported attacks and [here](how_to_add/how_to_add_attack.md) to add yours. 
+- `attack`: Sets the base hydra configuration file for the generation used to generate the fake samples (base parameters). Here, "generation_base" corresponds to the base file which means no attack is used. This will determine the default parameter values. See [here](description_lists/supported_attacks.md) for the list of supported attacks and [here](how_to_add/how_to_add_attack.md) to add yours. Default value: "generation_base"
 
 - `batch_size`: Specifies the number of samples to be generated in parallel by the GPU. Default value: 2
 
@@ -42,14 +73,54 @@ Note that all default values assume that attack="generation_base" which means th
 - `top_k`: top k value used for the generation. Default value: 50
 
 - `top_p`: top p value used for the generation. Default value: 0.95
+```
 
-- `watermark_scheme`: Indicates the hydra config file for the watermarking scheme to be applied when generating the text. "watermark_base" means no watermark is used (base generation).
+## How to generate the benchmark with watermarking
 
-Configure the watermark:
+```sh
+attack="generation_base"
+
+generator_name="llama3_instruct_3.1"
+watermark_scheme="watermark_base"
+prefix_size=10
+dataset_size=5000
+batch_size=128
+experiment_name="test"
+data_folder="data/generated_datasets"
+skip_train_split=True
+max_sample_len=100
+max_new_tokens=50
+min_new_tokens=40
+temperature=0.8
+top_p=0.95
+repetition_penalty=1
+do_sample=True
+top_k=50
+
+python create_dataset.py generation=$attack watermark=$watermark_scheme generation.generator_name=$generator \
+        generation.dataset_size=$dataset_size generation.experiment_name=$experiment_name \
+        generation.prefix_size=$prefix_size \
+        generation.skip_train_split=$skip_train_split generation.skip_cache=$skip_cache \
+        generation.batch_size=$batch_size generation.data_folder=$data_folder \
+        generation.max_sample_len=$max_sample_len generation.max_new_tokens=$max_new_tokens generation.min_new_tokens=$min_new_tokens \
+        generation.temperature=$temperature generation.top_p=$top_p generation.repetition_penalty=$repetition_penalty \
+        generation.do_sample=$do_sample generation.top_k=$top_k
+```
+
+```{admonition} Configure the benchmark
+:class: hint
+
+The parameters here are the same as above except for the following:
+
+- `watermark_scheme`: Indicates the hydra config file for the watermarking scheme to be applied when generating the text. "watermark_base" means no watermark is used (base generation). See [here](description_lists/supported_watermarks.md) for the full list of watermarking schemes. Default value: "watermark_base".
+
+``` 
+
+## Configure the watermark:
 - **TODO**
 
 
-Extra parameters depending on the attack:
+## Extra parameters depending on the attack:
 - **TODO**
 
 

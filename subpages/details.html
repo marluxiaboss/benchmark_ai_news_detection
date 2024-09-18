@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="API Reference" href="../autoapi/index.html" /><link rel="prev" title="How to add a Detector?" href="how_to_add/how_to_add_detector.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="API Reference" href="../autoapi/index.html" /><link rel="prev" title="List of supported watermarking schemes" href="description_lists/supported_watermarks.html" />
 
     <link rel="shortcut icon" href="../_static/glass.png"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
         <title>Class details - LLM Detector Benchmark 🔎</title>
@@ -206,16 +206,27 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="how_to_generate.html">How to generate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_generate.html">How to generate the benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_test_detector.html">How to test a detector</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="how_to_add_index.html">How to Add</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How to Add</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_attack.html">How to add attack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_detector.html">How to add a Detector?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_generator.html">How to add generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_watermark.html">How to add a watermark</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="supported_list_index.html">List of supported generator, detectors, …</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of List of supported generator, detectors, …</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="description_lists/supported_attacks.html">List of supported evasion attacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description_lists/supported_detectors.html">List of supported detectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description_lists/supported_generators.html">List of supported LLMs for generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description_lists/supported_watermarks.html">List of supported watermarking schemes</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Class details</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../autoapi/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of API Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../autoapi/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of API Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../autoapi/utils/index.html">utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../autoapi/configs/index.html">configs</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/detector/index.html">detector</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of detector</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/detector/index.html">detector</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of detector</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/detector/bert_detector/index.html">detector.bert_detector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/detector/detector/index.html">detector.detector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/detector/detector_loader/index.html">detector.detector_loader</a></li>
@@ -224,7 +235,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/detector/watermark_detector/index.html">detector.watermark_detector</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/pipeline/index.html">pipeline</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of pipeline</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/pipeline/index.html">pipeline</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of pipeline</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/pipeline/create_dataset_pipeline/index.html">pipeline.create_dataset_pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/pipeline/experiment_pipeline/index.html">pipeline.experiment_pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/pipeline/experiment_test_detector_pipeline/index.html">pipeline.experiment_test_detector_pipeline</a></li>
@@ -233,33 +244,33 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../autoapi/gen_utils/index.html">gen_utils</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/watermark/index.html">watermark</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of watermark</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/dip/index.html">watermark.dip</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of watermark.dip</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/watermark/index.html">watermark</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of watermark</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/dip/index.html">watermark.dip</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of watermark.dip</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../autoapi/watermark/dip/dip/index.html">watermark.dip.dip</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/exp/index.html">watermark.exp</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of watermark.exp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/exp/index.html">watermark.exp</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of watermark.exp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../autoapi/watermark/exp/exp/index.html">watermark.exp.exp</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/kgw/index.html">watermark.kgw</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of watermark.kgw</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/kgw/index.html">watermark.kgw</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of watermark.kgw</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../autoapi/watermark/kgw/kgw/index.html">watermark.kgw.kgw</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/kgw_e/index.html">watermark.kgw_e</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of watermark.kgw_e</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/kgw_e/index.html">watermark.kgw_e</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of watermark.kgw_e</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../autoapi/watermark/kgw_e/kgw_e/index.html">watermark.kgw_e.kgw_e</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/kgw_p/index.html">watermark.kgw_p</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of watermark.kgw_p</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/kgw_p/index.html">watermark.kgw_p</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of watermark.kgw_p</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../autoapi/watermark/kgw_p/kgw_p/index.html">watermark.kgw_p.kgw_p</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/sir/index.html">watermark.sir</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of watermark.sir</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/sir/index.html">watermark.sir</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of watermark.sir</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../autoapi/watermark/sir/sir/index.html">watermark.sir.sir</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../autoapi/watermark/sir/transform_model/index.html">watermark.sir.transform_model</a></li>
 </ul>
 </li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/sweet/index.html">watermark.sweet</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of watermark.sweet</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/watermark/sweet/index.html">watermark.sweet</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of watermark.sweet</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../autoapi/watermark/sweet/sweet/index.html">watermark.sweet.sweet</a></li>
 </ul>
 </li>
@@ -267,7 +278,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/watermark/base/index.html">watermark.base</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/generation/index.html">generation</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of generation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/generation/index.html">generation</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of generation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/generation/article_generator/index.html">generation.article_generator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/generation/attack_loader/index.html">generation.attack_loader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/generation/gen_loader/index.html">generation.gen_loader</a></li>
@@ -281,7 +292,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../autoapi/test_detector/index.html">test_detector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../autoapi/run_human_eval/index.html">run_human_eval</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../autoapi/create_dataset/index.html">create_dataset</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/dataset_loader/index.html">dataset_loader</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of dataset_loader</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/dataset_loader/index.html">dataset_loader</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of dataset_loader</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/dataset_loader/cnn_dataset/index.html">dataset_loader.cnn_dataset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/dataset_loader/dataset_loader_utils/index.html">dataset_loader.dataset_loader_utils</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/dataset_loader/fake_true_dataset/index.html">dataset_loader.fake_true_dataset</a></li>
@@ -291,7 +302,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../autoapi/generate_mappings/index.html">generate_mappings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../autoapi/run_human_eval_plus/index.html">run_human_eval_plus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../autoapi/transformers_config/index.html">transformers_config</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/text_quality_evaluation/index.html">text_quality_evaluation</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of text_quality_evaluation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/text_quality_evaluation/index.html">text_quality_evaluation</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of text_quality_evaluation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/text_quality_evaluation/scorer/index.html">text_quality_evaluation.scorer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/text_quality_evaluation/scorer_utils/index.html">text_quality_evaluation.scorer_utils</a></li>
 </ul>
@@ -356,14 +367,14 @@
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="how_to_add/how_to_add_detector.html">
+          <a class="prev-page" href="description_lists/supported_watermarks.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">How to add a Detector?</div>
+                <div class="title">List of supported watermarking schemes</div>
                 
               </div>
             </a>

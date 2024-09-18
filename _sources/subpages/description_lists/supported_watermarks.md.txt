@@ -1,0 +1,1 @@
+# List of supported watermarking schemes
