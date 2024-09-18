@@ -11,7 +11,7 @@ import pandas as pd
 
 from .experiment_pipeline import ExperimentPipeline
 from .pipeline_utils import create_logger_file, get_threshold_for_results, compute_bootstrap_metrics
-from detector import Detector
+from ..detector import Detector
 
 
 class ExperimentTestDetectorPipeline(ExperimentPipeline):

@@ -5,7 +5,7 @@ import pandas as pd
 
 from .experiment_pipeline import ExperimentPipeline
 from .pipeline_utils import *
-from text_quality_evaluation import (
+from ..text_quality_evaluation import (
     Scorer,
     SelfScorer,
     RefScorer,

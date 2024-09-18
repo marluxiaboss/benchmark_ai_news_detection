@@ -1,7 +1,7 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from .generator import LLMGenerator
-from utils.configs import ModelConfig
+from ..utils.configs import ModelConfig
 
 
 class GenLoader:

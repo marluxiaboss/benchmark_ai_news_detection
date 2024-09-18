@@ -1,11 +1,12 @@
 from omegaconf import DictConfig
-from .generator import LLMGenerator, ArticleGenerator
+from .generator import LLMGenerator
+from .article_generator import ArticleGenerator
 from .prompt_attack import PromptAttack
 from .gen_params_attack import GenParamsAttack
 from .prompt_paraphrasing_attack import PromptParaphrasingAttack
-from utils.configs import ModelConfig, PromptConfig
+from ..utils.configs import ModelConfig, PromptConfig
 from transformers import AutoModelForCausalLM, AutoTokenizer, LogitsProcessor
-from watermark.auto_watermark import AutoWatermark
+from ..watermark.auto_watermark import AutoWatermark
 from typing import Optional
 
 

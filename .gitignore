@@ -5,6 +5,19 @@ __pycache__/
 # C extensions
 *.so
 
+# git pre-commit hooks
+.flake8
+.pre-commit-config.yaml
+
+# data
+data/
+detection_test_results/
+
+# some watermark schemes to ignore, for now...
+detector_benchmark/watermark/sweet_p/
+detector_benchmark/watermark/kgw_e
+detector_benchmark/watermark/kgw_p
+
 # Distribution / packaging
 bin/
 build/

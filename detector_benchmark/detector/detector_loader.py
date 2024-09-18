@@ -14,8 +14,8 @@ from .fast_detect_gpt import FastDetectGPT
 from .gpt_zero_detector import GPTZero
 from .watermark_detector import WatermarkDetector
 from .detector import Detector
-from watermark.auto_watermark import AutoWatermark
-from generation import GenLoader
+from ..watermark.auto_watermark import AutoWatermark
+from ..generation import GenLoader
 
 
 class DetectorLoader:

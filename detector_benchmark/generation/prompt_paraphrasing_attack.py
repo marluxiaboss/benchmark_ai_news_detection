@@ -16,10 +16,10 @@ from transformers import (
     AutoModelForCausalLM,
 )
 
-from utils.gen_utils import transform_chat_template_with_prompt
+from ..utils.gen_utils import transform_chat_template_with_prompt
 from .article_generator import ArticleGenerator
-from watermark.auto_watermark import AutoWatermark
-from utils.configs import ModelConfig, PromptConfig
+from ..watermark.auto_watermark import AutoWatermark
+from ..utils.configs import ModelConfig, PromptConfig
 from .generator import LLMGenerator
 
 

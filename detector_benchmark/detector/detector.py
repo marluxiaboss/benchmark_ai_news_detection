@@ -5,7 +5,7 @@ from datasets import Dataset
 
 from tqdm import tqdm
 
-from watermark.auto_watermark import AutoWatermark
+from ..watermark.auto_watermark import AutoWatermark
 
 
 class Detector(ABC):

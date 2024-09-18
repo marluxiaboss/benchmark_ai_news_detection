@@ -10,8 +10,8 @@ from transformers import (
     LogitsProcessor,
     LogitsProcessorList,
 )
-from utils.configs import ModelConfig
-from watermark.auto_watermark import AutoWatermark
+from ..utils.configs import ModelConfig
+from ..watermark.auto_watermark import AutoWatermark
 from typing import Optional
 
 

@@ -3,7 +3,7 @@ from torch.utils.data import DataLoader
 from abc import ABC, abstractmethod
 from datasets import Dataset
 from .detector import Detector
-from watermark.auto_watermark import AutoWatermark
+from ..watermark.auto_watermark import AutoWatermark
 
 
 class WatermarkDetector(Detector):

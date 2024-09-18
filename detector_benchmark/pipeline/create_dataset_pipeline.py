@@ -9,8 +9,8 @@ from datasets import load_from_disk, Dataset
 from abc import ABC, abstractmethod
 import pandas as pd
 
-from dataset_loader import FakeTruePairsDataLoader
-from generation import ArticleGenerator
+from ..dataset_loader import FakeTruePairsDataLoader
+from ..generation import ArticleGenerator
 from .experiment_pipeline import ExperimentPipeline
 from .pipeline_utils import create_logger_file
 

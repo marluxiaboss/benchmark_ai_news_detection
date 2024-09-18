@@ -1,9 +1,9 @@
-# List of supported generator, detectors, ...
+# List of supported generators, detectors, attacks and watermarks
 
 ```{toctree}
 ---
 maxdepth: 2
-caption: How to add
+caption: Supported list...
 ---
 description_lists/supported_attacks.md
 description_lists/supported_detectors.md
