@@ -8,6 +8,7 @@ __pycache__/
 # git pre-commit hooks
 .flake8
 .pre-commit-config.yaml
+.github/workflows/
 
 # data
 data/
@@ -17,6 +18,11 @@ detection_test_results/
 detector_benchmark/watermark/sweet_p/
 detector_benchmark/watermark/kgw_e
 detector_benchmark/watermark/kgw_p
+
+# temporary result files
+notebooks/
+text_quality_eval_results/
+detection_test_results/
 
 # Distribution / packaging
 bin/
