@@ -1,7 +1,5 @@
 # Getting Started
 
-Welcome to the Getting Started guide for My Project. Here, you'll find all the information you need to get up and running.
-
 ## Installation
 
 0. Create a conda environment (highly recommended to avoid compatibility issues) and activate it
@@ -15,8 +13,8 @@ conda activate llm_detector
 
 ``` sh
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-
 ```
+
 For CUDA version 11.8 (check your version with nvidia-smi and see [PyTorch's website](https://pytorch.org/)).
 
 2. Clone and install the package

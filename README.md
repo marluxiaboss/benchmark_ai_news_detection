@@ -19,11 +19,10 @@ The main consideration is to make the benchmark easy to extend with different da
     - [0. Class folders](#0-class-folders)
     - [1. Config files](#1-config-files) 
     - ...
-- [Installing the environment](#installing-the-environment)
-- [Reproducing the experiments and the plots](#reproducing-the-experiments-and-the-plots)
-- [Running the python scripts + external libraries benchmarks](#running-the-python-scripts--external-libraries-benchmarks)
-- [Adding a watermarking scheme, attack, detector or dataset](#adding-a-watermarking-scheme-attack-detector-or-dataset)
-- [Loading an LLM, detector or watermarking scheme and using them](#loading-an-llm-detector-or-watermarking-scheme-and-using-them)
+- [Getting started](#getting-started)
+    - [Installation](#installation)
+    - [Generate the benchmark](#generate-the-benchmark)
+    - [Test a detector on the created benchmark](#test-a-detector-on-the-created-benchmark)
 
 ## Repo structure
 
@@ -97,6 +96,53 @@ Here are the following folders used to save the results from the scripts/benchma
 - `detector_benchmark/text_quality_eval_results` containing the results when running the text quality evaluation script `detector_benchmark/test_text_quality.py`
 - TODO: add info about the respective results folder for the external libraries
 
+## Getting started
+
+Click <a href="https://marluxiaboss.github.io/benchmark_ai_news_detection/"><b>here</b></a> for the full doc.
+
+### Installation
+
+0. Create a conda environment (highly recommended to avoid compatibility issues) and activate it
+
+``` sh
+conda create -n "llm_detector" python=3.10.12 ipython
+conda activate llm_detector
+```
+
+1. Install pytorch with a version compatible with your CUDA driver
+
+``` sh
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
+
+For CUDA version 11.8 (check your version with nvidia-smi and see [PyTorch's website](https://pytorch.org/)).
+
+2. Clone and install the package
+
+```sh
+git clone git@github.com:marluxiaboss/benchmark_ai_news_detection.git
+pip install -e .
+```
+**TODO** Add to PyPI
+
+### Generate the benchmark
+
+``` sh
+attack="generation_base"
+watermark_scheme="watermark_base"
+
+create_dataset generation=$attack watermark=$watermark_scheme
+```
+
+### Test a detector on the created benchmark
+
+```sh
+detector="fast_detect_gpt"
+
+test_detector detection=$detector 
+```
+
+<!---
 ## Installing the environment
 - Create the conda environment llm_detector by running `bash_scripts/create_envs/create_llm_detector_env.sh` for all the experiments except the ones in the BiGGen-bench scripts `bash_scripts/big_gen_bench` which require vLLM.
 - Create the conda environment big_gen_bench by running `bash_scripts/create_envs/create_big_gen_bench_env` for the experiments using BiGGen-Bench.
@@ -247,7 +293,7 @@ fake_articles = gen_model(prefixes_with_prompt, batch_size=batch_size, watermark
 
 ## Class descriptions
 
-
+-->
 ## Future work
 
 
