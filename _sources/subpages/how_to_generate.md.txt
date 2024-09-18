@@ -23,7 +23,7 @@ repetition_penalty=1
 do_sample=True
 top_k=50
 
-python create_dataset.py generation=$attack watermark=$watermark_scheme generation.generator_name=$generator \
+create_dataset generation=$attack watermark=$watermark_scheme generation.generator_name=$generator \
         generation.dataset_size=$dataset_size generation.experiment_name=$experiment_name \
         generation.prefix_size=$prefix_size \
         generation.skip_train_split=$skip_train_split generation.skip_cache=$skip_cache \

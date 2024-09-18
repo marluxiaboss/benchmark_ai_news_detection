@@ -1,0 +1,58 @@
+detector_benchmark.detector.bert_detector
+=========================================
+
+.. py:module:: detector_benchmark.detector.bert_detector
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector_benchmark.detector.bert_detector.BertDetector
+
+
+Module Contents
+---------------
+
+.. py:class:: BertDetector(model: torch.nn.Module, tokenizer: transformers.PreTrainedTokenizerBase, device: str)
+
+   Bases: :py:obj:`detector_benchmark.detector.detector.Detector`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: model
+
+
+   .. py:attribute:: tokenizer
+
+
+   .. py:attribute:: device
+
+
+   .. py:method:: detect(texts: list[str], batch_size: int, detection_threshold: float = 0.0) -> tuple[list[int], list[float], list[int]]
+
+      Detect the if the texts given as input are AI-generated (label 1) or human-written (label 0).
+      Returns the predicted lables with argmax, the logits of the positive class and the predicted labels with the given detection threshold
+      instead of the argmax.
+
+      Parameters:
+      ----------
+          texts: list[str]
+              The texts to detect
+          batch_size: int
+              The batch size to use for detection
+          detection_threshold: float
+              The threshold to use for detection. Default is 0.0.
+
+      Returns:
+      ----------
+          tuple[list[int], list[float], list[int]]
+              The predicted labels with argmax, the logits of the positive class and the predicted labels with the given detection threshold
+              instead of the argmax.
+
+
+

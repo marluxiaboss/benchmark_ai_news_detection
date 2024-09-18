@@ -1,0 +1,35 @@
+detector_benchmark
+==================
+
+.. py:module:: detector_benchmark
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/detector_benchmark/conf/index
+   /autoapi/detector_benchmark/dataset_loader/index
+   /autoapi/detector_benchmark/detector/index
+   /autoapi/detector_benchmark/generation/index
+   /autoapi/detector_benchmark/pipeline/index
+   /autoapi/detector_benchmark/text_quality_evaluation/index
+   /autoapi/detector_benchmark/watermark/index
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/detector_benchmark/create_dataset/index
+   /autoapi/detector_benchmark/generate_mappings/index
+   /autoapi/detector_benchmark/run_human_eval/index
+   /autoapi/detector_benchmark/run_human_eval_plus/index
+   /autoapi/detector_benchmark/test_detector/index
+   /autoapi/detector_benchmark/test_text_quality/index
+
+

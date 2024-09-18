@@ -55,7 +55,7 @@ gen_experiment_name="compare_watermark"
 detection_experiment_name="compare_watermark"
 test_res_dir="detection_test_results"
 
-python test_detector.py detection=$detector generation=$attack generation.generator_name=generator_name watermark=$watermark_scheme generation.experiment_name=$gen_experiment_name \
+test_detector detection=$detector generation=$attack generation.generator_name=generator_name watermark=$watermark_scheme generation.experiment_name=$gen_experiment_name \
         detection.experiment_name=$detection_experiment_name  \
         detection.test_res_dir=$test_res_dir detection.batch_size=$batch_size             
 ```

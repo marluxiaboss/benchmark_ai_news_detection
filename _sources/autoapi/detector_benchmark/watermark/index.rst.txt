@@ -1,0 +1,29 @@
+detector_benchmark.watermark
+============================
+
+.. py:module:: detector_benchmark.watermark
+
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/detector_benchmark/watermark/dip/index
+   /autoapi/detector_benchmark/watermark/exp/index
+   /autoapi/detector_benchmark/watermark/kgw/index
+   /autoapi/detector_benchmark/watermark/sir/index
+   /autoapi/detector_benchmark/watermark/sweet/index
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/detector_benchmark/watermark/auto_watermark/index
+   /autoapi/detector_benchmark/watermark/base/index
+
+

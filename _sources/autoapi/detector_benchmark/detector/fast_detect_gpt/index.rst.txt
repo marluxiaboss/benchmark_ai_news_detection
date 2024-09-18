@@ -1,0 +1,147 @@
+detector_benchmark.detector.fast_detect_gpt
+===========================================
+
+.. py:module:: detector_benchmark.detector.fast_detect_gpt
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector_benchmark.detector.fast_detect_gpt.FastDetectGPT
+
+
+Module Contents
+---------------
+
+.. py:class:: FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device)
+
+   Bases: :py:obj:`detector_benchmark.detector.detector.Detector`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: ref_model
+
+
+   .. py:attribute:: scoring_model
+
+
+   .. py:attribute:: ref_tokenizer
+
+
+   .. py:attribute:: scoring_tokenizer
+
+
+   .. py:attribute:: device
+
+
+   .. py:method:: get_samples(logits, labels) -> torch.Tensor
+
+      Get the samples from the logits.
+
+      Parameters:
+      ----------
+          logits: torch.Tensor
+              The logits
+          labels: torch.Tensor
+              The labels
+
+
+
+   .. py:method:: get_likelihood(logits, labels) -> torch.Tensor
+
+      Get the likelihood from the logits.
+
+      Parameters:
+      ----------
+          logits: torch.Tensor
+              The logits
+          labels: torch.Tensor
+              The labels
+
+
+
+   .. py:method:: get_sampling_discrepancy(logits_ref, logits_score, labels) -> torch.Tensor
+
+      Get the sampling discrepancy from the logits.
+
+      Parameters:
+      ----------
+          logits_ref: torch.Tensor
+              The logits of the reference model
+          logits_score: torch.Tensor
+              The logits of the scoring model
+          labels: torch.Tensor
+              The labels
+
+
+
+   .. py:method:: get_sampling_discrepancy_analytic(logits_ref, logits_score, labels) -> torch.Tensor
+
+      Get the sampling discrepancy from the logits.
+
+      Parameters:
+      ----------
+          logits_ref: torch.Tensor
+              The logits of the reference model
+          logits_score: torch.Tensor
+              The logits of the scoring model
+
+
+
+   .. py:class:: ProbEstimatorFastDetectGPT(args=None, ref_path=None)
+
+      Probability estimator for the FastDetectGPT detector.
+
+
+      .. py:attribute:: real_crits
+         :value: []
+
+
+
+      .. py:attribute:: fake_crits
+         :value: []
+
+
+
+      .. py:method:: crit_to_prob(crit) -> float
+
+         Convert the criterion to probability.
+
+         Parameters:
+         ----------
+             crit: float
+                 The criterion
+
+         Returns:
+         ----------
+             float
+                 The probability
+
+
+
+
+   .. py:method:: detect(texts: list[str], batch_size: int, detection_threshold: float = 0.5) -> tuple[list[int], list[float], list[int]]
+
+      Detect the watermark in the texts.
+
+      Parameters:
+      ----------
+          texts: list[str]
+              The texts to detect the watermark in
+          batch_size: int
+              The batch size
+          detection_threshold: float
+              The detection threshold
+
+      Returns:
+      ----------
+          tuple[list[int], list[float], list[int]]
+              The predictions, the probabilities and the predictions at the threshold
+
+
+

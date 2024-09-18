@@ -1,0 +1,48 @@
+detector_benchmark.generation.gen_params_attack
+===============================================
+
+.. py:module:: detector_benchmark.generation.gen_params_attack
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector_benchmark.generation.gen_params_attack.GenParamsAttack
+
+
+Module Contents
+---------------
+
+.. py:class:: GenParamsAttack(gen_model: detector_benchmark.generation.generator.LLMGenerator, gen_config: detector_benchmark.utils.configs.ModelConfig, gen_prompt_config: detector_benchmark.utils.configs.PromptConfig, adversarial_gen_params: dict, max_sample_len: int, watermarking_scheme: detector_benchmark.watermark.auto_watermark.AutoWatermark = None)
+
+   Bases: :py:obj:`detector_benchmark.generation.article_generator.ArticleGenerator`
+
+
+   .. py:attribute:: adversarial_gen_params
+
+
+   .. py:attribute:: attack_name
+      :value: 'gen_parameters_attack'
+
+
+
+   .. py:method:: generate_adversarial_text(prefixes: list[str], batch_size: int = 1) -> list[str]
+
+      Generate text with adversarial generation parameters.
+
+      Parameters:
+      ----------
+          prefixes: list
+              A list of input contexts for text generation.
+          batch_size: int
+              The batch size to use for generation.
+
+      Returns:
+      -------
+          fake_articles: list
+              A list of generated text.
+
+
+

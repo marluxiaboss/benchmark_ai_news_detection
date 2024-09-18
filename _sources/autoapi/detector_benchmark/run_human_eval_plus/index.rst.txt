@@ -1,0 +1,25 @@
+detector_benchmark.run_human_eval_plus
+======================================
+
+.. py:module:: detector_benchmark.run_human_eval_plus
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   detector_benchmark.run_human_eval_plus.generate_one_completion
+   detector_benchmark.run_human_eval_plus.generate_batch_completions
+   detector_benchmark.run_human_eval_plus.run_human_eval
+
+
+Module Contents
+---------------
+
+.. py:function:: generate_one_completion(prompt, gen_model, gen_config, tokenizer)
+
+.. py:function:: generate_batch_completions(prompts, gen_model, gen_config, tokenizer, batch_size=2)
+
+.. py:function:: run_human_eval()
+

@@ -1,0 +1,22 @@
+detector_benchmark.test_text_quality
+====================================
+
+.. py:module:: detector_benchmark.test_text_quality
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   detector_benchmark.test_text_quality.init_pipelines
+   detector_benchmark.test_text_quality.evaluate_text_quality
+
+
+Module Contents
+---------------
+
+.. py:function:: init_pipelines(cfg: omegaconf.DictConfig, log)
+
+.. py:function:: evaluate_text_quality(cfg: omegaconf.DictConfig)
+

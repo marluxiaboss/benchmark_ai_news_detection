@@ -1,0 +1,34 @@
+detector_benchmark.create_dataset
+=================================
+
+.. py:module:: detector_benchmark.create_dataset
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   detector_benchmark.create_dataset.choose_dataset
+   detector_benchmark.create_dataset.choose_generator
+   detector_benchmark.create_dataset.choose_watermarking_scheme
+   detector_benchmark.create_dataset.choose_attack
+   detector_benchmark.create_dataset.create_dataset
+   detector_benchmark.create_dataset.main
+
+
+Module Contents
+---------------
+
+.. py:function:: choose_dataset(dataset_name: str, dataset_size: int, max_sample_len: int, prefix_size: int)
+
+.. py:function:: choose_generator(model_name: str, gen_params, device: str)
+
+.. py:function:: choose_watermarking_scheme(cfg: omegaconf.DictConfig, watermarking_scheme_name: str, gen, model_config)
+
+.. py:function:: choose_attack(cfg: omegaconf.DictConfig, attack_type: str, gen_model, model_config, max_sample_len, watermarking_scheme=None, paraphraser_model=None, paraphraser_config=None)
+
+.. py:function:: create_dataset(cfg: omegaconf.DictConfig)
+
+.. py:function:: main()
+

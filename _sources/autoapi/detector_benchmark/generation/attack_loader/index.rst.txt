@@ -1,0 +1,53 @@
+detector_benchmark.generation.attack_loader
+===========================================
+
+.. py:module:: detector_benchmark.generation.attack_loader
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector_benchmark.generation.attack_loader.AttackLoader
+
+
+Module Contents
+---------------
+
+.. py:class:: AttackLoader(cfg: omegaconf.DictConfig, attack_type: str, gen_model: detector_benchmark.generation.generator.LLMGenerator, model_config: detector_benchmark.utils.configs.ModelConfig, max_sample_len: int, watermarking_scheme: Optional[detector_benchmark.watermark.auto_watermark.AutoWatermark] = None, paraphraser_model: Optional[detector_benchmark.generation.generator.LLMGenerator] = None, paraphraser_config: Optional[detector_benchmark.utils.configs.ModelConfig] = None)
+
+   .. py:attribute:: cfg
+
+
+   .. py:attribute:: attack_type
+
+
+   .. py:attribute:: gen_model
+
+
+   .. py:attribute:: model_config
+
+
+   .. py:attribute:: max_sample_len
+
+
+   .. py:attribute:: watermarking_scheme
+
+
+   .. py:attribute:: paraphraser_model
+
+
+   .. py:attribute:: paraphraser_config
+
+
+   .. py:method:: load() -> detector_benchmark.generation.article_generator.ArticleGenerator
+
+      Load the attack.
+
+      Returns:
+      -------
+          ArticleGenerator: The attack.
+
+
+

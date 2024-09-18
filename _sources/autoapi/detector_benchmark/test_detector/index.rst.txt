@@ -1,0 +1,22 @@
+detector_benchmark.test_detector
+================================
+
+.. py:module:: detector_benchmark.test_detector
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   detector_benchmark.test_detector.test_detector
+   detector_benchmark.test_detector.main
+
+
+Module Contents
+---------------
+
+.. py:function:: test_detector(cfg: omegaconf.DictConfig)
+
+.. py:function:: main()
+

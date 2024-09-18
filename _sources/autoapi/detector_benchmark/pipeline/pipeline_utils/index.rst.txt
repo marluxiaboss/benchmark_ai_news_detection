@@ -1,0 +1,50 @@
+detector_benchmark.pipeline.pipeline_utils
+==========================================
+
+.. py:module:: detector_benchmark.pipeline.pipeline_utils
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   detector_benchmark.pipeline.pipeline_utils.compute_bootstrap_metrics
+   detector_benchmark.pipeline.pipeline_utils.create_logger
+   detector_benchmark.pipeline.pipeline_utils.create_logger_file
+   detector_benchmark.pipeline.pipeline_utils.get_threshold_for_results
+
+
+Module Contents
+---------------
+
+.. py:function:: compute_bootstrap_metrics(data, labels, n_bootstrap=1000, flip_labels=False)
+
+   Compute the metrics using bootstrap.
+
+   Parameters:
+   ----------
+       data: list
+           The data to compute the metrics on.
+       labels: list
+           The labels of the data.
+       n_bootstrap: int
+           The number of bootstrap samples to use.
+       flip_labels: bool
+           Whether to flip the labels.
+
+   Returns:
+   -------
+       dict
+           The metrics.
+
+
+.. py:function:: create_logger(name, silent=False, to_disk=False, log_file=None)
+
+   Create a new logger
+
+
+.. py:function:: create_logger_file(log_path)
+
+.. py:function:: get_threshold_for_results(eval_json_path: str, target_fpr: float)
+

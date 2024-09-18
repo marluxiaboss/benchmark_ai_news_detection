@@ -1,0 +1,112 @@
+detector_benchmark.watermark.exp.exp
+====================================
+
+.. py:module:: detector_benchmark.watermark.exp.exp
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector_benchmark.watermark.exp.exp.EXPConfig
+   detector_benchmark.watermark.exp.exp.EXPUtils
+   detector_benchmark.watermark.exp.exp.EXP
+
+
+Module Contents
+---------------
+
+.. py:class:: EXPConfig(algorithm_config: dict, gen_model, model_config: utils.configs.ModelConfig, *args, **kwargs)
+
+   Config class for EXP algorithm, load config file and initialize parameters.
+
+
+   .. py:attribute:: prefix_length
+
+
+   .. py:attribute:: hash_key
+
+
+   .. py:attribute:: threshold
+
+
+   .. py:attribute:: sequence_length
+
+
+   .. py:attribute:: generation_model
+
+
+   .. py:attribute:: generation_tokenizer
+
+
+   .. py:attribute:: vocab_size
+
+
+   .. py:attribute:: device
+
+
+   .. py:attribute:: gen_kwargs
+
+
+.. py:class:: EXPUtils(config: EXPConfig, *args, **kwargs)
+
+   Utility class for EXP algorithm, contains helper functions.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: rng
+
+
+   .. py:method:: seed_rng(input_ids: torch.LongTensor) -> None
+
+      Seed the random number generator with the last `prefix_length` tokens of the input.
+
+
+
+   .. py:method:: exp_sampling(probs: torch.Tensor, u: torch.Tensor) -> torch.Tensor
+
+      Sample a token from the vocabulary using the exponential sampling method.
+
+
+
+   .. py:method:: _value_transformation(value)
+
+      Transform the value to a range between 0 and 1.
+
+
+
+.. py:class:: EXP(algorithm_config: dict, gen_model, transformers_config: utils.configs.ModelConfig, *args, **kwargs)
+
+   Bases: :py:obj:`base.BaseWatermark`
+
+
+   Top-level class for the EXP algorithm.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: utils
+
+
+   .. py:method:: generate_watermarked_text(prompt: str, *args, **kwargs) -> str
+
+      Generate watermarked text using the EXP algorithm.
+
+
+
+   .. py:method:: generate(encoded_prompts: list, *args, **kwargs) -> str
+
+      Generate watermarked text. Takes a list of encoded prompts as input, like transformers model.generate.
+
+
+
+   .. py:method:: detect_watermark(text: str, return_dict: bool = True, *args, **kwargs) -> dict
+
+      Detect watermark in the text.
+
+
+

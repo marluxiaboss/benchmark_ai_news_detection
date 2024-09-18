@@ -1,0 +1,19 @@
+detector_benchmark.text_quality_evaluation.scorer_utils
+=======================================================
+
+.. py:module:: detector_benchmark.text_quality_evaluation.scorer_utils
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   detector_benchmark.text_quality_evaluation.scorer_utils.bootstrap_score
+
+
+Module Contents
+---------------
+
+.. py:function:: bootstrap_score(scores_list: list[int], n_bootstraps: int = 1000, seed: int = 42)
+

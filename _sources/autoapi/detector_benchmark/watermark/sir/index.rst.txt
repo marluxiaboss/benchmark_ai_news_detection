@@ -1,0 +1,62 @@
+detector_benchmark.watermark.sir
+================================
+
+.. py:module:: detector_benchmark.watermark.sir
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/detector_benchmark/watermark/sir/sir/index
+   /autoapi/detector_benchmark/watermark/sir/transform_model/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector_benchmark.watermark.sir.SIR
+
+
+Package Contents
+----------------
+
+.. py:class:: SIR(algorithm_config: dict, gen_model, transformers_config: utils.configs.ModelConfig, *args, **kwargs)
+
+   Bases: :py:obj:`base.BaseWatermark`
+
+
+   Top-level class for SIR algorithm.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: utils
+
+
+   .. py:attribute:: logits_processor
+
+
+   .. py:method:: generate_watermarked_text(prompt: str, *args, **kwargs)
+
+      Generate watermarked text.
+
+
+
+   .. py:method:: generate(encoded_prompts: list, *args, **kwargs) -> str
+
+      Generate watermarked text. Takes a list of encoded prompts as input, like transformers model.generate.
+
+
+
+   .. py:method:: detect_watermark(text: str, return_dict: bool = True, *args, **kwargs)
+
+      Detect watermark in the input text.
+
+
+

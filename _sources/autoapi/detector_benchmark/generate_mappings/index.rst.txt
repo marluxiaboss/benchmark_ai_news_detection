@@ -1,0 +1,22 @@
+detector_benchmark.generate_mappings
+====================================
+
+.. py:module:: detector_benchmark.generate_mappings
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   detector_benchmark.generate_mappings.generate_mapping
+   detector_benchmark.generate_mappings.main
+
+
+Module Contents
+---------------
+
+.. py:function:: generate_mapping(size=30000, dimension=300)
+
+.. py:function:: main()
+

@@ -1,0 +1,52 @@
+detector_benchmark.detector.watermark_detector
+==============================================
+
+.. py:module:: detector_benchmark.detector.watermark_detector
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector_benchmark.detector.watermark_detector.WatermarkDetector
+
+
+Module Contents
+---------------
+
+.. py:class:: WatermarkDetector(watermarking_scheme: detector_benchmark.watermark.auto_watermark.AutoWatermark, detection_threshold: float)
+
+   Bases: :py:obj:`detector_benchmark.detector.detector.Detector`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
+   .. py:attribute:: watermarking_scheme
+
+
+   .. py:attribute:: detection_threshold
+
+
+   .. py:method:: detect(texts: list[str], batch_size: int, detection_threshold: float) -> tuple[list[int], list[float], list[int]]
+
+      Detect the if the texts given as input are watermarked (label 1) or not (label 0).
+
+      Parameters:
+      ----------
+          texts: list[str]
+              The texts to detect
+          batch_size: int
+              The batch size
+          detection_threshold: float
+              The threshold to use for the detection
+
+      Returns:
+      ----------
+          tuple[list[int], list[float], list[int]]
+              The predictions, the logits for the positive class, and the predictions at the threshold
+
+
+
