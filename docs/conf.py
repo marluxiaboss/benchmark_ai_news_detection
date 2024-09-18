@@ -58,3 +58,7 @@ html_theme_options = {
 # autoapi
 extensions.append("autoapi.extension")
 autoapi_dirs = ["../detector_benchmark"]
+
+# landing page
+# templates_path = ["_templates"]
+# html_additional_pages = {"index": "subpages/getting_started.md"}
