@@ -134,6 +134,10 @@ Package Contents
    Bases: :py:obj:`detector_benchmark.generation.article_generator.ArticleGenerator`
 
 
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
    .. py:attribute:: adversarial_gen_params
 
 
@@ -252,6 +256,10 @@ Package Contents
 .. py:class:: PromptParaphrasingAttack(gen_model: detector_benchmark.generation.generator.LLMGenerator, gen_config: detector_benchmark.utils.configs.ModelConfig, gen_prompt_config: detector_benchmark.utils.configs.PromptConfig, paraphraser_model: detector_benchmark.generation.generator.LLMGenerator, paraphraser_config: detector_benchmark.utils.configs.ModelConfig, paraphraser_prompt_config: detector_benchmark.utils.configs.PromptConfig, max_sample_len: int, watermarking_scheme: detector_benchmark.watermark.auto_watermark.AutoWatermark = None)
 
    Bases: :py:obj:`detector_benchmark.generation.article_generator.ArticleGenerator`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
 
 
    .. py:attribute:: paraphraser_model
