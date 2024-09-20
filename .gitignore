@@ -8,7 +8,6 @@ __pycache__/
 # git pre-commit hooks
 .flake8
 .pre-commit-config.yaml
-.github/workflows/
 
 # data
 data/
