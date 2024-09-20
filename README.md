@@ -90,6 +90,9 @@ Configuration files (hydra configuration) are located in:
 - `detector_benchmark/test_text_quality.py`: script to run basic text quality evaluation on generated text (non-watermarked, watermarked or even human written)
 
 ### 3. External libraries submodules
+
+**Note**: this is still work in progress, therefore it has been temporally been removed. It will be re-added for the next release.
+
 Some existing github repositories were forked and adapted to work with watermarking, namely:
 - `lm-evaluation-harness/` from EleutherAI that supports a wide range of benchmarking tasks. 
 - `bigcode-evaluation-harness/` from BigCode that supports a wide range of code benchmarking tasks. 
