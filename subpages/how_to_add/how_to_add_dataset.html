@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Class details" href="../details.html" /><link rel="prev" title="List of supported LLMs for generation" href="supported_generators.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="How to add a new detector on the detection benchmark" href="how_to_add_detector.html" /><link rel="prev" title="How to add an attack" href="how_to_add_attack.html" />
 
     <link rel="shortcut icon" href="../../_static/glass.png"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
-        <title>List of supported watermarking schemes - LLM Detector Benchmark 🔎</title>
+        <title>How to add a dataset - LLM Detector Benchmark 🔎</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
@@ -208,19 +208,19 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../how_to_generate.html">How to generate the benchmark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../how_to_test_detector.html">How to test a detector</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../how_to_add_index.html">How to extend the benchmark</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How to extend the benchmark</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../how_to_add/how_to_add_attack.html">How to add an attack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../how_to_add/how_to_add_dataset.html">How to add a dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../how_to_add/how_to_add_detector.html">How to add a new detector on the detection benchmark</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../how_to_add/how_to_add_generator.html">How to add a new LLM for generating the benchmark</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../how_to_add/how_to_add_watermark.html">How to add a watermarking scheme on the benchmark</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../how_to_add_index.html">How to extend the benchmark</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How to extend the benchmark</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="how_to_add_attack.html">How to add an attack</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">How to add a dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_add_detector.html">How to add a new detector on the detection benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_add_generator.html">How to add a new LLM for generating the benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_add_watermark.html">How to add a watermarking scheme on the benchmark</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../supported_list_index.html">List of supported generators, detectors, attacks and watermarks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of List of supported generators, detectors, attacks and watermarks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="supported_attacks.html">List of supported evasion attacks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="supported_detectors.html">List of supported detectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="supported_generators.html">List of supported LLMs for generation</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">List of supported watermarking schemes</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supported_list_index.html">List of supported generators, detectors, attacks and watermarks</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of List of supported generators, detectors, attacks and watermarks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../description_lists/supported_attacks.html">List of supported evasion attacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../description_lists/supported_detectors.html">List of supported detectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../description_lists/supported_generators.html">List of supported LLMs for generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../description_lists/supported_watermarks.html">List of supported watermarking schemes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../details.html">Class details</a></li>
@@ -326,7 +326,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../../_sources/subpages/description_lists/supported_watermarks.md.txt" title="View this page">
+  <a class="muted-link" href="../../_sources/subpages/how_to_add/how_to_add_dataset.md.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -346,21 +346,24 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="list-of-supported-watermarking-schemes">
-<h1>List of supported watermarking schemes<a class="headerlink" href="#list-of-supported-watermarking-schemes" title="Link to this heading">¶</a></h1>
-<p>See <code class="docutils literal notranslate"><span class="pre">detector_benchmark/watermark</span></code> and <code class="docutils literal notranslate"><span class="pre">detector_benchmark/conf/watermark</span></code> and <a class="reference external" href="https://github.com/THU-BPM/MarkLLM">https://github.com/THU-BPM/MarkLLM</a> for the source of most of the watermarking schemes.</p>
-<div class="admonition-supported-watermarking-schemes admonition">
-<p class="admonition-title">Supported Watermarking schemes</p>
+          <section id="how-to-add-a-dataset">
+<h1>How to add a dataset<a class="headerlink" href="#how-to-add-a-dataset" title="Link to this heading">¶</a></h1>
+<p>First, let’s describe the datasets format used for testing the detectors. The datasets are huggingface Datasets where each samples has the following fields:</p>
 <ul class="simple">
-<li><p>“watermark_base”: No watermarking</p></li>
-<li><p>“watermark_dip”: DIP watermarking scheme from <a class="reference external" href="https://arxiv.org/abs/2310.07710">[2310.07710] A Resilient and Accessible Distribution-Preserving Watermark for Large Language Models (arxiv.org)</a></p></li>
-<li><p>“watermark_exp”: EXP watermarking scheme from <a class="reference external" href="https://www.scottaaronson.com/talks/watermark.ppt">https://www.scottaaronson.com/talks/watermark.ppt</a></p></li>
-<li><p>“watermark_kgw” Watermarking scheme from <a class="reference external" href="https://arxiv.org/abs/2301.10226">[2301.10226] A Watermark for Large Language Models (arxiv.org)</a></p></li>
-<li><p>“watermark_sir”: SIR watermarking scheme from <a class="reference external" href="https://arxiv.org/abs/2310.06356">[2310.06356] A Semantic Invariant Robust Watermark for Large Language Models (arxiv.org)</a>.</p></li>
-<li><p>“watermark_sweet”: SWEET watermarking scheme from <a class="reference external" href="https://arxiv.org/abs/2305.15060">[2305.15060] Who Wrote this Code? Watermarking for Code Generation (arxiv.org)</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: the label of the text (0 for human written, 1 for AI-written)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code>: contains the full text of the sample</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prefix</span></code>: prefix from the human written texts used to generated the AI-written text. For each prefix, we always have the corresponding true sample (label 0) and the fake one (label 1) sharing the same prefix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">generation_config</span></code>: the config (data from the config file in <code class="docutils literal notranslate"><span class="pre">conf</span></code>) used to generate the text AI-generated text for the dataset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">watermark_config</span></code>: the watermarking config used to generate the text (which watermarking algorithm if any,…)</p></li>
 </ul>
+<p>Now to add a different dataset than the existing ones, we need to add dataset loader class inheriting the base <code class="docutils literal notranslate"><span class="pre">FakeTruePairsDataLoader</span></code> class inside the <code class="docutils literal notranslate"><span class="pre">dataset_loader</span></code> folder.
+This class should implement the <code class="docutils literal notranslate"><span class="pre">load_data</span></code> function with the following signature:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DatasetDict</span><span class="p">:</span>
+</pre></div>
 </div>
-<p>Note: Since the watermark code structure is taken from <a class="reference external" href="https://github.com/THU-BPM/MarkLLM">https://github.com/THU-BPM/MarkLLM</a>. We can easily add a new watermarking scheme if there is a new one available in the provided link.</p>
+<p>This function should return a DatasetDict (huggingface dataset format) with a train, eval and test split and respecting the dataset format.
+To see how to apply the correct format to the dataset, see the existing dataset loaders.</p>
+<p>Note: the load_data returns a dataset where the fake samples (label 1) have an empty <code class="docutils literal notranslate"><span class="pre">text</span></code> and no <code class="docutils literal notranslate"><span class="pre">generation_config</span></code> nor <code class="docutils literal notranslate"><span class="pre">watermark_config</span></code> fields since the AI texts have not been generated yet. The only fields that should be fully field for AI texts are the label and the prefix.</p>
 </section>
 
         </article>
@@ -368,23 +371,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../details.html">
+          <a class="next-page" href="how_to_add_detector.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Class details</div>
+                <div class="title">How to add a new detector on the detection benchmark</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="supported_generators.html">
+          <a class="prev-page" href="how_to_add_attack.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">List of supported LLMs for generation</div>
+                <div class="title">How to add an attack</div>
                 
               </div>
             </a>

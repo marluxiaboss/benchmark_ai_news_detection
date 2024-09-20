@@ -210,6 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../how_to_test_detector.html">How to test a detector</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../how_to_add_index.html">How to extend the benchmark</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How to extend the benchmark</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../how_to_add/how_to_add_attack.html">How to add an attack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how_to_add/how_to_add_dataset.html">How to add a dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../how_to_add/how_to_add_detector.html">How to add a new detector on the detection benchmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../how_to_add/how_to_add_generator.html">How to add a new LLM for generating the benchmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../how_to_add/how_to_add_watermark.html">How to add a watermarking scheme on the benchmark</a></li>
@@ -219,7 +220,7 @@
 <li class="toctree-l2"><a class="reference internal" href="supported_attacks.html">List of supported evasion attacks</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">List of supported detectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="supported_generators.html">List of supported LLMs for generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="supported_watermarks.html">List of supported LLMs for generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supported_watermarks.html">List of supported watermarking schemes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../details.html">Class details</a></li>
@@ -352,7 +353,7 @@
 <p class="admonition-title">Supported LLM detectors</p>
 <ul class="simple">
 <li><p>“electra_large”: Electra large from … Need to provide the .pt file of weights for the trained model.</p></li>
-<li><p>“fast_detect_gpt”: Fast-DetectGPT zero-shot detector from …</p></li>
+<li><p>“fast_detect_gpt”: Fast-DetectGPT zero-shot detector from [<a class="reference external" href="http://arxiv.org/abs/2310.05130">2310.05130]Fast-DetectGPT: Efficient Zero-Shot Detection of Machine-Generated Text via Conditional Probability Curvature (arxiv.org)</a>.</p></li>
 <li><p>“gpt_zero”: GPTZero detector. Need to set the API key as an environment variable called “GPT_ZERO_API_KEY”.</p></li>
 <li><p>“watermark_detector”: Detector used for detecting a watermark (the detector depends on the watermarking scheme used for generation).</p></li>
 </ul>

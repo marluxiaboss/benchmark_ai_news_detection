@@ -210,6 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../subpages/how_to_test_detector.html">How to test a detector</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../../subpages/how_to_add_index.html">How to extend the benchmark</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How to extend the benchmark</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../subpages/how_to_add/how_to_add_attack.html">How to add an attack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../subpages/how_to_add/how_to_add_dataset.html">How to add a dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../subpages/how_to_add/how_to_add_detector.html">How to add a new detector on the detection benchmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../subpages/how_to_add/how_to_add_generator.html">How to add a new LLM for generating the benchmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../subpages/how_to_add/how_to_add_watermark.html">How to add a watermarking scheme on the benchmark</a></li>
@@ -219,7 +220,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../subpages/description_lists/supported_attacks.html">List of supported evasion attacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../subpages/description_lists/supported_detectors.html">List of supported detectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../subpages/description_lists/supported_generators.html">List of supported LLMs for generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../subpages/description_lists/supported_watermarks.html">List of supported LLMs for generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../subpages/description_lists/supported_watermarks.html">List of supported watermarking schemes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../subpages/details.html">Class details</a></li>
@@ -353,7 +354,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#detector_benchmark.detector.watermark_detector.WatermarkDetector" title="detector_benchmark.detector.watermark_detector.WatermarkDetector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WatermarkDetector</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Helper class that provides a standard way to create an ABC using</p></td>
 </tr>
 </tbody>
 </table>
@@ -365,6 +366,8 @@
 <dt class="sig sig-object py" id="detector_benchmark.detector.watermark_detector.WatermarkDetector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">detector_benchmark.detector.watermark_detector.</span></span><span class="sig-name descname"><span class="pre">WatermarkDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">watermarking_scheme</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../watermark/auto_watermark/index.html#detector_benchmark.watermark.auto_watermark.AutoWatermark" title="detector_benchmark.watermark.auto_watermark.AutoWatermark"><span class="pre">detector_benchmark.watermark.auto_watermark.AutoWatermark</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">detection_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#detector_benchmark.detector.watermark_detector.WatermarkDetector" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../detector/index.html#detector_benchmark.detector.detector.Detector" title="detector_benchmark.detector.detector.Detector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detector_benchmark.detector.detector.Detector</span></code></a></p>
+<p>Helper class that provides a standard way to create an ABC using
+inheritance.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.detector.watermark_detector.WatermarkDetector.watermarking_scheme">
 <span class="sig-name descname"><span class="pre">watermarking_scheme</span></span><a class="headerlink" href="#detector_benchmark.detector.watermark_detector.WatermarkDetector.watermarking_scheme" title="Link to this definition">¶</a></dt>

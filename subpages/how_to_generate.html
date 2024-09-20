@@ -210,6 +210,7 @@
 <li class="toctree-l1"><a class="reference internal" href="how_to_test_detector.html">How to test a detector</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="how_to_add_index.html">How to extend the benchmark</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How to extend the benchmark</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_attack.html">How to add an attack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_dataset.html">How to add a dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_detector.html">How to add a new detector on the detection benchmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_generator.html">How to add a new LLM for generating the benchmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_watermark.html">How to add a watermarking scheme on the benchmark</a></li>
@@ -219,7 +220,7 @@
 <li class="toctree-l2"><a class="reference internal" href="description_lists/supported_attacks.html">List of supported evasion attacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="description_lists/supported_detectors.html">List of supported detectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="description_lists/supported_generators.html">List of supported LLMs for generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="description_lists/supported_watermarks.html">List of supported LLMs for generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description_lists/supported_watermarks.html">List of supported watermarking schemes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="details.html">Class details</a></li>
@@ -395,7 +396,7 @@ Note that all default values assume that attack=”generation_base” which mean
 <li><p><code class="docutils literal notranslate"><span class="pre">max_sample_len</span></code>: The maximum length of each of the fake/true samples in number of characters. All samples fake or true are cut to this value. Default value: 500</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">min_new_tokens</span></code>: The minimum number of new tokens to generate, set to 40. This ensures that each generated sample has a minimum length. Default value: 200</p></li>
 <li><p>prefix_size: Number of first words to take from the true samples that will be forced into the fake samples to start the generation. Default value: 10</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">repetition_penalty=1</span></code>: Repetion value used for the generation. Default value: 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repetition_penalty=1</span></code>: Repetition penalty value used for the generation. Default value: 1</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">skip_train_split</span></code>: A boolean parameter that, when set to True, indicates that the training split of the dataset should be skipped. It will still create a train split, but the fake samples will be empty. Note that there is an eval split used for finding the correct threshold for a given target FPR and the test split used to test the detector on that threshold. The train split could be used to train a detector on that dataset. Default value: False</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">temperature</span></code>: Temperature used for the generation. Default value: 0.8</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">top_k</span></code>: top k value used for the generation. Default value: 50</p></li>

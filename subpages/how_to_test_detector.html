@@ -210,6 +210,7 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">How to test a detector</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="how_to_add_index.html">How to extend the benchmark</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How to extend the benchmark</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_attack.html">How to add an attack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_dataset.html">How to add a dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_detector.html">How to add a new detector on the detection benchmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_generator.html">How to add a new LLM for generating the benchmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_add/how_to_add_watermark.html">How to add a watermarking scheme on the benchmark</a></li>
@@ -219,7 +220,7 @@
 <li class="toctree-l2"><a class="reference internal" href="description_lists/supported_attacks.html">List of supported evasion attacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="description_lists/supported_detectors.html">List of supported detectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="description_lists/supported_generators.html">List of supported LLMs for generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="description_lists/supported_watermarks.html">List of supported LLMs for generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="description_lists/supported_watermarks.html">List of supported watermarking schemes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="details.html">Class details</a></li>
@@ -371,14 +372,14 @@ python<span class="w"> </span>test_detector.py<span class="w"> </span><span clas
 <p>This section outlines the parameters used for testing a detector with the specified configurations. See the configuration files under <code class="docutils literal notranslate"><span class="pre">detector_benchmark/conf/detection</span></code> for the complete list.
 Note that each detector may have its own specific parameters that we don’t cover here, look at the individual configuration files for each detector for more details.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">attack</span></code>: See <a class="reference internal" href="how_to_generate.html"><span class="std std-doc">how to generate page</span></a>. Note that we don’t assume that we know the attack, we specifiy the attack here because it allow us to track the data folder name for the corresponding generated dataset. Default value: “generation_base”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">attack</span></code>: See <a class="reference internal" href="how_to_generate.html"><span class="std std-doc">how to generate page</span></a>. Note that we don’t assume that we know the attack, we specify the attack here because it allow us to track the data folder name for the corresponding generated dataset. Default value: “generation_base”</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>: Specifies the number of samples to be process in parallel by the GPU. Default value: 2</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gen_experiment_name</span></code>: Specifies the experiment name for generating the data. The name should match the corresponding <code class="docutils literal notranslate"><span class="pre">experiment_name</span></code> value when generating the benchmark (see the <code class="docutils literal notranslate"><span class="pre">experiment_name</span></code> field in <a class="reference internal" href="how_to_generate.html"><span class="std std-doc">how to generate page</span></a>). Default value: base</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">detection_experiment_name</span></code>: Specifies the experiment name for the detection test - used to identify a specific experiment in the result folders (similar to <code class="docutils literal notranslate"><span class="pre">gen_experiment_name</span></code>). Default value: base</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">detector</span></code>: Specifies the hydra configuration file for the detector. See <a class="reference internal" href="description_lists/supported_detectors.html"><span class="std std-doc">the list of supported detector</span></a> for the list of supported detectors. Default value: “detection_base”</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">generator_name</span></code>: See <a class="reference internal" href="how_to_generate.html"><span class="std std-doc">how to generate page</span></a>. Note that we don’t assume that we know the LLM used for generation, we specifiy the generator here because it allow us to track the data folder name for the corresponding generated dataset. Default value: “qwen2_chat_0_5B”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">generator_name</span></code>: See <a class="reference internal" href="how_to_generate.html"><span class="std std-doc">how to generate page</span></a>. Note that we don’t assume that we know the LLM used for generation, we specify the generator here because it allow us to track the data folder name for the corresponding generated dataset. Default value: “qwen2_chat_0_5B”</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">test_res_dir</span></code>: Specify the base folder where the detection results should be saved. Default value: “detection_test_results”</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">weights_checkpoint</span></code>: Sets the .pt file for the folder used to load the weights of the detector, in case we finetuned a detector on a specific dataset locally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weights_checkpoint</span></code>: Sets the .pt file for the folder used to load the weights of the detector, in case we fine-tuned a detector on a specific dataset locally.</p></li>
 </ul>
 </div>
 </section>
