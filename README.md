@@ -1,16 +1,16 @@
 # LLM-generated news benchmark  :mag: 📰
 The purpose of this benchmark is to evaluate LLM detectors, especially against evasion attacks. So far, the benchmark is based on the detection of short LLM-generated news articles, but it can be extended to cover different detection tasks.  
-The main consideration is to make the benchmark easy to extend with different datasets, detectors and evasion attacks
+The main consideration is to make the benchmark easy to extend with different datasets, detectors and evasion attacks.
 
 <p>
-| <a href="https://marluxiaboss.github.io/benchmark_ai_news_detection/"><b>Documentation</b></a> | <a href="https://arxiv.org/abs/2409.03291"><b>Paper</b></a> |
+| <a href="https://marluxiaboss.github.io/benchmark_ai_news_detection/"><b>Documentation</b></a> | <a href="https://arxiv.org/abs/2409.03291"><b>Paper</b></a> | <a href="https://github.com/marluxiaboss/text_llm_detector"><b>Old repository</b></a> |
 
 </p>
 
 ## Features
+- Generating an (adversarial) benchmark with a specific configuration, used for testing detectors.
 - Detectors and watermark detection benchmarking (adversarial + non-adversarial)
-- LLM-generated watermarked text quality benchmarking
-- Modularity: possible to add new datasets, detectors, attacks and watermarking schemes without much effort
+- **Modularity**: possible to add new datasets, detectors, attacks and watermarking schemes without much effort
 
 ## Table of content
 
