@@ -23,6 +23,7 @@ detector_benchmark/watermark/kgw_p
 notebooks/
 text_quality_eval_results/
 detection_test_results/
+big_gen_bench_feedback/
 
 # Distribution / packaging
 bin/
