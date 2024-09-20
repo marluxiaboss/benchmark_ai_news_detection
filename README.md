@@ -51,7 +51,6 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 git clone git@github.com:marluxiaboss/benchmark_ai_news_detection.git
 pip install -e .
 ```
-**TODO** Add to PyPI
 
 ### Generate the benchmark
 
