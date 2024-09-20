@@ -39,11 +39,11 @@ conda activate llm_detector
 
 1. Install pytorch with a version compatible with your CUDA driver
 
+For CUDA version 11.8 (check your version with nvidia-smi and see PyTorch’s website):
+
 ``` sh
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
-
-For CUDA version 11.8 (check your version with nvidia-smi and see [PyTorch's website](https://pytorch.org/)).
 
 2. Clone and install the package
 
@@ -141,8 +141,6 @@ Here are the following folders used to save the results from the scripts/benchma
 - `detector_benchmark/detection_test_results` containing the results when running the detection script `detector_benchmark/test_detector.py`.
 - `detector_benchmark/text_quality_eval_results` containing the results when running the text quality evaluation script `detector_benchmark/test_text_quality.py`
 - TODO: add info about the respective results folder for the external libraries
-
-```
 
 <!---
 ## Installing the environment
