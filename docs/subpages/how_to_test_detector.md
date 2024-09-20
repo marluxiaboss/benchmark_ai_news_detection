@@ -26,7 +26,7 @@ python test_detector.py detection=$detector generation=$attack generation.genera
 This section outlines the parameters used for testing a detector with the specified configurations. See the configuration files under `detector_benchmark/conf/detection` for the complete list.
 Note that each detector may have its own specific parameters that we don't cover here, look at the individual configuration files for each detector for more details.
 
-- `attack`: See [how to generate page](how_to_generate.md). Note that we don't assume that we know the attack, we specifiy the attack here because it allow us to track the data folder name for the corresponding generated dataset. Default value: "generation_base"
+- `attack`: See [how to generate page](how_to_generate.md). Note that we don't assume that we know the attack, we specify the attack here because it allow us to track the data folder name for the corresponding generated dataset. Default value: "generation_base"
 
 - `batch_size`: Specifies the number of samples to be process in parallel by the GPU. Default value: 2
 
@@ -36,11 +36,11 @@ Note that each detector may have its own specific parameters that we don't cover
 
 - `detector`: Specifies the hydra configuration file for the detector. See [the list of supported detector](description_lists/supported_detectors.md) for the list of supported detectors. Default value: "detection_base"
 
-- `generator_name`: See [how to generate page](how_to_generate.md). Note that we don't assume that we know the LLM used for generation, we specifiy the generator here because it allow us to track the data folder name for the corresponding generated dataset. Default value: "qwen2_chat_0_5B"
+- `generator_name`: See [how to generate page](how_to_generate.md). Note that we don't assume that we know the LLM used for generation, we specify the generator here because it allow us to track the data folder name for the corresponding generated dataset. Default value: "qwen2_chat_0_5B"
 
 - `test_res_dir`: Specify the base folder where the detection results should be saved. Default value: "detection_test_results"
 
-- `weights_checkpoint`: Sets the .pt file for the folder used to load the weights of the detector, in case we finetuned a detector on a specific dataset locally.
+- `weights_checkpoint`: Sets the .pt file for the folder used to load the weights of the detector, in case we fine-tuned a detector on a specific dataset locally.
 ```
 
 ## Test a watermark detector

@@ -64,7 +64,7 @@ Note that all default values assume that attack="generation_base" which means th
 
 - prefix_size: Number of first words to take from the true samples that will be forced into the fake samples to start the generation. Default value: 10
 
-- `repetition_penalty=1`: Repetion value used for the generation. Default value: 1
+- `repetition_penalty=1`: Repetition penalty value used for the generation. Default value: 1
 
 - `skip_train_split`: A boolean parameter that, when set to True, indicates that the training split of the dataset should be skipped. It will still create a train split, but the fake samples will be empty. Note that there is an eval split used for finding the correct threshold for a given target FPR and the test split used to test the detector on that threshold. The train split could be used to train a detector on that dataset. Default value: False
 

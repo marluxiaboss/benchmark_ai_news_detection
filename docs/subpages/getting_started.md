@@ -11,11 +11,10 @@ conda activate llm_detector
 
 1. Install pytorch with a version compatible with your CUDA driver
 
+For CUDA version 11.8 (check your version with nvidia-smi and see [PyTorch's website](https://pytorch.org/)):
 ``` sh
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
-
-For CUDA version 11.8 (check your version with nvidia-smi and see [PyTorch's website](https://pytorch.org/)).
 
 2. Clone and install the package
 

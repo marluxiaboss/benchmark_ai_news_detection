@@ -3,7 +3,7 @@
 ```{toctree}
 ---
 maxdepth: 2
-caption: Supported list...
+caption: Supported list
 ---
 description_lists/supported_attacks.md
 description_lists/supported_detectors.md
