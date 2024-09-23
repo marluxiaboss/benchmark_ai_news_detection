@@ -1,4 +1,4 @@
-# LLM-generated news benchmark  :mag: 📰
+# LLM-generated news detection benchmark  :mag: 📰
 The purpose of this benchmark is to evaluate LLM detectors, especially against evasion attacks. So far, the benchmark is based on the detection of short LLM-generated news articles, but it can be extended to cover different detection tasks.  
 The main consideration is to make the benchmark easy to extend with different datasets, detectors and evasion attacks.
 
