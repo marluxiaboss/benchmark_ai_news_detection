@@ -11,6 +11,7 @@ Functions
 
    detector_benchmark.test_text_quality.init_pipelines
    detector_benchmark.test_text_quality.evaluate_text_quality
+   detector_benchmark.test_text_quality.main
 
 
 Module Contents
@@ -19,4 +20,6 @@ Module Contents
 .. py:function:: init_pipelines(cfg: omegaconf.DictConfig, log)
 
 .. py:function:: evaluate_text_quality(cfg: omegaconf.DictConfig)
+
+.. py:function:: main()
 
