@@ -13,6 +13,7 @@ setup(
         "console_scripts": [
             "create_dataset=detector_benchmark.create_dataset:main",
             "test_detector=detector_benchmark.test_detector:main",
+            "test_text_quality=detector_benchmark.test_text_quality:main",
         ],
     },
     author="Henrique Da Silva Gameiro",

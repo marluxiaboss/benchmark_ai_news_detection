@@ -183,6 +183,10 @@ def evaluate_text_quality(cfg: DictConfig):
         f.write(json.dumps(results_dict, indent=4))
 
 
+def main():
+    evaluate_text_quality()
+
+
 if __name__ == "__main__":
 
-    evaluate_text_quality()
+    main()
