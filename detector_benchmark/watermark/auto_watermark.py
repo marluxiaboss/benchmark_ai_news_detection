@@ -7,6 +7,19 @@
 
 import importlib
 
+from .kgw import KGW
+from .sir import SIR
+
+# from .xsir import XSIR
+from .kgw_p import KGW_P
+from .exp import EXP
+from .dip import DIP
+
+# from .kgw_e import KGW_E
+from .sweet import SWEET
+from .sweet_p import SWEET_P
+
+
 WATERMARK_MAPPING_NAMES = {
     "KGW": "kgw.KGW",
     "SIR": "sir.SIR",
