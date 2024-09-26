@@ -18,7 +18,7 @@ Classes
 Module Contents
 ---------------
 
-.. py:class:: KGWConfig(algorithm_config: dict, gen_model, model_config: utils.configs.ModelConfig, *args, **kwargs)
+.. py:class:: KGWConfig(algorithm_config: dict, gen_model, model_config: detector_benchmark.utils.configs.ModelConfig, *args, **kwargs)
 
    Config class for KGW algorithm, load config file and initialize parameters.
 
@@ -123,9 +123,9 @@ Module Contents
 
 
 
-.. py:class:: KGW(algorithm_config: dict, gen_model, transformers_config: utils.configs.ModelConfig, *args, **kwargs)
+.. py:class:: KGW(algorithm_config: dict, gen_model, transformers_config: detector_benchmark.utils.configs.ModelConfig, *args, **kwargs)
 
-   Bases: :py:obj:`base.BaseWatermark`
+   Bases: :py:obj:`detector_benchmark.watermark.base.BaseWatermark`
 
 
    Top-level class for KGW algorithm.

@@ -15,7 +15,7 @@ Classes
 Module Contents
 ---------------
 
-.. py:class:: BaseWatermark(algorithm_config: str, gen_model, model_config: utils.configs.ModelConfig, *args, **kwargs)
+.. py:class:: BaseWatermark(algorithm_config: str, gen_model, model_config: detector_benchmark.utils.configs.ModelConfig, *args, **kwargs)
 
    .. py:method:: generate_watermarked_text(prompt: str, *args, **kwargs) -> str
 

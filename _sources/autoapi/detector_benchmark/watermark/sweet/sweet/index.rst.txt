@@ -18,7 +18,7 @@ Classes
 Module Contents
 ---------------
 
-.. py:class:: SWEET_Config(algorithm_config: dict, gen_model, model_config: utils.configs.ModelConfig, *args, **kwargs)
+.. py:class:: SWEET_Config(algorithm_config: dict, gen_model, model_config: detector_benchmark.utils.configs.ModelConfig, *args, **kwargs)
 
    Config class for SWEET algorithm, load config file and initialize parameters.
 
@@ -129,9 +129,9 @@ Module Contents
    .. py:method:: __call__(input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor
 
 
-.. py:class:: SWEET(algorithm_config: dict, gen_model, transformers_config: utils.configs.ModelConfig, *args, **kwargs)
+.. py:class:: SWEET(algorithm_config: dict, gen_model, transformers_config: detector_benchmark.utils.configs.ModelConfig, *args, **kwargs)
 
-   Bases: :py:obj:`base.BaseWatermark`
+   Bases: :py:obj:`detector_benchmark.watermark.base.BaseWatermark`
 
 
    Top-level class for SWEET algorithm.
