@@ -169,7 +169,7 @@ def evaluate_text_quality(cfg: DictConfig):
     results_dict["config"] = dict(cfg.pipeline)
 
     # save the results to a json file
-    if cfg.eval_human:
+    if cfg.pipeline.eval_human:
         json_path = (
             f"{cfg.pipeline.save_res_dir}/human_vs_{cfg.pipeline.watermarking_scheme_name_compare}/"
             f"{cfg.pipeline.dataset_name}/{cfg.pipeline.generator_name}/quality_test_human_vs_{cfg.pipeline.data_experiment_name_compare}.json"
