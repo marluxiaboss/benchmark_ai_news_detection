@@ -8,35 +8,37 @@ import torch
 import random
 import numpy as np
 from functools import partial
-from base import BaseWatermark
+from ..base import BaseWatermark
 from .transform_model import TransformModel
-from utils.configs import ModelConfig
-from utils.utils import create_directory_for_file, load_config_file
+from ...utils.configs import ModelConfig
+from ...utils.utils import create_directory_for_file, load_config_file
 from transformers import LogitsProcessor, LogitsProcessorList, BertTokenizer, BertModel
 
 
 class SIRConfig:
     """Config class for SIR algorithm, load config file and initialize parameters."""
 
-    def __init__(self, algorithm_config: dict, gen_model, model_config: ModelConfig, *args, **kwargs) -> None:
+    def __init__(
+        self, algorithm_config: dict, gen_model, model_config: ModelConfig, *args, **kwargs
+    ) -> None:
         """
-            Initialize the SIR configuration.
+        Initialize the SIR configuration.
 
-            Parameters:
-                algorithm_config (dict): Configuration for the SIR algorithm.
-                transformers_config (TransformersConfig): Configuration for the transformers model.
+        Parameters:
+            algorithm_config (dict): Configuration for the SIR algorithm.
+            transformers_config (TransformersConfig): Configuration for the transformers model.
         """
-        
+
         config_dict = algorithm_config
 
-        self.delta = config_dict['delta']
-        self.chunk_length = config_dict['chunk_length']
-        self.scale_dimension = config_dict['scale_dimension']
-        self.z_threshold = config_dict['z_threshold']
-        self.transform_model_input_dim = config_dict['transform_model_input_dim']
-        self.transform_model_name = config_dict['transform_model_name']
-        self.embedding_model_path = config_dict['embedding_model_path']
-        self.mapping_name = config_dict['mapping_name']
+        self.delta = config_dict["delta"]
+        self.chunk_length = config_dict["chunk_length"]
+        self.scale_dimension = config_dict["scale_dimension"]
+        self.z_threshold = config_dict["z_threshold"]
+        self.transform_model_input_dim = config_dict["transform_model_input_dim"]
+        self.transform_model_name = config_dict["transform_model_name"]
+        self.embedding_model_path = config_dict["embedding_model_path"]
+        self.mapping_name = config_dict["mapping_name"]
 
         self.generation_model = gen_model
         self.generation_tokenizer = model_config.tokenizer
@@ -50,25 +52,31 @@ class SIRUtils:
 
     def __init__(self, config: SIRConfig, *args, **kwargs) -> None:
         """
-            Initialize the SIR utility class.
+        Initialize the SIR utility class.
 
-            Parameters:
-                config (SIRConfig): Configuration for the SIR algorithm.
+        Parameters:
+            config (SIRConfig): Configuration for the SIR algorithm.
         """
         self.config = config
-        self.transform_model = self._get_transform_model(self.config.transform_model_name, config.transform_model_input_dim).to(self.config.device)
+        self.transform_model = self._get_transform_model(
+            self.config.transform_model_name, config.transform_model_input_dim
+        ).to(self.config.device)
         self.embedding_tokenizer = BertTokenizer.from_pretrained(self.config.embedding_model_path)
-        self.embedding_model = BertModel.from_pretrained(self.config.embedding_model_path).to(self.config.device)
+        self.embedding_model = BertModel.from_pretrained(self.config.embedding_model_path).to(
+            self.config.device
+        )
         self.mapping = self._get_mapping(self.config.mapping_name)
 
     def get_embedding(self, sentence: str) -> torch.FloatTensor:
         """Get the embedding of the input sentence."""
-        input_ids = self.embedding_tokenizer.encode(sentence, return_tensors="pt", max_length=512, truncation="longest_first")
+        input_ids = self.embedding_tokenizer.encode(
+            sentence, return_tensors="pt", max_length=512, truncation="longest_first"
+        )
         input_ids = input_ids.to(self.config.device)
         with torch.no_grad():
             output = self.embedding_model(input_ids)
         return output[0][:, 0, :]
-    
+
     def get_text_split(self, sentence: str) -> list[list[str]]:
         """Split the input text into chunks of words."""
         words = list(jieba.cut(sentence))
@@ -80,7 +88,7 @@ class SIRUtils:
             chunk_end = min(chunk_end, len(non_space_indices))
             chunk_indices = non_space_indices[:chunk_end]
             if chunk_indices:
-                chunk = words[chunk_start:chunk_indices[-1] + 1]
+                chunk = words[chunk_start : chunk_indices[-1] + 1]
                 words_2d.append(chunk)
             chunk_start = chunk_indices[-1] + 1
         return words_2d
@@ -91,41 +99,43 @@ class SIRUtils:
         v_minus_mean = v - mean
         v_minus_mean = np.tanh(1000 * v_minus_mean)
         return v_minus_mean
-    
+
     def _get_mapping(self, mapping_name: str) -> list[int]:
         """Get the mapping for the input tokens."""
         input_size = self.config.vocab_size
 
         # try loading mapping from the provided mapping path
         try:
-            with open(mapping_name, 'r') as f:
+            with open(mapping_name, "r") as f:
                 mapping = json.load(f)
 
         # if the file does not exist, create a new mapping and save it to the provided mapping path
-        except:
-            mapping = [random.randint(0, self.config.scale_dimension - 1) for _ in range(input_size)] 
+        except FileNotFoundError:
+            mapping = [
+                random.randint(0, self.config.scale_dimension - 1) for _ in range(input_size)
+            ]
             create_directory_for_file(mapping_name)
-            with open(self.mapping_path, 'w') as f:
+            with open(self.mapping_path, "w") as f:
                 json.dump(mapping, f, indent=4)
         return mapping
-    
+
     def _get_context_sentence(self, input_ids: torch.LongTensor):
         """Get the context sentence from the input_ids."""
         sentence = self.config.generation_tokenizer.decode(input_ids, skip_special_tokens=True)
         words_2d = self.get_text_split(sentence)
         if len(words_2d) == 0:
-            return ''
+            return ""
         if len(words_2d[-1]) == self.config.chunk_length:
-            return ''.join([''.join(group) for group in words_2d]).strip()
+            return "".join(["".join(group) for group in words_2d]).strip()
         else:
-            return ''.join([''.join(group) for group in words_2d[:-1]]).strip()
-    
+            return "".join(["".join(group) for group in words_2d[:-1]]).strip()
+
     def _get_transform_model(self, model_name: str, input_dim: int) -> TransformModel:
         """Get the transform model from the provided model name."""
         model = TransformModel(input_dim=input_dim)
         model.load_state_dict(torch.load(model_name))
         return model
-    
+
     def get_bias(self, input_ids: torch.LongTensor) -> list[int]:
         """Get the bias for the input_ids."""
         context_sentence = self._get_context_sentence(input_ids)
@@ -140,24 +150,26 @@ class SIRLogitsProcessor(LogitsProcessor):
 
     def __init__(self, config: SIRConfig, utils: SIRUtils, *args, **kwargs):
         """
-            Initialize the SIR logits processor.
+        Initialize the SIR logits processor.
 
-            Parameters:
-                config (SIRConfig): Configuration for the SIR algorithm.
-                utils (SIRUtils): Utility class for the SIR algorithm.
+        Parameters:
+            config (SIRConfig): Configuration for the SIR algorithm.
+            utils (SIRUtils): Utility class for the SIR algorithm.
         """
         self.config = config
         self.utils = utils
-    
-    def _bias_logits(self, scores: torch.LongTensor, batched_bias: torch.FloatTensor) -> torch.FloatTensor:
+
+    def _bias_logits(
+        self, scores: torch.LongTensor, batched_bias: torch.FloatTensor
+    ) -> torch.FloatTensor:
         """Bias the logits using the batched_bias."""
         scores = scores + batched_bias * self.config.delta
         return scores
 
     def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:
         """Process the logits to add watermark."""
-        batched_bias = [None for _ in range(input_ids.shape[0])] 
-        
+        batched_bias = [None for _ in range(input_ids.shape[0])]
+
         for b_idx in range(input_ids.shape[0]):
             current_bias = self.utils.get_bias(input_ids[b_idx])
             batched_bias[b_idx] = current_bias
@@ -172,13 +184,15 @@ class SIRLogitsProcessor(LogitsProcessor):
 class SIR(BaseWatermark):
     """Top-level class for SIR algorithm."""
 
-    def __init__(self, algorithm_config: dict, gen_model, transformers_config: ModelConfig, *args, **kwargs) -> None:
+    def __init__(
+        self, algorithm_config: dict, gen_model, transformers_config: ModelConfig, *args, **kwargs
+    ) -> None:
         """
-            Initialize the SIR algorithm.
+        Initialize the SIR algorithm.
 
-            Parameters:
-                algorithm_config (dict): Configuration for the SIR algorithm.
-                transformers_config (TransformersConfig): Configuration for the transformers model.
+        Parameters:
+            algorithm_config (dict): Configuration for the SIR algorithm.
+            transformers_config (TransformersConfig): Configuration for the transformers model.
         """
         self.config = SIRConfig(algorithm_config, gen_model, transformers_config)
         self.utils = SIRUtils(self.config)
@@ -190,34 +204,38 @@ class SIR(BaseWatermark):
         # Configure generate_with_watermark
         generate_with_watermark = partial(
             self.config.generation_model.generate,
-            logits_processor=LogitsProcessorList([self.logits_processor]), 
+            logits_processor=LogitsProcessorList([self.logits_processor]),
             **self.config.gen_kwargs
         )
-        
+
         # encode prompt
-        encoded_prompt = self.config.generation_tokenizer(prompt, return_tensors="pt", add_special_tokens=True).to(self.config.device)
+        encoded_prompt = self.config.generation_tokenizer(
+            prompt, return_tensors="pt", add_special_tokens=True
+        ).to(self.config.device)
         # generate watermarked text
         encoded_watermarked_text = generate_with_watermark(**encoded_prompt)
         # decode
-        watermarked_text = self.config.generation_tokenizer.batch_decode(encoded_watermarked_text, skip_special_tokens=True)[0]
+        watermarked_text = self.config.generation_tokenizer.batch_decode(
+            encoded_watermarked_text, skip_special_tokens=True
+        )[0]
         return watermarked_text
-    
+
     def generate(self, encoded_prompts: list, *args, **kwargs) -> str:
         """Generate watermarked text. Takes a list of encoded prompts as input, like transformers model.generate."""
 
         # Configure generate_with_watermark
         generate_with_watermark = partial(
             self.config.generation_model.generate,
-            logits_processor=LogitsProcessorList([self.logits_processor]), 
+            logits_processor=LogitsProcessorList([self.logits_processor]),
             **self.config.gen_kwargs
         )
         # Generate watermarked text
         encoded_watermarked_text = generate_with_watermark(**encoded_prompts)
 
         watermarked_tokens = encoded_watermarked_text
-        
+
         return watermarked_tokens
-    
+
     def detect_watermark(self, text: str, return_dict: bool = True, *args, **kwargs):
         """Detect watermark in the input text."""
 
@@ -230,9 +248,9 @@ class SIR(BaseWatermark):
         # Iterate over each sentence in the split text, skipping the first
         for i in range(1, len(word_2d)):
             # Create the context sentence from all previous text portions
-            context_sentence = ''.join([''.join(group) for group in word_2d[:i]]).strip()
+            context_sentence = "".join(["".join(group) for group in word_2d[:i]]).strip()
             # Current sentence to check against the context
-            current_sentence = ''.join(word_2d[i]).strip()
+            current_sentence = "".join(word_2d[i]).strip()
 
             # Continue if the context sentence is shorter than the required chunk length
             if len(list(jieba.cut(context_sentence))) < self.config.chunk_length:
@@ -246,7 +264,9 @@ class SIR(BaseWatermark):
             similarity_array = self.utils.scale_vector(output)[self.utils.mapping]
 
             # Encode the current sentence into tokens
-            tokens = self.config.generation_tokenizer.encode(current_sentence, return_tensors="pt", add_special_tokens=False)
+            tokens = self.config.generation_tokenizer.encode(
+                current_sentence, return_tensors="pt", add_special_tokens=False
+            )
 
             # Append negative similarity values for each token in the current sentence
             for index in tokens[0]:
@@ -263,4 +283,3 @@ class SIR(BaseWatermark):
             return {"is_watermarked": is_watermarked, "score": z_score}
         else:
             return (is_watermarked, z_score)
-        
