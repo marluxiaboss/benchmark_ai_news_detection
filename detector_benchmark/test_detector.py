@@ -12,6 +12,7 @@ import torch
 # hydra imports
 import hydra
 from omegaconf import DictConfig, OmegaConf
+import json
 
 from .generation import (
     GenParamsAttack,
@@ -33,11 +34,19 @@ def test_detector(cfg: DictConfig):
     # dataset parameters
     dataset_name = cfg.generation.dataset_name
     attack_name = cfg.generation.attack_name
+
     watermarking_scheme_name = cfg.watermark.algorithm_name
     dataset_experiment_path = (
         f"data/generated_datasets/{dataset_name}/{attack_name}/{watermarking_scheme_name}"
     )
-    print(f"Dataset experiment path: {dataset_experiment_path}")
+    dataset_path = f"{dataset_experiment_path}/{cfg.generation.generator_name}_{cfg.generation.experiment_name}"
+    print(f"Dataset path: {dataset_path}")
+
+    # set the watermark config as the config used for generation
+    with open(f"{dataset_path}.json", "r") as f:
+        json_data = json.load(f)
+        watermark_config = json_data["watermark_config"]
+        cfg.watermark = watermark_config
 
     # detection parameters
     test_res_dir = cfg.detection.test_res_dir
@@ -58,7 +67,7 @@ def test_detector(cfg: DictConfig):
     # general parameters
     device = cfg.device
 
-    print(f"Testing detector {detector_name} on dataset {dataset_experiment_path}")
+    print(f"Testing detector {detector_name} on dataset {dataset_path}")
 
     # Load detector
     detector_loader = DetectorLoader(cfg, detector_name, device, weights_checkpoint, local_weights)
