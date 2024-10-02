@@ -202,6 +202,13 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         results["thresholds"] = thresholds.tolist()
         results["logits"] = logits.tolist()
         results["avg_logits"] = np.mean(logits)
+        results["labels"] = labels.tolist()
+
+        # compute average logits for the positive and negative class
+        avg_logits_pos = np.mean(logits[labels == 1])
+        avg_logits_neg = np.mean(logits[labels == 0])
+        results["avg_logits_pos"] = avg_logits_pos
+        results["avg_logits_neg"] = avg_logits_neg
 
         # Compute metrics at the given threshold
         results_at_threshold = compute_bootstrap_metrics(preds_at_threshold, labels)
