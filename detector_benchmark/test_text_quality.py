@@ -172,11 +172,11 @@ def evaluate_text_quality(cfg: DictConfig):
     if cfg.pipeline.eval_human:
         json_path = (
             f"{cfg.pipeline.save_res_dir}/human_vs_{cfg.pipeline.watermarking_scheme_name_compare}/"
-            f"{cfg.pipeline.dataset_name}/{cfg.pipeline.generator_name}/quality_test_human_vs_{cfg.pipeline.data_experiment_name_compare}.json"
+            f"{cfg.pipeline.dataset_name}/{cfg.generation.attack_name}/{cfg.pipeline.generator_name}/quality_test_human_vs_{cfg.pipeline.data_experiment_name_compare}.json"
         )
     json_path = (
         f"{cfg.pipeline.save_res_dir}/{cfg.pipeline.watermarking_scheme_name_main}_vs_{cfg.pipeline.watermarking_scheme_name_compare}/"
-        f"{cfg.pipeline.dataset_name}/{cfg.pipeline.generator_name}/quality_test_{cfg.pipeline.data_experiment_name_main}_vs_{cfg.pipeline.data_experiment_name_compare}.json"
+        f"{cfg.pipeline.dataset_name}/{cfg.generation.attack_name}/{cfg.pipeline.generator_name}/quality_test_{cfg.pipeline.data_experiment_name_main}_vs_{cfg.pipeline.data_experiment_name_compare}.json"
     )
 
     with open(json_path, "w") as f:

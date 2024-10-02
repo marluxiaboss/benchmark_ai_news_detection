@@ -89,7 +89,7 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         detection_experiment_name = self.cfg.detection.experiment_name
 
         # check if eval folder already exists
-        eval_json_path = f"{self.non_attack_experiment_path}/eval/{self.cfg.generation.generator_name}_{detection_experiment_name}.json"
+        eval_json_path = f"{self.non_attack_experiment_path}/{self.cfg.generation.generator_name}/eval/{detection_experiment_name}.json"
         if not os.path.exists(eval_json_path):
             # os.makedirs(eval_path)
 
@@ -235,7 +235,7 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         # json_res_file_path_base = (
         #    f"{experiment_path}/{data_split}/test_metrics_{detection_experiment_name}.json"
         # )
-        json_res_file_path_base = f"{experiment_path}/{data_split}/{self.cfg.generation.generator_name}_{detection_experiment_name}.json"
+        json_res_file_path_base = f"{experiment_path}/{self.cfg.generation.generator_name}/{data_split}/{detection_experiment_name}.json"
 
         with open(json_res_file_path_base, "w") as f:
             f.write(json.dumps(results, indent=4))
