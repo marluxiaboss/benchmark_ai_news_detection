@@ -200,6 +200,8 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         results["fpr_at_thresholds"] = fpr.tolist()
         results["tpr_at_thresholds"] = tpr.tolist()
         results["thresholds"] = thresholds.tolist()
+        results["logits"] = logits.tolist()
+        results["avg_logits"] = np.mean(logits)
 
         # Compute metrics at the given threshold
         results_at_threshold = compute_bootstrap_metrics(preds_at_threshold, labels)
