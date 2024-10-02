@@ -43,7 +43,7 @@ def test_detector(cfg: DictConfig):
     print(f"Dataset path: {dataset_path}")
 
     # set the watermark config as the config used for generation
-    with open(f"{dataset_path}.json", "r") as f:
+    with open(f"{dataset_path}_test.json", "r") as f:
         json_data = json.load(f)
         watermark_config = json_data["watermark_config"]
         cfg.watermark = watermark_config
