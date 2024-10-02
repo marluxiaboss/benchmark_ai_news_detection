@@ -45,8 +45,14 @@ def test_detector(cfg: DictConfig):
     # set the watermark config as the config used for generation
     with open(f"{dataset_path}_test.json", "r") as f:
         json_data = json.load(f)
-        watermark_config = json_data["watermark_config"]
-        cfg.watermark = watermark_config
+        watermark_config = json_data["watermark_config"]["0"]
+
+        # check that we have the same watermark algorithm
+        assert watermark_config["algorithm_name"] == watermarking_scheme_name
+
+        # modify all values of cfg.watermark to the values in watermark_config
+        for key, value in cfg.watermark.items():
+            cfg.watermark[key] = watermark_config[key]
 
     # detection parameters
     test_res_dir = cfg.detection.test_res_dir
