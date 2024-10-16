@@ -19,6 +19,8 @@ from .dip import DIP
 from .sweet import SWEET
 from .sweet_p import SWEET_P
 
+from .unbiased import UnbiasedWatermark
+
 
 WATERMARK_MAPPING_NAMES = {
     "KGW": "kgw.KGW",
@@ -30,6 +32,7 @@ WATERMARK_MAPPING_NAMES = {
     "KGW_E": "kgw_e.KGW_E",
     "SWEET": "sweet.SWEET",
     "SWEET_P": "sweet_p.SWEET_P",
+    "UnbiasedWatermark": "unbiased.UnbiasedWatermark",
 }
 
 

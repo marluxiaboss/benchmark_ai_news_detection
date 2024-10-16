@@ -1,0 +1,6 @@
+algorithm_name: Unbiased
+gamma: 0.5
+key: 42
+prefix_length: 1
+z_threshold: 1.513
+ignore_history: 1
