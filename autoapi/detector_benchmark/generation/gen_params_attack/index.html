@@ -5,11 +5,11 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" /><link rel="next" title="detector_benchmark.generation.generator" href="../generator/index.html" /><link rel="prev" title="detector_benchmark.generation.gen_loader" href="../gen_loader/index.html" />
 
-    <link rel="shortcut icon" href="../../../../_static/glass.png"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
+    <link rel="shortcut icon" href="../../../../_static/glass.png"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
         <title>detector_benchmark.generation.gen_params_attack - LLM Detector Benchmark 🔎</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=302659d7" />
     
@@ -291,6 +291,10 @@
 <li class="toctree-l5"><a class="reference internal" href="../../watermark/sweet/sweet/index.html">detector_benchmark.watermark.sweet.sweet</a></li>
 </ul>
 </li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../../watermark/unbiased/index.html">detector_benchmark.watermark.unbiased</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of detector_benchmark.watermark.unbiased</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../watermark/unbiased/unbiased/index.html">detector_benchmark.watermark.unbiased.unbiased</a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="../../watermark/auto_watermark/index.html">detector_benchmark.watermark.auto_watermark</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../watermark/base/index.html">detector_benchmark.watermark.base</a></li>
 </ul>
@@ -354,7 +358,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#detector_benchmark.generation.gen_params_attack.GenParamsAttack" title="detector_benchmark.generation.gen_params_attack.GenParamsAttack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GenParamsAttack</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Helper class that provides a standard way to create an ABC using</p></td>
 </tr>
 </tbody>
 </table>
@@ -366,6 +370,8 @@
 <dt class="sig sig-object py" id="detector_benchmark.generation.gen_params_attack.GenParamsAttack">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">detector_benchmark.generation.gen_params_attack.</span></span><span class="sig-name descname"><span class="pre">GenParamsAttack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gen_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../generator/index.html#detector_benchmark.generation.generator.LLMGenerator" title="detector_benchmark.generation.generator.LLMGenerator"><span class="pre">detector_benchmark.generation.generator.LLMGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">detector_benchmark.utils.configs.ModelConfig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gen_prompt_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">detector_benchmark.utils.configs.PromptConfig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adversarial_gen_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_sample_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watermarking_scheme</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../watermark/auto_watermark/index.html#detector_benchmark.watermark.auto_watermark.AutoWatermark" title="detector_benchmark.watermark.auto_watermark.AutoWatermark"><span class="pre">detector_benchmark.watermark.auto_watermark.AutoWatermark</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#detector_benchmark.generation.gen_params_attack.GenParamsAttack" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../article_generator/index.html#detector_benchmark.generation.article_generator.ArticleGenerator" title="detector_benchmark.generation.article_generator.ArticleGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detector_benchmark.generation.article_generator.ArticleGenerator</span></code></a></p>
+<p>Helper class that provides a standard way to create an ABC using
+inheritance.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.generation.gen_params_attack.GenParamsAttack.adversarial_gen_params">
 <span class="sig-name descname"><span class="pre">adversarial_gen_params</span></span><a class="headerlink" href="#detector_benchmark.generation.gen_params_attack.GenParamsAttack.adversarial_gen_params" title="Link to this definition">¶</a></dt>
@@ -485,7 +491,7 @@
     </aside>
   </div>
 </div><script src="../../../../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>

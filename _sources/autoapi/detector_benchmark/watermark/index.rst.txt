@@ -15,6 +15,7 @@ Subpackages
    /autoapi/detector_benchmark/watermark/kgw/index
    /autoapi/detector_benchmark/watermark/sir/index
    /autoapi/detector_benchmark/watermark/sweet/index
+   /autoapi/detector_benchmark/watermark/unbiased/index
 
 
 Submodules

@@ -20,10 +20,6 @@ Module Contents
    Bases: :py:obj:`detector_benchmark.detector.detector.Detector`
 
 
-   Helper class that provides a standard way to create an ABC using
-   inheritance.
-
-
    .. py:attribute:: ref_model
 
 

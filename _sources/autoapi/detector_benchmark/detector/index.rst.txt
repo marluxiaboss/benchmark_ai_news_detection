@@ -39,10 +39,6 @@ Package Contents
    Bases: :py:obj:`detector_benchmark.detector.detector.Detector`
 
 
-   Helper class that provides a standard way to create an ABC using
-   inheritance.
-
-
    .. py:attribute:: model
 
 
@@ -109,10 +105,6 @@ Package Contents
 .. py:class:: FastDetectGPT(ref_model, scoring_model, ref_tokenizer, scoring_tokenizer, device)
 
    Bases: :py:obj:`detector_benchmark.detector.detector.Detector`
-
-
-   Helper class that provides a standard way to create an ABC using
-   inheritance.
 
 
    .. py:attribute:: ref_model
@@ -239,10 +231,6 @@ Package Contents
 .. py:class:: WatermarkDetector(watermarking_scheme: detector_benchmark.watermark.auto_watermark.AutoWatermark, detection_threshold: float)
 
    Bases: :py:obj:`detector_benchmark.detector.detector.Detector`
-
-
-   Helper class that provides a standard way to create an ABC using
-   inheritance.
 
 
    .. py:attribute:: watermarking_scheme

@@ -1,0 +1,55 @@
+detector_benchmark.watermark.unbiased
+=====================================
+
+.. py:module:: detector_benchmark.watermark.unbiased
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/detector_benchmark/watermark/unbiased/unbiased/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector_benchmark.watermark.unbiased.UnbiasedWatermark
+
+
+Package Contents
+----------------
+
+.. py:class:: UnbiasedWatermark(algorithm_config: dict, gen_model, transformers_config: detector_benchmark.utils.configs.ModelConfig, *args, **kwargs)
+
+   Bases: :py:obj:`detector_benchmark.watermark.base.BaseWatermark`
+
+
+   Top-level class for Unbiased algorithm.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: utils
+
+
+   .. py:attribute:: logits_processor
+
+
+   .. py:method:: generate_watermarked_text(prompt: str, *args, **kwargs) -> str
+
+      Generate watermarked text.
+
+
+
+   .. py:method:: detect_watermark(text: str, return_dict: bool = True, *args, **kwargs)
+
+      Detect watermark in the text.
+
+
+
