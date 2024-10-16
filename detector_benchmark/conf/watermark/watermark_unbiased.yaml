@@ -1,4 +1,4 @@
-algorithm_name: Unbiased
+algorithm_name: UnbiasedWatermark
 gamma: 0.5
 key: 42
 prefix_length: 1
