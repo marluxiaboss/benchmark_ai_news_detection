@@ -11,7 +11,6 @@ from .kgw import KGW
 from .sir import SIR
 
 # from .xsir import XSIR
-from .kgw_p import KGW_P
 from .exp import EXP
 from .dip import DIP
 
