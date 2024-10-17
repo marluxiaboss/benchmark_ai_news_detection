@@ -229,8 +229,10 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         # save results
         experiment_path = self.experiment_path
 
-        if not os.path.isdir(f"{experiment_path}/{data_split}"):
-            os.makedirs(f"{experiment_path}/{data_split}")
+        if not os.path.isdir(
+            f"{experiment_path}/{self.cfg.generation.generator_name}/{data_split}"
+        ):
+            os.makedirs(f"{experiment_path}/{self.cfg.generation.generator_name}/{data_split}")
 
         # json_res_file_path_base = (
         #    f"{experiment_path}/{data_split}/test_metrics_{detection_experiment_name}.json"
