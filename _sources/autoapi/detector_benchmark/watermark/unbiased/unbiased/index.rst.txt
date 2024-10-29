@@ -23,9 +23,6 @@ Module Contents
    Config class for Unbiased watermark algorithm, load config file and initialize parameters.
 
 
-   .. py:attribute:: config_dict
-
-
    .. py:attribute:: hash_key
 
 

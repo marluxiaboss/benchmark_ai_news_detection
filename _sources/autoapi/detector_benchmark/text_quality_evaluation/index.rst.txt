@@ -144,15 +144,6 @@ Package Contents
    .. py:attribute:: filtered_corpus
 
 
-   .. py:attribute:: vectorizer
-
-
-   .. py:attribute:: feature_names
-
-
-   .. py:attribute:: idf_values
-
-
    .. py:attribute:: word_to_idf
 
 

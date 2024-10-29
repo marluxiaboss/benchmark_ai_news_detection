@@ -50,9 +50,6 @@ Module Contents
    .. py:attribute:: skip_train_split
 
 
-   .. py:attribute:: log_path
-
-
    .. py:attribute:: log
 
 

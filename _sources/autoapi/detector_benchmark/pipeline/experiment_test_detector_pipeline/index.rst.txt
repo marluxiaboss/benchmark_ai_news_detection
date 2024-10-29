@@ -50,9 +50,6 @@ Module Contents
    .. py:attribute:: target_fpr
 
 
-   .. py:attribute:: log_path
-
-
    .. py:attribute:: log
 
 
