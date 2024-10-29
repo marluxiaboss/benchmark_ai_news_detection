@@ -226,6 +226,9 @@ class ExperimentTestDetectorPipeline(ExperimentPipeline):
         results["generation_config"] = dict(self.cfg.generation)
         results["watermarking_config"] = dict(self.cfg.watermark)
 
+        # save the target fpr
+        results["target_fpr"] = self.target_fpr
+
         # save results
         experiment_path = self.experiment_path
 
