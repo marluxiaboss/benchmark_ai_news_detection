@@ -190,7 +190,11 @@ class UnbiasedUtils:
             pre = input_ids[: i + 1]
             cur = input_ids[i + 1]
             token_quantile = self._get_green_token_quantile(pre, vocab_size, cur)
-            scores[i] = torch.stack(token_quantile).reshape(-1)
+
+            if isinstance(token_quantile, list) and len(token_quantile) > 0:
+                scores[i] = torch.stack(token_quantile).reshape(-1)
+            else:
+                scores[i] = 0.0  # Default value to prevent errors
 
         return scores
 
