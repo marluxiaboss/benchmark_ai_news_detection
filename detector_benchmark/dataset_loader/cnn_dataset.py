@@ -228,15 +228,15 @@ class CNNDataLoader(FakeTruePairsDataLoader):
         # we take the train split but we'll split later into train, val, test
         dataset_base = load_dataset(self.hf_dataset_path, "3.0.0")["train"]
 
-        # select the first dataset_size samples
-        dataset_base = dataset_base.shuffle(self.seed)
-        dataset_base = dataset_base.select(range(self.dataset_size))
-
         # only keep the text field
         cols_to_remove = [col for col in dataset_base.column_names if col != self.text_field]
         dataset_base = dataset_base.remove_columns(cols_to_remove)
 
         processed_dataset = self.process_data(dataset_base)
+
+        # select the first dataset_size samples
+        dataset_base = dataset_base.shuffle(self.seed)
+        dataset_base = dataset_base.select(range(self.dataset_size))
 
         # split into train, val, test
         train_split_size_percent = self.train_fraction
