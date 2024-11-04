@@ -20,6 +20,8 @@ from .sweet_p import SWEET_P
 
 from .unbiased import UnbiasedWatermark
 
+from .synth_id import SynthID
+
 
 WATERMARK_MAPPING_NAMES = {
     "KGW": "kgw.KGW",
@@ -32,6 +34,7 @@ WATERMARK_MAPPING_NAMES = {
     "SWEET": "sweet.SWEET",
     "SWEET_P": "sweet_p.SWEET_P",
     "UnbiasedWatermark": "unbiased.UnbiasedWatermark",
+    "SynthID": "synth_id.SynthID",
 }
 
 

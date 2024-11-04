@@ -59,7 +59,9 @@ def filter_duplicates(dataset: Dataset, text_field: str) -> Dataset:
         f"Percent of data discarded after removing duplicate {text_field}: {100*(1 - len_after_discard/len_before_discard):.2f}%"
     )
 
-    return Dataset.from_pandas(dataset_df)
+    pandas_df = Dataset.from_pandas(dataset_df)
+
+    return pandas_df
 
 
 def create_splits(

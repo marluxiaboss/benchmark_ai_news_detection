@@ -162,7 +162,7 @@ class CNNDataLoader(FakeTruePairsDataLoader):
 
         return dataset
 
-    def process_data(self, dataset: DatasetDict) -> DatasetDict:
+    def process_data(self, dataset: DatasetDict, sample_size: int = None) -> DatasetDict:
         """
         Main method to process the dataset called by load_data.
 
@@ -188,12 +188,15 @@ class CNNDataLoader(FakeTruePairsDataLoader):
             f"Filtered out {percent_filtered:.2f}% of samples with text length < {self.max_sample_len}"
         )
 
+        if sample_size is not None:
+            dataset = dataset.shuffle(self.seed).select(range(sample_size))
+
+        dataset = filter_duplicates(dataset, self.text_field)
+
         # only take max_sample_len characters of the text field
         dataset = dataset.map(
             lambda x: {self.text_field: x[self.text_field][: self.max_sample_len]}
         )
-
-        dataset = filter_duplicates(dataset, self.text_field)
 
         # create label 0 (human) and create empty texts with label 1 (AI)
         dataset = dataset.map(lambda x: {"label": 0, self.text_field: x[self.text_field]})
@@ -232,11 +235,12 @@ class CNNDataLoader(FakeTruePairsDataLoader):
         cols_to_remove = [col for col in dataset_base.column_names if col != self.text_field]
         dataset_base = dataset_base.remove_columns(cols_to_remove)
 
-        processed_dataset = self.process_data(dataset_base)
+        processed_dataset = self.process_data(dataset_base, self.dataset_size)
 
         # select the first dataset_size samples
-        dataset_base = dataset_base.shuffle(self.seed)
-        dataset_base = dataset_base.select(range(self.dataset_size))
+        # note: we now do this in process_data function to avoid processing the whole dataset
+        # dataset_base = dataset_base.shuffle(self.seed)
+        # dataset_base = dataset_base.select(range(self.dataset_size))
 
         # split into train, val, test
         train_split_size_percent = self.train_fraction
