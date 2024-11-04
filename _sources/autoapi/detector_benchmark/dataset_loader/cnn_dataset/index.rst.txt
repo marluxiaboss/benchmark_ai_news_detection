@@ -85,7 +85,7 @@ Module Contents
 
 
 
-   .. py:method:: process_data(dataset: datasets.DatasetDict) -> datasets.DatasetDict
+   .. py:method:: process_data(dataset: datasets.DatasetDict, sample_size: int = None) -> datasets.DatasetDict
 
       Main method to process the dataset called by load_data.
 

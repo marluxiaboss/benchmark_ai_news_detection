@@ -1,0 +1,111 @@
+detector_benchmark.watermark.synth_id.detector
+==============================================
+
+.. py:module:: detector_benchmark.watermark.synth_id.detector
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector_benchmark.watermark.synth_id.detector.SynthIDDetector
+   detector_benchmark.watermark.synth_id.detector.MeanDetector
+   detector_benchmark.watermark.synth_id.detector.WeightedMeanDetector
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   detector_benchmark.watermark.synth_id.detector.get_detector
+
+
+Module Contents
+---------------
+
+.. py:class:: SynthIDDetector
+
+   Bases: :py:obj:`abc.ABC`
+
+
+   Base class for SynthID watermark detectors.
+
+   This class defines the interface that all SynthID watermark detectors must implement.
+   Subclasses should override the detect() method to implement specific detection algorithms.
+
+
+   .. py:method:: detect(g_values: numpy.ndarray, mask: numpy.ndarray) -> numpy.ndarray
+      :abstractmethod:
+
+
+      Detect watermark presence in the given g-values.
+
+      Args:
+          g_values: Array of shape [batch_size, seq_len, watermarking_depth] containing
+              the g-values computed from the text.
+          mask: Binary array of shape [batch_size, seq_len] indicating which g-values
+              should be used in detection. g-values with mask value 0 are discarded.
+
+      Returns:
+          Array of shape [batch_size] containing detection scores, where higher values
+          indicate stronger evidence of watermarking.
+
+      Raises:
+          NotImplementedError: This is an abstract method that must be implemented by subclasses.
+
+
+
+.. py:class:: MeanDetector
+
+   Bases: :py:obj:`SynthIDDetector`
+
+
+   Base class for SynthID watermark detectors.
+
+   This class defines the interface that all SynthID watermark detectors must implement.
+   Subclasses should override the detect() method to implement specific detection algorithms.
+
+
+   .. py:method:: detect(g_values, mask)
+
+      Args:
+          g_values: shape [batch_size, seq_len, watermarking_depth]
+          mask: shape [batch_size, seq_len]
+      Returns:
+          scores: shape [batch_size]
+
+
+
+.. py:class:: WeightedMeanDetector
+
+   Bases: :py:obj:`SynthIDDetector`
+
+
+   Base class for SynthID watermark detectors.
+
+   This class defines the interface that all SynthID watermark detectors must implement.
+   Subclasses should override the detect() method to implement specific detection algorithms.
+
+
+   .. py:method:: detect(g_values: numpy.ndarray, mask: numpy.ndarray, weights: numpy.ndarray = None) -> numpy.ndarray
+
+      Computes the Weighted Mean score.
+
+      Args:
+          g_values: g-values of shape [batch_size, seq_len, watermarking_depth]
+          mask: A binary array shape [batch_size, seq_len] indicating which g-values
+              should be used. g-values with mask value 0 are discarded
+          weights: array of non-negative floats, shape [watermarking_depth]. The
+              weights to be applied to the g-values. If not supplied, defaults to
+              linearly decreasing weights from 10 to 1
+
+      Returns:
+          Weighted Mean scores, of shape [batch_size]. This is the mean of the
+          unmasked g-values, re-weighted using weights.
+
+
+
+.. py:function:: get_detector(detector_name: str, logits_processor)
+

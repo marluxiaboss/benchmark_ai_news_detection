@@ -1,0 +1,67 @@
+detector_benchmark.watermark.synth_id
+=====================================
+
+.. py:module:: detector_benchmark.watermark.synth_id
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/detector_benchmark/watermark/synth_id/detector/index
+   /autoapi/detector_benchmark/watermark/synth_id/detector_bayesian_torch/index
+   /autoapi/detector_benchmark/watermark/synth_id/synth_id/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   detector_benchmark.watermark.synth_id.SynthID
+
+
+Package Contents
+----------------
+
+.. py:class:: SynthID(algorithm_config: str, gen_model, transformers_config: detector_benchmark.utils.configs.ModelConfig, *args, **kwargs)
+
+   Bases: :py:obj:`detector_benchmark.watermark.base.BaseWatermark`
+
+
+   Top-level class for SynthID algorithm.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: utils
+
+
+   .. py:attribute:: logits_processor
+
+
+   .. py:attribute:: detector
+
+
+   .. py:method:: generate_watermarked_text(prompt: str, *args, **kwargs) -> str
+
+      Generate watermarked text.
+
+
+
+   .. py:method:: detect_watermark(text: str, return_dict: bool = True, *args, **kwargs)
+
+      Detect watermark in the text.
+
+      Args:
+          text (str): Text to detect watermark in
+          return_dict (bool): Whether to return results as dictionary
+
+      Returns:
+          Union[Dict[str, Union[bool, float]], Tuple[bool, float]]: Detection results
+
+
+
