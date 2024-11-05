@@ -69,8 +69,10 @@ class LLMGenerator(nn.Module):
         for i in tqdm(range(0, len(samples), batch_size), desc="Generating text"):
 
             # specific for SynthID watermarking scheme, we need to reset the state
-            if watermarking_scheme is not None and hasattr(watermarking_scheme, "state"):
-                watermarking_scheme.state = None
+            if watermarking_scheme is not None and hasattr(
+                watermarking_scheme.logits_processor, "state"
+            ):
+                watermarking_scheme.logits_processor.state = None
 
             batch_samples = samples[i : i + batch_size]
             encoding = self.tokenizer.batch_encode_plus(

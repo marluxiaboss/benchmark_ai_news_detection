@@ -114,6 +114,11 @@ class CreateDatasetPipeline(ExperimentPipeline):
 
             dataset[split] = split_data
 
+        # normalize data in cfg to save it safely, i.e. convert to string
+        for key, value in self.cfg.items():
+            if not isinstance(value, (str, int, float, bool)):
+                self.cfg[key] = str(value)
+
         # add generation and watermark config as fields in the dataset to identify how it was generated
         dataset = dataset.map(
             lambda x: {
