@@ -58,8 +58,10 @@ class SynthIDConfig:
         self.vocab_size = self.generation_tokenizer.vocab_size
         self.device = model_config.device
         self.gen_kwargs = model_config.gen_params
-        self.top_k = model_config.gen_params["top_k"]
-        self.temperature = model_config.gen_params["temperature"]
+        # self.top_k = model_config.gen_params["top_k"]
+        self.top_k = -1
+        # self.temperature = model_config.gen_params["temperature"]
+        self.temperature = 0.7
 
 
 class SynthIDUtils:
@@ -330,7 +332,7 @@ class SynthIDLogitsProcessor(LogitsProcessor):
         )[:, :-1]
 
         # Return original scores if context is repeated, otherwise return updated scores
-        return torch.where(is_repeated, scores_top_k, updated_scores)
+        return torch.where(is_repeated, scores, updated_scores)
 
     def _compute_keys(
         self, context: torch.LongTensor, top_k_indices: torch.LongTensor
