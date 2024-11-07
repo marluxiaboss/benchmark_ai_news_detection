@@ -502,7 +502,15 @@ class SynthID(BaseWatermark):
     ) -> None:
         self.config = SynthIDConfig(algorithm_config, gen_model, transformers_config)
         self.utils = SynthIDUtils(self.config)
+
+        # fix issue with the keys parameter of the config
+        keys_str = self.config["keys"]
+        keys = keys_str.replace("[", "").replace("]", "").split(",")
+        keys = [int(key) for key in keys]
+        self.config["keys"] = keys
+
         self.logits_processor = SynthIDLogitsProcessor(self.config, self.utils)
+
         self.detector = get_detector(self.config.detector_name, self.logits_processor)
 
     def generate_watermarked_text(self, prompt: str, *args, **kwargs) -> str:
