@@ -64,8 +64,6 @@ Module Contents
 
 
    .. py:attribute:: temperature
-      :value: 0.7
-
 
 
 .. py:class:: SynthIDUtils(config: SynthIDConfig, *args, **kwargs)
