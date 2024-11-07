@@ -9,6 +9,7 @@ from transformers import (
     AutoModelForCausalLM,
     LogitsProcessor,
     LogitsProcessorList,
+    SynthIDTextWatermarkingConfig,
 )
 from ..utils.configs import ModelConfig
 from ..watermark.auto_watermark import AutoWatermark
@@ -68,12 +69,6 @@ class LLMGenerator(nn.Module):
         outputs_list = []
         for i in tqdm(range(0, len(samples), batch_size), desc="Generating text"):
 
-            # specific for SynthID watermarking scheme, we need to reset the state
-            if watermarking_scheme is not None and hasattr(
-                watermarking_scheme.logits_processor, "state"
-            ):
-                watermarking_scheme.logits_processor.state = None
-
             batch_samples = samples[i : i + batch_size]
             encoding = self.tokenizer.batch_encode_plus(
                 batch_samples, return_tensors="pt", padding=True, truncation=True
@@ -83,8 +78,18 @@ class LLMGenerator(nn.Module):
             with torch.no_grad():
                 if watermarking_scheme is not None:
 
+                    # special case for SynthID
+                    if isinstance(watermarking_scheme, SynthIDTextWatermarkingConfig):
+
+                        output_ids = self.generator.generate(
+                            input_ids,
+                            pad_token_id=self.tokenizer.pad_token_id,
+                            watermarking_config=watermarking_scheme,
+                            **self.gen_params
+                        )
+
                     # if the watermarking scheme has a logits processor, use it
-                    if hasattr(watermarking_scheme, "logits_processor"):
+                    elif hasattr(watermarking_scheme, "logits_processor"):
                         output_ids = self.generator.generate(
                             input_ids,
                             pad_token_id=self.tokenizer.pad_token_id,

@@ -6,6 +6,7 @@ from transformers import (
     ElectraForSequenceClassification,
     ElectraTokenizer,
     AutoConfig,
+    SynthIDTextWatermarkingConfig,
 )
 import torch
 import argparse
@@ -62,12 +63,29 @@ def choose_watermarking_scheme(cfg: DictConfig, watermarking_scheme_name: str, g
 
     algorithm_config = cfg.watermark
 
-    watermarking_scheme = AutoWatermark.load(
-        watermarking_scheme_name,
-        algorithm_config=algorithm_config,
-        gen_model=gen,
-        model_config=model_config,
-    )
+    # temporary band-aid fix for SynthID while we try to find a better solution
+    if watermarking_scheme_name == "SynthID":
+
+        # we have to pass these parameters to the watermarking scheme
+        # but the true parameters are handled with the hydra config
+        watermarking_config = SynthIDTextWatermarkingConfig(
+            keys=[654, 400, 836, 123, 340, 443, 597, 160, 57, ...],
+            ngram_len=5,
+        )
+
+        for k, v in algorithm_config.items():
+            setattr(watermarking_config, k, v)
+
+        watermarking_scheme = watermarking_config
+
+    else:
+
+        watermarking_scheme = AutoWatermark.load(
+            watermarking_scheme_name,
+            algorithm_config=algorithm_config,
+            gen_model=gen,
+            model_config=model_config,
+        )
 
     return watermarking_scheme
 
