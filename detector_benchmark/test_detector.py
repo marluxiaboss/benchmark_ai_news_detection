@@ -50,6 +50,11 @@ def test_detector(cfg: DictConfig):
         # check that we have the same watermark algorithm
         assert watermark_config["algorithm_name"] == watermarking_scheme_name
 
+        # check if there is a key called "threshold" in the watermark_config
+        if "threshold" in watermark_config:
+            # change it to "z_threshold"
+            watermark_config["z_threshold"] = watermark_config["threshold"]
+
         # modify all values of cfg.watermark to the values in watermark_config
         for key, value in cfg.watermark.items():
             cfg.watermark[key] = watermark_config[key]

@@ -50,7 +50,7 @@ class SynthIDConfig:
         self.sampling_table_seed = config_dict["sampling_table_seed"]
         self.context_history_size = config_dict["context_history_size"]
         self.detector_name = config_dict["detector_type"]
-        self.threshold = config_dict["threshold"]
+        self.threshold = config_dict["z_threshold"]
 
         # Model configuration
         self.generation_model = gen_model
@@ -504,10 +504,10 @@ class SynthID(BaseWatermark):
         self.utils = SynthIDUtils(self.config)
 
         # fix issue with the keys parameter of the config
-        keys_str = self.config["keys"]
+        keys_str = self.config.keys
         keys = keys_str.replace("[", "").replace("]", "").split(",")
         keys = [int(key) for key in keys]
-        self.config["keys"] = keys
+        self.config.keys = keys
 
         self.logits_processor = SynthIDLogitsProcessor(self.config, self.utils)
 

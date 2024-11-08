@@ -202,7 +202,7 @@ class FastDetectGPT(Detector):
         reference_model_name = "gpt-neo-2.7B"
         scoring_model_name = "gpt-neo-2.7B"
 
-        ref_path = "detector/local_infer_ref"
+        ref_path = "local_infer_ref"
         device = self.device
 
         ref_model = self.ref_model
