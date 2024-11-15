@@ -55,6 +55,12 @@ def test_detector(cfg: DictConfig):
             # change it to "z_threshold"
             watermark_config["z_threshold"] = watermark_config["threshold"]
 
+        # check if there is a key "detector_type" and change it
+        # "mean" was used as the default detector_type in the generation
+        # but "weighted_mean" performs better
+        if "detector_type" in watermark_config:
+            watermark_config["detector_type"] = "weighted_mean"
+
         # modify all values of cfg.watermark to the values in watermark_config
         for key, value in cfg.watermark.items():
             cfg.watermark[key] = watermark_config[key]
