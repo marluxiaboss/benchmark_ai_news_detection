@@ -147,7 +147,7 @@ class DetectorLoader:
                 if cfg.generation.get("min_new_tokens", None) is not None:
                     gen_params["min_new_tokens"] = cfg.generation.min_new_tokens
 
-                if cfg.watermark.get("use_surrogate_model", False):
+                if cfg.watermark.get("algorithm_name", None) == "SWEET":
                     # maybe specify the name of a smaller surrogate model, like in the paper
                     gen_loader = GenLoader(model_name, gen_params, device, gen_tokenizer_only=False)
                     gen, _, gen_config = gen_loader.load()
