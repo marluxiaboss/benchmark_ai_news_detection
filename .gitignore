@@ -116,3 +116,14 @@ old_and_backup/
 detector_benchmark/watermark/kgw_e_old/
 conda activate llm_detector
 test_watermark_script.sh
+
+detector_benchmark/create_dataset_from_human_eval_gen.py
+detector_benchmark/detector/test_loader.py
+detector_benchmark/generation/random_deletion_attack.py
+detector_benchmark/watermark/kgw_e_new/
+scripts/
+sweet_test/
+test_embedding_hypothesis.py
+test_embedding_hypothesis_random_proj.py
+test_ppl_scorer_script.sh
+test_synthid_script.sh
