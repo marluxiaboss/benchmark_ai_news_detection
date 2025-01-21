@@ -15,7 +15,6 @@ detection_test_results/
 plots/
 
 # some watermark schemes to ignore, for now...
-detector_benchmark/watermark/sweet_p/
 detector_benchmark/watermark/kgw_e
 detector_benchmark/watermark/kgw_p
 
