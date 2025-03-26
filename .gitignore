@@ -11,7 +11,7 @@ __pycache__/
 
 # data
 data/
-detection_test_results/
+#detection_test_results/
 plots/
 
 # some watermark schemes to ignore, for now...
@@ -20,7 +20,7 @@ detector_benchmark/watermark/kgw_p
 
 # temporary result files
 text_quality_eval_results/
-detection_test_results/
+detection_test_results_old
 big_gen_bench_feedback/
 
 # Distribution / packaging
@@ -112,7 +112,6 @@ visualize_loss_per_token_no_watermark.ipynb
 visualize_loss_per_token_sweet_p.ipynb
 old_and_backup/
 detector_benchmark/watermark/kgw_e_old/
-conda activate llm_detector
 test_watermark_script.sh
 
 detector_benchmark/create_dataset_from_human_eval_gen.py
@@ -130,7 +129,6 @@ test_embedding_hypothesis.py
 test_embedding_hypothesis_random_proj.py
 test_ppl_scorer_script.sh
 test_synthid_script.sh
-
 
 # non-tracked notebooks
 notebooks/ablation_study_auc.ipynb
