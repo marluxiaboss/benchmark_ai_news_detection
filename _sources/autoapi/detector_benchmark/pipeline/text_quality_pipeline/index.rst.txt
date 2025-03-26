@@ -30,12 +30,18 @@ Module Contents
 
 
    .. py:attribute:: batch_size
+      :value: 64
+
 
 
    .. py:attribute:: return_loss_lists
+      :value: False
+
 
 
    .. py:attribute:: eval_human
+      :value: False
+
 
 
    .. py:method:: run_pipeline()

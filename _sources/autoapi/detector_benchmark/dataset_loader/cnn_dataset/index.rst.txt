@@ -24,27 +24,43 @@ Module Contents
 
 
    .. py:attribute:: text_field
+      :value: 'article'
+
 
 
    .. py:attribute:: prefix_size
+      :value: 10
+
 
 
    .. py:attribute:: hf_dataset_path
+      :value: 'abisee/cnn_dailymail'
+
 
 
    .. py:attribute:: max_sample_len
+      :value: 500
+
 
 
    .. py:attribute:: seed
+      :value: 42
+
 
 
    .. py:attribute:: train_fraction
+      :value: 0.8
+
 
 
    .. py:attribute:: eval_fraction
+      :value: 0.1
+
 
 
    .. py:attribute:: test_fraction
+      :value: 0.1
+
 
 
    .. py:attribute:: dataset_name

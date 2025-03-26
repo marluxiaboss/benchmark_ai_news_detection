@@ -27,9 +27,13 @@ Module Contents
 
 
    .. py:attribute:: weights_checkpoint
+      :value: None
+
 
 
    .. py:attribute:: local_weights
+      :value: False
+
 
 
    .. py:method:: load() -> detector_benchmark.detector.detector.Detector

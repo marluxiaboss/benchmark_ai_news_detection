@@ -51,18 +51,26 @@ Package Contents
 
 
    .. py:attribute:: batch_size
+      :value: 1
+
 
 
    .. py:attribute:: generator_name
 
 
    .. py:attribute:: experiment_name
+      :value: 'Uninferable_Uninferable'
+
 
 
    .. py:attribute:: skip_cache
+      :value: False
+
 
 
    .. py:attribute:: skip_train_split
+      :value: False
+
 
 
    .. py:attribute:: log
@@ -104,6 +112,8 @@ Package Contents
 
 
    .. py:attribute:: batch_size
+      :value: 1
+
 
 
    .. py:attribute:: detector_name
@@ -116,6 +126,8 @@ Package Contents
 
 
    .. py:attribute:: experiment_name
+      :value: 'Uninferable_Uninferable'
+
 
 
    .. py:attribute:: target_fpr
@@ -191,12 +203,18 @@ Package Contents
 
 
    .. py:attribute:: batch_size
+      :value: 64
+
 
 
    .. py:attribute:: return_loss_lists
+      :value: False
+
 
 
    .. py:attribute:: eval_human
+      :value: False
+
 
 
    .. py:method:: run_pipeline()

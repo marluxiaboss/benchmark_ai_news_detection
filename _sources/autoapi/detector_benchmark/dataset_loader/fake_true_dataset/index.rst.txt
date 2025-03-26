@@ -24,21 +24,31 @@ Module Contents
 
 
    .. py:attribute:: prefix_size
+      :value: 10
+
 
 
    .. py:attribute:: dataset_path
 
 
    .. py:attribute:: max_sample_len
+      :value: 500
+
 
 
    .. py:attribute:: dataset_name
+      :value: ''
+
 
 
    .. py:attribute:: load_local
+      :value: True
+
 
 
    .. py:attribute:: seed
+      :value: 42
+
 
 
    .. py:method:: regroup_pairs(dataset_true, dataset_fake) -> datasets.Dataset

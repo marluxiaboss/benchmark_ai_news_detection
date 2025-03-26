@@ -37,6 +37,8 @@ Module Contents
 
 
    .. py:attribute:: watermarking_scheme
+      :value: None
+
 
 
    .. py:attribute:: attack_name

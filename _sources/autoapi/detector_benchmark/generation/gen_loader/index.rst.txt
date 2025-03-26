@@ -27,6 +27,8 @@ Module Contents
 
 
    .. py:attribute:: gen_tokenizer_only
+      :value: False
+
 
 
    .. py:method:: load() -> tuple[torch.nn.Module, detector_benchmark.generation.generator.LLMGenerator, detector_benchmark.utils.configs.ModelConfig]

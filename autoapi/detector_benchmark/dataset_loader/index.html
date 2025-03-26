@@ -5,9 +5,9 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="detector_benchmark.dataset_loader.cnn_dataset" href="cnn_dataset/index.html" /><link rel="prev" title="detector_benchmark.create_dataset" href="../create_dataset/index.html" />
 
-    <link rel="shortcut icon" href="../../../_static/glass.png"/><!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+    <link rel="shortcut icon" href="../../../_static/glass.png"/><!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>detector_benchmark.dataset_loader - LLM Detector Benchmark 🔎</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -299,13 +299,17 @@
 <li class="toctree-l5"><a class="reference internal" href="../watermark/sweet/sweet/index.html">detector_benchmark.watermark.sweet.sweet</a></li>
 </ul>
 </li>
-<li class="toctree-l4 has-children"><a class="reference internal" href="../watermark/synth_id/index.html">detector_benchmark.watermark.synth_id</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of detector_benchmark.watermark.synth_id</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../watermark/sweet_p/index.html">detector_benchmark.watermark.sweet_p</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of detector_benchmark.watermark.sweet_p</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l5"><a class="reference internal" href="../watermark/sweet_p/sweet_p/index.html">detector_benchmark.watermark.sweet_p.sweet_p</a></li>
+</ul>
+</li>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../watermark/synth_id/index.html">detector_benchmark.watermark.synth_id</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><div class="visually-hidden">Toggle navigation of detector_benchmark.watermark.synth_id</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../watermark/synth_id/detector/index.html">detector_benchmark.watermark.synth_id.detector</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../watermark/synth_id/detector_bayesian_torch/index.html">detector_benchmark.watermark.synth_id.detector_bayesian_torch</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../watermark/synth_id/synth_id/index.html">detector_benchmark.watermark.synth_id.synth_id</a></li>
 </ul>
 </li>
-<li class="toctree-l4 has-children"><a class="reference internal" href="../watermark/unbiased/index.html">detector_benchmark.watermark.unbiased</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><div class="visually-hidden">Toggle navigation of detector_benchmark.watermark.unbiased</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4 has-children"><a class="reference internal" href="../watermark/unbiased/index.html">detector_benchmark.watermark.unbiased</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><div class="visually-hidden">Toggle navigation of detector_benchmark.watermark.unbiased</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../watermark/unbiased/unbiased/index.html">detector_benchmark.watermark.unbiased.unbiased</a></li>
 </ul>
 </li>
@@ -387,7 +391,7 @@
 <h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.CNNDataLoader">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">detector_benchmark.dataset_loader.</span></span><span class="sig-name descname"><span class="pre">CNNDataLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hf_dataset_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'abisee/cnn_dailymail'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_field</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'article'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_sample_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">detector_benchmark.dataset_loader.</span></span><span class="sig-name descname"><span class="pre">CNNDataLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hf_dataset_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'abisee/cnn_dailymail'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_field</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'article'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_sample_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="fake_true_dataset/index.html#detector_benchmark.dataset_loader.fake_true_dataset.FakeTruePairsDataLoader" title="detector_benchmark.dataset_loader.fake_true_dataset.FakeTruePairsDataLoader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detector_benchmark.dataset_loader.fake_true_dataset.FakeTruePairsDataLoader</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.CNNDataLoader.dataset_size">
@@ -396,42 +400,42 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.CNNDataLoader.text_field">
-<span class="sig-name descname"><span class="pre">text_field</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.text_field" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">text_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'article'</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.text_field" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.CNNDataLoader.prefix_size">
-<span class="sig-name descname"><span class="pre">prefix_size</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.prefix_size" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">prefix_size</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.prefix_size" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.CNNDataLoader.hf_dataset_path">
-<span class="sig-name descname"><span class="pre">hf_dataset_path</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.hf_dataset_path" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">hf_dataset_path</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'abisee/cnn_dailymail'</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.hf_dataset_path" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.CNNDataLoader.max_sample_len">
-<span class="sig-name descname"><span class="pre">max_sample_len</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.max_sample_len" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">max_sample_len</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">500</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.max_sample_len" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.CNNDataLoader.seed">
-<span class="sig-name descname"><span class="pre">seed</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.seed" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">seed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">42</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.seed" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.CNNDataLoader.train_fraction">
-<span class="sig-name descname"><span class="pre">train_fraction</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.train_fraction" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">train_fraction</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.8</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.train_fraction" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.CNNDataLoader.eval_fraction">
-<span class="sig-name descname"><span class="pre">eval_fraction</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.eval_fraction" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">eval_fraction</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.1</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.eval_fraction" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.CNNDataLoader.test_fraction">
-<span class="sig-name descname"><span class="pre">test_fraction</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.test_fraction" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">test_fraction</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.1</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.CNNDataLoader.test_fraction" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -519,7 +523,7 @@ The first element of the pair is chosen randomly among the true and fake samples
 
 <dl class="py class">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.FakeTruePairsDataLoader">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">detector_benchmark.dataset_loader.</span></span><span class="sig-name descname"><span class="pre">FakeTruePairsDataLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_sample_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_local</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">detector_benchmark.dataset_loader.</span></span><span class="sig-name descname"><span class="pre">FakeTruePairsDataLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_sample_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_local</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader" title="Link to this definition">¶</a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.FakeTruePairsDataLoader.dataset_size">
 <span class="sig-name descname"><span class="pre">dataset_size</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader.dataset_size" title="Link to this definition">¶</a></dt>
@@ -532,7 +536,7 @@ The first element of the pair is chosen randomly among the true and fake samples
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.FakeTruePairsDataLoader.prefix_size">
-<span class="sig-name descname"><span class="pre">prefix_size</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader.prefix_size" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">prefix_size</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader.prefix_size" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -542,22 +546,22 @@ The first element of the pair is chosen randomly among the true and fake samples
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.FakeTruePairsDataLoader.max_sample_len">
-<span class="sig-name descname"><span class="pre">max_sample_len</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader.max_sample_len" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">max_sample_len</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">500</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader.max_sample_len" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.FakeTruePairsDataLoader.dataset_name">
-<span class="sig-name descname"><span class="pre">dataset_name</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader.dataset_name" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">dataset_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader.dataset_name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.FakeTruePairsDataLoader.load_local">
-<span class="sig-name descname"><span class="pre">load_local</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader.load_local" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">load_local</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader.load_local" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="detector_benchmark.dataset_loader.FakeTruePairsDataLoader.seed">
-<span class="sig-name descname"><span class="pre">seed</span></span><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader.seed" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">seed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">42</span></em><a class="headerlink" href="#detector_benchmark.dataset_loader.FakeTruePairsDataLoader.seed" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">

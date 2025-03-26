@@ -119,6 +119,8 @@ Module Contents
 
 
    .. py:attribute:: baserate
+      :value: 0.5
+
 
 
    .. py:attribute:: likelihood_model_watermarked

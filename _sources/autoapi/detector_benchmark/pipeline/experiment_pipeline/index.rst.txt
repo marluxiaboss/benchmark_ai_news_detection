@@ -17,7 +17,7 @@ Module Contents
 
 .. py:class:: ExperimentPipeline
 
-   Bases: :py:obj:`detector_benchmark.pipeline.pipeline_utils.ABC`
+   Bases: :py:obj:`abc.ABC`
 
 
    Abstract class for an experiment pipeline.

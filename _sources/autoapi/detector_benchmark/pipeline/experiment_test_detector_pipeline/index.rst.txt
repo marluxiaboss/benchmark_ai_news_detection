@@ -33,6 +33,8 @@ Module Contents
 
 
    .. py:attribute:: batch_size
+      :value: 1
+
 
 
    .. py:attribute:: detector_name
@@ -45,6 +47,8 @@ Module Contents
 
 
    .. py:attribute:: experiment_name
+      :value: 'Uninferable_Uninferable'
+
 
 
    .. py:attribute:: target_fpr

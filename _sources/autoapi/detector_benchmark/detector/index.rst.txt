@@ -271,9 +271,13 @@ Package Contents
 
 
    .. py:attribute:: weights_checkpoint
+      :value: None
+
 
 
    .. py:attribute:: local_weights
+      :value: False
+
 
 
    .. py:method:: load() -> detector_benchmark.detector.detector.Detector
@@ -292,10 +296,16 @@ Package Contents
    Bases: :py:obj:`detector_benchmark.detector.detector.Detector`
 
 
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+
    .. py:attribute:: api_key
 
 
    .. py:attribute:: debug_mode
+      :value: False
+
 
 
    .. py:method:: predict_gpt_zero(text, api_key, debug_mode=False) -> dict
