@@ -19,7 +19,6 @@ detector_benchmark/watermark/kgw_e
 detector_benchmark/watermark/kgw_p
 
 # temporary result files
-notebooks/
 text_quality_eval_results/
 detection_test_results/
 big_gen_bench_feedback/
@@ -120,9 +119,30 @@ detector_benchmark/create_dataset_from_human_eval_gen.py
 detector_benchmark/detector/test_loader.py
 detector_benchmark/generation/random_deletion_attack.py
 detector_benchmark/watermark/kgw_e_new/
+detector_benchmark/test_notebook
+detector_benchmark/text_quality_eval_results
+detector_benchmark/run_human_eval_plus.py
+detector_benchmark/run_human_eval.py
+detector_benchmark/data
 scripts/
 sweet_test/
 test_embedding_hypothesis.py
 test_embedding_hypothesis_random_proj.py
 test_ppl_scorer_script.sh
 test_synthid_script.sh
+
+
+# non-tracked notebooks
+notebooks/ablation_study_auc.ipynb
+notebooks/ablation_study_old.ipynb
+notebooks/ablation_study_old_design.ipynb
+notebooks/ablation_study_test_new_dash_line.ipynb
+notebooks/benchmark.ipynb
+notebooks/big_gen_bench_res.ipynb
+notebooks/investigate_human_eval_res.ipynb
+notebooks/test_embedding_hypothesis.ipynb
+notebooks/test_embedding_hypothesis_random_proj.ipynb
+notebooks/test_notebook.ipynb
+notebooks/watermark_detection_results.ipynb
+
+
