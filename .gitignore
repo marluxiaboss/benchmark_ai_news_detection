@@ -12,14 +12,14 @@ __pycache__/
 # data
 data/
 #detection_test_results/
-plots/
+.plots/
 
 # some watermark schemes to ignore, for now...
 detector_benchmark/watermark/kgw_e
 detector_benchmark/watermark/kgw_p
 
 # temporary result files
-text_quality_eval_results/
+.text_quality_eval_results/
 detection_test_results_old
 big_gen_bench_feedback/
 

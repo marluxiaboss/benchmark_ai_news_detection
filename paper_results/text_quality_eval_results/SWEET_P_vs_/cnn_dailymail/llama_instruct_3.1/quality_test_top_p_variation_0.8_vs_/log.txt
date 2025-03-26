@@ -1,0 +1,18 @@
+dataset_name: cnn_dailymail
+data_experiment_name_main: top_p_variation_0.8
+data_experiment_name_compare: 
+generator_name: llama_instruct_3.1
+batch_size: 64
+use_bert_scorer: False
+use_idf_scorer: False
+use_prometheus_scorer: False
+use_ppl_scorer: True
+return_loss_lists: True
+ppl_scorer_name: qwen2_chat_7B
+compare_ai_to_human: False
+eval_human: False
+watermarking_scheme_name_main: SWEET_P
+watermarking_scheme_name_compare: 
+save_res_dir: text_quality_eval_results
+Running pipeline with scorer: ppl_score
+Score: 6.874147942004496 +/- 0.14135248755810803
